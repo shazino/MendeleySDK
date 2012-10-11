@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MDLDocumentSearchViewController : UITableViewController <UISearchBarDelegate>
+@interface MDLDocumentSearchViewController : UITableViewController
 
 @end

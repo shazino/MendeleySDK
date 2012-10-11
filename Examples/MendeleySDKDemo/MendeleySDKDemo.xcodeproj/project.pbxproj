@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		14AFCB681626DFD900AC81A6 /* MDLDocumentSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14AFCB671626DFD800AC81A6 /* MDLDocumentSearchViewController.m */; };
+		141E670016272670002939D2 /* MDLDocumentSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 141E66FF16272670002939D2 /* MDLDocumentSearchViewController.m */; };
+		141E67021627330E002939D2 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 141E67011627330E002939D2 /* Icon.png */; };
+		141E670416273311002939D2 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 141E670316273311002939D2 /* Icon@2x.png */; };
+		141E670616273319002939D2 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 141E670516273319002939D2 /* Icon-72.png */; };
+		141E67081627331C002939D2 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 141E67071627331C002939D2 /* Icon-72@2x.png */; };
+		14AFCB681626DFD900AC81A6 /* MDLDocumentSearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14AFCB671626DFD800AC81A6 /* MDLDocumentSearchResultsViewController.m */; };
 		14C1E2CA16246F27005D914C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C1E2C916246F27005D914C /* UIKit.framework */; };
 		14C1E2CC16246F27005D914C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C1E2CB16246F27005D914C /* Foundation.framework */; };
 		14C1E2CE16246F27005D914C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C1E2CD16246F27005D914C /* CoreGraphics.framework */; };
@@ -51,8 +56,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		14AFCB661626DFD800AC81A6 /* MDLDocumentSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDLDocumentSearchViewController.h; path = classes/MDLDocumentSearchViewController.h; sourceTree = "<group>"; };
-		14AFCB671626DFD800AC81A6 /* MDLDocumentSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDLDocumentSearchViewController.m; path = classes/MDLDocumentSearchViewController.m; sourceTree = "<group>"; };
+		141E66FE16272670002939D2 /* MDLDocumentSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDLDocumentSearchViewController.h; path = classes/MDLDocumentSearchViewController.h; sourceTree = "<group>"; };
+		141E66FF16272670002939D2 /* MDLDocumentSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDLDocumentSearchViewController.m; path = classes/MDLDocumentSearchViewController.m; sourceTree = "<group>"; };
+		141E67011627330E002939D2 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
+		141E670316273311002939D2 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
+		141E670516273319002939D2 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../Icon-72.png"; sourceTree = "<group>"; };
+		141E67071627331C002939D2 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "../Icon-72@2x.png"; sourceTree = "<group>"; };
+		14AFCB661626DFD800AC81A6 /* MDLDocumentSearchResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDLDocumentSearchResultsViewController.h; path = classes/MDLDocumentSearchResultsViewController.h; sourceTree = "<group>"; };
+		14AFCB671626DFD800AC81A6 /* MDLDocumentSearchResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDLDocumentSearchResultsViewController.m; path = classes/MDLDocumentSearchResultsViewController.m; sourceTree = "<group>"; };
 		14C1E2C516246F27005D914C /* MendeleySDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MendeleySDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14C1E2C916246F27005D914C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		14C1E2CB16246F27005D914C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -130,6 +141,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		141E670916273371002939D2 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				141E67071627331C002939D2 /* Icon-72@2x.png */,
+				141E670516273319002939D2 /* Icon-72.png */,
+				141E670316273311002939D2 /* Icon@2x.png */,
+				141E67011627330E002939D2 /* Icon.png */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
 		14C1E2BA16246F27005D914C = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +193,7 @@
 				14C1E2D816246F27005D914C /* MDLAppDelegate.h */,
 				14C1E2D916246F27005D914C /* MDLAppDelegate.m */,
 				14C1E2D016246F27005D914C /* Supporting Files */,
+				141E670916273371002939D2 /* Icons */,
 			);
 			path = MendeleySDKDemo;
 			sourceTree = "<group>";
@@ -264,8 +287,10 @@
 				14C1E2E116246F27005D914C /* MainStoryboard_iPhone.storyboard */,
 				14C1E2E716246F27005D914C /* MDLDocumentCreatorViewController.h */,
 				14C1E2E816246F27005D914C /* MDLDocumentCreatorViewController.m */,
-				14AFCB661626DFD800AC81A6 /* MDLDocumentSearchViewController.h */,
-				14AFCB671626DFD800AC81A6 /* MDLDocumentSearchViewController.m */,
+				141E66FE16272670002939D2 /* MDLDocumentSearchViewController.h */,
+				141E66FF16272670002939D2 /* MDLDocumentSearchViewController.m */,
+				14AFCB661626DFD800AC81A6 /* MDLDocumentSearchResultsViewController.h */,
+				14AFCB671626DFD800AC81A6 /* MDLDocumentSearchResultsViewController.m */,
 			);
 			name = Interface;
 			sourceTree = "<group>";
@@ -347,6 +372,10 @@
 				14C1E2DE16246F27005D914C /* Default@2x.png in Resources */,
 				14C1E2E016246F27005D914C /* Default-568h@2x.png in Resources */,
 				14C1E2E316246F27005D914C /* MainStoryboard_iPhone.storyboard in Resources */,
+				141E67021627330E002939D2 /* Icon.png in Resources */,
+				141E670416273311002939D2 /* Icon@2x.png in Resources */,
+				141E670616273319002939D2 /* Icon-72.png in Resources */,
+				141E67081627331C002939D2 /* Icon-72@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,7 +426,8 @@
 				14C1E32916246F5D005D914C /* AFOAuth1Client.m in Sources */,
 				14C1E33516246F7C005D914C /* MDLMendeleyAPIClient.m in Sources */,
 				14C1E33C1624715D005D914C /* MDLDocument.m in Sources */,
-				14AFCB681626DFD900AC81A6 /* MDLDocumentSearchViewController.m in Sources */,
+				14AFCB681626DFD900AC81A6 /* MDLDocumentSearchResultsViewController.m in Sources */,
+				141E670016272670002939D2 /* MDLDocumentSearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

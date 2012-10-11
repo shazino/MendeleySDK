@@ -120,7 +120,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <segue destination="OJ7-bb-MBc" kind="push" id="ynt-6m-o5e"/>
+                                            <segue destination="iZi-Dl-Q5M" kind="push" id="AFK-kC-qJv"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -131,31 +131,133 @@
                             <outlet property="delegate" destination="QfE-lg-wZj" id="mjg-Zg-PHS"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="MendeleySDK Demo" id="16j-ae-Saq"/>
+                    <navigationItem key="navigationItem" title="MendeleySDK Demo" id="16j-ae-Saq">
+                        <barButtonItem key="backBarButtonItem" title="Demo" id="R58-f1-kC2"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kl7-g5-rIt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="813" y="204"/>
         </scene>
         <!--Document Search View Controller - Search for Documents-->
+        <scene sceneID="5sq-MN-jXr">
+            <objects>
+                <tableViewController id="iZi-Dl-Q5M" customClass="MDLDocumentSearchViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="l0a-2d-k5r">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="Terms" id="m1b-rh-qxG">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="H1g-Jb-UeH">
+                                        <rect key="frame" x="0.0" y="46" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Generic search" minimumFontSize="17" clearButtonMode="whileEditing" id="bEf-uw-ZUH">
+                                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="XRy-UY-fLs">
+                                        <rect key="frame" x="0.0" y="91" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Authors" minimumFontSize="17" clearButtonMode="whileEditing" id="fpE-kw-gQp">
+                                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="XwX-U6-ou4">
+                                        <rect key="frame" x="0.0" y="135" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" minimumFontSize="17" clearButtonMode="whileEditing" id="S3A-e8-cVX">
+                                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="" id="1lT-Mt-VIB">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="kHi-8h-Kl3" style="IBUITableViewCellStyleDefault" id="dHs-kS-ZNU">
+                                        <rect key="frame" x="0.0" y="200" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kHi-8h-Kl3">
+                                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <segue destination="OJ7-bb-MBc" kind="push" identifier="MDLSearchSegue" id="Qp5-Sn-PWd"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="iZi-Dl-Q5M" id="95I-WM-a0r"/>
+                            <outlet property="delegate" destination="iZi-Dl-Q5M" id="MsK-JN-bZS"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Search for Documents" id="43u-6Z-qEh">
+                        <barButtonItem key="backBarButtonItem" title="Search" id="ieX-99-Tk9"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="authorsTextField" destination="fpE-kw-gQp" id="Wdv-hW-8Un"/>
+                        <outlet property="genericTextField" destination="bEf-uw-ZUH" id="PE0-3Y-oTP"/>
+                        <outlet property="titleTextField" destination="S3A-e8-cVX" id="r8U-zh-Xxi"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Whe-5x-6vC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1472" y="443"/>
+        </scene>
+        <!--Document Search Results View Controller - Search Results-->
         <scene sceneID="bOa-Zl-7gS">
             <objects>
-                <tableViewController id="OJ7-bb-MBc" customClass="MDLDocumentSearchViewController" sceneMemberID="viewController">
+                <tableViewController id="OJ7-bb-MBc" customClass="MDLDocumentSearchResultsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Qm8-vT-hEl">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="gOP-Ln-lnW">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="OJ7-bb-MBc" id="aZ7-8c-xw4"/>
-                            </connections>
-                        </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MDLDocumentCell" textLabel="ISM-TQ-hUD" detailTextLabel="0JZ-jk-IsG" style="IBUITableViewCellStyleSubtitle" id="y8U-Rg-TPm">
-                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -185,23 +287,11 @@
                             <outlet property="delegate" destination="OJ7-bb-MBc" id="dTb-nY-RZb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Search for Documents" id="C24-wc-9k9"/>
-                    <connections>
-                        <outlet property="searchDisplayController" destination="SYr-Ks-DNJ" id="4Pf-it-Ahi"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="Search Results" id="C24-wc-9k9"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P8e-VH-rfv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="SYr-Ks-DNJ">
-                    <connections>
-                        <outlet property="delegate" destination="OJ7-bb-MBc" id="Jjx-H7-QQ2"/>
-                        <outlet property="searchBar" destination="gOP-Ln-lnW" id="Zyn-Fd-2Ri"/>
-                        <outlet property="searchContentsController" destination="OJ7-bb-MBc" id="wfG-qo-5Sg"/>
-                        <outlet property="searchResultsDataSource" destination="OJ7-bb-MBc" id="JTY-LB-L82"/>
-                        <outlet property="searchResultsDelegate" destination="OJ7-bb-MBc" id="U6p-eB-4d7"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1472" y="452"/>
+            <point key="canvasLocation" x="1927" y="443"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Buv-sd-VYM">
@@ -222,22 +312,6 @@
             <point key="canvasLocation" x="351" y="204"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="MDLDocumentCreatorViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MDLDocumentCreatorViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="textFieldEditingChanged:"/>
-                <relationship kind="action" name="upload:"/>
-                <relationship kind="outlet" name="activityStatusLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="contentTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="uploadButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="MDLDocumentSearchViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MDLDocumentSearchViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -30,7 +30,7 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
 
 @implementation MDLDocument
 
-+ (MDLDocument *)createNewDocumentWithTitle:(NSString *)title success:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure
++ (MDLDocument *)documentWithTitle:(NSString *)title success:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure
 {
     MDLDocument *newDocument = [MDLDocument new];
     newDocument.title = title;
@@ -57,7 +57,10 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
     
-    [client getPath:[NSString stringWithFormat:@"/oapi/documents/search/%@/", [terms stringByReplacingOccurrencesOfString:@" " withString:@"%20"]]
+    NSString *encodedTerms = [terms stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    encodedTerms = [encodedTerms stringByReplacingOccurrencesOfString:@":" withString:@"%3A"];
+    
+    [client getPath:[NSString stringWithFormat:@"/oapi/documents/search/%@/", encodedTerms]
             success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 if (success)
                 {
@@ -77,6 +80,19 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
                 if (failure)
                     failure(error);
             }];
+}
+
++ (void)searchWithGenericTerms:(NSString *)genericTerms authors:(NSString *)authors title:(NSString *)title success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSMutableArray *terms = [NSMutableArray array];
+    if ([genericTerms length] > 0)
+        [terms addObject:genericTerms];
+    if ([authors length] > 0)
+        [terms addObject:[NSString stringWithFormat:@"authors:%@", authors]];
+    if ([title length] > 0)
+        [terms addObject:[NSString stringWithFormat:@"title:%@", title]];
+    
+    [self searchWithTerms:[terms componentsJoinedByString:@" "] success:success failure:failure];
 }
 
 - (void)uploadFileAtURL:(NSURL *)fileURL success:(void (^)())success failure:(void (^)(NSError *))failure

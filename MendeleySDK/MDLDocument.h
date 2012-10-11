@@ -62,16 +62,27 @@ extern NSString * const kMDLDocumentTypeGeneric;
  
  @return  The newly-initialized document, with document identifier = `nil`.
  */
-+ (MDLDocument *)createNewDocumentWithTitle:(NSString *)title success:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure;
++ (MDLDocument *)documentWithTitle:(NSString *)title success:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure;
 
 /**
- Sends an API search request using the shared client.
+ Sends an API search request with generic terms using the shared client.
  
  @param terms The terms for the search query
  @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `MDLDocument` objects for the match.
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
 + (void)searchWithTerms:(NSString *)terms success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
+
+/**
+ Sends an API search request with specific terms using the shared client.
+ 
+ @param genericTerms The terms for the search query
+ @param authors The authors for the search query
+ @param title The title for the search query
+ @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `MDLDocument` objects for the match.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ */
++ (void)searchWithGenericTerms:(NSString *)genericTerms authors:(NSString *)authors title:(NSString *)title success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 
 /**
  Sends an API upload request using the shared client.
