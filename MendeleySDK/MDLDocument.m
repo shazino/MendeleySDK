@@ -1,5 +1,5 @@
 //
-//  MDLDocument.m
+// MDLDocument.m
 //
 // Copyright (c) 2012 shazino (shazino SAS), http://www.shazino.com/
 //
@@ -24,6 +24,8 @@
 #import "MDLDocument.h"
 
 #import "MDLMendeleyAPIClient.h"
+#import "MDLAuthor.h"
+#import "MDLPublication.h"
 #import "AFNetworking.h"
 
 NSString * const kMDLDocumentTypeGeneric = @"Generic";
@@ -113,6 +115,36 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
               if (failure)
                   failure(error);
           }];
+}
+
+- (void)fetchDetailsSuccess:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure
+{
+    if (!self.documentIdentifier)
+    {
+        failure([NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorCancelled userInfo:nil]);
+        return;
+    }
+    
+    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
+    [client getPath:[NSString stringWithFormat:@"/oapi/documents/details/%@/", self.documentIdentifier]
+            success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+                self.abstract = responseObject[@"abstract"];
+                self.title = responseObject[@"title"];
+                self.type = responseObject[@"type"];
+                self.mendeleyURL = [NSURL URLWithString:responseObject[@"mendeley_url"]];
+                NSMutableArray *authors = [NSMutableArray array];
+                for (NSDictionary *author in responseObject[@"authors"])
+                    [authors addObject:[MDLAuthor authorWithForename:author[@"forename"] surname:author[@"surname"]]];
+                self.authors = authors;
+                self.publication = [MDLPublication publicationWithName:responseObject[@"publication_outlet"]];
+                self.year = responseObject[@"year"];
+                
+                if (success)
+                    success(self);
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                if (failure)
+                    failure(error);
+            }];
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "MDLDocumentSearchResultsViewController.h"
 
 #import "MDLDocument.h"
+#import "MDLDocumentDetailsViewController.h"
 
 @interface MDLDocumentSearchResultsViewController ()
 
@@ -32,6 +33,15 @@
     }];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.destinationViewController isKindOfClass:[MDLDocumentDetailsViewController class]])
+    {
+        MDLDocumentDetailsViewController *detailsViewController = (MDLDocumentDetailsViewController *)segue.destinationViewController;
+        detailsViewController.document = self.searchResults[self.tableView.indexPathForSelectedRow.row];
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -53,12 +63,6 @@
     cell.detailTextLabel.text = [NSString stringWithFormat:@"DOI: %@, ID: %@", document.DOI, document.documentIdentifier];
     
     return cell;
-}
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
 }
 
 @end

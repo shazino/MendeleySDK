@@ -1,3 +1,4 @@
+//
 // MDLMendeleyAPIClient.m
 //
 // Copyright (c) 2012 shazino (shazino SAS), http://www.shazino.com/
@@ -45,22 +46,22 @@ static NSString * const kMDLMendeleyAPIBaseURLString = @"http://api.mendeley.com
 
 @implementation MDLMendeleyAPIClient
 
-+ (MDLMendeleyAPIClient *)sharedClient {
++ (MDLMendeleyAPIClient *)sharedClient
+{
     static MDLMendeleyAPIClient *_sharedClient = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        
         _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:kMDLMendeleyAPIBaseURLString] key:kMDLConsumerKey secret:kMDLConsumerSecret];
     });
     
     return _sharedClient;
 }
 
-- (id)initWithBaseURL:(NSURL *)url key:(NSString *)key secret:(NSString *)secret {
+- (id)initWithBaseURL:(NSURL *)url key:(NSString *)key secret:(NSString *)secret
+{
     self = [super initWithBaseURL:url key:key secret:secret];
-    if (!self) {
+    if (!self)
         return nil;
-    }
 
     self.automaticAuthenticationEnabled = YES;
     [self registerForNotifications];

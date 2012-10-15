@@ -43,6 +43,9 @@
 		14C1E33516246F7C005D914C /* MDLMendeleyAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C1E33116246F7C005D914C /* MDLMendeleyAPIClient.m */; };
 		14C1E33916247003005D914C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C1E33816247003005D914C /* CoreData.framework */; };
 		14C1E33C1624715D005D914C /* MDLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C1E33B1624715D005D914C /* MDLDocument.m */; };
+		14E5CB73162C007C00B94796 /* MDLDocumentDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E5CB72162C007C00B94796 /* MDLDocumentDetailsViewController.m */; };
+		14E5CB77162C29B600B94796 /* MDLAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E5CB76162C29B600B94796 /* MDLAuthor.m */; };
+		14E5CB7A162C2F8400B94796 /* MDLPublication.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E5CB79162C2F8400B94796 /* MDLPublication.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +117,12 @@
 		14C1E33816247003005D914C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		14C1E33A1624715D005D914C /* MDLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDLDocument.h; sourceTree = "<group>"; };
 		14C1E33B1624715D005D914C /* MDLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDLDocument.m; sourceTree = "<group>"; };
+		14E5CB71162C007C00B94796 /* MDLDocumentDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDLDocumentDetailsViewController.h; path = classes/MDLDocumentDetailsViewController.h; sourceTree = "<group>"; };
+		14E5CB72162C007C00B94796 /* MDLDocumentDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDLDocumentDetailsViewController.m; path = classes/MDLDocumentDetailsViewController.m; sourceTree = "<group>"; };
+		14E5CB75162C29B600B94796 /* MDLAuthor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDLAuthor.h; sourceTree = "<group>"; };
+		14E5CB76162C29B600B94796 /* MDLAuthor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDLAuthor.m; sourceTree = "<group>"; };
+		14E5CB78162C2F8400B94796 /* MDLPublication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDLPublication.h; sourceTree = "<group>"; };
+		14E5CB79162C2F8400B94796 /* MDLPublication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDLPublication.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,6 +283,10 @@
 			children = (
 				14C1E33A1624715D005D914C /* MDLDocument.h */,
 				14C1E33B1624715D005D914C /* MDLDocument.m */,
+				14E5CB75162C29B600B94796 /* MDLAuthor.h */,
+				14E5CB76162C29B600B94796 /* MDLAuthor.m */,
+				14E5CB78162C2F8400B94796 /* MDLPublication.h */,
+				14E5CB79162C2F8400B94796 /* MDLPublication.m */,
 				14C1E33016246F7C005D914C /* MDLMendeleyAPIClient.h */,
 				14C1E33116246F7C005D914C /* MDLMendeleyAPIClient.m */,
 			);
@@ -291,6 +304,8 @@
 				141E66FF16272670002939D2 /* MDLDocumentSearchViewController.m */,
 				14AFCB661626DFD800AC81A6 /* MDLDocumentSearchResultsViewController.h */,
 				14AFCB671626DFD800AC81A6 /* MDLDocumentSearchResultsViewController.m */,
+				14E5CB71162C007C00B94796 /* MDLDocumentDetailsViewController.h */,
+				14E5CB72162C007C00B94796 /* MDLDocumentDetailsViewController.m */,
 			);
 			name = Interface;
 			sourceTree = "<group>";
@@ -428,6 +443,9 @@
 				14C1E33C1624715D005D914C /* MDLDocument.m in Sources */,
 				14AFCB681626DFD900AC81A6 /* MDLDocumentSearchResultsViewController.m in Sources */,
 				141E670016272670002939D2 /* MDLDocumentSearchViewController.m in Sources */,
+				14E5CB73162C007C00B94796 /* MDLDocumentDetailsViewController.m in Sources */,
+				14E5CB77162C29B600B94796 /* MDLAuthor.m in Sources */,
+				14E5CB7A162C2F8400B94796 /* MDLPublication.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
