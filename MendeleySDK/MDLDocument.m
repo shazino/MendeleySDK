@@ -88,7 +88,7 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
     if ([genericTerms length] > 0)
         [terms addObject:genericTerms];
     if ([authors length] > 0)
-        [terms addObject:[NSString stringWithFormat:@"authors:%@", authors]];
+        [terms addObject:[NSString stringWithFormat:@"author:%@", authors]];
     if ([title length] > 0)
         [terms addObject:[NSString stringWithFormat:@"title:%@", title]];
     
