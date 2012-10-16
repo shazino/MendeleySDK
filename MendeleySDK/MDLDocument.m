@@ -96,7 +96,7 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
             }];
 }
 
-+ (void)topDocumentsInPublicLibraryForCategory:(NSNumber *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)topDocumentsInPublicLibraryForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
     

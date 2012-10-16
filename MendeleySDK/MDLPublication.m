@@ -33,7 +33,7 @@
     return publication;
 }
 
-+ (void)topPublicationsInPublicLibraryForCategory:(NSNumber *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)topPublicationsInPublicLibraryForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
     

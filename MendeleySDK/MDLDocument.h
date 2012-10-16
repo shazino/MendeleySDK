@@ -126,7 +126,7 @@ extern NSString * const kMDLDocumentTypeGeneric;
  
  @see [API documentation: Stats Papers](http://apidocs.mendeley.com/home/public-resources/stats-papers)
  */
-+ (void)topDocumentsInPublicLibraryForCategory:(NSNumber *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
++ (void)topDocumentsInPublicLibraryForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 
 /**
  Sends an API upload request using the shared client.

@@ -59,6 +59,6 @@
  
  @see [API documentation: Stats Authors](http://apidocs.mendeley.com/home/public-resources/stats-authors)
  */
-+ (void)topAuthorsInPublicLibraryForCategory:(NSNumber *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
++ (void)topAuthorsInPublicLibraryForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 
 @end

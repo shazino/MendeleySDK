@@ -16,10 +16,10 @@
 @interface MDLTopViewController ()
 
 @property NSArray *topResults;
-@property NSNumber *categoryIdentifier;
+@property NSString *categoryIdentifier;
 @property (getter = isUpAndComing) BOOL upAndComing;
 
-- (void)fetchTopForCategory:(NSNumber *)categoryIdentifier upAndComing:(BOOL)upAndComing;
+- (void)fetchTopForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing;
 - (IBAction)switchValueChanged:(UISwitch *)sender;
 
 @end
@@ -94,7 +94,7 @@
 
 #pragma mark - Actions
 
-- (void)fetchTopForCategory:(NSNumber *)categoryIdentifier upAndComing:(BOOL)upAndComing
+- (void)fetchTopForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing
 {
     if (self.entityClass == [MDLPublication class])
     {
@@ -133,10 +133,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
-    numberFormatter.numberStyle = NSNumberFormatterNoStyle;
-    self.categoryIdentifier = [numberFormatter numberFromString:textField.text];
-    textField.text = [self.categoryIdentifier stringValue];
+    self.categoryIdentifier = textField.text;
     [textField resignFirstResponder];
     
     [self fetchTopForCategory:self.categoryIdentifier upAndComing:self.isUpAndComing];

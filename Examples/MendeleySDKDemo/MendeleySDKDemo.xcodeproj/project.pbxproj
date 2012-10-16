@@ -14,6 +14,11 @@
 		141E67081627331C002939D2 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 141E67071627331C002939D2 /* Icon-72@2x.png */; };
 		149FBFB0162D49D700B16BCA /* MDLTopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149FBFAF162D49D700B16BCA /* MDLTopViewController.m */; };
 		149FBFB4162D817600B16BCA /* MDLMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149FBFB3162D817600B16BCA /* MDLMenuViewController.m */; };
+		149FBFB7162D921A00B16BCA /* MDLTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 149FBFB6162D921A00B16BCA /* MDLTag.m */; };
+		149FBFBA162D9E6800B16BCA /* MDLCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 149FBFB9162D9E6700B16BCA /* MDLCategory.m */; };
+		149FBFBD162DA82900B16BCA /* MDLCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149FBFBC162DA82900B16BCA /* MDLCategoriesViewController.m */; };
+		149FBFC1162DB59A00B16BCA /* MDLCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149FBFC0162DB59A00B16BCA /* MDLCategoryViewController.m */; };
+		149FBFC4162DBEEF00B16BCA /* MDLSubcategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 149FBFC3162DBEEF00B16BCA /* MDLSubcategory.m */; };
 		14AFCB681626DFD900AC81A6 /* MDLDocumentSearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14AFCB671626DFD800AC81A6 /* MDLDocumentSearchResultsViewController.m */; };
 		14C1E2CA16246F27005D914C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C1E2C916246F27005D914C /* UIKit.framework */; };
 		14C1E2CC16246F27005D914C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C1E2CB16246F27005D914C /* Foundation.framework */; };
@@ -71,6 +76,16 @@
 		149FBFAF162D49D700B16BCA /* MDLTopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDLTopViewController.m; path = classes/MDLTopViewController.m; sourceTree = "<group>"; };
 		149FBFB2162D817600B16BCA /* MDLMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDLMenuViewController.h; path = classes/MDLMenuViewController.h; sourceTree = "<group>"; };
 		149FBFB3162D817600B16BCA /* MDLMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDLMenuViewController.m; path = classes/MDLMenuViewController.m; sourceTree = "<group>"; };
+		149FBFB5162D921A00B16BCA /* MDLTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDLTag.h; sourceTree = "<group>"; };
+		149FBFB6162D921A00B16BCA /* MDLTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDLTag.m; sourceTree = "<group>"; };
+		149FBFB8162D9E6700B16BCA /* MDLCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDLCategory.h; sourceTree = "<group>"; };
+		149FBFB9162D9E6700B16BCA /* MDLCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDLCategory.m; sourceTree = "<group>"; };
+		149FBFBB162DA82900B16BCA /* MDLCategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDLCategoriesViewController.h; path = classes/MDLCategoriesViewController.h; sourceTree = "<group>"; };
+		149FBFBC162DA82900B16BCA /* MDLCategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDLCategoriesViewController.m; path = classes/MDLCategoriesViewController.m; sourceTree = "<group>"; };
+		149FBFBF162DB59A00B16BCA /* MDLCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDLCategoryViewController.h; path = classes/MDLCategoryViewController.h; sourceTree = "<group>"; };
+		149FBFC0162DB59A00B16BCA /* MDLCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDLCategoryViewController.m; path = classes/MDLCategoryViewController.m; sourceTree = "<group>"; };
+		149FBFC2162DBEEF00B16BCA /* MDLSubcategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDLSubcategory.h; sourceTree = "<group>"; };
+		149FBFC3162DBEEF00B16BCA /* MDLSubcategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDLSubcategory.m; sourceTree = "<group>"; };
 		14AFCB661626DFD800AC81A6 /* MDLDocumentSearchResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDLDocumentSearchResultsViewController.h; path = classes/MDLDocumentSearchResultsViewController.h; sourceTree = "<group>"; };
 		14AFCB671626DFD800AC81A6 /* MDLDocumentSearchResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDLDocumentSearchResultsViewController.m; path = classes/MDLDocumentSearchResultsViewController.m; sourceTree = "<group>"; };
 		14C1E2C516246F27005D914C /* MendeleySDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MendeleySDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,13 +197,24 @@
 			name = Documents;
 			sourceTree = "<group>";
 		};
-		149FBFB1162D49DC00B16BCA /* Publication */ = {
+		149FBFB1162D49DC00B16BCA /* Top */ = {
 			isa = PBXGroup;
 			children = (
 				149FBFAE162D49D700B16BCA /* MDLTopViewController.h */,
 				149FBFAF162D49D700B16BCA /* MDLTopViewController.m */,
 			);
-			name = Publication;
+			name = Top;
+			sourceTree = "<group>";
+		};
+		149FBFBE162DA82C00B16BCA /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				149FBFBB162DA82900B16BCA /* MDLCategoriesViewController.h */,
+				149FBFBC162DA82900B16BCA /* MDLCategoriesViewController.m */,
+				149FBFBF162DB59A00B16BCA /* MDLCategoryViewController.h */,
+				149FBFC0162DB59A00B16BCA /* MDLCategoryViewController.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		14C1E2BA16246F27005D914C = {
@@ -317,6 +343,12 @@
 				14E5CB76162C29B600B94796 /* MDLAuthor.m */,
 				14E5CB78162C2F8400B94796 /* MDLPublication.h */,
 				14E5CB79162C2F8400B94796 /* MDLPublication.m */,
+				149FBFB5162D921A00B16BCA /* MDLTag.h */,
+				149FBFB6162D921A00B16BCA /* MDLTag.m */,
+				149FBFB8162D9E6700B16BCA /* MDLCategory.h */,
+				149FBFB9162D9E6700B16BCA /* MDLCategory.m */,
+				149FBFC2162DBEEF00B16BCA /* MDLSubcategory.h */,
+				149FBFC3162DBEEF00B16BCA /* MDLSubcategory.m */,
 				14C1E33016246F7C005D914C /* MDLMendeleyAPIClient.h */,
 				14C1E33116246F7C005D914C /* MDLMendeleyAPIClient.m */,
 			);
@@ -331,7 +363,8 @@
 				149FBFB2162D817600B16BCA /* MDLMenuViewController.h */,
 				149FBFB3162D817600B16BCA /* MDLMenuViewController.m */,
 				149FBFAD162D49B100B16BCA /* Documents */,
-				149FBFB1162D49DC00B16BCA /* Publication */,
+				149FBFB1162D49DC00B16BCA /* Top */,
+				149FBFBE162DA82C00B16BCA /* Categories */,
 			);
 			name = Interface;
 			sourceTree = "<group>";
@@ -474,6 +507,11 @@
 				14E5CB7A162C2F8400B94796 /* MDLPublication.m in Sources */,
 				149FBFB0162D49D700B16BCA /* MDLTopViewController.m in Sources */,
 				149FBFB4162D817600B16BCA /* MDLMenuViewController.m in Sources */,
+				149FBFB7162D921A00B16BCA /* MDLTag.m in Sources */,
+				149FBFBA162D9E6800B16BCA /* MDLCategory.m in Sources */,
+				149FBFBD162DA82900B16BCA /* MDLCategoriesViewController.m in Sources */,
+				149FBFC1162DB59A00B16BCA /* MDLCategoryViewController.m in Sources */,
+				149FBFC4162DBEEF00B16BCA /* MDLSubcategory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

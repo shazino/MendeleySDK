@@ -1,5 +1,5 @@
 //
-// MDLAuthor.m
+// MDLTag.m
 //
 // Copyright (c) 2012 shazino (shazino SAS), http://www.shazino.com/
 //
@@ -21,40 +21,33 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "MDLAuthor.h"
+#import "MDLTag.h"
 #import "MDLMendeleyAPIClient.h"
 
-@implementation MDLAuthor
+@implementation MDLTag
 
-+ (MDLAuthor *)authorWithForename:(NSString *)forename surname:(NSString *)surname
++ (MDLTag *)tagWithName:(NSString *)name count:(NSNumber *)count
 {
-    MDLAuthor *author = [MDLAuthor new];
-    author.forename = forename;
-    author.surname = surname;
-    return author;
+    MDLTag *tag = [MDLTag new];
+    tag.name = name;
+    tag.count = count;
+    return tag;
 }
 
-+ (void)topAuthorsInPublicLibraryForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)lastTagsInPublicLibraryForCategory:(NSString *)categoryIdentifier success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
     
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    if (upAndComing)
-        parameters[@"upandcoming"] = @"true";
-    if (categoryIdentifier)
-        parameters[@"discipline"] = categoryIdentifier;
-    
-    [client getPath:@"/oapi/stats/authors/"
-         parameters:parameters
+    [client getPath:[NSString stringWithFormat:@"/oapi/stats/tags/%@/", categoryIdentifier]
             success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
                 if (success)
                 {
-                    NSMutableArray *authors = [NSMutableArray array];
-                    [responseObject enumerateObjectsUsingBlock:^(NSDictionary *rawAuthor, NSUInteger idx, BOOL *stop) {
-                        MDLAuthor *author = [MDLAuthor authorWithForename:@"" surname:rawAuthor[@"name"]];
-                        [authors addObject:author];
+                    NSMutableArray *tags = [NSMutableArray array];
+                    [responseObject enumerateObjectsUsingBlock:^(NSDictionary *rawTag, NSUInteger idx, BOOL *stop) {
+                        MDLTag *tag = [MDLTag tagWithName:rawTag[@"name"] count:rawTag[@"count"]];
+                        [tags addObject:tag];
                     }];
-                    success(authors);
+                    success(tags);
                 }
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                 if (failure)
