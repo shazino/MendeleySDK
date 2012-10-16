@@ -30,6 +30,12 @@
 
 NSString * const kMDLDocumentTypeGeneric = @"Generic";
 
+@interface MDLDocument ()
+
++ (MDLDocument *)documentWithRawDocument:(NSDictionary *)rawDocument;
+
+@end
+
 @implementation MDLDocument
 
 + (MDLDocument *)documentWithTitle:(NSString *)title success:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure
@@ -55,6 +61,16 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
     return newDocument;
 }
 
++ (MDLDocument *)documentWithRawDocument:(NSDictionary *)rawDocument
+{
+    MDLDocument *document = [MDLDocument new];
+    document.documentIdentifier = rawDocument[@"uuid"];
+    document.title = rawDocument[@"title"];
+    document.type = rawDocument[@"type"];
+    document.DOI = rawDocument[@"doi"];
+    return document;
+}
+
 + (void)searchWithTerms:(NSString *)terms success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
@@ -69,11 +85,35 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
                     NSArray *rawDocuments = responseObject[@"documents"];
                     NSMutableArray *documents = [NSMutableArray array];
                     [rawDocuments enumerateObjectsUsingBlock:^(NSDictionary *rawDocument, NSUInteger idx, BOOL *stop) {
-                        MDLDocument *document = [MDLDocument new];
-                        document.documentIdentifier = rawDocument[@"uuid"];
-                        document.title = rawDocument[@"title"];
-                        document.type = rawDocument[@"type"];
-                        document.DOI = rawDocument[@"doi"];
+                        MDLDocument *document = [MDLDocument documentWithRawDocument:rawDocument];
+                        [documents addObject:document];
+                    }];
+                    success(documents);
+                }
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                if (failure)
+                    failure(error);
+            }];
+}
+
++ (void)topDocumentsInPublicLibraryForDiscipline:(NSNumber *)disciplineIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    if (upAndComing)
+        parameters[@"upandcoming"] = @"true";
+    if (disciplineIdentifier)
+        parameters[@"discipline"] = disciplineIdentifier;
+    
+    [client getPath:@"/oapi/stats/papers/"
+         parameters:parameters
+            success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
+                if (success)
+                {
+                    NSMutableArray *documents = [NSMutableArray array];
+                    [responseObject enumerateObjectsUsingBlock:^(NSDictionary *rawDocument, NSUInteger idx, BOOL *stop) {
+                        MDLDocument *document = [MDLDocument documentWithRawDocument:rawDocument];
                         [documents addObject:document];
                     }];
                     success(documents);

@@ -11,6 +11,7 @@
 #import "MDLTopViewController.h"
 #import "MDLPublication.h"
 #import "MDLAuthor.h"
+#import "MDLDocument.h"
 
 @implementation MDLMenuViewController
 
@@ -25,6 +26,10 @@
     else if ([segue.identifier isEqualToString:@"MDLTopAuthorsSegue"])
     {
         ((MDLTopViewController *)segue.destinationViewController).entityClass = [MDLAuthor class];
+    }
+    else if ([segue.identifier isEqualToString:@"MDLTopDocumentsSegue"])
+    {
+        ((MDLTopViewController *)segue.destinationViewController).entityClass = [MDLDocument class];
     }
 }
 
