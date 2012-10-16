@@ -22,6 +22,7 @@
 // THE SOFTWARE.
 
 #import "MDLAuthor.h"
+#import "MDLMendeleyAPIClient.h"
 
 @implementation MDLAuthor
 
@@ -31,6 +32,34 @@
     author.forename = forename;
     author.surname = surname;
     return author;
+}
+
++ (void)topAuthorsInPublicLibraryForDiscipline:(NSNumber *)disciplineIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    if (upAndComing)
+        parameters[@"upandcoming"] = @"true";
+    if (disciplineIdentifier)
+        parameters[@"discipline"] = disciplineIdentifier;
+    
+    [client getPath:@"/oapi/stats/authors/"
+         parameters:parameters
+            success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
+                if (success)
+                {
+                    NSMutableArray *authors = [NSMutableArray array];
+                    [responseObject enumerateObjectsUsingBlock:^(NSDictionary *rawAuthor, NSUInteger idx, BOOL *stop) {
+                        MDLAuthor *author = [MDLAuthor authorWithForename:@"" surname:rawAuthor[@"name"]];
+                        [authors addObject:author];
+                    }];
+                    success(authors);
+                }
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                if (failure)
+                    failure(error);
+            }];
 }
 
 @end

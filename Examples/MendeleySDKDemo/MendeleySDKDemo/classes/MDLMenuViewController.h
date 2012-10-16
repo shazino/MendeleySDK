@@ -1,5 +1,5 @@
 //
-//  MDLPublicationTopViewController.h
+//  MDLMenuViewController.h
 //  MendeleySDKDemo
 //
 //  Created by Vincent Tourraine on 16/10/12.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MDLPublicationTopViewController : UITableViewController <UITextFieldDelegate>
+@interface MDLMenuViewController : UITableViewController
 
 @end
