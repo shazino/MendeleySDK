@@ -33,15 +33,15 @@
     return publication;
 }
 
-+ (void)topPublicationsInPublicLibraryForDiscipline:(NSNumber *)disciplineIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)topPublicationsInPublicLibraryForCategory:(NSNumber *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     if (upAndComing)
         parameters[@"upandcoming"] = @"true";
-    if (disciplineIdentifier)
-        parameters[@"discipline"] = disciplineIdentifier;
+    if (categoryIdentifier)
+        parameters[@"discipline"] = categoryIdentifier;
     
     [client getPath:@"/oapi/stats/publications/"
          parameters:parameters
