@@ -87,6 +87,8 @@ extern NSString * const kMDLDocumentTypeGeneric;
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  
  @return  The newly-initialized document, with document identifier = `nil`.
+ 
+ @see [API documentation: User Library Create Document](http://apidocs.mendeley.com/home/user-specific-methods/user-library-create-document)
  */
 + (MDLDocument *)documentWithTitle:(NSString *)title success:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure;
 
@@ -96,6 +98,8 @@ extern NSString * const kMDLDocumentTypeGeneric;
  @param terms The terms for the search query
  @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `MDLDocument` objects for the match.
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ 
+ @see [API documentation: Search Terms](http://apidocs.mendeley.com/home/public-resources/search-terms)
  */
 + (void)searchWithTerms:(NSString *)terms success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 
@@ -107,6 +111,8 @@ extern NSString * const kMDLDocumentTypeGeneric;
  @param title The title for the search query
  @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `MDLDocument` objects for the match.
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ 
+ @see [API documentation: Search Terms](http://apidocs.mendeley.com/home/public-resources/search-terms)
  */
 + (void)searchWithGenericTerms:(NSString *)genericTerms authors:(NSString *)authors title:(NSString *)title success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 
@@ -117,6 +123,8 @@ extern NSString * const kMDLDocumentTypeGeneric;
  @param upAndComing If true, results apply to ‘trending’ documents.
  @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `MDLDocument` objects.
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ 
+ @see [API documentation: Stats Papers](http://apidocs.mendeley.com/home/public-resources/stats-papers)
  */
 + (void)topDocumentsInPublicLibraryForCategory:(NSNumber *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 
@@ -128,6 +136,8 @@ extern NSString * const kMDLDocumentTypeGeneric;
  @param fileURL The local URL for the file to upload.
  @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes no argument.
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ 
+ @see [API documentation: File Upload](http://apidocs.mendeley.com/home/user-specific-methods/file-upload)
  */
 - (void)uploadFileAtURL:(NSURL *)fileURL success:(void (^)())success failure:(void (^)(NSError *))failure;
 
@@ -136,6 +146,8 @@ extern NSString * const kMDLDocumentTypeGeneric;
  
  @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: the current document with its newly assigned details.
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ 
+ @see [API documentation: Search details](http://apidocs.mendeley.com/home/public-resources/search-details)
  */
 - (void)fetchDetailsSuccess:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure;
 

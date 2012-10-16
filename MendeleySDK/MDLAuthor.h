@@ -56,6 +56,8 @@
  @param upAndComing If true, results apply to ‘trending’ authors.
  @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `MDLAuthor` objects.
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ 
+ @see [API documentation: Stats Authors](http://apidocs.mendeley.com/home/public-resources/stats-authors)
  */
 + (void)topAuthorsInPublicLibraryForCategory:(NSNumber *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 
