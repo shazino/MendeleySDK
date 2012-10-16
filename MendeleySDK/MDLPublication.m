@@ -22,6 +22,7 @@
 // THE SOFTWARE.
 
 #import "MDLPublication.h"
+#import "MDLMendeleyAPIClient.h"
 
 @implementation MDLPublication
 
@@ -30,6 +31,34 @@
     MDLPublication *publication = [MDLPublication new];
     publication.name = name;
     return publication;
+}
+
++ (void)topPublicationsInPublicLibraryForDiscipline:(NSNumber *)disciplineIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    if (upAndComing)
+        parameters[@"upandcoming"] = @"true";
+    if (disciplineIdentifier)
+        parameters[@"discipline"] = disciplineIdentifier;
+    
+    [client getPath:@"/oapi/stats/publications/"
+         parameters:parameters
+            success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
+                if (success)
+                {
+                    NSMutableArray *publications = [NSMutableArray array];
+                    [responseObject enumerateObjectsUsingBlock:^(NSDictionary *rawPublication, NSUInteger idx, BOOL *stop) {
+                        MDLPublication *publication = [MDLPublication publicationWithName:rawPublication[@"name"]];
+                        [publications addObject:publication];
+                    }];
+                    success(publications);
+                }
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                if (failure)
+                    failure(error);
+            }];
 }
 
 @end

@@ -17,7 +17,7 @@ NSString * const kMDLURLScheme      = @"mdl-mendeleysdkdemo";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.7 green:0 blue:0 alpha:1]];
     return YES;
 }
 
