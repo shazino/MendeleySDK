@@ -80,12 +80,12 @@ static NSString * const kMDLMendeleyAPIBaseURLString = @"http://api.mendeley.com
 
 - (void)getPath:(NSString *)path success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
 {
-    [self getPath:path parameters:nil success:success failure:failure];
+    [self getPath:path optionalParameters:nil success:success failure:failure];
 }
 
-- (void)getPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+- (void)getPath:(NSString *)path optionalParameters:(NSDictionary *)optionalParameters success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
 {
-    NSMutableDictionary *requestParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
+    NSMutableDictionary *requestParameters = [NSMutableDictionary dictionaryWithDictionary:optionalParameters];
     requestParameters[@"consumer_key"] = kMDLConsumerKey;
     
     [super getPath:path

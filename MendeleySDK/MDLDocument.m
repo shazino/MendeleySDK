@@ -107,7 +107,7 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
         parameters[@"discipline"] = categoryIdentifier;
     
     [client getPath:@"/oapi/stats/papers/"
-         parameters:parameters
+ optionalParameters:parameters
             success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
                 if (success)
                 {

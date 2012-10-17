@@ -45,7 +45,7 @@
         parameters[@"discipline"] = categoryIdentifier;
     
     [client getPath:@"/oapi/stats/authors/"
-         parameters:parameters
+ optionalParameters:parameters
             success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
                 if (success)
                 {
