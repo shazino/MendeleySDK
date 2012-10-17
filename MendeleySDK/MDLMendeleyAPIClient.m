@@ -27,6 +27,8 @@
 #import <CommonCrypto/CommonDigest.h>
 
 static NSString * const kMDLMendeleyAPIBaseURLString = @"http://api.mendeley.com/";
+NSString * const kMDLNotificationDidAcquireAccessToken = @"kMDLNotificationDidAcquireAccessToken";
+NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotificationFailedToAcquireAccessToken";
 
 @interface MDLMendeleyAPIClient ()
 
@@ -141,8 +143,9 @@ static NSString * const kMDLMendeleyAPIBaseURLString = @"http://api.mendeley.com
     if (requestOperation.response.statusCode == 401 && self.isAutomaticAuthenticationEnabled)
     {
         [self authorizeUsingOAuthWithRequestTokenPath:@"oauth/request_token" userAuthorizationPath:@"oauth/authorize" callbackURL:[NSURL URLWithString:[kMDLURLScheme stringByAppendingString:@"://"]] accessTokenPath:@"oauth/access_token" accessMethod:@"GET" success:^(AFOAuth1Token *accessToken) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:kMDLNotificationDidAcquireAccessToken object:self];
         } failure:^(NSError *error) {
-            NSLog(@"Error: %@", error);
+            [[NSNotificationCenter defaultCenter] postNotificationName:kMDLNotificationFailedToAcquireAccessToken object:self];
         }];
     }
 }

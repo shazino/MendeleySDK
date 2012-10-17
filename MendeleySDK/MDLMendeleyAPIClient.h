@@ -27,6 +27,9 @@ extern NSString * const kMDLConsumerKey;
 extern NSString * const kMDLConsumerSecret;
 extern NSString * const kMDLURLScheme;
 
+extern NSString * const kMDLNotificationDidAcquireAccessToken;
+extern NSString * const kMDLNotificationFailedToAcquireAccessToken;
+
 /**
  `MDLMendeleyAPIClient` is an HTTP client preconfigured for accessing Mendeley Open API.
  */
