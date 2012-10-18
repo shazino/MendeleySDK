@@ -44,22 +44,22 @@
     if (categoryIdentifier)
         parameters[@"discipline"] = categoryIdentifier;
     
-    [client getPath:@"/oapi/stats/authors/"
- optionalParameters:parameters
-            success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
-                if (success)
-                {
-                    NSMutableArray *authors = [NSMutableArray array];
-                    [responseObject enumerateObjectsUsingBlock:^(NSDictionary *rawAuthor, NSUInteger idx, BOOL *stop) {
-                        MDLAuthor *author = [MDLAuthor authorWithForename:@"" surname:rawAuthor[@"name"]];
-                        [authors addObject:author];
-                    }];
-                    success(authors);
-                }
-            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                if (failure)
-                    failure(error);
-            }];
+    [client getPublicPath:@"/oapi/stats/authors/"
+               parameters:parameters
+                  success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
+                      if (success)
+                      {
+                          NSMutableArray *authors = [NSMutableArray array];
+                          [responseObject enumerateObjectsUsingBlock:^(NSDictionary *rawAuthor, NSUInteger idx, BOOL *stop) {
+                              MDLAuthor *author = [MDLAuthor authorWithForename:@"" surname:rawAuthor[@"name"]];
+                              [authors addObject:author];
+                          }];
+                          success(authors);
+                      }
+                  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                      if (failure)
+                          failure(error);
+                  }];
 }
 
 @end

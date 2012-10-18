@@ -43,22 +43,22 @@
     if (categoryIdentifier)
         parameters[@"discipline"] = categoryIdentifier;
     
-    [client getPath:@"/oapi/stats/publications/"
- optionalParameters:parameters
-            success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
-                if (success)
-                {
-                    NSMutableArray *publications = [NSMutableArray array];
-                    [responseObject enumerateObjectsUsingBlock:^(NSDictionary *rawPublication, NSUInteger idx, BOOL *stop) {
-                        MDLPublication *publication = [MDLPublication publicationWithName:rawPublication[@"name"]];
-                        [publications addObject:publication];
-                    }];
-                    success(publications);
-                }
-            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                if (failure)
-                    failure(error);
-            }];
+    [client getPublicPath:@"/oapi/stats/publications/"
+               parameters:parameters
+                  success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
+                      if (success)
+                      {
+                          NSMutableArray *publications = [NSMutableArray array];
+                          [responseObject enumerateObjectsUsingBlock:^(NSDictionary *rawPublication, NSUInteger idx, BOOL *stop) {
+                              MDLPublication *publication = [MDLPublication publicationWithName:rawPublication[@"name"]];
+                              [publications addObject:publication];
+                          }];
+                          success(publications);
+                      }
+                  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                      if (failure)
+                          failure(error);
+                  }];
 }
 
 @end

@@ -38,21 +38,22 @@
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
     
-    [client getPath:[NSString stringWithFormat:@"/oapi/stats/tags/%@/", categoryIdentifier]
-            success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
-                if (success)
-                {
-                    NSMutableArray *tags = [NSMutableArray array];
-                    [responseObject enumerateObjectsUsingBlock:^(NSDictionary *rawTag, NSUInteger idx, BOOL *stop) {
-                        MDLTag *tag = [MDLTag tagWithName:rawTag[@"name"] count:rawTag[@"count"]];
-                        [tags addObject:tag];
-                    }];
-                    success(tags);
-                }
-            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                if (failure)
-                    failure(error);
-            }];
+    [client getPublicPath:[NSString stringWithFormat:@"/oapi/stats/tags/%@/", categoryIdentifier]
+               parameters:nil
+                  success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
+                      if (success)
+                      {
+                          NSMutableArray *tags = [NSMutableArray array];
+                          [responseObject enumerateObjectsUsingBlock:^(NSDictionary *rawTag, NSUInteger idx, BOOL *stop) {
+                              MDLTag *tag = [MDLTag tagWithName:rawTag[@"name"] count:rawTag[@"count"]];
+                              [tags addObject:tag];
+                          }];
+                          success(tags);
+                      }
+                  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                      if (failure)
+                          failure(error);
+                  }];
 }
 
 @end
