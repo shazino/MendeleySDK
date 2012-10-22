@@ -80,7 +80,7 @@
     if ([result isKindOfClass:[MDLPublication class]])
         resultName = ((MDLPublication *)result).name;
     else if ([result isKindOfClass:[MDLAuthor class]])
-        resultName = ((MDLAuthor *)result).surname;
+        resultName = ((MDLAuthor *)result).name;
     else if ([result isKindOfClass:[MDLDocument class]])
         resultName = ((MDLDocument *)result).title;
     else if ([result isKindOfClass:[MDLGroup class]])

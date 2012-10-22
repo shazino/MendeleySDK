@@ -30,24 +30,18 @@
 @interface MDLAuthor : NSObject
 
 /**
- The author forename
+ The author name
  */
-@property (copy, nonatomic) NSString *forename;
+@property (copy, nonatomic) NSString *name;
 
 /**
- The author surname
- */
-@property (copy, nonatomic) NSString *surname;
-
-/**
- Creates a `MDLAuthor` and initializes its forename and surname properties.
+ Creates a `MDLAuthor` and initializes its name property.
  
- @param forename The forename of the author.
- @param surname The surname of the author.
+ @param name The name of the author.
  
  @return  The newly-initialized author.
  */
-+ (MDLAuthor *)authorWithForename:(NSString *)forename surname:(NSString *)surname;
++ (MDLAuthor *)authorWithName:(NSString *)name;
 
 /**
  Sends a top authors API request using the shared client and fetches the response as an array of `MDLAuthor`.

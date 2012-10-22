@@ -176,7 +176,7 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
                       self.mendeleyURL = [NSURL URLWithString:responseObject[@"mendeley_url"]];
                       NSMutableArray *authors = [NSMutableArray array];
                       for (NSDictionary *author in responseObject[@"authors"])
-                          [authors addObject:[MDLAuthor authorWithForename:author[@"forename"] surname:author[@"surname"]]];
+                          [authors addObject:[MDLAuthor authorWithName:[NSString stringWithFormat:@"%@ %@", author[@"forename"], author[@"surname"]]]];
                       self.authors = authors;
                       self.publication = [MDLPublication publicationWithName:responseObject[@"publication_outlet"]];
                       self.year = responseObject[@"year"];

@@ -26,11 +26,10 @@
 
 @implementation MDLAuthor
 
-+ (MDLAuthor *)authorWithForename:(NSString *)forename surname:(NSString *)surname
++ (MDLAuthor *)authorWithName:(NSString *)name
 {
     MDLAuthor *author = [MDLAuthor new];
-    author.forename = forename;
-    author.surname = surname;
+    author.name = name;
     return author;
 }
 
@@ -51,7 +50,7 @@
                       {
                           NSMutableArray *authors = [NSMutableArray array];
                           [responseObject enumerateObjectsUsingBlock:^(NSDictionary *rawAuthor, NSUInteger idx, BOOL *stop) {
-                              MDLAuthor *author = [MDLAuthor authorWithForename:@"" surname:rawAuthor[@"name"]];
+                              MDLAuthor *author = [MDLAuthor authorWithName:rawAuthor[@"name"]];
                               [authors addObject:author];
                           }];
                           success(authors);

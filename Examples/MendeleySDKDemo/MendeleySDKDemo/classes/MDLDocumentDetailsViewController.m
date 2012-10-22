@@ -60,7 +60,7 @@
     [document.authors enumerateObjectsUsingBlock:^(MDLAuthor *author, NSUInteger idx, BOOL *stop) {
         if (idx == 0)
             [authors appendString:@"By "];
-        [authors appendFormat:@"%@ %@", author.forename, author.surname];
+        [authors appendString:author.name];
         if (idx < [document.authors count]-1)
             [authors appendString:@", "];
     }];
