@@ -25,12 +25,24 @@
 {
     [super viewWillAppear:animated];
     
-    [MDLDocument searchWithGenericTerms:self.searchGenericTerms authors:self.searchAuthors title:self.searchTitle success:^(NSArray *documents) {
-        self.searchResults = documents;
-        [self.tableView reloadData];
-    } failure:^(NSError *error) {
-        
-    }];
+    if (self.relatedToDocument)
+    {
+        [self.relatedToDocument fetchRelatedDocumentsAtPage:0 count:20 success:^(NSArray *documents) {
+            self.searchResults = documents;
+            [self.tableView reloadData];
+        } failure:^(NSError *error) {
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        }];
+    }
+    else
+    {
+        [MDLDocument searchWithGenericTerms:self.searchGenericTerms authors:self.searchAuthors title:self.searchTitle success:^(NSArray *documents) {
+            self.searchResults = documents;
+            [self.tableView reloadData];
+        } failure:^(NSError *error) {
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        }];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

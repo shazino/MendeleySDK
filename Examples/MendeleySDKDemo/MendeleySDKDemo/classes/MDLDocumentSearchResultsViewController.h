@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class MDLDocument;
+
 @interface MDLDocumentSearchResultsViewController : UITableViewController <UISearchBarDelegate>
 
 @property (nonatomic, copy) NSString *searchGenericTerms;
 @property (nonatomic, copy) NSString *searchAuthors;
 @property (nonatomic, copy) NSString *searchTitle;
+@property (nonatomic, weak) MDLDocument *relatedToDocument;
 
 @end

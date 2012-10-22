@@ -78,7 +78,7 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
     NSString *encodedTerms = [terms stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     encodedTerms = [encodedTerms stringByReplacingOccurrencesOfString:@":" withString:@"%3A"];
     
-    [client getPublicPath:[NSString stringWithFormat:@"/oapi/documents/search/%@/", encodedTerms]
+    [client getPublicPath:[NSString stringWithFormat:@"oapi/documents/search/%@/", encodedTerms]
                parameters:nil
                   success:^(AFHTTPRequestOperation *operation, id responseObject) {
                       if (success)
@@ -107,7 +107,7 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
     if (categoryIdentifier)
         parameters[@"discipline"] = categoryIdentifier;
     
-    [client getPublicPath:@"/oapi/stats/papers/"
+    [client getPublicPath:@"oapi/stats/papers/"
                parameters:parameters
                   success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
                       if (success)
@@ -167,7 +167,7 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
     }
     
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    [client getPublicPath:[NSString stringWithFormat:@"/oapi/documents/details/%@/", self.identifier]
+    [client getPublicPath:[NSString stringWithFormat:@"oapi/documents/details/%@/", self.identifier]
                parameters:nil
                   success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
                       self.abstract = responseObject[@"abstract"];
@@ -183,6 +183,33 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
                       
                       if (success)
                           success(self);
+                  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                      if (failure)
+                          failure(error);
+                  }];
+}
+
+- (void)fetchRelatedDocumentsAtPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    if (!self.identifier)
+    {
+        failure([NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorCancelled userInfo:nil]);
+        return;
+    }
+    
+    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
+    [client getPublicPath:[NSString stringWithFormat:@"oapi/documents/related/%@/", self.identifier]
+               parameters:@{@"page" : @(pageIndex), @"items" : @(count)}
+                  success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+                      if (success)
+                      {
+                          NSMutableArray *documents = [NSMutableArray array];
+                          [responseObject[@"documents"] enumerateObjectsUsingBlock:^(NSDictionary *rawDocument, NSUInteger idx, BOOL *stop) {
+                              MDLDocument *document = [MDLDocument documentWithRawDocument:rawDocument];
+                              [documents addObject:document];
+                          }];
+                          success(documents);
+                      }
                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                       if (failure)
                           failure(error);

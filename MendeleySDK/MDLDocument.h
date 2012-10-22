@@ -151,4 +151,16 @@ extern NSString * const kMDLDocumentTypeGeneric;
  */
 - (void)fetchDetailsSuccess:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure;
 
+/**
+ Sends a related documents API request using the shared client.
+ 
+ @param pageIndex The page index. `O` is first page.
+ @param count The number of items returned per page.
+ @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `MDLDocument` objects.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ 
+ @see [API documentation: Search Related](http://apidocs.mendeley.com/home/public-resources/search-related)
+ */
+- (void)fetchRelatedDocumentsAtPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
+
 @end

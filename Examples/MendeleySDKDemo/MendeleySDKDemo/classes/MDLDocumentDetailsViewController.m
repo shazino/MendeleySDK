@@ -11,6 +11,7 @@
 #import "MDLDocument.h"
 #import "MDLAuthor.h"
 #import "MDLPublication.h"
+#import "MDLDocumentSearchResultsViewController.h"
 
 @interface MDLDocumentDetailsViewController ()
 
@@ -54,7 +55,6 @@
     self.titleLabel.text = document.title;
     self.typeLabel.text = document.type;
     self.abstractTextView.text = document.abstract;
-    [self.mendeleyURLButton setTitle:document.mendeleyURL.absoluteString forState:UIControlStateNormal];
     
     NSMutableString *authors = [NSMutableString string];
     [document.authors enumerateObjectsUsingBlock:^(MDLAuthor *author, NSUInteger idx, BOOL *stop) {
@@ -66,6 +66,15 @@
     }];
     self.authorsLabel.text = authors;
     self.publicationLabel.text = (document.publication || document.year) ? [NSString stringWithFormat:@"%@ (%@)", document.publication.name, [document.year stringValue]] : @"";
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.destinationViewController isKindOfClass:[MDLDocumentSearchResultsViewController class]])
+    {
+        MDLDocumentSearchResultsViewController *resultsViewController = (MDLDocumentSearchResultsViewController *)segue.destinationViewController;
+        resultsViewController.relatedToDocument = self.document;
+    }
 }
 
 #pragma mark - Actions
