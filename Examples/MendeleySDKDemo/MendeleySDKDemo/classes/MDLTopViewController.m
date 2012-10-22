@@ -136,7 +136,7 @@
     }
     else if (self.entityClass == [MDLGroup class])
     {
-        [MDLGroup topGroupsInPublicLibraryForCategory:categoryIdentifier atPage:0 count:20 success:^(NSArray *results) {
+        [MDLGroup topGroupsInPublicLibraryForCategory:categoryIdentifier atPage:0 count:20 success:^(NSArray *results, NSUInteger totalResults, NSUInteger totalPages, NSUInteger pageIndex, NSUInteger itemsPerPage) {
             self.topResults = results;
             [self.tableView reloadData];
         } failure:^(NSError *error) {

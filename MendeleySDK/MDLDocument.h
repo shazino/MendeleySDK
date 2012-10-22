@@ -26,6 +26,8 @@
 extern NSString * const kMDLDocumentTypeGeneric;
 
 @class MDLPublication;
+@class MDLCategory;
+@class MDLSubcategory;
 @class MDLMendeleyAPIClient;
 
 /**
@@ -96,12 +98,14 @@ extern NSString * const kMDLDocumentTypeGeneric;
  Sends an API search request with generic terms using the shared client.
  
  @param terms The terms for the search query
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `MDLDocument` objects for the match.
+ @param pageIndex The page index. `O` is first page.
+ @param count The number of items returned per page.
+ @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes five arguments: an array of `MDLDocument` objects for the match, the total number of results, the total number of pages, the index of the current page, and the number of items per page.
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  
  @see [API documentation: Search Terms](http://apidocs.mendeley.com/home/public-resources/search-terms)
  */
-+ (void)searchWithTerms:(NSString *)terms success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
++ (void)searchWithTerms:(NSString *)terms atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure;
 
 /**
  Sends an API search request with specific terms using the shared client.
@@ -109,12 +113,45 @@ extern NSString * const kMDLDocumentTypeGeneric;
  @param genericTerms The terms for the search query
  @param authors The authors for the search query
  @param title The title for the search query
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `MDLDocument` objects for the match.
+ @param year The year for the search query
+ @param tags The tags for the search query
+ @param pageIndex The page index. `O` is first page.
+ @param count The number of items returned per page.
+ @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes five arguments: an array of `MDLDocument` objects for the match, the total number of results, the total number of pages, the index of the current page, and the number of items per page.
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  
  @see [API documentation: Search Terms](http://apidocs.mendeley.com/home/public-resources/search-terms)
  */
-+ (void)searchWithGenericTerms:(NSString *)genericTerms authors:(NSString *)authors title:(NSString *)title success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
++ (void)searchWithGenericTerms:(NSString *)genericTerms authors:(NSString *)authors title:(NSString *)title year:(NSNumber *)year tags:(NSString *)tags atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure;
+
+/**
+ Sends a search tagged API request using the shared client.
+ 
+ @param tag The tags for the search query
+ @param category The category for the search query
+ @param subcategory The subcategory for the search query
+ @param pageIndex The page index. `O` is first page.
+ @param count The number of items returned per page.
+ @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes five arguments: an array of `MDLDocument` objects for the match, the total number of results, the total number of pages, the index of the current page, and the number of items per page.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ 
+ @see [API documentation: Search Tagged](http://apidocs.mendeley.com/home/public-resources/search-tagged)
+ */
++ (void)searchTagged:(NSString *)tag category:(MDLCategory *)category subcategory:(MDLSubcategory *)subcategory atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure;
+
+/**
+ Sends a search authored API request using the shared client.
+ 
+ @param name The name of the author for the search query
+ @param year The year for the search query
+ @param pageIndex The page index. `O` is first page.
+ @param count The number of items returned per page.
+ @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes five arguments: an array of `MDLDocument` objects for the match, the total number of results, the total number of pages, the index of the current page, and the number of items per page.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ 
+ @see [API documentation: Search Authored](http://apidocs.mendeley.com/home/public-resources/search-authored)
+ */
++ (void)searchAuthoredWithName:(NSString *)name year:(NSNumber *)year atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure;
 
 /**
  Sends a top documents (papers) API request using the shared client and fetches the response as an array of `MDLDocument`.

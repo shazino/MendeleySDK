@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *genericTextField;
 @property (weak, nonatomic) IBOutlet UITextField *authorsTextField;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
+@property (weak, nonatomic) IBOutlet UITextField *yearTextField;
+@property (weak, nonatomic) IBOutlet UITextField *tagsTextField;
 
 @end
 
@@ -29,7 +31,16 @@
         resultsController.searchGenericTerms = self.genericTextField.text;
         resultsController.searchAuthors = self.authorsTextField.text;
         resultsController.searchTitle = self.titleTextField.text;
+        resultsController.searchYear = [[NSNumberFormatter new] numberFromString:self.yearTextField.text];
+        resultsController.searchTags = self.tagsTextField.text;
     }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    [self performSegueWithIdentifier:@"MDLSearchSegue" sender:nil];
+    return NO;
 }
 
 @end

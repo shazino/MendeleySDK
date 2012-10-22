@@ -26,6 +26,8 @@
 #import "MDLMendeleyAPIClient.h"
 #import "MDLAuthor.h"
 #import "MDLPublication.h"
+#import "MDLCategory.h"
+#import "MDLSubcategory.h"
 #import "AFNetworking.h"
 
 NSString * const kMDLDocumentTypeGeneric = @"Generic";
@@ -33,6 +35,7 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
 @interface MDLDocument ()
 
 + (MDLDocument *)documentWithRawDocument:(NSDictionary *)rawDocument;
++ (void)searchWithPath:(NSString *)path parameters:(NSDictionary *)parameters atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure;
 
 @end
 
@@ -71,30 +74,79 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
     return document;
 }
 
-+ (void)searchWithTerms:(NSString *)terms success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)searchWithPath:(NSString *)path parameters:(NSDictionary *)parameters atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure
 {
+    NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
+    mutableParameters[@"page"] = @(pageIndex);
+    mutableParameters[@"items"] = @(count);
+    
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
     
-    NSString *encodedTerms = [terms stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
-    encodedTerms = [encodedTerms stringByReplacingOccurrencesOfString:@":" withString:@"%3A"];
-    
-    [client getPublicPath:[NSString stringWithFormat:@"oapi/documents/search/%@/", encodedTerms]
-               parameters:nil
+    [client getPublicPath:path
+               parameters:mutableParameters
                   success:^(AFHTTPRequestOperation *operation, id responseObject) {
                       if (success)
                       {
                           NSArray *rawDocuments = responseObject[@"documents"];
+                          NSNumber *totalResults = responseObject[@"total_results"];
+                          NSNumber *totalPages = responseObject[@"total_pages"];
+                          NSString *pageIndex = responseObject[@"current_page"];
+                          NSString *itemsPerPage = responseObject[@"items_per_page"];
+                          NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
                           NSMutableArray *documents = [NSMutableArray array];
                           [rawDocuments enumerateObjectsUsingBlock:^(NSDictionary *rawDocument, NSUInteger idx, BOOL *stop) {
                               MDLDocument *document = [MDLDocument documentWithRawDocument:rawDocument];
                               [documents addObject:document];
                           }];
-                          success(documents);
+                          success(documents, [totalResults unsignedIntegerValue], [totalPages unsignedIntegerValue], [[numberFormatter numberFromString:pageIndex] unsignedIntegerValue], [[numberFormatter numberFromString:itemsPerPage] unsignedIntegerValue]);
                       }
                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                       if (failure)
                           failure(error);
                   }];
+}
+
++ (void)searchWithTerms:(NSString *)terms atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure
+{
+    NSString *encodedTerms = [terms stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    encodedTerms = [encodedTerms stringByReplacingOccurrencesOfString:@":" withString:@"%3A"];
+    
+    [self searchWithPath:[NSString stringWithFormat:@"oapi/documents/search/%@/", encodedTerms] parameters:nil atPage:pageIndex count:count success:success failure:failure];
+}
+
++ (void)searchWithGenericTerms:(NSString *)genericTerms authors:(NSString *)authors title:(NSString *)title year:(NSNumber *)year tags:(NSString *)tags atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure
+{
+    NSMutableArray *terms = [NSMutableArray array];
+    if ([genericTerms length] > 0)
+        [terms addObject:genericTerms];
+    if ([authors length] > 0)
+        [terms addObject:[NSString stringWithFormat:@"author:%@", authors]];
+    if ([title length] > 0)
+        [terms addObject:[NSString stringWithFormat:@"title:%@", title]];
+    if (year)
+        [terms addObject:[NSString stringWithFormat:@"year:%@", [year stringValue]]];
+    if ([tags length] > 0)
+        [terms addObject:[NSString stringWithFormat:@"tags:%@", tags]];
+    
+    [self searchWithTerms:[terms componentsJoinedByString:@" "] atPage:pageIndex count:count success:success failure:failure];
+}
+
++ (void)searchTagged:(NSString *)tag category:(MDLCategory *)category subcategory:(MDLSubcategory *)subcategory atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    if (category)
+        parameters[@"cat"] = category.identifier;
+    if (subcategory)
+        parameters[@"subcat"] = subcategory.identifier;
+    [self searchWithPath:[NSString stringWithFormat:@"oapi/documents/tagged/%@/", tag] parameters:parameters atPage:pageIndex count:count success:success failure:failure];
+}
+
++ (void)searchAuthoredWithName:(NSString *)name year:(NSNumber *)year atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure
+{
+    NSDictionary *parameters;
+    if (year)
+        parameters = @{@"year" : year};
+    [self searchWithPath:[NSString stringWithFormat:@"oapi/documents/authored/%@/", name] parameters:parameters atPage:pageIndex count:count success:success failure:failure];
 }
 
 + (void)topDocumentsInPublicLibraryForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
@@ -123,19 +175,6 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
                       if (failure)
                           failure(error);
                   }];
-}
-
-+ (void)searchWithGenericTerms:(NSString *)genericTerms authors:(NSString *)authors title:(NSString *)title success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
-{
-    NSMutableArray *terms = [NSMutableArray array];
-    if ([genericTerms length] > 0)
-        [terms addObject:genericTerms];
-    if ([authors length] > 0)
-        [terms addObject:[NSString stringWithFormat:@"author:%@", authors]];
-    if ([title length] > 0)
-        [terms addObject:[NSString stringWithFormat:@"title:%@", title]];
-    
-    [self searchWithTerms:[terms componentsJoinedByString:@" "] success:success failure:failure];
 }
 
 - (void)uploadFileAtURL:(NSURL *)fileURL success:(void (^)())success failure:(void (^)(NSError *))failure

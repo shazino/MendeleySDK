@@ -114,12 +114,12 @@
  @param categoryIdentifier The identifier of the category.
  @param pageIndex The page index. `O` is first page.
  @param count The number of items returned per page. Maximum is `1000`.
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `MDLGroup` objects.
+ @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes five arguments: an array of `MDLGroup` objects, the total number of results, the total number of pages, the index of the current page, and the number of items per page.
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  
  @see [API documentation: Search Public Groups](http://apidocs.mendeley.com/home/public-resources/search-public-groups)
  */
-+ (void)topGroupsInPublicLibraryForCategory:(NSString *)categoryIdentifier atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
++ (void)topGroupsInPublicLibraryForCategory:(NSString *)categoryIdentifier atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure;
 
 /**
  Sends a public groups details API request for the current document using the shared client.

@@ -8,6 +8,7 @@
 
 #import "MDLAppDelegate.h"
 #import "AFOAuth1Client.h"
+#import "AFNetworkActivityIndicatorManager.h"
 
 NSString * const kMDLConsumerKey    = @"##consumer_key##";
 NSString * const kMDLConsumerSecret = @"##consumer_secret##";
@@ -18,6 +19,7 @@ NSString * const kMDLURLScheme      = @"mdl-mendeleysdkdemo";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.7 green:0 blue:0 alpha:1]];
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     return YES;
 }
 

@@ -44,7 +44,7 @@
     return group;
 }
 
-+ (void)topGroupsInPublicLibraryForCategory:(NSString *)categoryIdentifier atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)topGroupsInPublicLibraryForCategory:(NSString *)categoryIdentifier atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
     
@@ -61,12 +61,16 @@
                       {
                           NSMutableArray *groups = [NSMutableArray array];
                           NSArray *rawGroups = responseObject[@"groups"];
+                          NSNumber *totalResults = responseObject[@"total_results"];
+                          NSNumber *totalPages = responseObject[@"total_pages"];
+                          NSNumber *pageIndex = responseObject[@"current_page"];
+                          NSNumber *itemsPerPage = responseObject[@"items_per_page"];
                           [rawGroups enumerateObjectsUsingBlock:^(NSDictionary *rawGroup, NSUInteger idx, BOOL *stop) {
                               MDLGroup *group = [MDLGroup new];
                               [group updateWithRawGroup:rawGroup];
                               [groups addObject:group];
                           }];
-                          success(groups);
+                          success(groups, [totalResults unsignedIntegerValue], [totalPages unsignedIntegerValue], [pageIndex unsignedIntegerValue], [itemsPerPage unsignedIntegerValue]);
                       }
                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                       if (failure)

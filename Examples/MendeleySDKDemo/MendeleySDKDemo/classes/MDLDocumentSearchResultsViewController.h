@@ -15,6 +15,8 @@
 @property (nonatomic, copy) NSString *searchGenericTerms;
 @property (nonatomic, copy) NSString *searchAuthors;
 @property (nonatomic, copy) NSString *searchTitle;
+@property (nonatomic, copy) NSNumber *searchYear;
+@property (nonatomic, copy) NSString *searchTags;
 @property (nonatomic, weak) MDLDocument *relatedToDocument;
 
 @end

@@ -10,6 +10,7 @@
 
 #import "MDLDocument.h"
 #import "MDLDocumentDetailsViewController.h"
+#import "MDLCategory.h"
 
 @interface MDLDocumentSearchResultsViewController ()
 
@@ -36,7 +37,7 @@
     }
     else
     {
-        [MDLDocument searchWithGenericTerms:self.searchGenericTerms authors:self.searchAuthors title:self.searchTitle success:^(NSArray *documents) {
+        [MDLDocument searchWithGenericTerms:self.searchGenericTerms authors:self.searchAuthors title:self.searchTitle year:self.searchYear tags:self.searchTags atPage:0 count:20 success:^(NSArray *documents, NSUInteger totalResults, NSUInteger totalPages, NSUInteger pageIndex, NSUInteger itemsPerPage) {
             self.searchResults = documents;
             [self.tableView reloadData];
         } failure:^(NSError *error) {

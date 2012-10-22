@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MDLDocumentSearchViewController : UITableViewController
+@interface MDLDocumentSearchViewController : UITableViewController <UITextFieldDelegate>
 
 @end
