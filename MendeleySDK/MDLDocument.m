@@ -50,7 +50,7 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
                     bodyKey:@"document"
                 bodyContent:@{@"type" : newDocument.type, @"title" : newDocument.title}
                     success:^(AFHTTPRequestOperation *operation, id responseDictionary) {
-                        newDocument.documentIdentifier = responseDictionary[@"document_id"];
+                        newDocument.identifier = responseDictionary[@"document_id"];
                         if (success)
                             success(newDocument);
                     } failure:^(AFHTTPRequestOperation *requestOperation, NSError *error) {
@@ -64,7 +64,7 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
 + (MDLDocument *)documentWithRawDocument:(NSDictionary *)rawDocument
 {
     MDLDocument *document = [MDLDocument new];
-    document.documentIdentifier = rawDocument[@"uuid"];
+    document.identifier = rawDocument[@"uuid"];
     document.title = rawDocument[@"title"];
     document.type = rawDocument[@"type"];
     document.DOI = rawDocument[@"doi"];
@@ -140,7 +140,7 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
 
 - (void)uploadFileAtURL:(NSURL *)fileURL success:(void (^)())success failure:(void (^)(NSError *))failure
 {
-    if (!self.documentIdentifier)
+    if (!self.identifier)
     {
         failure([NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorCancelled userInfo:nil]);
         return;
@@ -148,7 +148,7 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
     
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
     
-    [client putPrivatePath:[NSString stringWithFormat:@"oapi/library/documents/%@/", self.documentIdentifier]
+    [client putPrivatePath:[NSString stringWithFormat:@"oapi/library/documents/%@/", self.identifier]
                  fileAtURL:fileURL success:^(AFHTTPRequestOperation *operation, id responseObject) {
                      if (success)
                          success();
@@ -160,14 +160,14 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
 
 - (void)fetchDetailsSuccess:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure
 {
-    if (!self.documentIdentifier)
+    if (!self.identifier)
     {
         failure([NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorCancelled userInfo:nil]);
         return;
     }
     
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    [client getPublicPath:[NSString stringWithFormat:@"/oapi/documents/details/%@/", self.documentIdentifier]
+    [client getPublicPath:[NSString stringWithFormat:@"/oapi/documents/details/%@/", self.identifier]
                parameters:nil
                   success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
                       self.abstract = responseObject[@"abstract"];

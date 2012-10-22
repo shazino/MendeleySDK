@@ -1,5 +1,5 @@
 //
-//  MDLUserProfileViewController.h
+//  MDLGroupViewController.h
 //  MendeleySDKDemo
 //
 //  Created by Vincent Tourraine on 18/10/12.
@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class MDLUser;
+@class MDLGroup;
 
-@interface MDLUserProfileViewController : UIViewController
+@interface MDLGroupViewController : UIViewController
 
-@property (nonatomic, strong) MDLUser *user;
+@property (nonatomic, strong) MDLGroup *group;
 
 @end

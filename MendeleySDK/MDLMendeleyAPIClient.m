@@ -33,6 +33,8 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
 @interface MDLMendeleyAPIClient ()
 
 + (NSString *)SHA1ForFileAtURL:(NSURL *)fileURL;
++ (id)deserializeAndSanitizeJSONObjectWithData:(NSData *)JSONData;
++ (id)sanitizeObject:(id)object;
 - (void)analyseFailureFromRequestOperation:(AFHTTPRequestOperation *)requestOperation
                                      error:(NSError *)error
                                    failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
@@ -71,6 +73,49 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
     return self;
 }
 
++ (id)deserializeAndSanitizeJSONObjectWithData:(NSData *)JSONData
+{
+    id object = [NSJSONSerialization JSONObjectWithData:JSONData options:kNilOptions error:nil];
+    return [self sanitizeObject:object];
+}
+
++ (id)sanitizeObject:(id)object
+{
+    if ([object isKindOfClass:[NSNull class]])
+    {
+        return nil;
+    }
+    else if ([object isKindOfClass:[NSArray class]]) {
+        NSMutableArray *sanitizedArray = [NSMutableArray arrayWithArray:object];
+        [object enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            id sanitized = [self sanitizeObject:obj];
+            if (!sanitized)
+                [sanitizedArray removeObjectIdenticalTo:obj];
+            else
+                [sanitizedArray replaceObjectAtIndex:[sanitizedArray indexOfObject:obj] withObject:sanitized];
+        }];
+        
+        return [NSArray arrayWithArray:sanitizedArray];
+    }
+    else if ([object isKindOfClass:[NSDictionary class]])
+    {
+        NSMutableDictionary *sanitizedDictionary = [NSMutableDictionary dictionaryWithDictionary:object];
+        [object enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+            id sanitized = [self sanitizeObject:obj];
+            if (!sanitized)
+                [sanitizedDictionary removeObjectForKey:key];
+            else
+                [sanitizedDictionary setObject:sanitized forKey:key];
+        }];
+        
+        return [NSDictionary dictionaryWithDictionary:sanitizedDictionary];
+    }
+    else
+    {
+        return object;
+    }
+}
+
 #pragma mark - Operation
 
 - (void)getPublicPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
@@ -81,7 +126,7 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
     [super getPath:path
        parameters:requestParameters
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
-              id deserializedResponseObject = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+              id deserializedResponseObject = [MDLMendeleyAPIClient deserializeAndSanitizeJSONObjectWithData:responseObject];
               if (success)
                   success(operation, deserializedResponseObject);
           }
@@ -93,7 +138,7 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
     [super getPath:path
         parameters:nil
            success:^(AFHTTPRequestOperation *operation, id responseObject) {
-               id deserializedResponseObject = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+               id deserializedResponseObject = [MDLMendeleyAPIClient deserializeAndSanitizeJSONObjectWithData:responseObject];
                if (success)
                    success(operation, deserializedResponseObject);
            }
@@ -111,7 +156,7 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
     [self postPath:path
           parameters:@{bodyKey : serializedParameters}
              success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                 id deserializedResponseObject = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+                 id deserializedResponseObject = [MDLMendeleyAPIClient deserializeAndSanitizeJSONObjectWithData:responseObject];
                  if (success)
                      success(operation, deserializedResponseObject);
              }
@@ -149,6 +194,8 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
             authenticationSuccess();
             [[NSNotificationCenter defaultCenter] postNotificationName:kMDLNotificationDidAcquireAccessToken object:self];
         } failure:^(NSError *authError) {
+            for (NSOperation *operation in [self.operationQueue operations])
+                [operation cancel];
             failure(requestOperation, [NSError errorWithDomain:AFNetworkingErrorDomain code:NSURLErrorUserCancelledAuthentication userInfo:nil]);
             [[NSNotificationCenter defaultCenter] postNotificationName:kMDLNotificationFailedToAcquireAccessToken object:self];
         }];

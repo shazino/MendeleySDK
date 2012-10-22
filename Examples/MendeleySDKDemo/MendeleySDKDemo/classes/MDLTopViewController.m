@@ -11,7 +11,9 @@
 #import "MDLPublication.h"
 #import "MDLAuthor.h"
 #import "MDLDocument.h"
+#import "MDLGroup.h"
 #import "MDLDocumentDetailsViewController.h"
+#import "MDLGroupViewController.h"
 
 @interface MDLTopViewController ()
 
@@ -50,6 +52,11 @@
         MDLDocumentDetailsViewController *detailsViewController = (MDLDocumentDetailsViewController *)segue.destinationViewController;
         detailsViewController.document = self.topResults[self.tableView.indexPathForSelectedRow.row];
     }
+    else if ([segue.destinationViewController isKindOfClass:[MDLGroupViewController class]])
+    {
+        MDLGroupViewController *detailsViewController = (MDLGroupViewController *)segue.destinationViewController;
+        detailsViewController.group = self.topResults[self.tableView.indexPathForSelectedRow.row];
+    }
 }
 
 #pragma mark - Table view data source
@@ -76,6 +83,8 @@
         resultName = ((MDLAuthor *)result).surname;
     else if ([result isKindOfClass:[MDLDocument class]])
         resultName = ((MDLDocument *)result).title;
+    else if ([result isKindOfClass:[MDLGroup class]])
+        resultName = ((MDLGroup *)result).name;
     cell.textLabel.text = [NSString stringWithFormat:@"%d. %@", indexPath.row + 1, resultName];
     
     cell.accessoryType = ([result isKindOfClass:[MDLDocument class]]) ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone;
@@ -90,6 +99,8 @@
 {
     if (self.entityClass == [MDLDocument class])
         [self performSegueWithIdentifier:@"MDLDocumentDetailsSegue" sender:nil];
+    else if (self.entityClass == [MDLGroup class])
+        [self performSegueWithIdentifier:@"MDLGroupDetailsSegue" sender:nil];
 }
 
 #pragma mark - Actions
@@ -117,6 +128,15 @@
     else if (self.entityClass == [MDLDocument class])
     {
         [MDLDocument topDocumentsInPublicLibraryForCategory:categoryIdentifier upAndComing:upAndComing success:^(NSArray *results) {
+            self.topResults = results;
+            [self.tableView reloadData];
+        } failure:^(NSError *error) {
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        }];
+    }
+    else if (self.entityClass == [MDLGroup class])
+    {
+        [MDLGroup topGroupsInPublicLibraryForCategory:categoryIdentifier atPage:0 count:20 success:^(NSArray *results) {
             self.topResults = results;
             [self.tableView reloadData];
         } failure:^(NSError *error) {

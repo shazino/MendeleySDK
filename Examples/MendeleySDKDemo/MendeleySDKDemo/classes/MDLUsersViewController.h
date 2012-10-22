@@ -1,5 +1,5 @@
 //
-//  MDLUserProfileViewController.h
+//  MDLUsersViewController.h
 //  MendeleySDKDemo
 //
 //  Created by Vincent Tourraine on 18/10/12.
@@ -8,10 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@class MDLUser;
+@interface MDLUsersViewController : UITableViewController
 
-@interface MDLUserProfileViewController : UIViewController
-
-@property (nonatomic, strong) MDLUser *user;
+@property (nonatomic, strong) NSArray *users;
 
 @end

@@ -25,15 +25,28 @@
 #import "MDLCategory.h"
 #import "MDLMendeleyAPIClient.h"
 
+@interface MDLUser ()
+
++ (void)fetchUserProfileForUser:(MDLUser *)user withIdentifier:(NSString *)identifier success:(void (^)(MDLUser *))success failure:(void (^)(NSError *))failure;
+
+@end
+
 @implementation MDLUser
 
-+ (void)fetchMyUserProfileSuccess:(void (^)(MDLUser *))success failure:(void (^)(NSError *))failure
++ (MDLUser *)userWithIdentifier:(NSString *)identifier name:(NSString *)name
+{
+    MDLUser *user = [MDLUser new];
+    user.identifier = identifier;
+    user.name = name;
+    return user;
+}
+
++ (void)fetchUserProfileForUser:(MDLUser *)user withIdentifier:(NSString *)identifier success:(void (^)(MDLUser *))success failure:(void (^)(NSError *))failure
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
     
-    [client getPrivatePath:@"oapi/profiles/info/me/"
+    [client getPrivatePath:[NSString stringWithFormat:@"oapi/profiles/info/%@/", identifier]
                    success:^(AFHTTPRequestOperation *operation, NSDictionary *responseDictionary) {
-                       MDLUser *user = [MDLUser new];
                        NSDictionary *profileMain = responseDictionary[@"main"];
                        user.name = profileMain[@"name"];
                        user.academicStatus = profileMain[@"academic_status"];
@@ -51,6 +64,22 @@
                        if (failure)
                            failure(error);
                    }];
+}
+
++ (void)fetchMyUserProfileSuccess:(void (^)(MDLUser *))success failure:(void (^)(NSError *))failure
+{
+    [self fetchUserProfileForUser:[MDLUser new] withIdentifier:@"me" success:success failure:failure];
+}
+
+- (void)fetchProfileSuccess:(void (^)(MDLUser *))success failure:(void (^)(NSError *))failure
+{
+    if (!self.identifier)
+    {
+        failure([NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorCancelled userInfo:nil]);
+        return;
+    }
+    
+    [MDLUser fetchUserProfileForUser:self withIdentifier:self.identifier success:success failure:failure];
 }
 
 @end

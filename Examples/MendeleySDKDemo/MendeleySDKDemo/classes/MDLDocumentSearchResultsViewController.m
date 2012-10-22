@@ -60,7 +60,7 @@
     
     MDLDocument *document = self.searchResults[indexPath.row];
     cell.textLabel.text = document.title;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"DOI: %@, ID: %@", document.DOI, document.documentIdentifier];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"DOI: %@, ID: %@", document.DOI, document.identifier];
     
     return cell;
 }
