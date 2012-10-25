@@ -36,11 +36,6 @@
 		14C1E2E016246F27005D914C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14C1E2DF16246F27005D914C /* Default-568h@2x.png */; };
 		14C1E2E316246F27005D914C /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14C1E2E116246F27005D914C /* MainStoryboard_iPhone.storyboard */; };
 		14C1E2E916246F27005D914C /* MDLDocumentCreatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C1E2E816246F27005D914C /* MDLDocumentCreatorViewController.m */; };
-		14C1E2F116246F28005D914C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C1E2F016246F28005D914C /* SenTestingKit.framework */; };
-		14C1E2F216246F28005D914C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C1E2C916246F27005D914C /* UIKit.framework */; };
-		14C1E2F316246F28005D914C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C1E2CB16246F27005D914C /* Foundation.framework */; };
-		14C1E2FB16246F28005D914C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 14C1E2F916246F28005D914C /* InfoPlist.strings */; };
-		14C1E2FE16246F28005D914C /* MendeleySDKDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C1E2FD16246F28005D914C /* MendeleySDKDemoTests.m */; };
 		14C1E31D16246F4B005D914C /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C1E30916246F4B005D914C /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		14C1E31E16246F4B005D914C /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C1E30B16246F4B005D914C /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		14C1E31F16246F4B005D914C /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C1E30D16246F4B005D914C /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -59,16 +54,6 @@
 		14E5CB77162C29B600B94796 /* MDLAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E5CB76162C29B600B94796 /* MDLAuthor.m */; };
 		14E5CB7A162C2F8400B94796 /* MDLPublication.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E5CB79162C2F8400B94796 /* MDLPublication.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		14C1E2F416246F28005D914C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 14C1E2BC16246F27005D914C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 14C1E2C416246F27005D914C;
-			remoteInfo = MendeleySDKDemo;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		141E66FE16272670002939D2 /* MDLDocumentSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDLDocumentSearchViewController.h; path = classes/MDLDocumentSearchViewController.h; sourceTree = "<group>"; };
@@ -119,12 +104,7 @@
 		14C1E2E216246F27005D914C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		14C1E2E716246F27005D914C /* MDLDocumentCreatorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MDLDocumentCreatorViewController.h; path = classes/MDLDocumentCreatorViewController.h; sourceTree = "<group>"; };
 		14C1E2E816246F27005D914C /* MDLDocumentCreatorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MDLDocumentCreatorViewController.m; path = classes/MDLDocumentCreatorViewController.m; sourceTree = "<group>"; };
-		14C1E2EF16246F28005D914C /* MendeleySDKDemoTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MendeleySDKDemoTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14C1E2F016246F28005D914C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		14C1E2F816246F28005D914C /* MendeleySDKDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "MendeleySDKDemoTests-Info.plist"; path = "../MendeleySDKDemoTests/MendeleySDKDemoTests-Info.plist"; sourceTree = "<group>"; };
-		14C1E2FA16246F28005D914C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		14C1E2FC16246F28005D914C /* MendeleySDKDemoTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MendeleySDKDemoTests.h; path = ../MendeleySDKDemoTests/MendeleySDKDemoTests.h; sourceTree = "<group>"; };
-		14C1E2FD16246F28005D914C /* MendeleySDKDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MendeleySDKDemoTests.m; path = ../MendeleySDKDemoTests/MendeleySDKDemoTests.m; sourceTree = "<group>"; };
 		14C1E30816246F4B005D914C /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		14C1E30916246F4B005D914C /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		14C1E30A16246F4B005D914C /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -170,16 +150,6 @@
 				14C1E2CA16246F27005D914C /* UIKit.framework in Frameworks */,
 				14C1E2CC16246F27005D914C /* Foundation.framework in Frameworks */,
 				14C1E2CE16246F27005D914C /* CoreGraphics.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		14C1E2EB16246F28005D914C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				14C1E2F116246F28005D914C /* SenTestingKit.framework in Frameworks */,
-				14C1E2F216246F28005D914C /* UIKit.framework in Frameworks */,
-				14C1E2F316246F28005D914C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,7 +226,6 @@
 			isa = PBXGroup;
 			children = (
 				14C1E2CF16246F27005D914C /* MendeleySDKDemo */,
-				14C1E2F616246F28005D914C /* MendeleySDKDemoTests */,
 				14C1E2C816246F27005D914C /* Frameworks */,
 				14C1E2C616246F27005D914C /* Products */,
 			);
@@ -266,7 +235,6 @@
 			isa = PBXGroup;
 			children = (
 				14C1E2C516246F27005D914C /* MendeleySDKDemo.app */,
-				14C1E2EF16246F28005D914C /* MendeleySDKDemoTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -308,25 +276,6 @@
 				14C1E2DB16246F27005D914C /* Default.png */,
 				14C1E2DD16246F27005D914C /* Default@2x.png */,
 				14C1E2DF16246F27005D914C /* Default-568h@2x.png */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		14C1E2F616246F28005D914C /* MendeleySDKDemoTests */ = {
-			isa = PBXGroup;
-			children = (
-				14C1E2FC16246F28005D914C /* MendeleySDKDemoTests.h */,
-				14C1E2FD16246F28005D914C /* MendeleySDKDemoTests.m */,
-				14C1E2F716246F28005D914C /* Supporting Files */,
-			);
-			path = MendeleySDKDemoTests;
-			sourceTree = "<group>";
-		};
-		14C1E2F716246F28005D914C /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				14C1E2F816246F28005D914C /* MendeleySDKDemoTests-Info.plist */,
-				14C1E2F916246F28005D914C /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -430,25 +379,6 @@
 			productReference = 14C1E2C516246F27005D914C /* MendeleySDKDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		14C1E2EE16246F28005D914C /* MendeleySDKDemoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 14C1E30416246F28005D914C /* Build configuration list for PBXNativeTarget "MendeleySDKDemoTests" */;
-			buildPhases = (
-				14C1E2EA16246F28005D914C /* Sources */,
-				14C1E2EB16246F28005D914C /* Frameworks */,
-				14C1E2EC16246F28005D914C /* Resources */,
-				14C1E2ED16246F28005D914C /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				14C1E2F516246F28005D914C /* PBXTargetDependency */,
-			);
-			name = MendeleySDKDemoTests;
-			productName = MendeleySDKDemoTests;
-			productReference = 14C1E2EF16246F28005D914C /* MendeleySDKDemoTests.octest */;
-			productType = "com.apple.product-type.bundle";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -472,7 +402,6 @@
 			projectRoot = "";
 			targets = (
 				14C1E2C416246F27005D914C /* MendeleySDKDemo */,
-				14C1E2EE16246F28005D914C /* MendeleySDKDemoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -494,31 +423,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		14C1E2EC16246F28005D914C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				14C1E2FB16246F28005D914C /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		14C1E2ED16246F28005D914C /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		14C1E2C116246F27005D914C /* Sources */ = {
@@ -561,23 +466,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		14C1E2EA16246F28005D914C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				14C1E2FE16246F28005D914C /* MendeleySDKDemoTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		14C1E2F516246F28005D914C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 14C1E2C416246F27005D914C /* MendeleySDKDemo */;
-			targetProxy = 14C1E2F416246F28005D914C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		14C1E2D216246F27005D914C /* InfoPlist.strings */ = {
@@ -596,15 +485,6 @@
 			);
 			name = MainStoryboard_iPhone.storyboard;
 			path = ../MendeleySDKDemo;
-			sourceTree = "<group>";
-		};
-		14C1E2F916246F28005D914C /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				14C1E2FA16246F28005D914C /* en */,
-			);
-			name = InfoPlist.strings;
-			path = ../MendeleySDKDemoTests;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -683,40 +563,6 @@
 			};
 			name = Release;
 		};
-		14C1E30516246F28005D914C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MendeleySDKDemo.app/MendeleySDKDemo";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MendeleySDKDemo/MendeleySDKDemo-Prefix.pch";
-				INFOPLIST_FILE = "MendeleySDKDemoTests/MendeleySDKDemoTests-Info.plist";
-				PRODUCT_NAME = MendeleySDKDemoTests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		14C1E30616246F28005D914C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MendeleySDKDemo.app/MendeleySDKDemo";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MendeleySDKDemo/MendeleySDKDemo-Prefix.pch";
-				INFOPLIST_FILE = "MendeleySDKDemoTests/MendeleySDKDemoTests-Info.plist";
-				PRODUCT_NAME = MendeleySDKDemoTests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -734,15 +580,6 @@
 			buildConfigurations = (
 				14C1E30216246F28005D914C /* Debug */,
 				14C1E30316246F28005D914C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		14C1E30416246F28005D914C /* Build configuration list for PBXNativeTarget "MendeleySDKDemoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				14C1E30516246F28005D914C /* Debug */,
-				14C1E30616246F28005D914C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

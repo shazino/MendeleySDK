@@ -35,6 +35,7 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
 + (NSString *)SHA1ForFileAtURL:(NSURL *)fileURL;
 + (id)deserializeAndSanitizeJSONObjectWithData:(NSData *)JSONData;
 + (id)sanitizeObject:(id)object;
+- (void)updateRateLimitRemainingWithOperation:(AFHTTPRequestOperation *)operation;
 - (void)analyseFailureFromRequestOperation:(AFHTTPRequestOperation *)requestOperation
                                      error:(NSError *)error
                                    failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
@@ -68,6 +69,7 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
         return nil;
 
     self.automaticAuthenticationEnabled = YES;
+    self.rateLimitRemainingForLatestRequest = NSNotFound;
     [self setDefaultHeader:@"Accept" value:@"application/json"];
     
     return self;
@@ -116,6 +118,13 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
     }
 }
 
+- (void)updateRateLimitRemainingWithOperation:(AFHTTPRequestOperation *)operation
+{
+    NSString *rateLimitRemaining = operation.response.allHeaderFields[@"x-ratelimit-remaining"];
+    if (![[NSScanner scannerWithString:rateLimitRemaining] scanInteger:&_rateLimitRemainingForLatestRequest])
+        self.rateLimitRemainingForLatestRequest = NSNotFound;
+}
+
 #pragma mark - Operation
 
 - (void)getPublicPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
@@ -126,6 +135,7 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
     [super getPath:path
        parameters:requestParameters
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              [self updateRateLimitRemainingWithOperation:operation];
               id deserializedResponseObject = [MDLMendeleyAPIClient deserializeAndSanitizeJSONObjectWithData:responseObject];
               if (success)
                   success(operation, deserializedResponseObject);
@@ -138,6 +148,7 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
     [super getPath:path
         parameters:nil
            success:^(AFHTTPRequestOperation *operation, id responseObject) {
+               [self updateRateLimitRemainingWithOperation:operation];
                id deserializedResponseObject = [MDLMendeleyAPIClient deserializeAndSanitizeJSONObjectWithData:responseObject];
                if (success)
                    success(operation, deserializedResponseObject);
@@ -155,7 +166,8 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
     
     [self postPath:path
           parameters:@{bodyKey : serializedParameters}
-             success:^(AFHTTPRequestOperation *operation, id responseObject) {
+           success:^(AFHTTPRequestOperation *operation, id responseObject) {
+               [self updateRateLimitRemainingWithOperation:operation];
                  id deserializedResponseObject = [MDLMendeleyAPIClient deserializeAndSanitizeJSONObjectWithData:responseObject];
                  if (success)
                      success(operation, deserializedResponseObject);
@@ -175,7 +187,11 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
     request.HTTPBody = [NSData dataWithContentsOfURL:fileURL];
     [request setValue:[NSString stringWithFormat:@"attachment; filename=\"%@\"", [[fileURL path] lastPathComponent]] forHTTPHeaderField:@"Content-Disposition"];
 	
-    AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:success failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self updateRateLimitRemainingWithOperation:operation];
+        if (success)
+            success(operation, responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self analyseFailureFromRequestOperation:operation error:error failure:failure andAuthorizeUsingOAuthIfNeededWithSuccess:^{
             [self putPrivatePath:path fileAtURL:fileURL success:success failure:failure];
         }];

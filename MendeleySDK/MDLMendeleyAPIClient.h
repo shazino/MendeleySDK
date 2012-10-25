@@ -42,6 +42,14 @@ extern NSString * const kMDLNotificationFailedToAcquireAccessToken;
 @property (getter = isAutomaticAuthenticationEnabled) BOOL automaticAuthenticationEnabled;
 
 /**
+ Number of calls you can still do within the next hour for the latest request. This is `NSNotFound` by default.
+ Note that the default rate limit for calls varies depending on the method being requested.
+ 
+ @see [API documentation: Rate Limiting](http://apidocs.mendeley.com/home/rate-limiting)
+ */
+@property (assign, nonatomic) NSInteger rateLimitRemainingForLatestRequest;
+
+/**
  Creates and initializes if needed a singleton instance of a `MDLMendeleyAPIClient` object configured with Mendeley Open API URL.
  
  @return The newly-initialized client
