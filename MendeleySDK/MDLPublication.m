@@ -24,6 +24,12 @@
 #import "MDLPublication.h"
 #import "MDLMendeleyAPIClient.h"
 
+@interface MDLPublication ()
+
++ (NSArray *)publicationsFromRequestResponseObject:(NSArray *)responseObject;
+
+@end
+
 @implementation MDLPublication
 
 + (MDLPublication *)publicationWithName:(NSString *)name
@@ -31,6 +37,15 @@
     MDLPublication *publication = [MDLPublication new];
     publication.name = name;
     return publication;
+}
+
++ (NSArray *)publicationsFromRequestResponseObject:(NSArray *)responseObject
+{
+    NSMutableArray *publications = [NSMutableArray array];
+    [responseObject enumerateObjectsUsingBlock:^(NSDictionary *rawPublication, NSUInteger idx, BOOL *stop) {
+        [publications addObject:[MDLPublication publicationWithName:rawPublication[@"name"]]];
+    }];
+    return publications;
 }
 
 + (void)topPublicationsInPublicLibraryForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
@@ -47,18 +62,25 @@
                parameters:parameters
                   success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
                       if (success)
-                      {
-                          NSMutableArray *publications = [NSMutableArray array];
-                          [responseObject enumerateObjectsUsingBlock:^(NSDictionary *rawPublication, NSUInteger idx, BOOL *stop) {
-                              MDLPublication *publication = [MDLPublication publicationWithName:rawPublication[@"name"]];
-                              [publications addObject:publication];
-                          }];
-                          success(publications);
-                      }
+                          success([self publicationsFromRequestResponseObject:responseObject]);
                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                       if (failure)
                           failure(error);
                   }];
+}
+
++ (void)topPublicationsInUserLibrarySuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
+    
+    [client getPrivatePath:@"/oapi/library/publications/"
+                   success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
+                       if (success)
+                           success([self publicationsFromRequestResponseObject:responseObject]);
+                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                       if (failure)
+                           failure(error);
+                   }];
 }
 
 @end

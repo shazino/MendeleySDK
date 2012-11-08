@@ -119,62 +119,43 @@
 
 - (void)fetchTopForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing
 {
+    void (^success)(NSArray *) = ^(NSArray *results) {
+        self.topResults = results;
+        [self.tableView reloadData];
+    };
+    
+    void (^failure)(NSError *) = ^(NSError *error) {
+        [self showAlertViewWithError:error];
+    };
+             
     if (self.entityClass == [MDLPublication class])
     {
-        [MDLPublication topPublicationsInPublicLibraryForCategory:categoryIdentifier upAndComing:upAndComing success:^(NSArray *results) {
-            self.topResults = results;
-            [self.tableView reloadData];
-        } failure:^(NSError *error) {
-            [self showAlertViewWithError:error];
-        }];
+        if (self.isInUserLibrary)
+            [MDLPublication topPublicationsInUserLibrarySuccess:success failure:failure];
+        else
+            [MDLPublication topPublicationsInPublicLibraryForCategory:categoryIdentifier upAndComing:upAndComing success:success failure:failure];
     }
     else if (self.entityClass == [MDLAuthor class])
     {
         if (self.isInUserLibrary)
-        {
-            [MDLAuthor topAuthorsInUserLibrarySuccess:^(NSArray *results) {
-                self.topResults = results;
-                [self.tableView reloadData];
-            } failure:^(NSError *error) {
-                [self showAlertViewWithError:error];
-            }];
-        }
+            [MDLAuthor topAuthorsInUserLibrarySuccess:success failure:failure];
         else
-        {
-        [MDLAuthor topAuthorsInPublicLibraryForCategory:categoryIdentifier upAndComing:upAndComing success:^(NSArray *results) {
-            self.topResults = results;
-            [self.tableView reloadData];
-        } failure:^(NSError *error) {
-            [self showAlertViewWithError:error];
-        }];
-        }
+            [MDLAuthor topAuthorsInPublicLibraryForCategory:categoryIdentifier upAndComing:upAndComing success:success failure:failure];
     }
     else if (self.entityClass == [MDLDocument class])
     {
-        [MDLDocument topDocumentsInPublicLibraryForCategory:categoryIdentifier upAndComing:upAndComing success:^(NSArray *results) {
-            self.topResults = results;
-            [self.tableView reloadData];
-        } failure:^(NSError *error) {
-            [self showAlertViewWithError:error];
-        }];
+        [MDLDocument topDocumentsInPublicLibraryForCategory:categoryIdentifier upAndComing:upAndComing success:success failure:failure];
     }
     else if (self.entityClass == [MDLGroup class])
     {
         [MDLGroup topGroupsInPublicLibraryForCategory:categoryIdentifier atPage:0 count:20 success:^(NSArray *results, NSUInteger totalResults, NSUInteger totalPages, NSUInteger pageIndex, NSUInteger itemsPerPage) {
             self.topResults = results;
             [self.tableView reloadData];
-        } failure:^(NSError *error) {
-            [self showAlertViewWithError:error];
-        }];
+        } failure:failure];
     }
     else if (self.entityClass == [MDLTag class])
     {
-        [MDLTag lastTagsInUserLibrarySuccess:^(NSArray *results) {
-            self.topResults = results;
-            [self.tableView reloadData];
-        } failure:^(NSError *error) {
-            [self showAlertViewWithError:error];
-        }];
+        [MDLTag lastTagsInUserLibrarySuccess:success failure:failure];
     }
 }
 
