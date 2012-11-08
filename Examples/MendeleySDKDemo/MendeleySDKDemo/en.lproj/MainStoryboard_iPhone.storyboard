@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="11G56" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3U7-0m-to9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3U7-0m-to9">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
@@ -9,7 +9,7 @@
             <objects>
                 <viewController id="add-3E-BTv" customClass="MDLUserProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gHQ-pq-Gq9">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iDu-zh-eo0">
@@ -50,7 +50,7 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wD2-xw-fmK">
-                                <rect key="frame" x="20" y="485" width="280" height="44"/>
+                                <rect key="frame" x="20" y="441" width="280" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Open on Mendeley.com">
@@ -453,7 +453,7 @@
                             <tableViewSection headerTitle="Authors" id="6N2-LB-zfP">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="tSd-lv-fzu" style="IBUITableViewCellStyleDefault" id="4zh-sd-oEK">
-                                        <rect key="frame" x="0.0" y="410" width="320" height="46"/>
+                                        <rect key="frame" x="0.0" y="410" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="280" height="43"/>
@@ -473,12 +473,33 @@
                                             <segue destination="OhV-fN-lDo" kind="push" identifier="MDLTopAuthorsSegue" id="cmt-EW-Xyz"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="2am-ze-tNM" style="IBUITableViewCellStyleDefault" id="dsp-Sk-qzI">
+                                        <rect key="frame" x="0.0" y="455" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="⭐ Top authors in user library" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2am-ze-tNM">
+                                                    <rect key="frame" x="10" y="0.0" width="260" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <segue destination="OhV-fN-lDo" kind="push" identifier="MDLTopAuthorsUserLibrarySegue" id="HfY-jX-Aum"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Groups" id="i88-EV-QVy">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="EWV-Og-EnA" style="IBUITableViewCellStyleDefault" id="HAv-tK-oEd">
-                                        <rect key="frame" x="0.0" y="502" width="320" height="46"/>
+                                        <rect key="frame" x="0.0" y="546" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="280" height="43"/>
@@ -503,7 +524,7 @@
                             <tableViewSection headerTitle="Categories" id="PVn-vH-9fh">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="EB7-ux-FUx" style="IBUITableViewCellStyleDefault" id="nQf-M3-6Gc">
-                                        <rect key="frame" x="0.0" y="594" width="320" height="46"/>
+                                        <rect key="frame" x="0.0" y="638" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="280" height="43"/>
@@ -1147,10 +1168,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="oIh-SZ-UR2"/>
-        <segue reference="Qp5-Sn-PWd"/>
-        <segue reference="jHq-Zr-ZCx"/>
         <segue reference="EGC-G5-Bat"/>
-        <segue reference="ekx-sT-gTv"/>
+        <segue reference="5EF-o4-lph"/>
+        <segue reference="3tz-h0-ISH"/>
+        <segue reference="Qp5-Sn-PWd"/>
+        <segue reference="oIh-SZ-UR2"/>
     </inferredMetricsTieBreakers>
 </document>

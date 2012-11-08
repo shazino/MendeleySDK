@@ -49,7 +49,7 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
     
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
     
-    [client postPrivatePath:@"oapi/library/documents/"
+    [client postPrivatePath:@"/oapi/library/documents/"
                     bodyKey:@"document"
                 bodyContent:@{@"type" : newDocument.type, @"title" : newDocument.title}
                     success:^(AFHTTPRequestOperation *operation, id responseDictionary) {
@@ -111,7 +111,7 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
     NSString *encodedTerms = [terms stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     encodedTerms = [encodedTerms stringByReplacingOccurrencesOfString:@":" withString:@"%3A"];
     
-    [self searchWithPath:[NSString stringWithFormat:@"oapi/documents/search/%@/", encodedTerms] parameters:nil atPage:pageIndex count:count success:success failure:failure];
+    [self searchWithPath:[NSString stringWithFormat:@"/oapi/documents/search/%@/", encodedTerms] parameters:nil atPage:pageIndex count:count success:success failure:failure];
 }
 
 + (void)searchWithGenericTerms:(NSString *)genericTerms authors:(NSString *)authors title:(NSString *)title year:(NSNumber *)year tags:(NSString *)tags atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure
@@ -138,7 +138,7 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
         parameters[@"cat"] = category.identifier;
     if (subcategory)
         parameters[@"subcat"] = subcategory.identifier;
-    [self searchWithPath:[NSString stringWithFormat:@"oapi/documents/tagged/%@/", tag] parameters:parameters atPage:pageIndex count:count success:success failure:failure];
+    [self searchWithPath:[NSString stringWithFormat:@"/oapi/documents/tagged/%@/", tag] parameters:parameters atPage:pageIndex count:count success:success failure:failure];
 }
 
 + (void)searchAuthoredWithName:(NSString *)name year:(NSNumber *)year atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure
@@ -146,7 +146,7 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
     NSDictionary *parameters;
     if (year)
         parameters = @{@"year" : year};
-    [self searchWithPath:[NSString stringWithFormat:@"oapi/documents/authored/%@/", name] parameters:parameters atPage:pageIndex count:count success:success failure:failure];
+    [self searchWithPath:[NSString stringWithFormat:@"/oapi/documents/authored/%@/", name] parameters:parameters atPage:pageIndex count:count success:success failure:failure];
 }
 
 + (void)topDocumentsInPublicLibraryForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
@@ -159,7 +159,7 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
     if (categoryIdentifier)
         parameters[@"discipline"] = categoryIdentifier;
     
-    [client getPublicPath:@"oapi/stats/papers/"
+    [client getPublicPath:@"/oapi/stats/papers/"
                parameters:parameters
                   success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
                       if (success)
@@ -187,7 +187,7 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
     
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
     
-    [client putPrivatePath:[NSString stringWithFormat:@"oapi/library/documents/%@/", self.identifier]
+    [client putPrivatePath:[NSString stringWithFormat:@"/oapi/library/documents/%@/", self.identifier]
                  fileAtURL:fileURL success:^(AFHTTPRequestOperation *operation, id responseObject) {
                      if (success)
                          success();
@@ -206,7 +206,7 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
     }
     
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    [client getPublicPath:[NSString stringWithFormat:@"oapi/documents/details/%@/", self.identifier]
+    [client getPublicPath:[NSString stringWithFormat:@"/oapi/documents/details/%@/", self.identifier]
                parameters:nil
                   success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
                       self.abstract = responseObject[@"abstract"];
@@ -237,7 +237,7 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
     }
     
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    [client getPublicPath:[NSString stringWithFormat:@"oapi/documents/related/%@/", self.identifier]
+    [client getPublicPath:[NSString stringWithFormat:@"/oapi/documents/related/%@/", self.identifier]
                parameters:@{@"page" : @(pageIndex), @"items" : @(count)}
                   success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
                       if (success)

@@ -11,5 +11,6 @@
 @interface MDLTopViewController : UITableViewController <UITextFieldDelegate>
 
 @property Class entityClass;
+@property (getter = isInUserLibrary) BOOL inUserLibrary;
 
 @end

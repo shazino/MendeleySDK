@@ -28,6 +28,11 @@
     {
         ((MDLTopViewController *)segue.destinationViewController).entityClass = [MDLAuthor class];
     }
+    else if ([segue.identifier isEqualToString:@"MDLTopAuthorsUserLibrarySegue"])
+    {
+        ((MDLTopViewController *)segue.destinationViewController).entityClass = [MDLAuthor class];
+        ((MDLTopViewController *)segue.destinationViewController).inUserLibrary = YES;
+    }
     else if ([segue.identifier isEqualToString:@"MDLTopDocumentsSegue"])
     {
         ((MDLTopViewController *)segue.destinationViewController).entityClass = [MDLDocument class];

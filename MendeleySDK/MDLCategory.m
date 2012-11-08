@@ -42,7 +42,7 @@
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
     
-    [client getPublicPath:@"oapi/documents/categories/"
+    [client getPublicPath:@"/oapi/documents/categories/"
                parameters:nil
                   success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
                       NSMutableArray *categories = [NSMutableArray array];
@@ -64,7 +64,7 @@
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
     
-    [client getPublicPath:[NSString stringWithFormat:@"oapi/documents/subcategories/%@/", self.identifier]
+    [client getPublicPath:[NSString stringWithFormat:@"/oapi/documents/subcategories/%@/", self.identifier]
                parameters:nil
                   success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
                       NSMutableArray *subcategories = [NSMutableArray array];

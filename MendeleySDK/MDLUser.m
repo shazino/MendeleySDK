@@ -45,7 +45,7 @@
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
     
-    [client getPrivatePath:[NSString stringWithFormat:@"oapi/profiles/info/%@/", identifier]
+    [client getPrivatePath:[NSString stringWithFormat:@"/oapi/profiles/info/%@/", identifier]
                    success:^(AFHTTPRequestOperation *operation, NSDictionary *responseDictionary) {
                        NSDictionary *profileMain = responseDictionary[@"main"];
                        user.name = profileMain[@"name"];

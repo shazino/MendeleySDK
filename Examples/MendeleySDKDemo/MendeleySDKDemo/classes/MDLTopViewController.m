@@ -34,6 +34,9 @@
 {
     [super viewDidLoad];
     
+    if (self.isInUserLibrary)
+        self.tableView.tableHeaderView = nil;
+    
     self.upAndComing = NO;
     self.categoryIdentifier = nil;
     self.navigationItem.title = [NSString stringWithFormat:@"Top %@s", [NSStringFromClass(self.entityClass) stringByReplacingOccurrencesOfString:@"MDL" withString:@""]];
@@ -118,12 +121,24 @@
     }
     else if (self.entityClass == [MDLAuthor class])
     {
+        if (self.isInUserLibrary)
+        {
+            [MDLAuthor topAuthorsInUserLibrarySuccess:^(NSArray *results) {
+                self.topResults = results;
+                [self.tableView reloadData];
+            } failure:^(NSError *error) {
+                [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            }];
+        }
+        else
+        {
         [MDLAuthor topAuthorsInPublicLibraryForCategory:categoryIdentifier upAndComing:upAndComing success:^(NSArray *results) {
             self.topResults = results;
             [self.tableView reloadData];
         } failure:^(NSError *error) {
             [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         }];
+        }
     }
     else if (self.entityClass == [MDLDocument class])
     {

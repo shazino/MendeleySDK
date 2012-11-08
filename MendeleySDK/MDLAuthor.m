@@ -24,6 +24,12 @@
 #import "MDLAuthor.h"
 #import "MDLMendeleyAPIClient.h"
 
+@interface MDLAuthor ()
+
++ (NSArray *)authorsFromRequestResponseObject:(NSArray *)responseObject;
+
+@end
+
 @implementation MDLAuthor
 
 + (MDLAuthor *)authorWithName:(NSString *)name
@@ -31,6 +37,15 @@
     MDLAuthor *author = [MDLAuthor new];
     author.name = name;
     return author;
+}
+
++ (NSArray *)authorsFromRequestResponseObject:(NSArray *)responseObject
+{
+    NSMutableArray *authors = [NSMutableArray array];
+    [responseObject enumerateObjectsUsingBlock:^(NSDictionary *rawAuthor, NSUInteger idx, BOOL *stop) {
+        [authors addObject:[MDLAuthor authorWithName:rawAuthor[@"name"]]];
+    }];
+    return authors;
 }
 
 + (void)topAuthorsInPublicLibraryForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
@@ -47,14 +62,21 @@
                parameters:parameters
                   success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
                       if (success)
-                      {
-                          NSMutableArray *authors = [NSMutableArray array];
-                          [responseObject enumerateObjectsUsingBlock:^(NSDictionary *rawAuthor, NSUInteger idx, BOOL *stop) {
-                              MDLAuthor *author = [MDLAuthor authorWithName:rawAuthor[@"name"]];
-                              [authors addObject:author];
-                          }];
-                          success(authors);
-                      }
+                          success([self authorsFromRequestResponseObject:responseObject]);
+                  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                      if (failure)
+                          failure(error);
+                  }];
+}
+
++ (void)topAuthorsInUserLibrarySuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
+    
+    [client getPrivatePath:@"/oapi/library/authors/"
+                  success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
+                      if (success)
+                          success([self authorsFromRequestResponseObject:responseObject]);
                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                       if (failure)
                           failure(error);
