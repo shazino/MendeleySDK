@@ -74,13 +74,13 @@
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
     
     [client getPrivatePath:@"/oapi/library/authors/"
-                  success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
-                      if (success)
-                          success([self authorsFromRequestResponseObject:responseObject]);
-                  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                      if (failure)
-                          failure(error);
-                  }];
+                   success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
+                       if (success)
+                           success([self authorsFromRequestResponseObject:responseObject]);
+                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                       if (failure)
+                           failure(error);
+                   }];
 }
 
 @end

@@ -12,6 +12,7 @@
 #import "MDLAuthor.h"
 #import "MDLDocument.h"
 #import "MDLGroup.h"
+#import "MDLTag.h"
 #import "MDLDocumentDetailsViewController.h"
 #import "MDLGroupViewController.h"
 
@@ -23,6 +24,7 @@
 
 - (void)fetchTopForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing;
 - (IBAction)switchValueChanged:(UISwitch *)sender;
+- (void)showAlertViewWithError:(NSError *)error;
 
 @end
 
@@ -62,6 +64,11 @@
     }
 }
 
+- (void)showAlertViewWithError:(NSError *)error
+{
+    [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -88,6 +95,8 @@
         resultName = ((MDLDocument *)result).title;
     else if ([result isKindOfClass:[MDLGroup class]])
         resultName = ((MDLGroup *)result).name;
+    else if ([result isKindOfClass:[MDLTag class]])
+        resultName = [NSString stringWithFormat:@"%@ (%@)", ((MDLTag *)result).name, ((MDLTag *)result).count];
     cell.textLabel.text = [NSString stringWithFormat:@"%d. %@", indexPath.row + 1, resultName];
     
     cell.accessoryType = ([result isKindOfClass:[MDLDocument class]]) ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone;
@@ -116,7 +125,7 @@
             self.topResults = results;
             [self.tableView reloadData];
         } failure:^(NSError *error) {
-            [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            [self showAlertViewWithError:error];
         }];
     }
     else if (self.entityClass == [MDLAuthor class])
@@ -127,7 +136,7 @@
                 self.topResults = results;
                 [self.tableView reloadData];
             } failure:^(NSError *error) {
-                [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                [self showAlertViewWithError:error];
             }];
         }
         else
@@ -136,7 +145,7 @@
             self.topResults = results;
             [self.tableView reloadData];
         } failure:^(NSError *error) {
-            [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            [self showAlertViewWithError:error];
         }];
         }
     }
@@ -146,7 +155,7 @@
             self.topResults = results;
             [self.tableView reloadData];
         } failure:^(NSError *error) {
-            [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            [self showAlertViewWithError:error];
         }];
     }
     else if (self.entityClass == [MDLGroup class])
@@ -155,7 +164,16 @@
             self.topResults = results;
             [self.tableView reloadData];
         } failure:^(NSError *error) {
-            [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            [self showAlertViewWithError:error];
+        }];
+    }
+    else if (self.entityClass == [MDLTag class])
+    {
+        [MDLTag lastTagsInUserLibrarySuccess:^(NSArray *results) {
+            self.topResults = results;
+            [self.tableView reloadData];
+        } failure:^(NSError *error) {
+            [self showAlertViewWithError:error];
         }];
     }
 }

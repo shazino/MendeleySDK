@@ -13,6 +13,7 @@
 #import "MDLAuthor.h"
 #import "MDLDocument.h"
 #import "MDLGroup.h"
+#import "MDLTag.h"
 
 @implementation MDLMenuViewController
 
@@ -40,6 +41,11 @@
     else if ([segue.identifier isEqualToString:@"MDLTopGroupsSegue"])
     {
         ((MDLTopViewController *)segue.destinationViewController).entityClass = [MDLGroup class];
+    }
+    else if ([segue.identifier isEqualToString:@"MDLLastTagsUserLibrarySegue"])
+    {
+        ((MDLTopViewController *)segue.destinationViewController).entityClass = [MDLTag class];
+        ((MDLTopViewController *)segue.destinationViewController).inUserLibrary = YES;
     }
 }
 

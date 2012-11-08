@@ -24,6 +24,12 @@
 #import "MDLTag.h"
 #import "MDLMendeleyAPIClient.h"
 
+@interface MDLTag ()
+
++ (NSArray *)tagsFromRequestResponseObject:(NSArray *)responseObject;
+
+@end
+
 @implementation MDLTag
 
 + (MDLTag *)tagWithName:(NSString *)name count:(NSNumber *)count
@@ -34,6 +40,15 @@
     return tag;
 }
 
++ (NSArray *)tagsFromRequestResponseObject:(NSArray *)responseObject
+{
+    NSMutableArray *tags = [NSMutableArray array];
+    [responseObject enumerateObjectsUsingBlock:^(NSDictionary *rawTag, NSUInteger idx, BOOL *stop) {
+        [tags addObject:[MDLTag tagWithName:rawTag[@"name"] count:rawTag[@"count"]]];
+    }];
+    return tags;
+}
+
 + (void)lastTagsInPublicLibraryForCategory:(NSString *)categoryIdentifier success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
@@ -42,18 +57,32 @@
                parameters:nil
                   success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
                       if (success)
-                      {
-                          NSMutableArray *tags = [NSMutableArray array];
-                          [responseObject enumerateObjectsUsingBlock:^(NSDictionary *rawTag, NSUInteger idx, BOOL *stop) {
-                              MDLTag *tag = [MDLTag tagWithName:rawTag[@"name"] count:rawTag[@"count"]];
-                              [tags addObject:tag];
-                          }];
-                          success(tags);
-                      }
+                          success([self tagsFromRequestResponseObject:responseObject]);
                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                       if (failure)
                           failure(error);
                   }];
+}
+
++ (void)lastTagsInUserLibrarySuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
+    
+    [client getPrivatePath:@"/oapi/library/tags/"
+                   success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
+                       if (success)
+                       {
+                           NSMutableArray *tags = [NSMutableArray array];
+                           [responseObject enumerateObjectsUsingBlock:^(NSDictionary *groupOfTags, NSUInteger idx, BOOL *stop) {
+                               if ([groupOfTags[@"tags"] isKindOfClass:[NSArray class]])
+                                   [tags addObjectsFromArray:[self tagsFromRequestResponseObject:groupOfTags[@"tags"]]];
+                           }];
+                           success(tags);
+                       }
+                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                       if (failure)
+                           failure(error);
+                   }];
 }
 
 @end
