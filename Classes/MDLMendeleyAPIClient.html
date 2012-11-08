@@ -42,6 +42,8 @@
 	
 	<option value="//api/name/automaticAuthenticationEnabled">&nbsp;&nbsp;&nbsp;&nbsp;automaticAuthenticationEnabled</option>
 	
+	<option value="//api/name/rateLimitRemainingForLatestRequest">&nbsp;&nbsp;&nbsp;&nbsp;rateLimitRemainingForLatestRequest</option>
+	
 	
 	
 	
@@ -54,13 +56,13 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/getPath:parameters:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- getPath:parameters:success:failure:</option>
+	<option value="//api/name/getPrivatePath:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- getPrivatePath:success:failure:</option>
 	
-	<option value="//api/name/getPath:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- getPath:success:failure:</option>
+	<option value="//api/name/getPublicPath:parameters:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- getPublicPath:parameters:success:failure:</option>
 	
-	<option value="//api/name/postPath:bodyKey:bodyContent:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- postPath:bodyKey:bodyContent:success:failure:</option>
+	<option value="//api/name/postPrivatePath:bodyKey:bodyContent:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- postPrivatePath:bodyKey:bodyContent:success:failure:</option>
 	
-	<option value="//api/name/putPath:fileAtURL:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- putPath:fileAtURL:success:failure:</option>
+	<option value="//api/name/putPrivatePath:fileAtURL:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- putPrivatePath:fileAtURL:success:failure:</option>
 	
 	
 	
@@ -88,6 +90,8 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/automaticAuthenticationEnabled">automaticAuthenticationEnabled</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/rateLimitRemainingForLatestRequest">rateLimitRemainingForLatestRequest</a></span></li>
+	
 </ul></li>
 
 
@@ -102,13 +106,13 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getPath:parameters:success:failure:">getPath:parameters:success:failure:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getPrivatePath:success:failure:">getPrivatePath:success:failure:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getPath:success:failure:">getPath:success:failure:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getPublicPath:parameters:success:failure:">getPublicPath:parameters:success:failure:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postPath:bodyKey:bodyContent:success:failure:">postPath:bodyKey:bodyContent:success:failure:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postPrivatePath:bodyKey:bodyContent:success:failure:">postPrivatePath:bodyKey:bodyContent:success:failure:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/putPath:fileAtURL:success:failure:">putPath:fileAtURL:success:failure:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/putPrivatePath:fileAtURL:success:failure:">putPrivatePath:fileAtURL:success:failure:</a></span></li>
 	
 </ul></li>
 
@@ -172,6 +176,14 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/rateLimitRemainingForLatestRequest">&nbsp;&nbsp;rateLimitRemainingForLatestRequest</a></code>
+		<span class="tooltip"><p>Number of calls you can still do within the next hour for the latest request. This is <code>NSNotFound</code> by default.
+Note that the default rate limit for calls varies depending on the method being requested.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/sharedClient">+&nbsp;sharedClient</a></code>
 		<span class="tooltip"><p>Creates and initializes if needed a singleton instance of a <code>MDLMendeleyAPIClient</code> object configured with Mendeley Open API URL.</p></span>
 	</span>
@@ -179,28 +191,28 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/getPath:success:failure:">&ndash;&nbsp;getPath:success:failure:</a></code>
+		<code><a href="#//api/name/getPublicPath:parameters:success:failure:">&ndash;&nbsp;getPublicPath:parameters:success:failure:</a></code>
 		<span class="tooltip"><p>Creates an <code>AFHTTPRequestOperation</code> with a <code>GET</code> request, and enqueues it to the HTTP client’s operation queue.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/getPath:parameters:success:failure:">&ndash;&nbsp;getPath:parameters:success:failure:</a></code>
+		<code><a href="#//api/name/getPrivatePath:success:failure:">&ndash;&nbsp;getPrivatePath:success:failure:</a></code>
 		<span class="tooltip"><p>Creates an <code>AFHTTPRequestOperation</code> with a <code>GET</code> request, and enqueues it to the HTTP client’s operation queue.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/postPath:bodyKey:bodyContent:success:failure:">&ndash;&nbsp;postPath:bodyKey:bodyContent:success:failure:</a></code>
+		<code><a href="#//api/name/postPrivatePath:bodyKey:bodyContent:success:failure:">&ndash;&nbsp;postPrivatePath:bodyKey:bodyContent:success:failure:</a></code>
 		<span class="tooltip"><p>Creates an <code>AFHTTPRequestOperation</code> with a <code>POST</code> request, and enqueues it to the HTTP client’s operation queue.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/putPath:fileAtURL:success:failure:">&ndash;&nbsp;putPath:fileAtURL:success:failure:</a></code>
+		<code><a href="#//api/name/putPrivatePath:fileAtURL:success:failure:">&ndash;&nbsp;putPrivatePath:fileAtURL:success:failure:</a></code>
 		<span class="tooltip"><p>Creates an <code>AFHTTPRequestOperation</code> with a <code>PUT</code> request, and enqueues it to the HTTP client’s operation queue.</p></span>
 	</span>
 	
@@ -248,6 +260,58 @@
 	
 	
 	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MDLMendeleyAPIClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/rateLimitRemainingForLatestRequest" title="rateLimitRemainingForLatestRequest"></a>
+	<h3 class="subsubtitle method-title">rateLimitRemainingForLatestRequest</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Number of calls you can still do within the next hour for the latest request. This is <code>NSNotFound</code> by default.
+Note that the default rate limit for calls varies depending on the method being requested.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) NSInteger rateLimitRemainingForLatestRequest</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Number of calls you can still do within the next hour for the latest request. This is <code>NSNotFound</code> by default.
+Note that the default rate limit for calls varies depending on the method being requested.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="http://apidocs.mendeley.com/home/rate-limiting">API documentation: Rate Limiting</a></p></code></li>
+			
+		</ul>
+	</div>
 	
 	
 	
@@ -322,8 +386,8 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/getPath:parameters:success:failure:" title="getPath:parameters:success:failure:"></a>
-	<h3 class="subsubtitle method-title">getPath:parameters:success:failure:</h3>
+	<a name="//api/name/getPrivatePath:success:failure:" title="getPrivatePath:success:failure:"></a>
+	<h3 class="subsubtitle method-title">getPrivatePath:success:failure:</h3>
 	
 	
 	
@@ -333,7 +397,68 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)getPath:(NSString *)<em>path</em> parameters:(NSDictionary *)<em>parameters</em> success:(void ( ^ ) ( AFHTTPRequestOperation *, id ))<em>success</em> failure:(void ( ^ ) ( AFHTTPRequestOperation *, NSError *))<em>failure</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)getPrivatePath:(NSString *)<em>path</em> success:(void ( ^ ) ( AFHTTPRequestOperation *, id ))<em>success</em> failure:(void ( ^ ) ( AFHTTPRequestOperation *, NSError *))<em>failure</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>path</em></dt>
+			<dd><p>The path to be appended to the HTTP client’s base URL and used as the request URL.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>success</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: the created request operation and the deserialized JSON object created from the response data of request.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>failure</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes two arguments: the created request operation and the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Creates an <code>AFHTTPRequestOperation</code> with a <code>GET</code> request, and enqueues it to the HTTP client’s operation queue.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MDLMendeleyAPIClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getPublicPath:parameters:success:failure:" title="getPublicPath:parameters:success:failure:"></a>
+	<h3 class="subsubtitle method-title">getPublicPath:parameters:success:failure:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates an <code>AFHTTPRequestOperation</code> with a <code>GET</code> request, and enqueues it to the HTTP client’s operation queue.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)getPublicPath:(NSString *)<em>path</em> parameters:(NSDictionary *)<em>parameters</em> success:(void ( ^ ) ( AFHTTPRequestOperation *, id ))<em>success</em> failure:(void ( ^ ) ( AFHTTPRequestOperation *, NSError *))<em>failure</em></code></div>
 
     
 	
@@ -388,69 +513,8 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/getPath:success:failure:" title="getPath:success:failure:"></a>
-	<h3 class="subsubtitle method-title">getPath:success:failure:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Creates an <code>AFHTTPRequestOperation</code> with a <code>GET</code> request, and enqueues it to the HTTP client’s operation queue.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)getPath:(NSString *)<em>path</em> success:(void ( ^ ) ( AFHTTPRequestOperation *, id ))<em>success</em> failure:(void ( ^ ) ( AFHTTPRequestOperation *, NSError *))<em>failure</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>path</em></dt>
-			<dd><p>The path to be appended to the HTTP client’s base URL and used as the request URL.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>success</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: the created request operation and the deserialized JSON object created from the response data of request.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>failure</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes two arguments: the created request operation and the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Creates an <code>AFHTTPRequestOperation</code> with a <code>GET</code> request, and enqueues it to the HTTP client’s operation queue.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">MDLMendeleyAPIClient.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/postPath:bodyKey:bodyContent:success:failure:" title="postPath:bodyKey:bodyContent:success:failure:"></a>
-	<h3 class="subsubtitle method-title">postPath:bodyKey:bodyContent:success:failure:</h3>
+	<a name="//api/name/postPrivatePath:bodyKey:bodyContent:success:failure:" title="postPrivatePath:bodyKey:bodyContent:success:failure:"></a>
+	<h3 class="subsubtitle method-title">postPrivatePath:bodyKey:bodyContent:success:failure:</h3>
 	
 	
 	
@@ -460,7 +524,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)postPath:(NSString *)<em>path</em> bodyKey:(NSString *)<em>bodyKey</em> bodyContent:(id)<em>bodyContent</em> success:(void ( ^ ) ( AFHTTPRequestOperation *, id ))<em>success</em> failure:(void ( ^ ) ( AFHTTPRequestOperation *, NSError *))<em>failure</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)postPrivatePath:(NSString *)<em>path</em> bodyKey:(NSString *)<em>bodyKey</em> bodyContent:(id)<em>bodyContent</em> success:(void ( ^ ) ( AFHTTPRequestOperation *, id ))<em>success</em> failure:(void ( ^ ) ( AFHTTPRequestOperation *, NSError *))<em>failure</em></code></div>
 
     
 	
@@ -520,8 +584,8 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/putPath:fileAtURL:success:failure:" title="putPath:fileAtURL:success:failure:"></a>
-	<h3 class="subsubtitle method-title">putPath:fileAtURL:success:failure:</h3>
+	<a name="//api/name/putPrivatePath:fileAtURL:success:failure:" title="putPrivatePath:fileAtURL:success:failure:"></a>
+	<h3 class="subsubtitle method-title">putPrivatePath:fileAtURL:success:failure:</h3>
 	
 	
 	
@@ -531,7 +595,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)putPath:(NSString *)<em>path</em> fileAtURL:(NSURL *)<em>fileURL</em> success:(void ( ^ ) ( AFHTTPRequestOperation *, id ))<em>success</em> failure:(void ( ^ ) ( AFHTTPRequestOperation *, NSError *))<em>failure</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)putPrivatePath:(NSString *)<em>path</em> fileAtURL:(NSURL *)<em>fileURL</em> success:(void ( ^ ) ( AFHTTPRequestOperation *, id ))<em>success</em> failure:(void ( ^ ) ( AFHTTPRequestOperation *, NSError *))<em>failure</em></code></div>
 
     
 	
@@ -598,7 +662,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 shazino. All rights reserved. (Last updated: 2012-10-16)</span><br />
+						<p><span class="copyright">&copy; 2012 shazino. All rights reserved. (Last updated: 2012-11-08)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

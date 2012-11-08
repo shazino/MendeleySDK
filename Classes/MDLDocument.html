@@ -46,7 +46,7 @@
 	
 	<option value="//api/name/authors">&nbsp;&nbsp;&nbsp;&nbsp;authors</option>
 	
-	<option value="//api/name/documentIdentifier">&nbsp;&nbsp;&nbsp;&nbsp;documentIdentifier</option>
+	<option value="//api/name/identifier">&nbsp;&nbsp;&nbsp;&nbsp;identifier</option>
 	
 	<option value="//api/name/mendeleyURL">&nbsp;&nbsp;&nbsp;&nbsp;mendeleyURL</option>
 	
@@ -65,9 +65,13 @@
 	
 	<option value="//api/name/documentWithTitle:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;+ documentWithTitle:success:failure:</option>
 	
-	<option value="//api/name/searchWithGenericTerms:authors:title:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;+ searchWithGenericTerms:authors:title:success:failure:</option>
+	<option value="//api/name/searchAuthoredWithName:year:atPage:count:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;+ searchAuthoredWithName:year:atPage:count:success:failure:</option>
 	
-	<option value="//api/name/searchWithTerms:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;+ searchWithTerms:success:failure:</option>
+	<option value="//api/name/searchTagged:category:subcategory:atPage:count:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;+ searchTagged:category:subcategory:atPage:count:success:failure:</option>
+	
+	<option value="//api/name/searchWithGenericTerms:authors:title:year:tags:atPage:count:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;+ searchWithGenericTerms:authors:title:year:tags:atPage:count:success:failure:</option>
+	
+	<option value="//api/name/searchWithTerms:atPage:count:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;+ searchWithTerms:atPage:count:success:failure:</option>
 	
 	<option value="//api/name/topDocumentsInPublicLibraryForCategory:upAndComing:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;+ topDocumentsInPublicLibraryForCategory:upAndComing:success:failure:</option>
 	
@@ -77,6 +81,8 @@
 	<option value="instance_methods">Instance Methods</option>
 	
 	<option value="//api/name/fetchDetailsSuccess:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- fetchDetailsSuccess:failure:</option>
+	
+	<option value="//api/name/fetchRelatedDocumentsAtPage:count:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- fetchRelatedDocumentsAtPage:count:success:failure:</option>
 	
 	<option value="//api/name/uploadFileAtURL:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- uploadFileAtURL:success:failure:</option>
 	
@@ -110,7 +116,7 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authors">authors</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/documentIdentifier">documentIdentifier</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/identifier">identifier</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/mendeleyURL">mendeleyURL</a></span></li>
 	
@@ -130,9 +136,13 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/documentWithTitle:success:failure:">documentWithTitle:success:failure:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/searchWithGenericTerms:authors:title:success:failure:">searchWithGenericTerms:authors:title:success:failure:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/searchAuthoredWithName:year:atPage:count:success:failure:">searchAuthoredWithName:year:atPage:count:success:failure:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/searchWithTerms:success:failure:">searchWithTerms:success:failure:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/searchTagged:category:subcategory:atPage:count:success:failure:">searchTagged:category:subcategory:atPage:count:success:failure:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/searchWithGenericTerms:authors:title:year:tags:atPage:count:success:failure:">searchWithGenericTerms:authors:title:year:tags:atPage:count:success:failure:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/searchWithTerms:atPage:count:success:failure:">searchWithTerms:atPage:count:success:failure:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/topDocumentsInPublicLibraryForCategory:upAndComing:success:failure:">topDocumentsInPublicLibraryForCategory:upAndComing:success:failure:</a></span></li>
 	
@@ -143,6 +153,8 @@
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fetchDetailsSuccess:failure:">fetchDetailsSuccess:failure:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fetchRelatedDocumentsAtPage:count:success:failure:">fetchRelatedDocumentsAtPage:count:success:failure:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/uploadFileAtURL:success:failure:">uploadFileAtURL:success:failure:</a></span></li>
 	
@@ -201,7 +213,7 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/documentIdentifier">&nbsp;&nbsp;documentIdentifier</a></code>
+		<code><a href="#//api/name/identifier">&nbsp;&nbsp;identifier</a></code>
 		<span class="tooltip"><p>The document identifier, as generated by Mendeley.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
@@ -271,15 +283,29 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/searchWithTerms:success:failure:">+&nbsp;searchWithTerms:success:failure:</a></code>
+		<code><a href="#//api/name/searchWithTerms:atPage:count:success:failure:">+&nbsp;searchWithTerms:atPage:count:success:failure:</a></code>
 		<span class="tooltip"><p>Sends an API search request with generic terms using the shared client.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/searchWithGenericTerms:authors:title:success:failure:">+&nbsp;searchWithGenericTerms:authors:title:success:failure:</a></code>
+		<code><a href="#//api/name/searchWithGenericTerms:authors:title:year:tags:atPage:count:success:failure:">+&nbsp;searchWithGenericTerms:authors:title:year:tags:atPage:count:success:failure:</a></code>
 		<span class="tooltip"><p>Sends an API search request with specific terms using the shared client.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/searchTagged:category:subcategory:atPage:count:success:failure:">+&nbsp;searchTagged:category:subcategory:atPage:count:success:failure:</a></code>
+		<span class="tooltip"><p>Sends a search tagged API request using the shared client.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/searchAuthoredWithName:year:atPage:count:success:failure:">+&nbsp;searchAuthoredWithName:year:atPage:count:success:failure:</a></code>
+		<span class="tooltip"><p>Sends a search authored API request using the shared client.</p></span>
 	</span>
 	
 	
@@ -301,6 +327,13 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/fetchDetailsSuccess:failure:">&ndash;&nbsp;fetchDetailsSuccess:failure:</a></code>
 		<span class="tooltip"><p>Sends an API details request for the current document using the shared client.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/fetchRelatedDocumentsAtPage:count:success:failure:">&ndash;&nbsp;fetchRelatedDocumentsAtPage:count:success:failure:</a></code>
+		<span class="tooltip"><p>Sends a related documents API request using the shared client.</p></span>
 	</span>
 	
 	
@@ -441,8 +474,8 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/documentIdentifier" title="documentIdentifier"></a>
-	<h3 class="subsubtitle method-title">documentIdentifier</h3>
+	<a name="//api/name/identifier" title="identifier"></a>
+	<h3 class="subsubtitle method-title">identifier</h3>
 	
 	
 	
@@ -452,7 +485,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *documentIdentifier</code></div>
+	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *identifier</code></div>
 
     
 	
@@ -720,7 +753,7 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>success</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: the created document with its newly assigned document identifier.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: the created document with its newly assigned document <a href="#//api/name/identifier">identifier</a>.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -734,7 +767,7 @@
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>The newly-initialized document, with document identifier = <code>nil</code>.</p>
+		<p>The newly-initialized document, with document <a href="#//api/name/identifier">identifier</a> = <code>nil</code>.</p>
 	</div>
 	
 	
@@ -770,8 +803,183 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/searchWithGenericTerms:authors:title:success:failure:" title="searchWithGenericTerms:authors:title:success:failure:"></a>
-	<h3 class="subsubtitle method-title">searchWithGenericTerms:authors:title:success:failure:</h3>
+	<a name="//api/name/searchAuthoredWithName:year:atPage:count:success:failure:" title="searchAuthoredWithName:year:atPage:count:success:failure:"></a>
+	<h3 class="subsubtitle method-title">searchAuthoredWithName:year:atPage:count:success:failure:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sends a search authored API request using the shared client.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)searchAuthoredWithName:(NSString *)<em>name</em> year:(NSNumber *)<em>year</em> atPage:(NSUInteger)<em>pageIndex</em> count:(NSUInteger)<em>count</em> success:(void ( ^ ) ( NSArray *, NSUInteger , NSUInteger , NSUInteger , NSUInteger ))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>The name of the author for the search query</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>year</em></dt>
+			<dd><p>The <a href="#//api/name/year">year</a> for the search query</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>pageIndex</em></dt>
+			<dd><p>The page index. <code>O</code> is first page.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>count</em></dt>
+			<dd><p>The number of items returned per page.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>success</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes five arguments: an array of <code>MDLDocument</code> objects for the match, the total number of results, the total number of pages, the index of the current page, and the number of items per page.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>failure</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Sends a search authored API request using the shared client.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="http://apidocs.mendeley.com/home/public-resources/search-authored">API documentation: Search Authored</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MDLDocument.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/searchTagged:category:subcategory:atPage:count:success:failure:" title="searchTagged:category:subcategory:atPage:count:success:failure:"></a>
+	<h3 class="subsubtitle method-title">searchTagged:category:subcategory:atPage:count:success:failure:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sends a search tagged API request using the shared client.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)searchTagged:(NSString *)<em>tag</em> category:(MDLCategory *)<em>category</em> subcategory:(MDLSubcategory *)<em>subcategory</em> atPage:(NSUInteger)<em>pageIndex</em> count:(NSUInteger)<em>count</em> success:(void ( ^ ) ( NSArray *, NSUInteger , NSUInteger , NSUInteger , NSUInteger ))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>tag</em></dt>
+			<dd><p>The tags for the search query</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>category</em></dt>
+			<dd><p>The category for the search query</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>subcategory</em></dt>
+			<dd><p>The subcategory for the search query</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>pageIndex</em></dt>
+			<dd><p>The page index. <code>O</code> is first page.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>count</em></dt>
+			<dd><p>The number of items returned per page.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>success</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes five arguments: an array of <code>MDLDocument</code> objects for the match, the total number of results, the total number of pages, the index of the current page, and the number of items per page.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>failure</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Sends a search tagged API request using the shared client.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="http://apidocs.mendeley.com/home/public-resources/search-tagged">API documentation: Search Tagged</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MDLDocument.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/searchWithGenericTerms:authors:title:year:tags:atPage:count:success:failure:" title="searchWithGenericTerms:authors:title:year:tags:atPage:count:success:failure:"></a>
+	<h3 class="subsubtitle method-title">searchWithGenericTerms:authors:title:year:tags:atPage:count:success:failure:</h3>
 	
 	
 	
@@ -781,7 +989,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (void)searchWithGenericTerms:(NSString *)<em>genericTerms</em> authors:(NSString *)<em>authors</em> title:(NSString *)<em>title</em> success:(void ( ^ ) ( NSArray *))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (void)searchWithGenericTerms:(NSString *)<em>genericTerms</em> authors:(NSString *)<em>authors</em> title:(NSString *)<em>title</em> year:(NSNumber *)<em>year</em> tags:(NSString *)<em>tags</em> atPage:(NSUInteger)<em>pageIndex</em> count:(NSUInteger)<em>count</em> success:(void ( ^ ) ( NSArray *, NSUInteger , NSUInteger , NSUInteger , NSUInteger ))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
 
     
 	
@@ -804,8 +1012,28 @@
 		</dl>
 		
 		<dl class="argument-def parameter-def">
+			<dt><em>year</em></dt>
+			<dd><p>The <a href="#//api/name/year">year</a> for the search query</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>tags</em></dt>
+			<dd><p>The tags for the search query</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>pageIndex</em></dt>
+			<dd><p>The page index. <code>O</code> is first page.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>count</em></dt>
+			<dd><p>The number of items returned per page.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
 			<dt><em>success</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of <code>MDLDocument</code> objects for the match.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes five arguments: an array of <code>MDLDocument</code> objects for the match, the total number of results, the total number of pages, the index of the current page, and the number of items per page.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -850,8 +1078,8 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/searchWithTerms:success:failure:" title="searchWithTerms:success:failure:"></a>
-	<h3 class="subsubtitle method-title">searchWithTerms:success:failure:</h3>
+	<a name="//api/name/searchWithTerms:atPage:count:success:failure:" title="searchWithTerms:atPage:count:success:failure:"></a>
+	<h3 class="subsubtitle method-title">searchWithTerms:atPage:count:success:failure:</h3>
 	
 	
 	
@@ -861,7 +1089,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (void)searchWithTerms:(NSString *)<em>terms</em> success:(void ( ^ ) ( NSArray *))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (void)searchWithTerms:(NSString *)<em>terms</em> atPage:(NSUInteger)<em>pageIndex</em> count:(NSUInteger)<em>count</em> success:(void ( ^ ) ( NSArray *, NSUInteger , NSUInteger , NSUInteger , NSUInteger ))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
 
     
 	
@@ -874,8 +1102,18 @@
 		</dl>
 		
 		<dl class="argument-def parameter-def">
+			<dt><em>pageIndex</em></dt>
+			<dd><p>The page index. <code>O</code> is first page.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>count</em></dt>
+			<dd><p>The number of items returned per page.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
 			<dt><em>success</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of <code>MDLDocument</code> objects for the match.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes five arguments: an array of <code>MDLDocument</code> objects for the match, the total number of results, the total number of pages, the index of the current page, and the number of items per page.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -940,7 +1178,7 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>categoryIdentifier</em></dt>
-			<dd><p>If not <code>nil</code>, the identifier of the category, otherwise across all categories.</p></dd>
+			<dd><p>If not <code>nil</code>, the <a href="#//api/name/identifier">identifier</a> of the category, otherwise across all categories.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
@@ -1068,6 +1306,81 @@
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/fetchRelatedDocumentsAtPage:count:success:failure:" title="fetchRelatedDocumentsAtPage:count:success:failure:"></a>
+	<h3 class="subsubtitle method-title">fetchRelatedDocumentsAtPage:count:success:failure:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sends a related documents API request using the shared client.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)fetchRelatedDocumentsAtPage:(NSUInteger)<em>pageIndex</em> count:(NSUInteger)<em>count</em> success:(void ( ^ ) ( NSArray *))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>pageIndex</em></dt>
+			<dd><p>The page index. <code>O</code> is first page.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>count</em></dt>
+			<dd><p>The number of items returned per page.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>success</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of <code>MDLDocument</code> objects.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>failure</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Sends a related documents API request using the shared client.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="http://apidocs.mendeley.com/home/public-resources/search-related">API documentation: Search Related</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MDLDocument.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/uploadFileAtURL:success:failure:" title="uploadFileAtURL:success:failure:"></a>
 	<h3 class="subsubtitle method-title">uploadFileAtURL:success:failure:</h3>
 	
@@ -1152,7 +1465,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 shazino. All rights reserved. (Last updated: 2012-10-16)</span><br />
+						<p><span class="copyright">&copy; 2012 shazino. All rights reserved. (Last updated: 2012-11-08)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
