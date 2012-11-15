@@ -16,5 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *activityStatusLabel;
 
 - (IBAction)upload:(id)sender;
+- (IBAction)cancel:(id)sender;
 
 @end

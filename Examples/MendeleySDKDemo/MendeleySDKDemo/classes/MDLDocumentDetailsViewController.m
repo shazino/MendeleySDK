@@ -10,17 +10,12 @@
 
 #import "MDLDocument.h"
 #import "MDLAuthor.h"
+#import "MDLFile.h"
 #import "MDLPublication.h"
 #import "MDLDocumentSearchResultsViewController.h"
+#import "MDLFilesViewController.h"
 
 @interface MDLDocumentDetailsViewController ()
-
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *authorsLabel;
-@property (weak, nonatomic) IBOutlet UILabel *publicationLabel;
-@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
-@property (weak, nonatomic) IBOutlet UITextView *abstractTextView;
-@property (weak, nonatomic) IBOutlet UIButton *mendeleyURLButton;
 
 - (void)updateOutletsWithDocument:(MDLDocument *)document;
 - (IBAction)openMendeleyURL:(id)sender;
@@ -34,7 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self updateOutletsWithDocument:nil];
+    [self updateOutletsWithDocument:self.document];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -52,6 +47,9 @@
 
 - (void)updateOutletsWithDocument:(MDLDocument *)document
 {
+    if (!document)
+        return;
+    
     self.titleLabel.text = document.title;
     self.typeLabel.text = document.type;
     self.abstractTextView.text = document.abstract;
@@ -65,7 +63,11 @@
             [authors appendString:@", "];
     }];
     self.authorsLabel.text = authors;
-    self.publicationLabel.text = (document.publication || document.year) ? [NSString stringWithFormat:@"%@ (%@)", document.publication.name, [document.year stringValue]] : @"";
+    self.publicationLabel.text = (document.publication || document.year) ? [NSString stringWithFormat:@"%@ (%@)", (document.publication) ? document.publication.name : @"?", (document.year) ? document.year : @"?"] : @"";
+    self.relatedDocumentsButton.enabled = !document.isInUserLibrary;
+    
+    self.filesButton.enabled = ([document.files count] > 0);
+    [self.filesButton setTitle:([document.files count] > 0) ? @"Files" : @"No Files" forState:UIControlStateNormal];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -74,6 +76,11 @@
     {
         MDLDocumentSearchResultsViewController *resultsViewController = (MDLDocumentSearchResultsViewController *)segue.destinationViewController;
         resultsViewController.relatedToDocument = self.document;
+    }
+    else if ([segue.destinationViewController isKindOfClass:[MDLFilesViewController class]])
+    {
+        MDLFilesViewController *filesViewController = (MDLFilesViewController *)segue.destinationViewController;
+        filesViewController.files = self.document.files;
     }
 }
 

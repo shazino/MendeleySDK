@@ -28,6 +28,11 @@
 
 #pragma mark - Actions
 
+- (IBAction)cancel:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)generatePDFAtURL:(NSURL *)fileURL content:(NSString *)fileContent
 {
     NSMutableData *PDFData = [NSMutableData data];

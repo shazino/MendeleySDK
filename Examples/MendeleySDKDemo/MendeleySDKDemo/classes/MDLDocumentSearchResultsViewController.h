@@ -10,7 +10,7 @@
 
 @class MDLDocument;
 
-@interface MDLDocumentSearchResultsViewController : UITableViewController <UISearchBarDelegate>
+@interface MDLDocumentSearchResultsViewController : UITableViewController
 
 @property (nonatomic, copy) NSString *searchGenericTerms;
 @property (nonatomic, copy) NSString *searchAuthors;
@@ -18,5 +18,7 @@
 @property (nonatomic, copy) NSNumber *searchYear;
 @property (nonatomic, copy) NSString *searchTags;
 @property (nonatomic, weak) MDLDocument *relatedToDocument;
+@property BOOL fetchUserLibrary;
+@property BOOL fetchAuthoredDocuments;
 
 @end

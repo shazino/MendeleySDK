@@ -35,35 +35,35 @@
 
 + (MDLUser *)userWithIdentifier:(NSString *)identifier name:(NSString *)name
 {
-    MDLUser *user = [MDLUser new];
+    MDLUser *user   = [MDLUser new];
     user.identifier = identifier;
-    user.name = name;
+    user.name       = name;
     return user;
 }
 
 + (void)fetchUserProfileForUser:(MDLUser *)user withIdentifier:(NSString *)identifier success:(void (^)(MDLUser *))success failure:(void (^)(NSError *))failure
 {
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    
-    [client getPrivatePath:[NSString stringWithFormat:@"/oapi/profiles/info/%@/", identifier]
-                   success:^(AFHTTPRequestOperation *operation, NSDictionary *responseDictionary) {
-                       NSDictionary *profileMain = responseDictionary[@"main"];
-                       user.name = profileMain[@"name"];
-                       user.academicStatus = profileMain[@"academic_status"];
-                       user.academicStatusIdentifier = profileMain[@"academic_status_id"];
-                       user.bio = profileMain[@"bio"];
-                       user.category = [MDLCategory categoryWithIdentifier:profileMain[@"discipline_id"] name:profileMain[@"discipline_name"] slug:nil];
-                       user.location = profileMain[@"location"];
-                       user.photoURL = [NSURL URLWithString:profileMain[@"photo"]];
-                       user.identifier = profileMain[@"profile_id"];
-                       user.researchInterests = profileMain[@"research_interests"];
-                       user.mendeleyURL = [NSURL URLWithString:profileMain[@"url"]];
-                       if (success)
-                           success(user);
-                   } failure:^(AFHTTPRequestOperation *requestOperation, NSError *error) {
-                       if (failure)
-                           failure(error);
-                   }];
+    [[MDLMendeleyAPIClient sharedClient] getPath:[NSString stringWithFormat:@"/oapi/profiles/info/%@/", identifier]
+                          requiresAuthentication:YES
+                                      parameters:nil
+                                         success:^(AFHTTPRequestOperation *operation, NSDictionary *responseDictionary) {
+                                             NSDictionary *profileMain = responseDictionary[@"main"];
+                                             user.name = profileMain[@"name"];
+                                             user.academicStatus = profileMain[@"academic_status"];
+                                             user.academicStatusIdentifier = profileMain[@"academic_status_id"];
+                                             user.bio = profileMain[@"bio"];
+                                             user.category = [MDLCategory categoryWithIdentifier:profileMain[@"discipline_id"] name:profileMain[@"discipline_name"] slug:nil];
+                                             user.location = profileMain[@"location"];
+                                             user.photoURL = [NSURL URLWithString:profileMain[@"photo"]];
+                                             user.identifier = profileMain[@"profile_id"];
+                                             user.researchInterests = profileMain[@"research_interests"];
+                                             user.mendeleyURL = [NSURL URLWithString:profileMain[@"url"]];
+                                             if (success)
+                                                 success(user);
+                                         } failure:^(AFHTTPRequestOperation *requestOperation, NSError *error) {
+                                             if (failure)
+                                                 failure(error);
+                                         }];
 }
 
 + (void)fetchMyUserProfileSuccess:(void (^)(MDLUser *))success failure:(void (^)(NSError *))failure

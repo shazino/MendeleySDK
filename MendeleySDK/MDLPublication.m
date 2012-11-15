@@ -34,6 +34,9 @@
 
 + (MDLPublication *)publicationWithName:(NSString *)name
 {
+    if (!name)
+        return nil;
+    
     MDLPublication *publication = [MDLPublication new];
     publication.name = name;
     return publication;
@@ -42,45 +45,43 @@
 + (NSArray *)publicationsFromRequestResponseObject:(NSArray *)responseObject
 {
     NSMutableArray *publications = [NSMutableArray array];
-    [responseObject enumerateObjectsUsingBlock:^(NSDictionary *rawPublication, NSUInteger idx, BOOL *stop) {
+    for (NSDictionary *rawPublication in responseObject)
         [publications addObject:[MDLPublication publicationWithName:rawPublication[@"name"]]];
-    }];
     return publications;
 }
 
 + (void)topPublicationsInPublicLibraryForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     if (upAndComing)
         parameters[@"upandcoming"] = @"true";
     if (categoryIdentifier)
         parameters[@"discipline"] = categoryIdentifier;
     
-    [client getPublicPath:@"/oapi/stats/publications/"
-               parameters:parameters
-                  success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
-                      if (success)
-                          success([self publicationsFromRequestResponseObject:responseObject]);
-                  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                      if (failure)
-                          failure(error);
-                  }];
+    [[MDLMendeleyAPIClient sharedClient] getPath:@"/oapi/stats/publications/"
+                          requiresAuthentication:NO
+                                      parameters:parameters
+                                         success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
+                                             if (success)
+                                                 success([self publicationsFromRequestResponseObject:responseObject]);
+                                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                             if (failure)
+                                                 failure(error);
+                                         }];
 }
 
 + (void)topPublicationsInUserLibrarySuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    
-    [client getPrivatePath:@"/oapi/library/publications/"
-                   success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
-                       if (success)
-                           success([self publicationsFromRequestResponseObject:responseObject]);
-                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                       if (failure)
-                           failure(error);
-                   }];
+    [[MDLMendeleyAPIClient sharedClient] getPath:@"/oapi/library/publications/"
+                          requiresAuthentication:YES
+                                      parameters:nil
+                                         success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
+                                             if (success)
+                                                 success([self publicationsFromRequestResponseObject:responseObject]);
+                                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                             if (failure)
+                                                 failure(error);
+                                         }];
 }
 
 @end

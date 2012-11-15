@@ -82,6 +82,16 @@ extern NSString * const kMDLDocumentTypeGeneric;
 @property (strong, nonatomic) NSNumber *year;
 
 /**
+ The files of the document.
+ */
+@property (strong, nonatomic) NSArray *files;
+
+/**
+ A Boolean value that corresponds to whether the document is in the user library.
+ */
+@property (readonly) BOOL isInUserLibrary;
+
+/**
  Creates a `MDLDocument` and sends an API creation request using the shared client.
  
  @param title The title of the document.
@@ -166,6 +176,30 @@ extern NSString * const kMDLDocumentTypeGeneric;
 + (void)topDocumentsInPublicLibraryForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 
 /**
+ Sends a user library API request using the shared client.
+ 
+ @param pageIndex The page index. `O` is first page.
+ @param count The number of items returned per page.
+ @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes five arguments: an array of `MDLDocument` objects, the total number of results, the total number of pages, the index of the current page, and the number of items per page.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ 
+ @see [API documentation: User Library](http://apidocs.mendeley.com/home/user-specific-methods/user-library)
+ */
++ (void)fetchDocumentsInUserLibraryAtPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure;
+
+/**
+ Sends a user authored API request using the shared client.
+ 
+ @param pageIndex The page index. `O` is first page.
+ @param count The number of items returned per page.
+ @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes five arguments: an array of `MDLDocument` objects, the total number of results, the total number of pages, the index of the current page, and the number of items per page.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ 
+ @see [API documentation: User Authored](http://apidocs.mendeley.com/home/user-specific-methods/user-authored)
+ */
++ (void)fetchAuthoredDocumentsInUserLibraryAtPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure;
+
+/**
  Sends an API upload request using the shared client.
  
  Keep in mind that Mendeley only handles a limited number of file formats (.pdf, etc).
@@ -185,6 +219,7 @@ extern NSString * const kMDLDocumentTypeGeneric;
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  
  @see [API documentation: Search details](http://apidocs.mendeley.com/home/public-resources/search-details)
+ @see [API documentation: User Library Document Details](http://apidocs.mendeley.com/home/user-specific-methods/user-library-document-details)
  */
 - (void)fetchDetailsSuccess:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure;
 
@@ -199,5 +234,15 @@ extern NSString * const kMDLDocumentTypeGeneric;
  @see [API documentation: Search Related](http://apidocs.mendeley.com/home/public-resources/search-related)
  */
 - (void)fetchRelatedDocumentsAtPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
+
+/**
+ Sends a delete document API request using the shared client.
+ 
+ @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `MDLDocument` objects.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ 
+ @see [API documentation: Delete Document](http://apidocs.mendeley.com/home/user-specific-methods/user-library-remove-document)
+ */
+- (void)deleteSuccess:(void (^)())success failure:(void (^)(NSError *))failure;
 
 @end

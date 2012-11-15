@@ -44,38 +44,41 @@
     return group;
 }
 
-+ (void)topGroupsInPublicLibraryForCategory:(NSString *)categoryIdentifier atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure
++ (void)topGroupsInPublicLibraryForCategory:(NSString *)categoryIdentifier
+                                     atPage:(NSUInteger)pageIndex
+                                      count:(NSUInteger)count
+                                    success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success
+                                    failure:(void (^)(NSError *))failure
 {
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     if (categoryIdentifier)
         parameters[@"cat"] = categoryIdentifier;
     parameters[@"page"] = @(pageIndex);
     parameters[@"items"] = @(count);
     
-    [client getPublicPath:@"/oapi/documents/groups"
-               parameters:parameters
-                  success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
-                      if (success)
-                      {
-                          NSMutableArray *groups = [NSMutableArray array];
-                          NSArray *rawGroups = responseObject[@"groups"];
-                          NSNumber *totalResults = responseObject[@"total_results"];
-                          NSNumber *totalPages = responseObject[@"total_pages"];
-                          NSNumber *pageIndex = responseObject[@"current_page"];
-                          NSNumber *itemsPerPage = responseObject[@"items_per_page"];
-                          [rawGroups enumerateObjectsUsingBlock:^(NSDictionary *rawGroup, NSUInteger idx, BOOL *stop) {
-                              MDLGroup *group = [MDLGroup new];
-                              [group updateWithRawGroup:rawGroup];
-                              [groups addObject:group];
-                          }];
-                          success(groups, [totalResults unsignedIntegerValue], [totalPages unsignedIntegerValue], [pageIndex unsignedIntegerValue], [itemsPerPage unsignedIntegerValue]);
-                      }
-                  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                      if (failure)
-                          failure(error);
-                  }];
+    [[MDLMendeleyAPIClient sharedClient] getPath:@"/oapi/documents/groups"
+                          requiresAuthentication:NO
+                                      parameters:parameters
+                                         success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+                                             if (success)
+                                             {
+                                                 NSMutableArray *groups = [NSMutableArray array];
+                                                 NSArray *rawGroups = responseObject[@"groups"];
+                                                 NSNumber *totalResults = responseObject[@"total_results"];
+                                                 NSNumber *totalPages = responseObject[@"total_pages"];
+                                                 NSNumber *pageIndex = responseObject[@"current_page"];
+                                                 NSNumber *itemsPerPage = responseObject[@"items_per_page"];
+                                                 [rawGroups enumerateObjectsUsingBlock:^(NSDictionary *rawGroup, NSUInteger idx, BOOL *stop) {
+                                                     MDLGroup *group = [MDLGroup new];
+                                                     [group updateWithRawGroup:rawGroup];
+                                                     [groups addObject:group];
+                                                 }];
+                                                 success(groups, [totalResults unsignedIntegerValue], [totalPages unsignedIntegerValue], [pageIndex unsignedIntegerValue], [itemsPerPage unsignedIntegerValue]);
+                                             }
+                                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                             if (failure)
+                                                 failure(error);
+                                         }];
 }
 
 - (void)updateWithRawGroup:(NSDictionary *)rawGroup
@@ -103,17 +106,17 @@
         return;
     }
     
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    [client getPublicPath:[NSString stringWithFormat:@"/oapi/documents/groups/%@", self.identifier]
-               parameters:nil
-                  success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
-                      [self updateWithRawGroup:responseObject];
-                      if (success)
-                          success(self);
-                  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                      if (failure)
-                          failure(error);
-                  }];
+    [[MDLMendeleyAPIClient sharedClient] getPath:[NSString stringWithFormat:@"/oapi/documents/groups/%@", self.identifier]
+                          requiresAuthentication:NO
+                                      parameters:nil
+                                         success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+                                             [self updateWithRawGroup:responseObject];
+                                             if (success)
+                                                 success(self);
+                                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                             if (failure)
+                                                 failure(error);
+                                         }];
 }
 
 - (void)fetchPeopleSuccess:(void (^)(MDLGroup *))success failure:(void (^)(NSError *))failure
@@ -124,36 +127,34 @@
         return;
     }
     
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    [client getPublicPath:[NSString stringWithFormat:@"/oapi/documents/groups/%@/people", self.identifier]
-               parameters:nil
-                  success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
-                      NSArray *rawAdmins = responseObject[@"admins"];
-                      NSMutableArray *admins = [NSMutableArray array];
-                      [rawAdmins enumerateObjectsUsingBlock:^(NSDictionary *rawUser, NSUInteger idx, BOOL *stop) {
-                          [admins addObject:[MDLUser userWithIdentifier:rawUser[@"user_id"] name:rawUser[@"name"]]];
-                      }];
-                      self.admins = admins;
-                      
-                      NSArray *rawMembers = responseObject[@"members"];
-                      NSMutableArray *members = [NSMutableArray array];
-                      [rawMembers enumerateObjectsUsingBlock:^(NSDictionary *rawUser, NSUInteger idx, BOOL *stop) {
-                          [members addObject:[MDLUser userWithIdentifier:rawUser[@"user_id"] name:rawUser[@"name"]]];
-                      }];
-                      self.members = members;
-                      
-                      NSArray *rawFollowers = responseObject[@"followers"];
-                      NSMutableArray *followers = [NSMutableArray array];
-                      [rawFollowers enumerateObjectsUsingBlock:^(NSDictionary *rawUser, NSUInteger idx, BOOL *stop) {
-                          [followers addObject:[MDLUser userWithIdentifier:rawUser[@"user_id"] name:rawUser[@"name"]]];
-                      }];
-                      self.followers = followers;
-                      if (success)
-                          success(self);
-                  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                      if (failure)
-                          failure(error);
-                  }];
+    [[MDLMendeleyAPIClient sharedClient] getPath:[NSString stringWithFormat:@"/oapi/documents/groups/%@/people", self.identifier]
+                          requiresAuthentication:NO
+                                      parameters:nil
+                                         success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+                                             NSArray *rawAdmins = responseObject[@"admins"];
+                                             NSMutableArray *admins = [NSMutableArray array];
+                                             [rawAdmins enumerateObjectsUsingBlock:^(NSDictionary *rawUser, NSUInteger idx, BOOL *stop) {
+                                                 [admins addObject:[MDLUser userWithIdentifier:rawUser[@"user_id"] name:rawUser[@"name"]]];
+                                             }];
+                                             self.admins = admins;
+                                             
+                                             NSArray *rawMembers = responseObject[@"members"];
+                                             NSMutableArray *members = [NSMutableArray array];
+                                             for (NSDictionary *rawUser in rawMembers)
+                                                 [members addObject:[MDLUser userWithIdentifier:rawUser[@"user_id"] name:rawUser[@"name"]]];
+                                             self.members = members;
+                                             
+                                             NSArray *rawFollowers = responseObject[@"followers"];
+                                             NSMutableArray *followers = [NSMutableArray array];
+                                             for (NSDictionary *rawUser in rawFollowers)
+                                                 [followers addObject:[MDLUser userWithIdentifier:rawUser[@"user_id"] name:rawUser[@"name"]]];
+                                             self.followers = followers;
+                                             if (success)
+                                                 success(self);
+                                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                             if (failure)
+                                                 failure(error);
+                                         }];
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "MDLMenuViewController.h"
 
 #import "MDLTopViewController.h"
+#import "MDLDocumentSearchResultsViewController.h"
 #import "MDLPublication.h"
 #import "MDLAuthor.h"
 #import "MDLDocument.h"
@@ -51,6 +52,14 @@
     {
         ((MDLTopViewController *)segue.destinationViewController).entityClass = [MDLTag class];
         ((MDLTopViewController *)segue.destinationViewController).inUserLibrary = YES;
+    }
+    else if ([segue.identifier isEqualToString:@"MDLDocumentsUserLibrarySegue"])
+    {
+        ((MDLDocumentSearchResultsViewController *)segue.destinationViewController).fetchUserLibrary = YES;
+    }
+    else if ([segue.identifier isEqualToString:@"MDLAuthoredUserLibrarySegue"])
+    {
+        ((MDLDocumentSearchResultsViewController *)segue.destinationViewController).fetchAuthoredDocuments = YES;
     }
 }
 

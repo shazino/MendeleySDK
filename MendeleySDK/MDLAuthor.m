@@ -50,37 +50,36 @@
 
 + (void)topAuthorsInPublicLibraryForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     if (upAndComing)
         parameters[@"upandcoming"] = @"true";
     if (categoryIdentifier)
         parameters[@"discipline"] = categoryIdentifier;
     
-    [client getPublicPath:@"/oapi/stats/authors/"
-               parameters:parameters
-                  success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
-                      if (success)
-                          success([self authorsFromRequestResponseObject:responseObject]);
-                  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                      if (failure)
-                          failure(error);
-                  }];
+    [[MDLMendeleyAPIClient sharedClient] getPath:@"/oapi/stats/authors/"
+                          requiresAuthentication:NO
+                                      parameters:parameters
+                                         success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
+                                             if (success)
+                                                 success([self authorsFromRequestResponseObject:responseObject]);
+                                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                             if (failure)
+                                                 failure(error);
+                                         }];
 }
 
 + (void)topAuthorsInUserLibrarySuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    
-    [client getPrivatePath:@"/oapi/library/authors/"
-                   success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
-                       if (success)
-                           success([self authorsFromRequestResponseObject:responseObject]);
-                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                       if (failure)
-                           failure(error);
-                   }];
+    [[MDLMendeleyAPIClient sharedClient] getPath:@"/oapi/library/authors/"
+                          requiresAuthentication:YES
+                                      parameters:nil
+                                         success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
+                                             if (success)
+                                                 success([self authorsFromRequestResponseObject:responseObject]);
+                                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                             if (failure)
+                                                 failure(error);
+                                         }];
 }
 
 @end

@@ -124,9 +124,7 @@
         [self.tableView reloadData];
     };
     
-    void (^failure)(NSError *) = ^(NSError *error) {
-        [self showAlertViewWithError:error];
-    };
+    void (^failure)(NSError *) = ^(NSError *error) { [self showAlertViewWithError:error]; };
              
     if (self.entityClass == [MDLPublication class])
     {
