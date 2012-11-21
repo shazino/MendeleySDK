@@ -170,20 +170,25 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
 
 - (void)postPrivatePath:(NSString *)path bodyKey:(NSString *)bodyKey bodyContent:(id)bodyContent success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
 {
-    NSString *serializedParameters = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:bodyContent options:kNilOptions error:nil] encoding:NSUTF8StringEncoding];
+    NSDictionary *parameters;
+    if (bodyKey && bodyContent)
+    {
+        NSString *serializedParameters = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:bodyContent options:kNilOptions error:nil] encoding:NSUTF8StringEncoding];
+        parameters = @{bodyKey : serializedParameters};
+    }
     
     [self postPath:path
-          parameters:@{bodyKey : serializedParameters}
+        parameters:parameters
            success:^(AFHTTPRequestOperation *operation, id responseObject) {
                [self updateRateLimitRemainingWithOperation:operation];
-                 if (success)
-                     success(operation, [MDLMendeleyAPIClient deserializeAndSanitizeJSONObjectWithData:responseObject]);
-             }
-             failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                 [self analyseFailureFromRequestOperation:operation error:error failure:failure andAuthorizeUsingOAuthIfNeededWithSuccess:^{
-                     [self postPrivatePath:path bodyKey:bodyKey bodyContent:bodyContent success:success failure:failure];
-                 }];
-             }];
+               if (success)
+                   success(operation, [MDLMendeleyAPIClient deserializeAndSanitizeJSONObjectWithData:responseObject]);
+           }
+           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+               [self analyseFailureFromRequestOperation:operation error:error failure:failure andAuthorizeUsingOAuthIfNeededWithSuccess:^{
+                   [self postPrivatePath:path bodyKey:bodyKey bodyContent:bodyContent success:success failure:failure];
+               }];
+           }];
 }
 
 - (void)deletePrivatePath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure

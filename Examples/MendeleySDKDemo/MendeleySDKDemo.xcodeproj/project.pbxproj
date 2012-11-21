@@ -20,6 +20,9 @@
 		1494E0E116303B140064E8FD /* MDLGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1494E0E016303B140064E8FD /* MDLGroupViewController.m */; };
 		1494E0E5163059D20064E8FD /* MDLUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1494E0E4163059D20064E8FD /* MDLUsersViewController.m */; };
 		14985327165B942D00948640 /* MDLGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14985326165B942D00948640 /* MDLGroupsViewController.m */; };
+		149FB224165CD75900C66686 /* MDLFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 149FB223165CD75900C66686 /* MDLFolder.m */; };
+		149FB229165CE0C400C66686 /* MDLFoldersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149FB228165CE0C400C66686 /* MDLFoldersViewController.m */; };
+		149FB233165D179900C66686 /* MDLNewFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149FB232165D179900C66686 /* MDLNewFolderViewController.m */; };
 		149FBFB0162D49D700B16BCA /* MDLTopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149FBFAF162D49D700B16BCA /* MDLTopViewController.m */; };
 		149FBFB4162D817600B16BCA /* MDLMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149FBFB3162D817600B16BCA /* MDLMenuViewController.m */; };
 		149FBFB7162D921A00B16BCA /* MDLTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 149FBFB6162D921A00B16BCA /* MDLTag.m */; };
@@ -82,6 +85,12 @@
 		1494E0E4163059D20064E8FD /* MDLUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDLUsersViewController.m; path = classes/MDLUsersViewController.m; sourceTree = "<group>"; };
 		14985325165B942D00948640 /* MDLGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDLGroupsViewController.h; path = classes/MDLGroupsViewController.h; sourceTree = "<group>"; };
 		14985326165B942D00948640 /* MDLGroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDLGroupsViewController.m; path = classes/MDLGroupsViewController.m; sourceTree = "<group>"; };
+		149FB222165CD75900C66686 /* MDLFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDLFolder.h; sourceTree = "<group>"; };
+		149FB223165CD75900C66686 /* MDLFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDLFolder.m; sourceTree = "<group>"; };
+		149FB227165CE0C400C66686 /* MDLFoldersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDLFoldersViewController.h; path = classes/MDLFoldersViewController.h; sourceTree = "<group>"; };
+		149FB228165CE0C400C66686 /* MDLFoldersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDLFoldersViewController.m; path = classes/MDLFoldersViewController.m; sourceTree = "<group>"; };
+		149FB231165D179900C66686 /* MDLNewFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDLNewFolderViewController.h; path = classes/MDLNewFolderViewController.h; sourceTree = "<group>"; };
+		149FB232165D179900C66686 /* MDLNewFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDLNewFolderViewController.m; path = classes/MDLNewFolderViewController.m; sourceTree = "<group>"; };
 		149FBFAE162D49D700B16BCA /* MDLTopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDLTopViewController.h; path = classes/MDLTopViewController.h; sourceTree = "<group>"; };
 		149FBFAF162D49D700B16BCA /* MDLTopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDLTopViewController.m; path = classes/MDLTopViewController.m; sourceTree = "<group>"; };
 		149FBFB2162D817600B16BCA /* MDLMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDLMenuViewController.h; path = classes/MDLMenuViewController.h; sourceTree = "<group>"; };
@@ -201,6 +210,17 @@
 				14AB286F165BE3EE00C7BBEC /* MDLNewGroupViewController.m */,
 			);
 			name = Group;
+			sourceTree = "<group>";
+		};
+		149FB226165CE02B00C66686 /* Folder */ = {
+			isa = PBXGroup;
+			children = (
+				149FB227165CE0C400C66686 /* MDLFoldersViewController.h */,
+				149FB228165CE0C400C66686 /* MDLFoldersViewController.m */,
+				149FB231165D179900C66686 /* MDLNewFolderViewController.h */,
+				149FB232165D179900C66686 /* MDLNewFolderViewController.m */,
+			);
+			name = Folder;
 			sourceTree = "<group>";
 		};
 		149FBFAD162D49B100B16BCA /* Documents */ = {
@@ -347,6 +367,8 @@
 				14C1E33B1624715D005D914C /* MDLDocument.m */,
 				1409F0A21654F54A0072D455 /* MDLFile.h */,
 				1409F0A31654F54A0072D455 /* MDLFile.m */,
+				149FB222165CD75900C66686 /* MDLFolder.h */,
+				149FB223165CD75900C66686 /* MDLFolder.m */,
 				1494E0DB163028A70064E8FD /* MDLGroup.h */,
 				1494E0DC163028A70064E8FD /* MDLGroup.m */,
 				14C1E33016246F7C005D914C /* MDLMendeleyAPIClient.h */,
@@ -371,6 +393,7 @@
 				149FBFB2162D817600B16BCA /* MDLMenuViewController.h */,
 				149FBFB3162D817600B16BCA /* MDLMenuViewController.m */,
 				1494E0C7162FECE20064E8FD /* User */,
+				149FB226165CE02B00C66686 /* Folder */,
 				1494E0E216303B180064E8FD /* Group */,
 				149FBFAD162D49B100B16BCA /* Documents */,
 				149FBFB1162D49DC00B16BCA /* Top */,
@@ -487,6 +510,9 @@
 				1409F0A81654FFF70072D455 /* MDLFilesViewController.m in Sources */,
 				14985327165B942D00948640 /* MDLGroupsViewController.m in Sources */,
 				14AB2870165BE3EE00C7BBEC /* MDLNewGroupViewController.m in Sources */,
+				149FB224165CD75900C66686 /* MDLFolder.m in Sources */,
+				149FB229165CE0C400C66686 /* MDLFoldersViewController.m in Sources */,
+				149FB233165D179900C66686 /* MDLNewFolderViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
