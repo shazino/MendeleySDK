@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class MDLDocument;
+@class MDLDocument, MDLGroup;
 
 @interface MDLDocumentSearchResultsViewController : UITableViewController
 
@@ -20,5 +20,6 @@
 @property (nonatomic, weak) MDLDocument *relatedToDocument;
 @property BOOL fetchUserLibrary;
 @property BOOL fetchAuthoredDocuments;
+@property (nonatomic, strong) MDLGroup *group;
 
 @end

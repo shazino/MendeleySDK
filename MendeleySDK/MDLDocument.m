@@ -28,6 +28,7 @@
 #import "MDLPublication.h"
 #import "MDLCategory.h"
 #import "MDLSubcategory.h"
+#import "MDLGroup.h"
 #import "MDLFile.h"
 #import "AFNetworking.h"
 
@@ -37,7 +38,6 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
 
 @property (strong, nonatomic) NSNumber *inUserLibrary;
 
-+ (NSNumber *)numberOrNumberFromString:(id)numberOrString;
 + (MDLDocument *)documentWithRawDocument:(NSDictionary *)rawDocument;
 + (void)fetchDocumentsWithPath:(NSString *)path public:(BOOL)public parameters:(NSDictionary *)parameters atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure;
 
@@ -51,19 +51,17 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
     newDocument.title   = title;
     newDocument.type    = kMDLDocumentTypeGeneric;
     
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    
-    [client postPrivatePath:@"/oapi/library/documents/"
-                    bodyKey:@"document"
-                bodyContent:@{@"type" : newDocument.type, @"title" : newDocument.title}
-                    success:^(AFHTTPRequestOperation *operation, id responseDictionary) {
-                        newDocument.identifier = responseDictionary[@"document_id"];
-                        if (success)
-                            success(newDocument);
-                    } failure:^(AFHTTPRequestOperation *requestOperation, NSError *error) {
-                        if (failure)
-                            failure(error);
-                    }];
+    [[MDLMendeleyAPIClient sharedClient] postPrivatePath:@"/oapi/library/documents/"
+                                                 bodyKey:@"document"
+                                             bodyContent:@{@"type" : newDocument.type, @"title" : newDocument.title}
+                                                 success:^(AFHTTPRequestOperation *operation, id responseDictionary) {
+                                                     newDocument.identifier = responseDictionary[@"document_id"];
+                                                     if (success)
+                                                         success(newDocument);
+                                                 } failure:^(AFHTTPRequestOperation *requestOperation, NSError *error) {
+                                                     if (failure)
+                                                         failure(error);
+                                                 }];
     
     return newDocument;
 }
@@ -76,13 +74,6 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
     document.type       = rawDocument[@"type"];
     document.DOI        = rawDocument[@"doi"];
     return document;
-}
-
-+ (NSNumber *)numberOrNumberFromString:(id)numberOrString
-{
-    if ([numberOrString isKindOfClass:[NSString class]])
-        return [[NSNumberFormatter new] numberFromString:numberOrString];
-    return numberOrString;
 }
 
 + (void)fetchDocumentsWithPath:(NSString *)path public:(BOOL)public parameters:(NSDictionary *)parameters atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure
@@ -98,10 +89,10 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
                                              if (success)
                                              {
                                                  NSArray *rawDocuments   = responseObject[@"documents"];
-                                                 NSNumber *totalResults  = [self numberOrNumberFromString:responseObject[@"total_results"]];
-                                                 NSNumber *totalPages    = [self numberOrNumberFromString:responseObject[@"total_pages"]];
-                                                 NSNumber *pageIndex     = [self numberOrNumberFromString:responseObject[@"current_page"]];
-                                                 NSNumber *itemsPerPage  = [self numberOrNumberFromString:responseObject[@"items_per_page"]];
+                                                 NSNumber *totalResults  = [NSNumber numberOrNumberFromString:responseObject[@"total_results"]];
+                                                 NSNumber *totalPages    = [NSNumber numberOrNumberFromString:responseObject[@"total_pages"]];
+                                                 NSNumber *pageIndex     = [NSNumber numberOrNumberFromString:responseObject[@"current_page"]];
+                                                 NSNumber *itemsPerPage  = [NSNumber numberOrNumberFromString:responseObject[@"items_per_page"]];
                                                  NSMutableArray *documents = [NSMutableArray array];
                                                  [rawDocuments enumerateObjectsUsingBlock:^(NSDictionary *rawDocument, NSUInteger idx, BOOL *stop) {
                                                      MDLDocument *document = [MDLDocument documentWithRawDocument:rawDocument];
@@ -228,14 +219,20 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
         return;
     }
     
-    [[MDLMendeleyAPIClient sharedClient] getPath:[NSString stringWithFormat:(self.isInUserLibrary) ? @"/oapi/library/documents/%@/" : @"/oapi/documents/details/%@/", self.identifier]
-                          requiresAuthentication:self.isInUserLibrary
+    NSString *path;
+    if (self.group)
+        path = [NSString stringWithFormat:@"/oapi/library/groups/%@/%@/", self.group.identifier, self.identifier];
+    else
+        path = [NSString stringWithFormat:(self.isInUserLibrary) ? @"/oapi/library/documents/%@/" : @"/oapi/documents/details/%@/", self.identifier];
+    
+    [[MDLMendeleyAPIClient sharedClient] getPath:path
+                          requiresAuthentication:self.isInUserLibrary || (self.group.type == MDLGroupTypePrivate)
                                       parameters:nil
                                          success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
                                              self.abstract       = responseObject[@"abstract"];
                                              self.title          = responseObject[@"title"];
                                              self.type           = responseObject[@"type"];
-                                             self.year           = [MDLDocument numberOrNumberFromString:responseObject[@"year"]];
+                                             self.year           = [NSNumber numberOrNumberFromString:responseObject[@"year"]];
                                              self.mendeleyURL    = [NSURL URLWithString:responseObject[@"mendeley_url"]];
                                              
                                              NSMutableArray *authors = [NSMutableArray array];
@@ -252,13 +249,16 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
                                              NSDateFormatter *fileDateFormatter = [[NSDateFormatter alloc] init];
                                              fileDateFormatter.dateFormat = @"y-M-d H:m:s";
                                              for (NSDictionary *file in responseObject[@"files"])
-                                                 [files addObject:[MDLFile fileWithDateAdded:[fileDateFormatter dateFromString:file[@"date_added"]] extension:file[@"file_extension"] hash:file[@"file_hash"] size:[MDLDocument numberOrNumberFromString:file[@"file_size"]] document:self]];
+                                                 [files addObject:[MDLFile fileWithDateAdded:[fileDateFormatter dateFromString:file[@"date_added"]] extension:file[@"file_extension"] hash:file[@"file_hash"] size:[NSNumber numberOrNumberFromString:file[@"file_size"]] document:self]];
                                              self.files = files;
                                              
                                              if (success)
                                                  success(self);
                                          }
-                                         failure:^(AFHTTPRequestOperation *operation, NSError *error) { if (failure) failure(error); }];
+                                         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                             if (failure)
+                                                 failure(error);
+                                         }];
 }
 
 - (void)fetchRelatedDocumentsAtPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure

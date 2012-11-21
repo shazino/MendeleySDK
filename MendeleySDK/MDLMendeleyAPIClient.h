@@ -111,3 +111,9 @@ extern NSString * const kMDLNotificationFailedToAcquireAccessToken;
 - (void)putPrivatePath:(NSString *)path fileAtURL:(NSURL *)fileURL success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure;
 
 @end
+
+@interface NSNumber (NiceNumber)
+
++ (NSNumber *)numberOrNumberFromString:(id)numberOrString;
+
+@end

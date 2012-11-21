@@ -261,3 +261,14 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
 }
 
 @end
+
+@implementation NSNumber (NiceNumber)
+
++ (NSNumber *)numberOrNumberFromString:(id)numberOrString
+{
+    if ([numberOrString isKindOfClass:[NSString class]])
+        return [[NSNumberFormatter new] numberFromString:numberOrString];
+    return numberOrString;
+}
+
+@end

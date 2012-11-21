@@ -41,7 +41,7 @@
     [self.document fetchDetailsSuccess:^(MDLDocument *document) {
         [self updateOutletsWithDocument:document];
     } failure:^(NSError *error) {
-        
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     }];
 }
 

@@ -14,4 +14,19 @@
 
 @property (nonatomic, strong) MDLGroup *group;
 
+@property (nonatomic, weak) IBOutlet UILabel *nameLabel;
+@property (nonatomic, weak) IBOutlet UILabel *categoryLabel;
+@property (nonatomic, weak) IBOutlet UILabel *ownerLabel;
+@property (nonatomic, weak) IBOutlet UILabel *publicLabel;
+@property (nonatomic, weak) IBOutlet UILabel *numberOfDocumentsLabel;
+@property (nonatomic, weak) IBOutlet UILabel *numberOfAdminsLabel;
+@property (nonatomic, weak) IBOutlet UILabel *numberOfMembersLabel;
+@property (nonatomic, weak) IBOutlet UILabel *numberOfFollowersLabel;
+
+- (IBAction)openWebGroupProfile:(id)sender;
+- (IBAction)deleteGroup:(id)sender;
+- (IBAction)leaveGroup:(id)sender;
+- (IBAction)unfollowGroup:(id)sender;
+- (IBAction)showActions:(id)sender;
+
 @end

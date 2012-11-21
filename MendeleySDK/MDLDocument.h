@@ -28,6 +28,7 @@ extern NSString * const kMDLDocumentTypeGeneric;
 @class MDLPublication;
 @class MDLCategory;
 @class MDLSubcategory;
+@class MDLGroup;
 @class MDLMendeleyAPIClient;
 
 /**
@@ -85,6 +86,11 @@ extern NSString * const kMDLDocumentTypeGeneric;
  The files of the document.
  */
 @property (strong, nonatomic) NSArray *files;
+
+/**
+ The group of the document, if it belongs to one.
+ */
+@property (strong, nonatomic) MDLGroup *group;
 
 /**
  A Boolean value that corresponds to whether the document is in the user library.
@@ -220,6 +226,7 @@ extern NSString * const kMDLDocumentTypeGeneric;
  
  @see [API documentation: Search details](http://apidocs.mendeley.com/home/public-resources/search-details)
  @see [API documentation: User Library Document Details](http://apidocs.mendeley.com/home/user-specific-methods/user-library-document-details)
+ @see [API documentation: Group Document Details](http://apidocs.mendeley.com/home/user-specific-methods/group-document-details)
  */
 - (void)fetchDetailsSuccess:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure;
 

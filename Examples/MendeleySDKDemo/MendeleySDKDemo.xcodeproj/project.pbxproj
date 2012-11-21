@@ -19,6 +19,7 @@
 		1494E0DD163028A70064E8FD /* MDLGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 1494E0DC163028A70064E8FD /* MDLGroup.m */; };
 		1494E0E116303B140064E8FD /* MDLGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1494E0E016303B140064E8FD /* MDLGroupViewController.m */; };
 		1494E0E5163059D20064E8FD /* MDLUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1494E0E4163059D20064E8FD /* MDLUsersViewController.m */; };
+		14985327165B942D00948640 /* MDLGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14985326165B942D00948640 /* MDLGroupsViewController.m */; };
 		149FBFB0162D49D700B16BCA /* MDLTopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149FBFAF162D49D700B16BCA /* MDLTopViewController.m */; };
 		149FBFB4162D817600B16BCA /* MDLMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149FBFB3162D817600B16BCA /* MDLMenuViewController.m */; };
 		149FBFB7162D921A00B16BCA /* MDLTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 149FBFB6162D921A00B16BCA /* MDLTag.m */; };
@@ -26,6 +27,7 @@
 		149FBFBD162DA82900B16BCA /* MDLCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149FBFBC162DA82900B16BCA /* MDLCategoriesViewController.m */; };
 		149FBFC1162DB59A00B16BCA /* MDLCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149FBFC0162DB59A00B16BCA /* MDLCategoryViewController.m */; };
 		149FBFC4162DBEEF00B16BCA /* MDLSubcategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 149FBFC3162DBEEF00B16BCA /* MDLSubcategory.m */; };
+		14AB2870165BE3EE00C7BBEC /* MDLNewGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14AB286F165BE3EE00C7BBEC /* MDLNewGroupViewController.m */; };
 		14AFCB681626DFD900AC81A6 /* MDLDocumentSearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14AFCB671626DFD800AC81A6 /* MDLDocumentSearchResultsViewController.m */; };
 		14C1E2CA16246F27005D914C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C1E2C916246F27005D914C /* UIKit.framework */; };
 		14C1E2CC16246F27005D914C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C1E2CB16246F27005D914C /* Foundation.framework */; };
@@ -78,6 +80,8 @@
 		1494E0E016303B140064E8FD /* MDLGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDLGroupViewController.m; path = classes/MDLGroupViewController.m; sourceTree = "<group>"; };
 		1494E0E3163059D20064E8FD /* MDLUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDLUsersViewController.h; path = classes/MDLUsersViewController.h; sourceTree = "<group>"; };
 		1494E0E4163059D20064E8FD /* MDLUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDLUsersViewController.m; path = classes/MDLUsersViewController.m; sourceTree = "<group>"; };
+		14985325165B942D00948640 /* MDLGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDLGroupsViewController.h; path = classes/MDLGroupsViewController.h; sourceTree = "<group>"; };
+		14985326165B942D00948640 /* MDLGroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDLGroupsViewController.m; path = classes/MDLGroupsViewController.m; sourceTree = "<group>"; };
 		149FBFAE162D49D700B16BCA /* MDLTopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDLTopViewController.h; path = classes/MDLTopViewController.h; sourceTree = "<group>"; };
 		149FBFAF162D49D700B16BCA /* MDLTopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDLTopViewController.m; path = classes/MDLTopViewController.m; sourceTree = "<group>"; };
 		149FBFB2162D817600B16BCA /* MDLMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDLMenuViewController.h; path = classes/MDLMenuViewController.h; sourceTree = "<group>"; };
@@ -92,6 +96,8 @@
 		149FBFC0162DB59A00B16BCA /* MDLCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDLCategoryViewController.m; path = classes/MDLCategoryViewController.m; sourceTree = "<group>"; };
 		149FBFC2162DBEEF00B16BCA /* MDLSubcategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDLSubcategory.h; sourceTree = "<group>"; };
 		149FBFC3162DBEEF00B16BCA /* MDLSubcategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDLSubcategory.m; sourceTree = "<group>"; };
+		14AB286E165BE3EE00C7BBEC /* MDLNewGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDLNewGroupViewController.h; path = classes/MDLNewGroupViewController.h; sourceTree = "<group>"; };
+		14AB286F165BE3EE00C7BBEC /* MDLNewGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDLNewGroupViewController.m; path = classes/MDLNewGroupViewController.m; sourceTree = "<group>"; };
 		14AFCB661626DFD800AC81A6 /* MDLDocumentSearchResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDLDocumentSearchResultsViewController.h; path = classes/MDLDocumentSearchResultsViewController.h; sourceTree = "<group>"; };
 		14AFCB671626DFD800AC81A6 /* MDLDocumentSearchResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDLDocumentSearchResultsViewController.m; path = classes/MDLDocumentSearchResultsViewController.m; sourceTree = "<group>"; };
 		14C1E2C516246F27005D914C /* MendeleySDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MendeleySDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,8 +193,12 @@
 		1494E0E216303B180064E8FD /* Group */ = {
 			isa = PBXGroup;
 			children = (
+				14985325165B942D00948640 /* MDLGroupsViewController.h */,
+				14985326165B942D00948640 /* MDLGroupsViewController.m */,
 				1494E0DF16303B140064E8FD /* MDLGroupViewController.h */,
 				1494E0E016303B140064E8FD /* MDLGroupViewController.m */,
+				14AB286E165BE3EE00C7BBEC /* MDLNewGroupViewController.h */,
+				14AB286F165BE3EE00C7BBEC /* MDLNewGroupViewController.m */,
 			);
 			name = Group;
 			sourceTree = "<group>";
@@ -196,14 +206,14 @@
 		149FBFAD162D49B100B16BCA /* Documents */ = {
 			isa = PBXGroup;
 			children = (
-				14C1E2E716246F27005D914C /* MDLDocumentCreatorViewController.h */,
-				14C1E2E816246F27005D914C /* MDLDocumentCreatorViewController.m */,
 				141E66FE16272670002939D2 /* MDLDocumentSearchViewController.h */,
 				141E66FF16272670002939D2 /* MDLDocumentSearchViewController.m */,
 				14AFCB661626DFD800AC81A6 /* MDLDocumentSearchResultsViewController.h */,
 				14AFCB671626DFD800AC81A6 /* MDLDocumentSearchResultsViewController.m */,
 				14E5CB71162C007C00B94796 /* MDLDocumentDetailsViewController.h */,
 				14E5CB72162C007C00B94796 /* MDLDocumentDetailsViewController.m */,
+				14C1E2E716246F27005D914C /* MDLDocumentCreatorViewController.h */,
+				14C1E2E816246F27005D914C /* MDLDocumentCreatorViewController.m */,
 				1409F0A61654FFF70072D455 /* MDLFilesViewController.h */,
 				1409F0A71654FFF70072D455 /* MDLFilesViewController.m */,
 			);
@@ -475,6 +485,8 @@
 				1494E0E5163059D20064E8FD /* MDLUsersViewController.m in Sources */,
 				1409F0A41654F54A0072D455 /* MDLFile.m in Sources */,
 				1409F0A81654FFF70072D455 /* MDLFilesViewController.m in Sources */,
+				14985327165B942D00948640 /* MDLGroupsViewController.m in Sources */,
+				14AB2870165BE3EE00C7BBEC /* MDLNewGroupViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

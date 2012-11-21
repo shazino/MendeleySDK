@@ -9,8 +9,9 @@
 #import "MDLDocumentSearchResultsViewController.h"
 
 #import "MDLDocument.h"
-#import "MDLDocumentDetailsViewController.h"
 #import "MDLCategory.h"
+#import "MDLGroup.h"
+#import "MDLDocumentDetailsViewController.h"
 
 @interface MDLDocumentSearchResultsViewController ()
 
@@ -66,6 +67,20 @@
         [self.relatedToDocument fetchRelatedDocumentsAtPage:0 count:20 success:^(NSArray *documents) {
             self.searchResults = documents;
             [self.tableView reloadData];
+        } failure:errorHandler];
+    }
+    else if (self.group)
+    {
+        [self.group fetchDocumentsAtPage:0 count:20 success:^(NSArray *documents, NSUInteger totalResults, NSUInteger totalPages, NSUInteger pageIndex, NSUInteger itemsPerPage) {
+            self.searchResults = documents;
+            [self.tableView reloadData];
+            
+            for (MDLDocument *document in self.searchResults)
+            {
+                [document fetchDetailsSuccess:^(MDLDocument *document) {
+                    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[self.searchResults indexOfObject:document] inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+                } failure:errorHandler];
+            }
         } failure:errorHandler];
     }
     else
