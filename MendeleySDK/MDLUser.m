@@ -48,16 +48,16 @@
                                       parameters:nil
                                          success:^(AFHTTPRequestOperation *operation, NSDictionary *responseDictionary) {
                                              NSDictionary *profileMain = responseDictionary[@"main"];
-                                             user.name = profileMain[@"name"];
+                                             user.name          = profileMain[@"name"];
                                              user.academicStatus = profileMain[@"academic_status"];
                                              user.academicStatusIdentifier = profileMain[@"academic_status_id"];
-                                             user.bio = profileMain[@"bio"];
-                                             user.category = [MDLCategory categoryWithIdentifier:profileMain[@"discipline_id"] name:profileMain[@"discipline_name"] slug:nil];
-                                             user.location = profileMain[@"location"];
-                                             user.photoURL = [NSURL URLWithString:profileMain[@"photo"]];
-                                             user.identifier = profileMain[@"profile_id"];
+                                             user.bio           = profileMain[@"bio"];
+                                             user.category      = [MDLCategory categoryWithIdentifier:profileMain[@"discipline_id"] name:profileMain[@"discipline_name"] slug:nil];
+                                             user.location      = profileMain[@"location"];
+                                             user.photoURL      = [NSURL URLWithString:profileMain[@"photo"]];
+                                             user.identifier    = profileMain[@"profile_id"];
                                              user.researchInterests = profileMain[@"research_interests"];
-                                             user.mendeleyURL = [NSURL URLWithString:profileMain[@"url"]];
+                                             user.mendeleyURL   = [NSURL URLWithString:profileMain[@"url"]];
                                              if (success)
                                                  success(user);
                                          } failure:^(AFHTTPRequestOperation *requestOperation, NSError *error) {
@@ -71,6 +71,23 @@
     [self fetchUserProfileForUser:[MDLUser new] withIdentifier:@"me" success:success failure:failure];
 }
 
++ (void)fetchContactsSuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    [[MDLMendeleyAPIClient sharedClient] getPath:@"/oapi/profiles/contacts/"
+                          requiresAuthentication:YES
+                                      parameters:nil
+                                         success:^(AFHTTPRequestOperation *operation, NSArray *responseArray) {
+                                             NSMutableArray *contacts = [NSMutableArray array];
+                                             for (NSDictionary *rawContact in responseArray)
+                                                 [contacts addObject:[MDLUser userWithIdentifier:rawContact[@"profile_id"] name:rawContact[@"name"]]];
+                                             if (success)
+                                                 success(contacts);
+                                         } failure:^(AFHTTPRequestOperation *requestOperation, NSError *error) {
+                                             if (failure)
+                                                 failure(error);
+                                         }];
+}
+
 - (void)fetchProfileSuccess:(void (^)(MDLUser *))success failure:(void (^)(NSError *))failure
 {
     if (!self.identifier)
@@ -80,6 +97,14 @@
     }
     
     [MDLUser fetchUserProfileForUser:self withIdentifier:self.identifier success:success failure:failure];
+}
+
+- (void)sendContactRequestSuccess:(void (^)())success failure:(void (^)(NSError *))failure
+{
+    [[MDLMendeleyAPIClient sharedClient] postPrivatePath:[NSString stringWithFormat:@"/oapi/profiles/contacts/%@/", self.identifier]
+                                                 bodyKey:nil bodyContent:nil
+                                                 success:^(AFHTTPRequestOperation *operation, id responseObject) { if (success) success(); }
+                                                 failure:^(AFHTTPRequestOperation *requestOperation, NSError *error) { if (failure) failure(error); }];
 }
 
 @end

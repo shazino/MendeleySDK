@@ -191,10 +191,10 @@
 		1494E0C7162FECE20064E8FD /* User */ = {
 			isa = PBXGroup;
 			children = (
-				1494E0C4162FECDE0064E8FD /* MDLUserProfileViewController.h */,
-				1494E0C5162FECDE0064E8FD /* MDLUserProfileViewController.m */,
 				1494E0E3163059D20064E8FD /* MDLUsersViewController.h */,
 				1494E0E4163059D20064E8FD /* MDLUsersViewController.m */,
+				1494E0C4162FECDE0064E8FD /* MDLUserProfileViewController.h */,
+				1494E0C5162FECDE0064E8FD /* MDLUserProfileViewController.m */,
 			);
 			name = User;
 			sourceTree = "<group>";

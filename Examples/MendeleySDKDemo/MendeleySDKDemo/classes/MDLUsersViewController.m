@@ -18,6 +18,22 @@
     [self.tableView reloadData];
 }
 
+#pragma mark - View lifecycle
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (!self.users)
+    {
+        [MDLUser fetchContactsSuccess:^(NSArray *contacts) {
+            self.users = contacts;
+        } failure:^(NSError *error) {
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        }];
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
