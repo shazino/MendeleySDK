@@ -124,7 +124,7 @@ typedef NS_ENUM(NSUInteger, MDLGroupType)
  Creates a `MDLGroup` and sends an API creation request using the shared client.
  
  @param name The name of the group.
- @param name The type of the group.
+ @param type The type of the group.
  @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: the created `MDLGroup` with its newly assigned group identifier.
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  
