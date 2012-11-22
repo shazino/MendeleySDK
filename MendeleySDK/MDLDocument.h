@@ -108,7 +108,7 @@ extern NSString * const kMDLDocumentTypeGeneric;
  
  @see [API documentation: User Library Create Document](http://apidocs.mendeley.com/home/user-specific-methods/user-library-create-document)
  */
-+ (MDLDocument *)documentWithTitle:(NSString *)title success:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure;
++ (MDLDocument *)createDocumentWithTitle:(NSString *)title success:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure;
 
 /**
  Sends an API search request with generic terms using the shared client.

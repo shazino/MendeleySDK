@@ -109,18 +109,6 @@ typedef NS_ENUM(NSUInteger, MDLGroupType)
 @property (nonatomic, assign) MDLGroupType type;
 
 /**
- Creates a `MDLGroup` and initializes its identifier, name, owner, and category properties.
- 
- @param identifier The identifier of the group.
- @param name The name of the group.
- @param ownerName The owner of the group.
- @param category The category of the group.
- 
- @return  The newly-initialized group.
- */
-+ (MDLGroup *)groupWithIdentifier:(NSString *)identifier name:(NSString *)name ownerName:(NSString *)ownerName category:(MDLCategory *)category;
-
-/**
  Creates a `MDLGroup` and sends an API creation request using the shared client.
  
  @param name The name of the group.

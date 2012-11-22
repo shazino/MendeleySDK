@@ -45,12 +45,8 @@
                           requiresAuthentication:self.document.isInUserLibrary
                                       parameters:nil
                         outputStreamToFileAtPath:path
-                                         success:^(AFHTTPRequestOperation *requestOperation, id responseObject) {
-                                             if (success) success();
-                                         }
-                                         failure:^(AFHTTPRequestOperation *requestOperation, NSError *error) {
-                                             if (failure) failure(error);
-                                         }];
+                                         success:^(AFHTTPRequestOperation *requestOperation, id responseObject) { if (success) success(); }
+                                         failure:failure];
 }
 
 @end

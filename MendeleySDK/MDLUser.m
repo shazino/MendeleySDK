@@ -60,10 +60,7 @@
                                              user.mendeleyURL   = [NSURL URLWithString:profileMain[@"url"]];
                                              if (success)
                                                  success(user);
-                                         } failure:^(AFHTTPRequestOperation *requestOperation, NSError *error) {
-                                             if (failure)
-                                                 failure(error);
-                                         }];
+                                         } failure:failure];
 }
 
 + (void)fetchMyUserProfileSuccess:(void (^)(MDLUser *))success failure:(void (^)(NSError *))failure
@@ -82,20 +79,11 @@
                                                  [contacts addObject:[MDLUser userWithIdentifier:rawContact[@"profile_id"] name:rawContact[@"name"]]];
                                              if (success)
                                                  success(contacts);
-                                         } failure:^(AFHTTPRequestOperation *requestOperation, NSError *error) {
-                                             if (failure)
-                                                 failure(error);
-                                         }];
+                                         } failure:failure];
 }
 
 - (void)fetchProfileSuccess:(void (^)(MDLUser *))success failure:(void (^)(NSError *))failure
 {
-    if (!self.identifier)
-    {
-        failure([NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorCancelled userInfo:nil]);
-        return;
-    }
-    
     [MDLUser fetchUserProfileForUser:self withIdentifier:self.identifier success:success failure:failure];
 }
 
@@ -104,7 +92,7 @@
     [[MDLMendeleyAPIClient sharedClient] postPrivatePath:[NSString stringWithFormat:@"/oapi/profiles/contacts/%@/", self.identifier]
                                                  bodyKey:nil bodyContent:nil
                                                  success:^(AFHTTPRequestOperation *operation, id responseObject) { if (success) success(); }
-                                                 failure:^(AFHTTPRequestOperation *requestOperation, NSError *error) { if (failure) failure(error); }];
+                                                 failure:failure];
 }
 
 @end

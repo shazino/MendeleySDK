@@ -26,7 +26,7 @@
 
 @interface MDLPublication ()
 
-+ (NSArray *)publicationsFromRequestResponseObject:(NSArray *)responseObject;
++ (void)getPublicationsAtPath:(NSString *)path requiresAuthentication:(BOOL)requiresAuthentication parameters:(NSDictionary *)parameters success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 
 @end
 
@@ -42,46 +42,28 @@
     return publication;
 }
 
-+ (NSArray *)publicationsFromRequestResponseObject:(NSArray *)responseObject
++ (void)getPublicationsAtPath:(NSString *)path requiresAuthentication:(BOOL)requiresAuthentication parameters:(NSDictionary *)parameters success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    NSMutableArray *publications = [NSMutableArray array];
-    for (NSDictionary *rawPublication in responseObject)
-        [publications addObject:[MDLPublication publicationWithName:rawPublication[@"name"]]];
-    return publications;
+    [[MDLMendeleyAPIClient sharedClient] getPath:path
+                          requiresAuthentication:requiresAuthentication
+                                      parameters:parameters
+                                         success:^(AFHTTPRequestOperation *operation, NSArray *responseArray) {
+                                             NSMutableArray *publications = [NSMutableArray array];
+                                             for (NSDictionary *rawPublication in responseArray)
+                                                 [publications addObject:[MDLPublication publicationWithName:rawPublication[@"name"]]];
+                                             if (success)
+                                                 success(publications);
+                                         } failure:failure];
 }
 
 + (void)topPublicationsInPublicLibraryForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    if (upAndComing)
-        parameters[@"upandcoming"] = @"true";
-    if (categoryIdentifier)
-        parameters[@"discipline"] = categoryIdentifier;
-    
-    [[MDLMendeleyAPIClient sharedClient] getPath:@"/oapi/stats/publications/"
-                          requiresAuthentication:NO
-                                      parameters:parameters
-                                         success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
-                                             if (success)
-                                                 success([self publicationsFromRequestResponseObject:responseObject]);
-                                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                             if (failure)
-                                                 failure(error);
-                                         }];
+    [self getPublicationsAtPath:@"/oapi/stats/publications/" requiresAuthentication:NO parameters:[NSDictionary parametersForCategory:categoryIdentifier upAndComing:upAndComing] success:success failure:failure];
 }
 
 + (void)topPublicationsInUserLibrarySuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    [[MDLMendeleyAPIClient sharedClient] getPath:@"/oapi/library/publications/"
-                          requiresAuthentication:YES
-                                      parameters:nil
-                                         success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
-                                             if (success)
-                                                 success([self publicationsFromRequestResponseObject:responseObject]);
-                                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                             if (failure)
-                                                 failure(error);
-                                         }];
+    [self getPublicationsAtPath:@"/oapi/library/publications/" requiresAuthentication:YES parameters:nil success:success failure:failure];
 }
 
 @end

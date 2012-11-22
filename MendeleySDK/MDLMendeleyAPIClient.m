@@ -38,7 +38,7 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
 - (void)updateRateLimitRemainingWithOperation:(AFHTTPRequestOperation *)operation;
 - (void)analyseFailureFromRequestOperation:(AFHTTPRequestOperation *)requestOperation
                                      error:(NSError *)error
-                                   failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+                                   failure:(void (^)(NSError *))failure
  andAuthorizeUsingOAuthIfNeededWithSuccess:(void (^)())authenticationSuccess;
 
 @end
@@ -90,7 +90,8 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
     {
         return nil;
     }
-    else if ([object isKindOfClass:[NSArray class]]) {
+    else if ([object isKindOfClass:[NSArray class]])
+    {
         NSMutableArray *sanitizedArray = [NSMutableArray arrayWithArray:object];
         [object enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             id sanitized = [self sanitizeObject:obj];
@@ -130,7 +131,7 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
 
 #pragma mark - Operation
 
-- (void)getPath:(NSString *)path requiresAuthentication:(BOOL)requiresAuthentication parameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+- (void)getPath:(NSString *)path requiresAuthentication:(BOOL)requiresAuthentication parameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary *requestParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
     if (!requiresAuthentication)
@@ -151,7 +152,7 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
            }];
 }
 
-- (void)getPath:(NSString *)path requiresAuthentication:(BOOL)requiresAuthentication parameters:(NSDictionary *)parameters outputStreamToFileAtPath:(NSString *)filePath success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+- (void)getPath:(NSString *)path requiresAuthentication:(BOOL)requiresAuthentication parameters:(NSDictionary *)parameters outputStreamToFileAtPath:(NSString *)filePath success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(NSError *))failure
 {
     [self signCallPerAuthHeaderWithPath:path andParameters:parameters andMethod:@"GET"];
     
@@ -163,12 +164,15 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
         [self updateRateLimitRemainingWithOperation:operation];
         if (success)
             success(operation, [MDLMendeleyAPIClient deserializeAndSanitizeJSONObjectWithData:responseObject]);
-    } failure:failure];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure)
+            failure(error);
+    }];
     
     [self enqueueHTTPRequestOperation:operation];
 }
 
-- (void)postPrivatePath:(NSString *)path bodyKey:(NSString *)bodyKey bodyContent:(id)bodyContent success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+- (void)postPrivatePath:(NSString *)path bodyKey:(NSString *)bodyKey bodyContent:(id)bodyContent success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(NSError *))failure
 {
     NSDictionary *parameters;
     if (bodyKey && bodyContent)
@@ -191,7 +195,7 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
            }];
 }
 
-- (void)deletePrivatePath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+- (void)deletePrivatePath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(NSError *))failure
 {
     [super deletePath:path
            parameters:parameters
@@ -207,7 +211,7 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
               }];
 }
 
-- (void)putPrivatePath:(NSString *)path fileAtURL:(NSURL *)fileURL success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+- (void)putPrivatePath:(NSString *)path fileAtURL:(NSURL *)fileURL success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(NSError *))failure
 {
     [self signCallPerAuthHeaderWithPath:path andParameters:@{@"oauth_body_hash" : [MDLMendeleyAPIClient SHA1ForFileAtURL:fileURL]} andMethod:@"PUT"];
     
@@ -229,7 +233,7 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
 
 - (void)analyseFailureFromRequestOperation:(AFHTTPRequestOperation *)requestOperation
                                      error:(NSError *)error
-                                   failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+                                   failure:(void (^)(NSError *))failure
  andAuthorizeUsingOAuthIfNeededWithSuccess:(void (^)())authenticationSuccess
 {
     if (requestOperation.response.statusCode == 401 && self.isAutomaticAuthenticationEnabled)
@@ -240,12 +244,12 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
         } failure:^(NSError *authError) {
             for (NSOperation *operation in [self.operationQueue operations])
                 [operation cancel];
-            failure(requestOperation, [NSError errorWithDomain:AFNetworkingErrorDomain code:NSURLErrorUserCancelledAuthentication userInfo:nil]);
+            failure([NSError errorWithDomain:AFNetworkingErrorDomain code:NSURLErrorUserCancelledAuthentication userInfo:nil]);
             [[NSNotificationCenter defaultCenter] postNotificationName:kMDLNotificationFailedToAcquireAccessToken object:self];
         }];
     }
     else
-        failure(requestOperation, error);
+        failure(error);
 }
 
 #pragma mark - Crypto
@@ -267,6 +271,7 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
 
 @end
 
+
 @implementation NSNumber (NiceNumber)
 
 + (NSNumber *)numberOrNumberFromString:(id)numberOrString
@@ -274,6 +279,41 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
     if ([numberOrString isKindOfClass:[NSString class]])
         return [[NSNumberFormatter new] numberFromString:numberOrString];
     return numberOrString;
+}
+
+@end
+
+
+@implementation NSDictionary (PaginatedResponse)
+
+- (NSUInteger)responseTotalResults
+{
+    return [[NSNumber numberOrNumberFromString:self[@"total_results"]] unsignedIntegerValue];
+}
+
+- (NSUInteger)responseTotalPages
+{
+    return [[NSNumber numberOrNumberFromString:self[@"total_pages"]] unsignedIntegerValue];
+}
+
+- (NSUInteger)responsePageIndex
+{
+    return [[NSNumber numberOrNumberFromString:self[@"current_page"]] unsignedIntegerValue];
+}
+
+- (NSUInteger)responseItemsPerPage
+{
+    return [[NSNumber numberOrNumberFromString:self[@"items_per_page"]] unsignedIntegerValue];
+}
+
++ (NSDictionary *)parametersForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    if (upAndComing)
+        parameters[@"upandcoming"] = @"true";
+    if (categoryIdentifier)
+        parameters[@"discipline"] = categoryIdentifier;
+    return parameters;
 }
 
 @end

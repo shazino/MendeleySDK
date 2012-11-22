@@ -26,7 +26,7 @@
 
 @interface MDLAuthor ()
 
-+ (NSArray *)authorsFromRequestResponseObject:(NSArray *)responseObject;
++ (void)getAuthorsAtPath:(NSString *)path requiresAuthentication:(BOOL)requiresAuthentication parameters:(NSDictionary *)parameters success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 
 @end
 
@@ -39,47 +39,28 @@
     return author;
 }
 
-+ (NSArray *)authorsFromRequestResponseObject:(NSArray *)responseObject
++ (void)getAuthorsAtPath:(NSString *)path requiresAuthentication:(BOOL)requiresAuthentication parameters:(NSDictionary *)parameters success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    NSMutableArray *authors = [NSMutableArray array];
-    [responseObject enumerateObjectsUsingBlock:^(NSDictionary *rawAuthor, NSUInteger idx, BOOL *stop) {
-        [authors addObject:[MDLAuthor authorWithName:rawAuthor[@"name"]]];
-    }];
-    return authors;
+    [[MDLMendeleyAPIClient sharedClient] getPath:path
+                          requiresAuthentication:requiresAuthentication
+                                      parameters:parameters
+                                         success:^(AFHTTPRequestOperation *operation, NSArray *responseArray) {
+                                             NSMutableArray *authors = [NSMutableArray array];
+                                             for (NSDictionary *rawAuthor in responseArray)
+                                                 [authors addObject:[MDLAuthor authorWithName:rawAuthor[@"name"]]];
+                                             if (success)
+                                                 success(authors);
+                                         } failure:failure];
 }
 
 + (void)topAuthorsInPublicLibraryForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    if (upAndComing)
-        parameters[@"upandcoming"] = @"true";
-    if (categoryIdentifier)
-        parameters[@"discipline"] = categoryIdentifier;
-    
-    [[MDLMendeleyAPIClient sharedClient] getPath:@"/oapi/stats/authors/"
-                          requiresAuthentication:NO
-                                      parameters:parameters
-                                         success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
-                                             if (success)
-                                                 success([self authorsFromRequestResponseObject:responseObject]);
-                                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                             if (failure)
-                                                 failure(error);
-                                         }];
+    [self getAuthorsAtPath:@"/oapi/stats/authors/" requiresAuthentication:NO parameters:[NSDictionary parametersForCategory:categoryIdentifier upAndComing:upAndComing] success:success failure:failure];
 }
 
 + (void)topAuthorsInUserLibrarySuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    [[MDLMendeleyAPIClient sharedClient] getPath:@"/oapi/library/authors/"
-                          requiresAuthentication:YES
-                                      parameters:nil
-                                         success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
-                                             if (success)
-                                                 success([self authorsFromRequestResponseObject:responseObject]);
-                                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                             if (failure)
-                                                 failure(error);
-                                         }];
+    [self getAuthorsAtPath:@"/oapi/library/authors/" requiresAuthentication:YES parameters:nil success:success failure:failure];
 }
 
 @end

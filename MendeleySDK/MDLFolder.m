@@ -56,14 +56,12 @@
                                                  bodyKey:@"folder"
                                              bodyContent:(parent) ? @{@"name" : folder.name, @"parent": parent.identifier} : @{@"name" : folder.name}
                                                  success:^(AFHTTPRequestOperation *operation, id responseDictionary) {
-                                                     
                                                      folder.parent = parent;
                                                      parent.subfolders = [parent.subfolders arrayByAddingObject:folder];
-                                                     
                                                      folder.identifier = responseDictionary[@"folder_id"];
                                                      if (success)
                                                          success(folder);
-                                                 } failure:^(AFHTTPRequestOperation *requestOperation, NSError *error) { if (failure) failure(error); }];
+                                                 } failure:failure];
     
     return folder;
 }
@@ -78,26 +76,17 @@
                                              for (NSDictionary *rawFolder in responseObject)
                                                  [folders addObject:[self folderWithIdentifier:rawFolder[@"id"] name:rawFolder[@"name"] numberOfDocuments:rawFolder[@"size"] parentIdentifier:rawFolder[@"parent"]]];
                                              for (MDLFolder *folder in folders)
-                                             {
                                                  if (folder.parentIdentifier)
-                                                 {
                                                      for (MDLFolder *aFolder in folders)
-                                                     {
                                                          if ([aFolder.identifier isEqualToString:folder.parentIdentifier])
                                                          {
                                                              folder.parent = aFolder;
                                                              folder.parent.subfolders = [folder.parent.subfolders arrayByAddingObject:folder];
                                                              break;
                                                          }
-                                                     }
-                                                     
-                                                 }
-                                             }
                                              if (success)
                                                  success([folders filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"parent = nil"]]);
-                                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                             if (failure) failure(error);
-                                         }];
+                                         } failure:failure];
 }
 
 - (void)fetchDocumentsAtPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure
@@ -105,8 +94,8 @@
     [[MDLMendeleyAPIClient sharedClient] getPath:[NSString stringWithFormat:@"/oapi/library/folders/%@/", self.identifier]
                           requiresAuthentication:YES
                                       parameters:nil
-                                         success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
-                                             NSArray *rawDocuments = responseObject[@"document_ids"];
+                                         success:^(AFHTTPRequestOperation *operation, NSDictionary *responseDictionary) {
+                                             NSArray *rawDocuments = responseDictionary[@"document_ids"];
                                              NSMutableArray *documents = [NSMutableArray array];
                                              for (NSString *documentIdentifier in rawDocuments)
                                              {
@@ -116,28 +105,17 @@
                                              }
                                              self.documents = documents;
                                              
-                                             NSNumber *totalResults  = [NSNumber numberOrNumberFromString:responseObject[@"total_results"]];
-                                             NSNumber *totalPages    = [NSNumber numberOrNumberFromString:responseObject[@"total_pages"]];
-                                             NSNumber *pageIndex     = [NSNumber numberOrNumberFromString:responseObject[@"current_page"]];
-                                             NSNumber *itemsPerPage  = [NSNumber numberOrNumberFromString:responseObject[@"items_per_page"]];
-                                             
                                              if (success)
-                                                 success(self.documents, [totalResults unsignedIntegerValue], [totalPages unsignedIntegerValue], [pageIndex unsignedIntegerValue], [itemsPerPage unsignedIntegerValue]);
-                                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                             if (failure)
-                                                 failure(error);
-                                         }];
+                                                 success(self.documents, [responseDictionary responseTotalResults], [responseDictionary responseTotalPages], [responseDictionary responsePageIndex], [responseDictionary responseItemsPerPage]);
+                                         } failure:failure];
 }
 
 - (void)addDocument:(MDLDocument *)document success:(void (^)())success failure:(void (^)(NSError *))failure
 {
     [[MDLMendeleyAPIClient sharedClient] postPrivatePath:[NSString stringWithFormat:@"/oapi/library/folders/%@/%@/", self.identifier, document.identifier]
                                                  bodyKey:nil bodyContent:nil
-                                                 success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
-                                                     if (success) success();
-                                                 } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                                     if (failure) failure(error);
-                                                 }];
+                                                 success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) { if (success) success(); }
+                                                 failure:failure];
 }
 
 - (void)deleteSuccess:(void (^)())success failure:(void (^)(NSError *))failure
@@ -153,7 +131,7 @@
                                                        }
                                                        if (success) success();
                                                    }
-                                                   failure:^(AFHTTPRequestOperation *requestOperation, NSError *error) { if (failure) failure(error); }];
+                                                   failure:failure];
 }
 
 - (void)removeDocument:(MDLDocument *)document success:(void (^)())success failure:(void (^)(NSError *))failure
@@ -166,7 +144,7 @@
                                                        self.documents = newDocuments;
                                                        if (success) success();
                                                    }
-                                                   failure:^(AFHTTPRequestOperation *requestOperation, NSError *error) { if (failure) failure(error); }];
+                                                   failure:failure];
 }
 
 @end
