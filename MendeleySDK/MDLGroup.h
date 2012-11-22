@@ -133,7 +133,7 @@ typedef NS_ENUM(NSUInteger, MDLGroupType)
  
  @see [API documentation: Search Public Groups](http://apidocs.mendeley.com/home/public-resources/search-public-groups)
  */
-+ (void)topGroupsInPublicLibraryForCategory:(NSString *)categoryIdentifier atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure;
++ (void)fetchTopGroupsInPublicLibraryForCategory:(NSString *)categoryIdentifier atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure;
 
 /**
  Sends a user library groups API request using the shared client and fetches the response as an array of `MDLGroup`.

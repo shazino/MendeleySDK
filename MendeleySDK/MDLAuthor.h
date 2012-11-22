@@ -53,7 +53,7 @@
  
  @see [API documentation: Stats Authors](http://apidocs.mendeley.com/home/public-resources/stats-authors)
  */
-+ (void)topAuthorsInPublicLibraryForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
++ (void)fetchTopAuthorsInPublicLibraryForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 
 /**
  Sends a user top authors API request using the shared client and fetches the response as an array of `MDLAuthor`.
@@ -63,6 +63,6 @@
  
  @see [API documentation: User Authors Stats](http://apidocs.mendeley.com/home/user-specific-methods/user-authors-stats)
  */
-+ (void)topAuthorsInUserLibrarySuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
++ (void)fetchTopAuthorsInUserLibrarySuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 
 @end

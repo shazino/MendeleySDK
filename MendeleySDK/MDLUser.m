@@ -89,10 +89,10 @@
 
 - (void)sendContactRequestSuccess:(void (^)())success failure:(void (^)(NSError *))failure
 {
-    [[MDLMendeleyAPIClient sharedClient] postPrivatePath:[NSString stringWithFormat:@"/oapi/profiles/contacts/%@/", self.identifier]
-                                                 bodyKey:nil bodyContent:nil
-                                                 success:^(AFHTTPRequestOperation *operation, id responseObject) { if (success) success(); }
-                                                 failure:failure];
+    [[MDLMendeleyAPIClient sharedClient] postPath:[NSString stringWithFormat:@"/oapi/profiles/contacts/%@/", self.identifier]
+                                          bodyKey:nil bodyContent:nil
+                                          success:^(AFHTTPRequestOperation *operation, id responseObject) { if (success) success(); }
+                                          failure:failure];
 }
 
 @end

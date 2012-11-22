@@ -56,12 +56,12 @@
                                          } failure:failure];
 }
 
-+ (void)topPublicationsInPublicLibraryForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)fetchTopPublicationsInPublicLibraryForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     [self getPublicationsAtPath:@"/oapi/stats/publications/" requiresAuthentication:NO parameters:[NSDictionary parametersForCategory:categoryIdentifier upAndComing:upAndComing] success:success failure:failure];
 }
 
-+ (void)topPublicationsInUserLibrarySuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)fetchTopPublicationsInUserLibrarySuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     [self getPublicationsAtPath:@"/oapi/library/publications/" requiresAuthentication:YES parameters:nil success:success failure:failure];
 }

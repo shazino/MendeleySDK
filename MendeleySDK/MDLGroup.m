@@ -76,23 +76,23 @@
     group.name = name;
     group.type = type;
     
-    [[MDLMendeleyAPIClient sharedClient] postPrivatePath:@"/oapi/library/groups/"
-                                                 bodyKey:@"group"
-                                             bodyContent:@{@"name" : group.name, @"type" : [self stringValueForType:group.type]}
-                                                 success:^(AFHTTPRequestOperation *operation, id responseDictionary) {
-                                                     group.identifier = responseDictionary[@"group_id"];
-                                                     if (success)
-                                                         success(group);
-                                                 } failure:failure];
+    [[MDLMendeleyAPIClient sharedClient] postPath:@"/oapi/library/groups/"
+                                          bodyKey:@"group"
+                                      bodyContent:@{@"name" : group.name, @"type" : [self stringValueForType:group.type]}
+                                          success:^(AFHTTPRequestOperation *operation, id responseDictionary) {
+                                              group.identifier = responseDictionary[@"group_id"];
+                                              if (success)
+                                                  success(group);
+                                          } failure:failure];
     
     return group;
 }
 
-+ (void)topGroupsInPublicLibraryForCategory:(NSString *)categoryIdentifier
-                                     atPage:(NSUInteger)pageIndex
-                                      count:(NSUInteger)count
-                                    success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success
-                                    failure:(void (^)(NSError *))failure
++ (void)fetchTopGroupsInPublicLibraryForCategory:(NSString *)categoryIdentifier
+                                          atPage:(NSUInteger)pageIndex
+                                           count:(NSUInteger)count
+                                         success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success
+                                         failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     if (categoryIdentifier)
@@ -220,9 +220,9 @@
 
 - (void)deleteAtPath:(NSString *)path success:(void (^)())success failure:(void (^)(NSError *))failure
 {
-    [[MDLMendeleyAPIClient sharedClient] deletePrivatePath:path parameters:nil
-                                                   success:^(AFHTTPRequestOperation *requestOperation, id responseObject) { if (success) success(); }
-                                                   failure:failure];
+    [[MDLMendeleyAPIClient sharedClient] deletePath:path parameters:nil
+                                            success:^(AFHTTPRequestOperation *requestOperation, id responseObject) { if (success) success(); }
+                                            failure:failure];
     
 }
 

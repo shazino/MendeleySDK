@@ -73,7 +73,7 @@
  
  @see [API documentation: Search Subcategories](http://apidocs.mendeley.com/home/public-resources/search-subcategories)
  */
-- (void)subcategoriesSuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
+- (void)fetchSubcategoriesSuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 
 /**
  Sends a last tags API request using the shared client and fetches the response as an array of `MDLTag`.
@@ -83,6 +83,6 @@
  
  @see [API documentation: Stats Tags](http://apidocs.mendeley.com/home/public-resources/stats-tags)
  */
-- (void)lastTagsInPublicLibrarSuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
+- (void)fetchLastTagsInPublicLibrarySuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 
 @end

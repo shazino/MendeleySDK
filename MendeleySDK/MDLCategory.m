@@ -53,7 +53,7 @@
                                          failure:failure];
 }
 
-- (void)subcategoriesSuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+- (void)fetchSubcategoriesSuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     [[MDLMendeleyAPIClient sharedClient] getPath:[NSString stringWithFormat:@"/oapi/documents/subcategories/%@/", self.identifier]
                           requiresAuthentication:NO
@@ -68,9 +68,9 @@
                                          failure:failure];
 }
 
-- (void)lastTagsInPublicLibrarSuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+- (void)fetchLastTagsInPublicLibrarySuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    [MDLTag lastTagsInPublicLibraryForCategory:self.identifier success:success failure:failure];
+    [MDLTag fetchLastTagsInPublicLibraryForCategory:self.identifier success:success failure:failure];
 }
 
 @end

@@ -58,7 +58,7 @@
  
  @see [API documentation: Stats Tags](http://apidocs.mendeley.com/home/public-resources/stats-tags)
  */
-+ (void)lastTagsInPublicLibraryForCategory:(NSString *)categoryIdentifier success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
++ (void)fetchLastTagsInPublicLibraryForCategory:(NSString *)categoryIdentifier success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 
 /**
  Sends a user last tags API request using the shared client and fetches the response as an array of `MDLTag`.
@@ -68,6 +68,6 @@
  
  @see [API documentation: User Tags Stats](http://apidocs.mendeley.com/home/user-specific-methods/user-tags-stats)
  */
-+ (void)lastTagsInUserLibrarySuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
++ (void)fetchLastTagsInUserLibrarySuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 
 @end

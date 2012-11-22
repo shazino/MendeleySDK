@@ -54,14 +54,14 @@ enum MDLTagsViewSections {
 {
     [super viewWillAppear:animated];
     
-    [self.category lastTagsInPublicLibrarSuccess:^(NSArray *results) {
+    [self.category fetchLastTagsInPublicLibrarySuccess:^(NSArray *results) {
         self.tags = results;
         [self.tableView reloadData];
     } failure:^(NSError *error) {
         [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     }];
     
-    [self.category subcategoriesSuccess:^(NSArray *results) {
+    [self.category fetchSubcategoriesSuccess:^(NSArray *results) {
         self.subcategories = [results sortedArrayUsingComparator:^NSComparisonResult(MDLSubcategory *obj1, MDLSubcategory *obj2) { return [obj1.identifier compare:obj2.identifier]; }];;
         [self.tableView reloadData];
     } failure:^(NSError *error) {

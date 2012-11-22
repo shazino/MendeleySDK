@@ -51,14 +51,14 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
     newDocument.title   = title;
     newDocument.type    = kMDLDocumentTypeGeneric;
     
-    [[MDLMendeleyAPIClient sharedClient] postPrivatePath:@"/oapi/library/documents/"
-                                                 bodyKey:@"document"
-                                             bodyContent:@{@"type" : newDocument.type, @"title" : newDocument.title}
-                                                 success:^(AFHTTPRequestOperation *operation, id responseDictionary) {
-                                                     newDocument.identifier = responseDictionary[@"document_id"];
-                                                     if (success)
-                                                         success(newDocument);
-                                                 } failure:failure];
+    [[MDLMendeleyAPIClient sharedClient] postPath:@"/oapi/library/documents/"
+                                          bodyKey:@"document"
+                                      bodyContent:@{@"type" : newDocument.type, @"title" : newDocument.title}
+                                          success:^(AFHTTPRequestOperation *operation, id responseDictionary) {
+                                              newDocument.identifier = responseDictionary[@"document_id"];
+                                              if (success)
+                                                  success(newDocument);
+                                          } failure:failure];
     
     return newDocument;
 }
@@ -66,6 +66,8 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
 + (MDLDocument *)documentWithRawDocument:(NSDictionary *)rawDocument
 {
     MDLDocument *document = [MDLDocument new];
+    if (![rawDocument isKindOfClass:[NSDictionary class]])
+        return document;
     document.identifier = (rawDocument[@"id"]) ? rawDocument[@"id"] : rawDocument[@"uuid"];
     document.title      = rawDocument[@"title"];
     document.type       = rawDocument[@"type"];
@@ -137,7 +139,7 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
     [self fetchDocumentsWithPath:[NSString stringWithFormat:@"/oapi/documents/authored/%@/", name] public:YES parameters:(year) ? @{@"year" : year} : nil atPage:pageIndex count:count success:success failure:failure];
 }
 
-+ (void)topDocumentsInPublicLibraryForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)fetchTopDocumentsInPublicLibraryForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     [[MDLMendeleyAPIClient sharedClient] getPath:@"/oapi/stats/papers/"
                           requiresAuthentication:NO
@@ -174,10 +176,10 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
         return;
     }
     
-    [[MDLMendeleyAPIClient sharedClient] putPrivatePath:[NSString stringWithFormat:@"/oapi/library/documents/%@/", self.identifier]
-                                              fileAtURL:fileURL
-                                                success:^(AFHTTPRequestOperation *operation, id responseObject) { if (success) success(); }
-                                                failure:failure];
+    [[MDLMendeleyAPIClient sharedClient] putPath:[NSString stringWithFormat:@"/oapi/library/documents/%@/", self.identifier]
+                                       fileAtURL:fileURL
+                                         success:^(AFHTTPRequestOperation *operation, id responseObject) { if (success) success(); }
+                                         failure:failure];
 }
 
 - (void)fetchDetailsSuccess:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure
@@ -237,10 +239,10 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
 
 - (void)deleteSuccess:(void (^)())success failure:(void (^)(NSError *))failure
 {
-    [[MDLMendeleyAPIClient sharedClient] deletePrivatePath:[NSString stringWithFormat:@"/oapi/library/documents/%@/", self.identifier]
-                                                parameters:nil
-                                                   success:^(AFHTTPRequestOperation *requestOperation, id responseObject) { if (success) success(); }
-                                                   failure:failure];
+    [[MDLMendeleyAPIClient sharedClient] deletePath:[NSString stringWithFormat:@"/oapi/library/documents/%@/", self.identifier]
+                                         parameters:nil
+                                            success:^(AFHTTPRequestOperation *requestOperation, id responseObject) { if (success) success(); }
+                                            failure:failure];
 }
 
 @end

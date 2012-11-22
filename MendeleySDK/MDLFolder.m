@@ -52,16 +52,16 @@
     folder.name = name;
     folder.subfolders = @[];
     
-    [[MDLMendeleyAPIClient sharedClient] postPrivatePath:@"/oapi/library/folders/"
-                                                 bodyKey:@"folder"
-                                             bodyContent:(parent) ? @{@"name" : folder.name, @"parent": parent.identifier} : @{@"name" : folder.name}
-                                                 success:^(AFHTTPRequestOperation *operation, id responseDictionary) {
-                                                     folder.parent = parent;
-                                                     parent.subfolders = [parent.subfolders arrayByAddingObject:folder];
-                                                     folder.identifier = responseDictionary[@"folder_id"];
-                                                     if (success)
-                                                         success(folder);
-                                                 } failure:failure];
+    [[MDLMendeleyAPIClient sharedClient] postPath:@"/oapi/library/folders/"
+                                          bodyKey:@"folder"
+                                      bodyContent:(parent) ? @{@"name" : folder.name, @"parent": parent.identifier} : @{@"name" : folder.name}
+                                          success:^(AFHTTPRequestOperation *operation, id responseDictionary) {
+                                              folder.parent = parent;
+                                              parent.subfolders = [parent.subfolders arrayByAddingObject:folder];
+                                              folder.identifier = responseDictionary[@"folder_id"];
+                                              if (success)
+                                                  success(folder);
+                                          } failure:failure];
     
     return folder;
 }
@@ -112,39 +112,39 @@
 
 - (void)addDocument:(MDLDocument *)document success:(void (^)())success failure:(void (^)(NSError *))failure
 {
-    [[MDLMendeleyAPIClient sharedClient] postPrivatePath:[NSString stringWithFormat:@"/oapi/library/folders/%@/%@/", self.identifier, document.identifier]
-                                                 bodyKey:nil bodyContent:nil
-                                                 success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) { if (success) success(); }
-                                                 failure:failure];
+    [[MDLMendeleyAPIClient sharedClient] postPath:[NSString stringWithFormat:@"/oapi/library/folders/%@/%@/", self.identifier, document.identifier]
+                                          bodyKey:nil bodyContent:nil
+                                          success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) { if (success) success(); }
+                                          failure:failure];
 }
 
 - (void)deleteSuccess:(void (^)())success failure:(void (^)(NSError *))failure
 {
-    [[MDLMendeleyAPIClient sharedClient] deletePrivatePath:[NSString stringWithFormat:@"/oapi/library/folders/%@/", self.identifier]
-                                                parameters:nil
-                                                   success:^(AFHTTPRequestOperation *requestOperation, id responseObject) {
-                                                       if (self.parent)
-                                                       {
-                                                           NSMutableArray *siblings = [NSMutableArray arrayWithArray:self.parent.subfolders];
-                                                           [siblings removeObject:self];
-                                                           self.parent.subfolders = siblings;
-                                                       }
-                                                       if (success) success();
-                                                   }
-                                                   failure:failure];
+    [[MDLMendeleyAPIClient sharedClient] deletePath:[NSString stringWithFormat:@"/oapi/library/folders/%@/", self.identifier]
+                                         parameters:nil
+                                            success:^(AFHTTPRequestOperation *requestOperation, id responseObject) {
+                                                if (self.parent)
+                                                {
+                                                    NSMutableArray *siblings = [NSMutableArray arrayWithArray:self.parent.subfolders];
+                                                    [siblings removeObject:self];
+                                                    self.parent.subfolders = siblings;
+                                                }
+                                                if (success) success();
+                                            }
+                                            failure:failure];
 }
 
 - (void)removeDocument:(MDLDocument *)document success:(void (^)())success failure:(void (^)(NSError *))failure
 {
-    [[MDLMendeleyAPIClient sharedClient] deletePrivatePath:[NSString stringWithFormat:@"/oapi/library/folders/%@/%@/", self.identifier, document.identifier]
-                                                parameters:nil
-                                                   success:^(AFHTTPRequestOperation *requestOperation, id responseObject) {
-                                                       NSMutableArray *newDocuments = [NSMutableArray arrayWithArray:self.documents];
-                                                       [newDocuments removeObject:document];
-                                                       self.documents = newDocuments;
-                                                       if (success) success();
-                                                   }
-                                                   failure:failure];
+    [[MDLMendeleyAPIClient sharedClient] deletePath:[NSString stringWithFormat:@"/oapi/library/folders/%@/%@/", self.identifier, document.identifier]
+                                         parameters:nil
+                                            success:^(AFHTTPRequestOperation *requestOperation, id responseObject) {
+                                                NSMutableArray *newDocuments = [NSMutableArray arrayWithArray:self.documents];
+                                                [newDocuments removeObject:document];
+                                                self.documents = newDocuments;
+                                                if (success) success();
+                                            }
+                                            failure:failure];
 }
 
 @end

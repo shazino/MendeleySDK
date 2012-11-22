@@ -53,7 +53,7 @@
  
  @see [API documentation: Stats Publication Outlets](http://apidocs.mendeley.com/home/public-resources/stats-publication-outlets)
  */
-+ (void)topPublicationsInPublicLibraryForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
++ (void)fetchTopPublicationsInPublicLibraryForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 
 /**
  Sends a user top publication API request using the shared client and fetches the response as an array of `MDLPublication`.
@@ -63,6 +63,6 @@
  
  @see [API documentation: User Publication Outlets Stats](http://apidocs.mendeley.com/home/user-specific-methods/user-publication-outlets-stats)
  */
-+ (void)topPublicationsInUserLibrarySuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
++ (void)fetchTopPublicationsInUserLibrarySuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 
 @end

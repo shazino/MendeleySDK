@@ -149,6 +149,8 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
                    [self analyseFailureFromRequestOperation:operation error:error failure:failure andAuthorizeUsingOAuthIfNeededWithSuccess:^{
                        [self getPath:path requiresAuthentication:requiresAuthentication parameters:parameters success:success failure:failure];
                    }];
+               else
+                   failure(error);
            }];
 }
 
@@ -172,7 +174,7 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
     [self enqueueHTTPRequestOperation:operation];
 }
 
-- (void)postPrivatePath:(NSString *)path bodyKey:(NSString *)bodyKey bodyContent:(id)bodyContent success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(NSError *))failure
+- (void)postPath:(NSString *)path bodyKey:(NSString *)bodyKey bodyContent:(id)bodyContent success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(NSError *))failure
 {
     NSDictionary *parameters;
     if (bodyKey && bodyContent)
@@ -190,12 +192,12 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
            }
            failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                [self analyseFailureFromRequestOperation:operation error:error failure:failure andAuthorizeUsingOAuthIfNeededWithSuccess:^{
-                   [self postPrivatePath:path bodyKey:bodyKey bodyContent:bodyContent success:success failure:failure];
+                   [self postPath:path bodyKey:bodyKey bodyContent:bodyContent success:success failure:failure];
                }];
            }];
 }
 
-- (void)deletePrivatePath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(NSError *))failure
+- (void)deletePath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(NSError *))failure
 {
     [super deletePath:path
            parameters:parameters
@@ -206,12 +208,12 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
               }
               failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                   [self analyseFailureFromRequestOperation:operation error:error failure:failure andAuthorizeUsingOAuthIfNeededWithSuccess:^{
-                      [self deletePrivatePath:path parameters:parameters success:success failure:failure];
+                      [self deletePath:path parameters:parameters success:success failure:failure];
                   }];
               }];
 }
 
-- (void)putPrivatePath:(NSString *)path fileAtURL:(NSURL *)fileURL success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(NSError *))failure
+- (void)putPath:(NSString *)path fileAtURL:(NSURL *)fileURL success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(NSError *))failure
 {
     [self signCallPerAuthHeaderWithPath:path andParameters:@{@"oauth_body_hash" : [MDLMendeleyAPIClient SHA1ForFileAtURL:fileURL]} andMethod:@"PUT"];
     
@@ -225,7 +227,7 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
             success(operation, responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self analyseFailureFromRequestOperation:operation error:error failure:failure andAuthorizeUsingOAuthIfNeededWithSuccess:^{
-            [self putPrivatePath:path fileAtURL:fileURL success:success failure:failure];
+            [self putPath:path fileAtURL:fileURL success:success failure:failure];
         }];
     }];
     [self enqueueHTTPRequestOperation:operation];

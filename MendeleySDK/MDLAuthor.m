@@ -26,7 +26,7 @@
 
 @interface MDLAuthor ()
 
-+ (void)getAuthorsAtPath:(NSString *)path requiresAuthentication:(BOOL)requiresAuthentication parameters:(NSDictionary *)parameters success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
++ (void)fetchAuthorsAtPath:(NSString *)path requiresAuthentication:(BOOL)requiresAuthentication parameters:(NSDictionary *)parameters success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
 
 @end
 
@@ -39,7 +39,7 @@
     return author;
 }
 
-+ (void)getAuthorsAtPath:(NSString *)path requiresAuthentication:(BOOL)requiresAuthentication parameters:(NSDictionary *)parameters success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)fetchAuthorsAtPath:(NSString *)path requiresAuthentication:(BOOL)requiresAuthentication parameters:(NSDictionary *)parameters success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     [[MDLMendeleyAPIClient sharedClient] getPath:path
                           requiresAuthentication:requiresAuthentication
@@ -53,14 +53,14 @@
                                          } failure:failure];
 }
 
-+ (void)topAuthorsInPublicLibraryForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)fetchTopAuthorsInPublicLibraryForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    [self getAuthorsAtPath:@"/oapi/stats/authors/" requiresAuthentication:NO parameters:[NSDictionary parametersForCategory:categoryIdentifier upAndComing:upAndComing] success:success failure:failure];
+    [self fetchAuthorsAtPath:@"/oapi/stats/authors/" requiresAuthentication:NO parameters:[NSDictionary parametersForCategory:categoryIdentifier upAndComing:upAndComing] success:success failure:failure];
 }
 
-+ (void)topAuthorsInUserLibrarySuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)fetchTopAuthorsInUserLibrarySuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    [self getAuthorsAtPath:@"/oapi/library/authors/" requiresAuthentication:YES parameters:nil success:success failure:failure];
+    [self fetchAuthorsAtPath:@"/oapi/library/authors/" requiresAuthentication:YES parameters:nil success:success failure:failure];
 }
 
 @end

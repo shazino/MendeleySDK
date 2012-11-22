@@ -60,12 +60,12 @@
                                          } failure:failure];
 }
 
-+ (void)lastTagsInPublicLibraryForCategory:(NSString *)categoryIdentifier success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)fetchLastTagsInPublicLibraryForCategory:(NSString *)categoryIdentifier success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     [self getTagsAtPath:[NSString stringWithFormat:@"/oapi/stats/tags/%@/", categoryIdentifier] requiresAuthentication:NO success:success failure:failure];
 }
 
-+ (void)lastTagsInUserLibrarySuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)fetchLastTagsInUserLibrarySuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     [self getTagsAtPath:@"/oapi/library/tags/" requiresAuthentication:YES success:success failure:failure];
 }
