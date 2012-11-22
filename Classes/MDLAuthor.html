@@ -49,9 +49,9 @@
 	
 	<option value="//api/name/authorWithName:">&nbsp;&nbsp;&nbsp;&nbsp;+ authorWithName:</option>
 	
-	<option value="//api/name/topAuthorsInPublicLibraryForCategory:upAndComing:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;+ topAuthorsInPublicLibraryForCategory:upAndComing:success:failure:</option>
+	<option value="//api/name/fetchTopAuthorsInPublicLibraryForCategory:upAndComing:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;+ fetchTopAuthorsInPublicLibraryForCategory:upAndComing:success:failure:</option>
 	
-	<option value="//api/name/topAuthorsInUserLibrarySuccess:failure:">&nbsp;&nbsp;&nbsp;&nbsp;+ topAuthorsInUserLibrarySuccess:failure:</option>
+	<option value="//api/name/fetchTopAuthorsInUserLibrarySuccess:failure:">&nbsp;&nbsp;&nbsp;&nbsp;+ fetchTopAuthorsInUserLibrarySuccess:failure:</option>
 	
 	
 	
@@ -89,9 +89,9 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authorWithName:">authorWithName:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/topAuthorsInPublicLibraryForCategory:upAndComing:success:failure:">topAuthorsInPublicLibraryForCategory:upAndComing:success:failure:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fetchTopAuthorsInPublicLibraryForCategory:upAndComing:success:failure:">fetchTopAuthorsInPublicLibraryForCategory:upAndComing:success:failure:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/topAuthorsInUserLibrarySuccess:failure:">topAuthorsInUserLibrarySuccess:failure:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fetchTopAuthorsInUserLibrarySuccess:failure:">fetchTopAuthorsInUserLibrarySuccess:failure:</a></span></li>
 	
 </ul></li>
 
@@ -164,14 +164,14 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/topAuthorsInPublicLibraryForCategory:upAndComing:success:failure:">+&nbsp;topAuthorsInPublicLibraryForCategory:upAndComing:success:failure:</a></code>
+		<code><a href="#//api/name/fetchTopAuthorsInPublicLibraryForCategory:upAndComing:success:failure:">+&nbsp;fetchTopAuthorsInPublicLibraryForCategory:upAndComing:success:failure:</a></code>
 		<span class="tooltip"><p>Sends a top authors API request using the shared client and fetches the response as an array of <code>MDLAuthor</code>.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/topAuthorsInUserLibrarySuccess:failure:">+&nbsp;topAuthorsInUserLibrarySuccess:failure:</a></code>
+		<code><a href="#//api/name/fetchTopAuthorsInUserLibrarySuccess:failure:">+&nbsp;fetchTopAuthorsInUserLibrarySuccess:failure:</a></code>
 		<span class="tooltip"><p>Sends a user top authors API request using the shared client and fetches the response as an array of <code>MDLAuthor</code>.</p></span>
 	</span>
 	
@@ -295,8 +295,8 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/topAuthorsInPublicLibraryForCategory:upAndComing:success:failure:" title="topAuthorsInPublicLibraryForCategory:upAndComing:success:failure:"></a>
-	<h3 class="subsubtitle method-title">topAuthorsInPublicLibraryForCategory:upAndComing:success:failure:</h3>
+	<a name="//api/name/fetchTopAuthorsInPublicLibraryForCategory:upAndComing:success:failure:" title="fetchTopAuthorsInPublicLibraryForCategory:upAndComing:success:failure:"></a>
+	<h3 class="subsubtitle method-title">fetchTopAuthorsInPublicLibraryForCategory:upAndComing:success:failure:</h3>
 	
 	
 	
@@ -306,7 +306,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (void)topAuthorsInPublicLibraryForCategory:(NSString *)<em>categoryIdentifier</em> upAndComing:(BOOL)<em>upAndComing</em> success:(void ( ^ ) ( NSArray *))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (void)fetchTopAuthorsInPublicLibraryForCategory:(NSString *)<em>categoryIdentifier</em> upAndComing:(BOOL)<em>upAndComing</em> success:(void ( ^ ) ( NSArray *))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
 
     
 	
@@ -370,8 +370,8 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/topAuthorsInUserLibrarySuccess:failure:" title="topAuthorsInUserLibrarySuccess:failure:"></a>
-	<h3 class="subsubtitle method-title">topAuthorsInUserLibrarySuccess:failure:</h3>
+	<a name="//api/name/fetchTopAuthorsInUserLibrarySuccess:failure:" title="fetchTopAuthorsInUserLibrarySuccess:failure:"></a>
+	<h3 class="subsubtitle method-title">fetchTopAuthorsInUserLibrarySuccess:failure:</h3>
 	
 	
 	
@@ -381,7 +381,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (void)topAuthorsInUserLibrarySuccess:(void ( ^ ) ( NSArray *))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (void)fetchTopAuthorsInUserLibrarySuccess:(void ( ^ ) ( NSArray *))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
 
     
 	
@@ -449,7 +449,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 shazino. All rights reserved. (Last updated: 2012-11-19)</span><br />
+						<p><span class="copyright">&copy; 2012 shazino. All rights reserved. (Last updated: 2012-11-22)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

@@ -65,6 +65,8 @@
 	
 	<option value="class_methods">Class Methods</option>
 	
+	<option value="//api/name/fetchContactsSuccess:failure:">&nbsp;&nbsp;&nbsp;&nbsp;+ fetchContactsSuccess:failure:</option>
+	
 	<option value="//api/name/fetchMyUserProfileSuccess:failure:">&nbsp;&nbsp;&nbsp;&nbsp;+ fetchMyUserProfileSuccess:failure:</option>
 	
 	<option value="//api/name/userWithIdentifier:name:">&nbsp;&nbsp;&nbsp;&nbsp;+ userWithIdentifier:name:</option>
@@ -75,6 +77,8 @@
 	<option value="instance_methods">Instance Methods</option>
 	
 	<option value="//api/name/fetchProfileSuccess:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- fetchProfileSuccess:failure:</option>
+	
+	<option value="//api/name/sendContactRequestSuccess:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- sendContactRequestSuccess:failure:</option>
 	
 	
 	
@@ -126,6 +130,8 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fetchContactsSuccess:failure:">fetchContactsSuccess:failure:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fetchMyUserProfileSuccess:failure:">fetchMyUserProfileSuccess:failure:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/userWithIdentifier:name:">userWithIdentifier:name:</a></span></li>
@@ -137,6 +143,8 @@
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fetchProfileSuccess:failure:">fetchProfileSuccess:failure:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendContactRequestSuccess:failure:">sendContactRequestSuccess:failure:</a></span></li>
 	
 </ul></li>
 
@@ -277,8 +285,22 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/fetchContactsSuccess:failure:">+&nbsp;fetchContactsSuccess:failure:</a></code>
+		<span class="tooltip"><p>Sends a contacts API request using the shared client and fetches the response as an array of <code>MDLUser</code>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/fetchProfileSuccess:failure:">&ndash;&nbsp;fetchProfileSuccess:failure:</a></code>
 		<span class="tooltip"><p>Sends a profile information API request using the shared client and fetches the response as a <code>MDLUser</code>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sendContactRequestSuccess:failure:">&ndash;&nbsp;sendContactRequestSuccess:failure:</a></code>
+		<span class="tooltip"><p>Sends an add contact API request using the shared client.</p></span>
 	</span>
 	
 	
@@ -714,6 +736,71 @@
 						<h2 class="subtitle subtitle-methods">Class Methods</h2>
 						
 						<div class="section-method">
+	<a name="//api/name/fetchContactsSuccess:failure:" title="fetchContactsSuccess:failure:"></a>
+	<h3 class="subsubtitle method-title">fetchContactsSuccess:failure:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sends a contacts API request using the shared client and fetches the response as an array of <code>MDLUser</code>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)fetchContactsSuccess:(void ( ^ ) ( NSArray *))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>success</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of <code>MDLUser</code> objects.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>failure</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Sends a contacts API request using the shared client and fetches the response as an array of <code>MDLUser</code>.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="http://apidocs.mendeley.com/home/user-specific-methods/user-profile-contacts">API documentation: User Profile Contacts</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MDLUser.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/fetchMyUserProfileSuccess:failure:" title="fetchMyUserProfileSuccess:failure:"></a>
 	<h3 class="subsubtitle method-title">fetchMyUserProfileSuccess:failure:</h3>
 	
@@ -912,6 +999,71 @@
 	
 </div>
 						
+						<div class="section-method">
+	<a name="//api/name/sendContactRequestSuccess:failure:" title="sendContactRequestSuccess:failure:"></a>
+	<h3 class="subsubtitle method-title">sendContactRequestSuccess:failure:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sends an add contact API request using the shared client.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)sendContactRequestSuccess:(void ( ^ ) ( ))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>success</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes no argument.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>failure</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Sends an add contact API request using the shared client.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="http://apidocs.mendeley.com/home/user-specific-methods/user-profile-add-contact">API documentation: User Profile Add Contact</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MDLUser.h</code><br />
+	</div>				
+	
+	
+</div>
+						
 					</div>
 					
 					
@@ -925,7 +1077,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 shazino. All rights reserved. (Last updated: 2012-11-19)</span><br />
+						<p><span class="copyright">&copy; 2012 shazino. All rights reserved. (Last updated: 2012-11-22)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

@@ -56,15 +56,15 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/deletePrivatePath:parameters:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- deletePrivatePath:parameters:success:failure:</option>
+	<option value="//api/name/deletePath:parameters:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- deletePath:parameters:success:failure:</option>
 	
 	<option value="//api/name/getPath:requiresAuthentication:parameters:outputStreamToFileAtPath:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- getPath:requiresAuthentication:parameters:outputStreamToFileAtPath:success:failure:</option>
 	
 	<option value="//api/name/getPath:requiresAuthentication:parameters:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- getPath:requiresAuthentication:parameters:success:failure:</option>
 	
-	<option value="//api/name/postPrivatePath:bodyKey:bodyContent:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- postPrivatePath:bodyKey:bodyContent:success:failure:</option>
+	<option value="//api/name/postPath:bodyKey:bodyContent:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- postPath:bodyKey:bodyContent:success:failure:</option>
 	
-	<option value="//api/name/putPrivatePath:fileAtURL:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- putPrivatePath:fileAtURL:success:failure:</option>
+	<option value="//api/name/putPath:fileAtURL:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- putPath:fileAtURL:success:failure:</option>
 	
 	
 	
@@ -108,15 +108,15 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deletePrivatePath:parameters:success:failure:">deletePrivatePath:parameters:success:failure:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deletePath:parameters:success:failure:">deletePath:parameters:success:failure:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getPath:requiresAuthentication:parameters:outputStreamToFileAtPath:success:failure:">getPath:requiresAuthentication:parameters:outputStreamToFileAtPath:success:failure:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getPath:requiresAuthentication:parameters:success:failure:">getPath:requiresAuthentication:parameters:success:failure:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postPrivatePath:bodyKey:bodyContent:success:failure:">postPrivatePath:bodyKey:bodyContent:success:failure:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postPath:bodyKey:bodyContent:success:failure:">postPath:bodyKey:bodyContent:success:failure:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/putPrivatePath:fileAtURL:success:failure:">putPrivatePath:fileAtURL:success:failure:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/putPath:fileAtURL:success:failure:">putPath:fileAtURL:success:failure:</a></span></li>
 	
 </ul></li>
 
@@ -209,21 +209,21 @@ Note that the default rate limit for calls varies depending on the method being 
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/postPrivatePath:bodyKey:bodyContent:success:failure:">&ndash;&nbsp;postPrivatePath:bodyKey:bodyContent:success:failure:</a></code>
+		<code><a href="#//api/name/postPath:bodyKey:bodyContent:success:failure:">&ndash;&nbsp;postPath:bodyKey:bodyContent:success:failure:</a></code>
 		<span class="tooltip"><p>Creates an <code>AFHTTPRequestOperation</code> with a <code>POST</code> request, and enqueues it to the HTTP client’s operation queue.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/deletePrivatePath:parameters:success:failure:">&ndash;&nbsp;deletePrivatePath:parameters:success:failure:</a></code>
+		<code><a href="#//api/name/deletePath:parameters:success:failure:">&ndash;&nbsp;deletePath:parameters:success:failure:</a></code>
 		<span class="tooltip"><p>Creates an <code>AFHTTPRequestOperation</code> with a <code>DELETE</code> request, and enqueues it to the HTTP client’s operation queue.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/putPrivatePath:fileAtURL:success:failure:">&ndash;&nbsp;putPrivatePath:fileAtURL:success:failure:</a></code>
+		<code><a href="#//api/name/putPath:fileAtURL:success:failure:">&ndash;&nbsp;putPath:fileAtURL:success:failure:</a></code>
 		<span class="tooltip"><p>Creates an <code>AFHTTPRequestOperation</code> with a <code>PUT</code> request, and enqueues it to the HTTP client’s operation queue.</p></span>
 	</span>
 	
@@ -397,8 +397,8 @@ Note that the default rate limit for calls varies depending on the method being 
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/deletePrivatePath:parameters:success:failure:" title="deletePrivatePath:parameters:success:failure:"></a>
-	<h3 class="subsubtitle method-title">deletePrivatePath:parameters:success:failure:</h3>
+	<a name="//api/name/deletePath:parameters:success:failure:" title="deletePath:parameters:success:failure:"></a>
+	<h3 class="subsubtitle method-title">deletePath:parameters:success:failure:</h3>
 	
 	
 	
@@ -408,7 +408,7 @@ Note that the default rate limit for calls varies depending on the method being 
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)deletePrivatePath:(NSString *)<em>path</em> parameters:(NSDictionary *)<em>parameters</em> success:(void ( ^ ) ( AFHTTPRequestOperation *, id ))<em>success</em> failure:(void ( ^ ) ( AFHTTPRequestOperation *, NSError *))<em>failure</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)deletePath:(NSString *)<em>path</em> parameters:(NSDictionary *)<em>parameters</em> success:(void ( ^ ) ( AFHTTPRequestOperation *, id ))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
 
     
 	
@@ -432,7 +432,7 @@ Note that the default rate limit for calls varies depending on the method being 
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes two arguments: the created request operation and the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
 		</dl>
 		
 	</div>
@@ -474,7 +474,7 @@ Note that the default rate limit for calls varies depending on the method being 
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)getPath:(NSString *)<em>path</em> requiresAuthentication:(BOOL)<em>requiresAuthentication</em> parameters:(NSDictionary *)<em>parameters</em> outputStreamToFileAtPath:(NSString *)<em>filePath</em> success:(void ( ^ ) ( AFHTTPRequestOperation *, id ))<em>success</em> failure:(void ( ^ ) ( AFHTTPRequestOperation *, NSError *))<em>failure</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)getPath:(NSString *)<em>path</em> requiresAuthentication:(BOOL)<em>requiresAuthentication</em> parameters:(NSDictionary *)<em>parameters</em> outputStreamToFileAtPath:(NSString *)<em>filePath</em> success:(void ( ^ ) ( AFHTTPRequestOperation *, id ))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
 
     
 	
@@ -508,7 +508,7 @@ Note that the default rate limit for calls varies depending on the method being 
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes two arguments: the created request operation and the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
 		</dl>
 		
 	</div>
@@ -550,7 +550,7 @@ Note that the default rate limit for calls varies depending on the method being 
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)getPath:(NSString *)<em>path</em> requiresAuthentication:(BOOL)<em>requiresAuthentication</em> parameters:(NSDictionary *)<em>parameters</em> success:(void ( ^ ) ( AFHTTPRequestOperation *, id ))<em>success</em> failure:(void ( ^ ) ( AFHTTPRequestOperation *, NSError *))<em>failure</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)getPath:(NSString *)<em>path</em> requiresAuthentication:(BOOL)<em>requiresAuthentication</em> parameters:(NSDictionary *)<em>parameters</em> success:(void ( ^ ) ( AFHTTPRequestOperation *, id ))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
 
     
 	
@@ -579,7 +579,7 @@ Note that the default rate limit for calls varies depending on the method being 
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes two arguments: the created request operation and the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
 		</dl>
 		
 	</div>
@@ -610,8 +610,8 @@ Note that the default rate limit for calls varies depending on the method being 
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/postPrivatePath:bodyKey:bodyContent:success:failure:" title="postPrivatePath:bodyKey:bodyContent:success:failure:"></a>
-	<h3 class="subsubtitle method-title">postPrivatePath:bodyKey:bodyContent:success:failure:</h3>
+	<a name="//api/name/postPath:bodyKey:bodyContent:success:failure:" title="postPath:bodyKey:bodyContent:success:failure:"></a>
+	<h3 class="subsubtitle method-title">postPath:bodyKey:bodyContent:success:failure:</h3>
 	
 	
 	
@@ -621,7 +621,7 @@ Note that the default rate limit for calls varies depending on the method being 
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)postPrivatePath:(NSString *)<em>path</em> bodyKey:(NSString *)<em>bodyKey</em> bodyContent:(id)<em>bodyContent</em> success:(void ( ^ ) ( AFHTTPRequestOperation *, id ))<em>success</em> failure:(void ( ^ ) ( AFHTTPRequestOperation *, NSError *))<em>failure</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)postPath:(NSString *)<em>path</em> bodyKey:(NSString *)<em>bodyKey</em> bodyContent:(id)<em>bodyContent</em> success:(void ( ^ ) ( AFHTTPRequestOperation *, id ))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
 
     
 	
@@ -650,7 +650,7 @@ Note that the default rate limit for calls varies depending on the method being 
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes two arguments: the created request operation and the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
 		</dl>
 		
 	</div>
@@ -681,8 +681,8 @@ Note that the default rate limit for calls varies depending on the method being 
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/putPrivatePath:fileAtURL:success:failure:" title="putPrivatePath:fileAtURL:success:failure:"></a>
-	<h3 class="subsubtitle method-title">putPrivatePath:fileAtURL:success:failure:</h3>
+	<a name="//api/name/putPath:fileAtURL:success:failure:" title="putPath:fileAtURL:success:failure:"></a>
+	<h3 class="subsubtitle method-title">putPath:fileAtURL:success:failure:</h3>
 	
 	
 	
@@ -692,7 +692,7 @@ Note that the default rate limit for calls varies depending on the method being 
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)putPrivatePath:(NSString *)<em>path</em> fileAtURL:(NSURL *)<em>fileURL</em> success:(void ( ^ ) ( AFHTTPRequestOperation *, id ))<em>success</em> failure:(void ( ^ ) ( AFHTTPRequestOperation *, NSError *))<em>failure</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)putPath:(NSString *)<em>path</em> fileAtURL:(NSURL *)<em>fileURL</em> success:(void ( ^ ) ( AFHTTPRequestOperation *, id ))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
 
     
 	
@@ -716,7 +716,7 @@ Note that the default rate limit for calls varies depending on the method being 
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes two arguments: the created request operation and the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
 		</dl>
 		
 	</div>
@@ -759,7 +759,7 @@ Note that the default rate limit for calls varies depending on the method being 
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 shazino. All rights reserved. (Last updated: 2012-11-19)</span><br />
+						<p><span class="copyright">&copy; 2012 shazino. All rights reserved. (Last updated: 2012-11-22)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

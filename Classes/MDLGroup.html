@@ -66,23 +66,35 @@
 	
 	<option value="//api/name/owner">&nbsp;&nbsp;&nbsp;&nbsp;owner</option>
 	
+	<option value="//api/name/type">&nbsp;&nbsp;&nbsp;&nbsp;type</option>
+	
 	
 	
 	
 	<option value="class_methods">Class Methods</option>
 	
-	<option value="//api/name/groupWithIdentifier:name:ownerName:category:">&nbsp;&nbsp;&nbsp;&nbsp;+ groupWithIdentifier:name:ownerName:category:</option>
+	<option value="//api/name/createGroupWithName:type:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;+ createGroupWithName:type:success:failure:</option>
 	
-	<option value="//api/name/topGroupsInPublicLibraryForCategory:atPage:count:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;+ topGroupsInPublicLibraryForCategory:atPage:count:success:failure:</option>
+	<option value="//api/name/fetchGroupsInUserLibrarySuccess:failure:">&nbsp;&nbsp;&nbsp;&nbsp;+ fetchGroupsInUserLibrarySuccess:failure:</option>
+	
+	<option value="//api/name/fetchTopGroupsInPublicLibraryForCategory:atPage:count:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;+ fetchTopGroupsInPublicLibraryForCategory:atPage:count:success:failure:</option>
 	
 	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
 	
+	<option value="//api/name/deleteSuccess:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- deleteSuccess:failure:</option>
+	
 	<option value="//api/name/fetchDetailsSuccess:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- fetchDetailsSuccess:failure:</option>
 	
+	<option value="//api/name/fetchDocumentsAtPage:count:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- fetchDocumentsAtPage:count:success:failure:</option>
+	
 	<option value="//api/name/fetchPeopleSuccess:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- fetchPeopleSuccess:failure:</option>
+	
+	<option value="//api/name/leaveSuccess:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- leaveSuccess:failure:</option>
+	
+	<option value="//api/name/unfollowSuccess:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- unfollowSuccess:failure:</option>
 	
 	
 	
@@ -134,15 +146,19 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/owner">owner</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/type">type</a></span></li>
+	
 </ul></li>
 
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/groupWithIdentifier:name:ownerName:category:">groupWithIdentifier:name:ownerName:category:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createGroupWithName:type:success:failure:">createGroupWithName:type:success:failure:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/topGroupsInPublicLibraryForCategory:atPage:count:success:failure:">topGroupsInPublicLibraryForCategory:atPage:count:success:failure:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fetchGroupsInUserLibrarySuccess:failure:">fetchGroupsInUserLibrarySuccess:failure:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fetchTopGroupsInPublicLibraryForCategory:atPage:count:success:failure:">fetchTopGroupsInPublicLibraryForCategory:atPage:count:success:failure:</a></span></li>
 	
 </ul></li>
 
@@ -150,9 +166,17 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deleteSuccess:failure:">deleteSuccess:failure:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fetchDetailsSuccess:failure:">fetchDetailsSuccess:failure:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fetchDocumentsAtPage:count:success:failure:">fetchDocumentsAtPage:count:success:failure:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fetchPeopleSuccess:failure:">fetchPeopleSuccess:failure:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/leaveSuccess:failure:">leaveSuccess:failure:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/unfollowSuccess:failure:">unfollowSuccess:failure:</a></span></li>
 	
 </ul></li>
 
@@ -300,15 +324,29 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/groupWithIdentifier:name:ownerName:category:">+&nbsp;groupWithIdentifier:name:ownerName:category:</a></code>
-		<span class="tooltip"><p>Creates a <code>MDLGroup</code> and initializes its <a href="#//api/name/identifier">identifier</a>, <a href="#//api/name/name">name</a>, <a href="#//api/name/owner">owner</a>, and <a href="#//api/name/category">category</a> properties.</p></span>
+		<code><a href="#//api/name/type">&nbsp;&nbsp;type</a></code>
+		<span class="tooltip"><p>The group type (can be ‘private’, ‘invite’, or ‘open’)</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/createGroupWithName:type:success:failure:">+&nbsp;createGroupWithName:type:success:failure:</a></code>
+		<span class="tooltip"><p>Creates a <code>MDLGroup</code> and sends an API creation request using the shared client.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/topGroupsInPublicLibraryForCategory:atPage:count:success:failure:">+&nbsp;topGroupsInPublicLibraryForCategory:atPage:count:success:failure:</a></code>
+		<code><a href="#//api/name/fetchTopGroupsInPublicLibraryForCategory:atPage:count:success:failure:">+&nbsp;fetchTopGroupsInPublicLibraryForCategory:atPage:count:success:failure:</a></code>
 		<span class="tooltip"><p>Sends a public group overview API request using the shared client and fetches the response as an array of <code>MDLGroup</code>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/fetchGroupsInUserLibrarySuccess:failure:">+&nbsp;fetchGroupsInUserLibrarySuccess:failure:</a></code>
+		<span class="tooltip"><p>Sends a user library groups API request using the shared client and fetches the response as an array of <code>MDLGroup</code>.</p></span>
 	</span>
 	
 	
@@ -322,7 +360,35 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/fetchPeopleSuccess:failure:">&ndash;&nbsp;fetchPeopleSuccess:failure:</a></code>
-		<span class="tooltip"><p>Sends a public groups people API request for the current document using the shared client.</p></span>
+		<span class="tooltip"><p>Sends a groups people API request for the current document using the shared client.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/fetchDocumentsAtPage:count:success:failure:">&ndash;&nbsp;fetchDocumentsAtPage:count:success:failure:</a></code>
+		<span class="tooltip"><p>Sends a groups <a href="#//api/name/documents">documents</a> API request for the current document using the shared client.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/deleteSuccess:failure:">&ndash;&nbsp;deleteSuccess:failure:</a></code>
+		<span class="tooltip"><p>Sends a delete group API request using the shared client (you need to be a <a href="#//api/name/owner">owner</a> of the group).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/leaveSuccess:failure:">&ndash;&nbsp;leaveSuccess:failure:</a></code>
+		<span class="tooltip"><p>Sends a leave group API request using the shared client (you need to be an administrator or a member of the group).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/unfollowSuccess:failure:">&ndash;&nbsp;unfollowSuccess:failure:</a></code>
+		<span class="tooltip"><p>Sends a unfollow group API request using the shared client (you need to be a follower of the group).</p></span>
 	</span>
 	
 	
@@ -872,61 +938,23 @@
 	
 </div>
 						
-					</div>
-					
-					
-					
-					<div class="section section-methods">
-						<a title="Class Methods" name="class_methods"></a>
-						<h2 class="subtitle subtitle-methods">Class Methods</h2>
-						
 						<div class="section-method">
-	<a name="//api/name/groupWithIdentifier:name:ownerName:category:" title="groupWithIdentifier:name:ownerName:category:"></a>
-	<h3 class="subsubtitle method-title">groupWithIdentifier:name:ownerName:category:</h3>
+	<a name="//api/name/type" title="type"></a>
+	<h3 class="subsubtitle method-title">type</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Creates a <code>MDLGroup</code> and initializes its <a href="#//api/name/identifier">identifier</a>, <a href="#//api/name/name">name</a>, <a href="#//api/name/owner">owner</a>, and <a href="#//api/name/category">category</a> properties.</p>
+		<p>The group type (can be ‘private’, ‘invite’, or ‘open’)</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (MDLGroup *)groupWithIdentifier:(NSString *)<em>identifier</em> name:(NSString *)<em>name</em> ownerName:(NSString *)<em>ownerName</em> category:(MDLCategory *)<em>category</em></code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) MDLGroupType type</code></div>
 
     
 	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>identifier</em></dt>
-			<dd><p>The <a href="#//api/name/identifier">identifier</a> of the group.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>name</em></dt>
-			<dd><p>The <a href="#//api/name/name">name</a> of the group.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>ownerName</em></dt>
-			<dd><p>The <a href="#//api/name/owner">owner</a> of the group.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>category</em></dt>
-			<dd><p>The <a href="#//api/name/category">category</a> of the group.</p></dd>
-		</dl>
-		
-	</div>
 	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>The newly-initialized group.</p>
-	</div>
 	
 	
 	
@@ -934,7 +962,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Creates a <code>MDLGroup</code> and initializes its <a href="#//api/name/identifier">identifier</a>, <a href="#//api/name/name">name</a>, <a href="#//api/name/owner">owner</a>, and <a href="#//api/name/category">category</a> properties.</p>
+		<p>The group type (can be ‘private’, ‘invite’, or ‘open’)</p>
 	</div>
 	
 	
@@ -951,9 +979,162 @@
 	
 </div>
 						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
 						<div class="section-method">
-	<a name="//api/name/topGroupsInPublicLibraryForCategory:atPage:count:success:failure:" title="topGroupsInPublicLibraryForCategory:atPage:count:success:failure:"></a>
-	<h3 class="subsubtitle method-title">topGroupsInPublicLibraryForCategory:atPage:count:success:failure:</h3>
+	<a name="//api/name/createGroupWithName:type:success:failure:" title="createGroupWithName:type:success:failure:"></a>
+	<h3 class="subsubtitle method-title">createGroupWithName:type:success:failure:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates a <code>MDLGroup</code> and sends an API creation request using the shared client.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (MDLGroup *)createGroupWithName:(NSString *)<em>name</em> type:(MDLGroupType)<em>type</em> success:(void ( ^ ) ( MDLGroup *))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>The <a href="#//api/name/name">name</a> of the group.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>type</em></dt>
+			<dd><p>The <a href="#//api/name/type">type</a> of the group.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>success</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: the created <code>MDLGroup</code> with its newly assigned group <a href="#//api/name/identifier">identifier</a>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>failure</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The newly-initialized group, with group <a href="#//api/name/identifier">identifier</a> = <code>nil</code>.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Creates a <code>MDLGroup</code> and sends an API creation request using the shared client.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="http://apidocs.mendeley.com/home/user-specific-methods/user-library-create-document">API documentation: User Library Create Document</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MDLGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/fetchGroupsInUserLibrarySuccess:failure:" title="fetchGroupsInUserLibrarySuccess:failure:"></a>
+	<h3 class="subsubtitle method-title">fetchGroupsInUserLibrarySuccess:failure:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sends a user library groups API request using the shared client and fetches the response as an array of <code>MDLGroup</code>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)fetchGroupsInUserLibrarySuccess:(void ( ^ ) ( NSArray *))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>success</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of <code>MDLGroup</code> objects.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>failure</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Sends a user library groups API request using the shared client and fetches the response as an array of <code>MDLGroup</code>.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="http://apidocs.mendeley.com/home/user-specific-methods/user-library-groups">API documentation: User Library Groups</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MDLGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/fetchTopGroupsInPublicLibraryForCategory:atPage:count:success:failure:" title="fetchTopGroupsInPublicLibraryForCategory:atPage:count:success:failure:"></a>
+	<h3 class="subsubtitle method-title">fetchTopGroupsInPublicLibraryForCategory:atPage:count:success:failure:</h3>
 	
 	
 	
@@ -963,7 +1144,7 @@
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (void)topGroupsInPublicLibraryForCategory:(NSString *)<em>categoryIdentifier</em> atPage:(NSUInteger)<em>pageIndex</em> count:(NSUInteger)<em>count</em> success:(void ( ^ ) ( NSArray *, NSUInteger , NSUInteger , NSUInteger , NSUInteger ))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (void)fetchTopGroupsInPublicLibraryForCategory:(NSString *)<em>categoryIdentifier</em> atPage:(NSUInteger)<em>pageIndex</em> count:(NSUInteger)<em>count</em> success:(void ( ^ ) ( NSArray *, NSUInteger , NSUInteger , NSUInteger , NSUInteger ))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
 
     
 	
@@ -1040,6 +1221,71 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
+	<a name="//api/name/deleteSuccess:failure:" title="deleteSuccess:failure:"></a>
+	<h3 class="subsubtitle method-title">deleteSuccess:failure:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sends a delete group API request using the shared client (you need to be a <a href="#//api/name/owner">owner</a> of the group).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)deleteSuccess:(void ( ^ ) ( ))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>success</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes no argument.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>failure</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Sends a delete group API request using the shared client (you need to be a <a href="#//api/name/owner">owner</a> of the group).</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="http://apidocs.mendeley.com/home/user-specific-methods/user-library-delete-group">API documentation: Delete Group</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MDLGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/fetchDetailsSuccess:failure:" title="fetchDetailsSuccess:failure:"></a>
 	<h3 class="subsubtitle method-title">fetchDetailsSuccess:failure:</h3>
 	
@@ -1105,13 +1351,90 @@
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/fetchDocumentsAtPage:count:success:failure:" title="fetchDocumentsAtPage:count:success:failure:"></a>
+	<h3 class="subsubtitle method-title">fetchDocumentsAtPage:count:success:failure:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sends a groups <a href="#//api/name/documents">documents</a> API request for the current document using the shared client.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)fetchDocumentsAtPage:(NSUInteger)<em>pageIndex</em> count:(NSUInteger)<em>count</em> success:(void ( ^ ) ( NSArray *, NSUInteger , NSUInteger , NSUInteger , NSUInteger ))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>pageIndex</em></dt>
+			<dd><p>The page index. <code>O</code> is first page.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>count</em></dt>
+			<dd><p>The number of items returned per page.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>success</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes five arguments: an array of <a href="../Classes/MDLDocument.html"><code>MDLDocument</code></a> objects, the total number of results, the total number of pages, the index of the current page, and the number of items per page.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>failure</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Sends a groups <a href="#//api/name/documents">documents</a> API request for the current document using the shared client.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="http://apidocs.mendeley.com/home/public-resources/public-groups-documents">API documentation: Public Groups Documents</a></p></code></li>
+			
+			<li><code><p><a href="http://apidocs.mendeley.com/home/user-specific-methods/user-library-group-documents">API documentation: User Library Group Documents</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MDLGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/fetchPeopleSuccess:failure:" title="fetchPeopleSuccess:failure:"></a>
 	<h3 class="subsubtitle method-title">fetchPeopleSuccess:failure:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Sends a public groups people API request for the current document using the shared client.</p>
+		<p>Sends a groups people API request for the current document using the shared client.</p>
 	</div>		
 	
     
@@ -1143,7 +1466,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Sends a public groups people API request for the current document using the shared client.</p>
+		<p>Sends a groups people API request for the current document using the shared client.</p>
 	</div>
 	
 	
@@ -1155,6 +1478,138 @@
 		<ul>
 			
 			<li><code><p><a href="http://apidocs.mendeley.com/home/public-resources/public-groups-people">API documentation: Public Groups People</a></p></code></li>
+			
+			<li><code><p><a href="http://apidocs.mendeley.com/home/user-specific-methods/user-library-group-people">API documentation: User Library Group People</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MDLGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/leaveSuccess:failure:" title="leaveSuccess:failure:"></a>
+	<h3 class="subsubtitle method-title">leaveSuccess:failure:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sends a leave group API request using the shared client (you need to be an administrator or a member of the group).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)leaveSuccess:(void ( ^ ) ( ))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>success</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes no argument.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>failure</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Sends a leave group API request using the shared client (you need to be an administrator or a member of the group).</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="http://apidocs.mendeley.com/home/user-specific-methods/user-library-delete-group">API documentation: Delete Group</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MDLGroup.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/unfollowSuccess:failure:" title="unfollowSuccess:failure:"></a>
+	<h3 class="subsubtitle method-title">unfollowSuccess:failure:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sends a unfollow group API request using the shared client (you need to be a follower of the group).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)unfollowSuccess:(void ( ^ ) ( ))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>success</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes no argument.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>failure</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Sends a unfollow group API request using the shared client (you need to be a follower of the group).</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="http://apidocs.mendeley.com/home/user-specific-methods/user-library-delete-group">API documentation: Delete Group</a></p></code></li>
 			
 		</ul>
 	</div>
@@ -1182,7 +1637,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 shazino. All rights reserved. (Last updated: 2012-11-19)</span><br />
+						<p><span class="copyright">&copy; 2012 shazino. All rights reserved. (Last updated: 2012-11-22)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
