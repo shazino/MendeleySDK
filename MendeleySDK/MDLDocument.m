@@ -45,15 +45,19 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
 
 @implementation MDLDocument
 
-+ (MDLDocument *)createDocumentWithTitle:(NSString *)title success:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure
++ (MDLDocument *)createDocumentWithTitle:(NSString *)title parameters:(NSDictionary *)parameters success:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure
 {
     MDLDocument *newDocument = [MDLDocument new];
     newDocument.title   = title;
     newDocument.type    = kMDLDocumentTypeGeneric;
     
+    NSMutableDictionary *bodyContent = [NSMutableDictionary dictionaryWithDictionary:parameters];
+    bodyContent[@"type"] = newDocument.type;
+    bodyContent[@"title"] = newDocument.title;
+    
     [[MDLMendeleyAPIClient sharedClient] postPath:@"/oapi/library/documents/"
                                           bodyKey:@"document"
-                                      bodyContent:@{@"type" : newDocument.type, @"title" : newDocument.title}
+                                      bodyContent:bodyContent
                                           success:^(AFHTTPRequestOperation *operation, id responseDictionary) {
                                               newDocument.identifier = responseDictionary[@"document_id"];
                                               if (success)

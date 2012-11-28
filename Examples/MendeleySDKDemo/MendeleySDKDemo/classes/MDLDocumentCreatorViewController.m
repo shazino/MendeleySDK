@@ -76,7 +76,7 @@
     if ([documentTitle length] > 0)
     {
         self.activityStatusLabel.text = @"Creating document...";
-        [MDLDocument createDocumentWithTitle:documentTitle success:^(MDLDocument *document) {
+        [MDLDocument createDocumentWithTitle:documentTitle parameters:@{@"year" : @"2012", @"authors" : @[@"Me"]} success:^(MDLDocument *document) {
             self.activityStatusLabel.text = [NSString stringWithFormat:@"Document created\nTitle: %@\nType: %@\nId: %@", document.title, document.type, document.identifier];
             [document uploadFileAtURL:fileURL success:^() {
                 self.activityStatusLabel.text = [NSString stringWithFormat:@"Document created and uploaded\nTitle: %@\nType: %@\nId: %@", document.title, document.type, document.identifier];

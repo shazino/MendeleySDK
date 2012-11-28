@@ -101,6 +101,7 @@ extern NSString * const kMDLDocumentTypeGeneric;
  Creates a `MDLDocument` and sends an API creation request using the shared client.
  
  @param title The title of the document.
+ @param parameters Optional parameters of the document.
  @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: the created document with its newly assigned document identifier.
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  
@@ -108,7 +109,7 @@ extern NSString * const kMDLDocumentTypeGeneric;
  
  @see [API documentation: User Library Create Document](http://apidocs.mendeley.com/home/user-specific-methods/user-library-create-document)
  */
-+ (MDLDocument *)createDocumentWithTitle:(NSString *)title success:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure;
++ (MDLDocument *)createDocumentWithTitle:(NSString *)title parameters:(NSDictionary *)parameters success:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure;
 
 /**
  Sends an API search request with generic terms using the shared client.
