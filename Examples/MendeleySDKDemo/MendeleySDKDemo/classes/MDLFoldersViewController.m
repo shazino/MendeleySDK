@@ -52,7 +52,6 @@ typedef NS_ENUM(NSInteger, MDLFoldersViewSections)
     
     if (self.parentFolder)
     {
-        NSLog(@"%@", self.parentFolder.identifier);
         self.title = self.parentFolder.name;
         self.folders = self.parentFolder.subfolders;
         

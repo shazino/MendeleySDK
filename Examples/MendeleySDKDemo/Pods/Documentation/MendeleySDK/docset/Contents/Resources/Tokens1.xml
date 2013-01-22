@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/MDLAuthor.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/MDLAuthor</TokenIdentifier>
+			<Abstract type="html">MDLAuthor represents a document’s author, as described by Mendeley.</Abstract>
+			<DeclaredIn>MDLAuthor.h</DeclaredIn>
+			
+			<NodeRef refid="1"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/MDLAuthor/setName:</TokenIdentifier>
+			<Abstract type="html">The author name</Abstract>
+			<DeclaredIn>MDLAuthor.h</DeclaredIn>			
+			
+			<Declaration>@property (copy, nonatomic) NSString *name</Declaration>
+			
+			
+			<Anchor>//api/name/name</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/MDLAuthor/name</TokenIdentifier>
+			<Abstract type="html">The author name</Abstract>
+			<DeclaredIn>MDLAuthor.h</DeclaredIn>			
+			
+			<Declaration>@property (copy, nonatomic) NSString *name</Declaration>
+			
+			
+			<Anchor>//api/name/name</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/MDLAuthor/authorWithName:</TokenIdentifier>
+			<Abstract type="html">Creates a MDLAuthor and initializes its name property.</Abstract>
+			<DeclaredIn>MDLAuthor.h</DeclaredIn>			
+			
+			<Declaration>+ (MDLAuthor *)authorWithName:(NSString *)name</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>name</Name>
+					<Abstract type="html">The name of the author.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">The newly-initialized author.</Abstract></ReturnValue>
+			<Anchor>//api/name/authorWithName:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/MDLAuthor/fetchTopAuthorsInPublicLibraryForCategory:upAndComing:success:failure:</TokenIdentifier>
+			<Abstract type="html">Sends a top authors API request using the shared client and fetches the response as an array of MDLAuthor.</Abstract>
+			<DeclaredIn>MDLAuthor.h</DeclaredIn>			
+			
+			<Declaration>+ (void)fetchTopAuthorsInPublicLibraryForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void ( ^ ) ( NSArray *))success failure:(void ( ^ ) ( NSError *))failure</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>categoryIdentifier</Name>
+					<Abstract type="html">If not nil, the identifier of the category, otherwise across all categories.</Abstract>
+				</Parameter><Parameter>
+					<Name>upAndComing</Name>
+					<Abstract type="html">If true, results apply to ‘trending’ authors.</Abstract>
+				</Parameter><Parameter>
+					<Name>success</Name>
+					<Abstract type="html">A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of MDLAuthor objects.</Abstract>
+				</Parameter><Parameter>
+					<Name>failure</Name>
+					<Abstract type="html">A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the NSError object describing the network or parsing error that occurred.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/fetchTopAuthorsInPublicLibraryForCategory:upAndComing:success:failure:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/MDLAuthor/fetchTopAuthorsInUserLibrarySuccess:failure:</TokenIdentifier>
+			<Abstract type="html">Sends a user top authors API request using the shared client and fetches the response as an array of MDLAuthor.</Abstract>
+			<DeclaredIn>MDLAuthor.h</DeclaredIn>			
+			
+			<Declaration>+ (void)fetchTopAuthorsInUserLibrarySuccess:(void ( ^ ) ( NSArray *))success failure:(void ( ^ ) ( NSError *))failure</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>success</Name>
+					<Abstract type="html">A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of MDLAuthor objects.</Abstract>
+				</Parameter><Parameter>
+					<Name>failure</Name>
+					<Abstract type="html">A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the NSError object describing the network or parsing error that occurred.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/fetchTopAuthorsInUserLibrarySuccess:failure:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

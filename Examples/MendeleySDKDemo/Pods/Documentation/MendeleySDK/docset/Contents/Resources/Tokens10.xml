@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/MDLTag.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/MDLTag</TokenIdentifier>
+			<Abstract type="html">MDLTag represents a category tag, as described by Mendeley.</Abstract>
+			<DeclaredIn>MDLTag.h</DeclaredIn>
+			
+			<NodeRef refid="10"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/MDLTag/setName:</TokenIdentifier>
+			<Abstract type="html">The tag name.</Abstract>
+			<DeclaredIn>MDLTag.h</DeclaredIn>			
+			
+			<Declaration>@property (copy, nonatomic) NSString *name</Declaration>
+			
+			
+			<Anchor>//api/name/name</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/MDLTag/name</TokenIdentifier>
+			<Abstract type="html">The tag name.</Abstract>
+			<DeclaredIn>MDLTag.h</DeclaredIn>			
+			
+			<Declaration>@property (copy, nonatomic) NSString *name</Declaration>
+			
+			
+			<Anchor>//api/name/name</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/MDLTag/setCount:</TokenIdentifier>
+			<Abstract type="html">The tag count.</Abstract>
+			<DeclaredIn>MDLTag.h</DeclaredIn>			
+			
+			<Declaration>@property (copy, nonatomic) NSNumber *count</Declaration>
+			
+			
+			<Anchor>//api/name/count</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/MDLTag/count</TokenIdentifier>
+			<Abstract type="html">The tag count.</Abstract>
+			<DeclaredIn>MDLTag.h</DeclaredIn>			
+			
+			<Declaration>@property (copy, nonatomic) NSNumber *count</Declaration>
+			
+			
+			<Anchor>//api/name/count</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/MDLTag/tagWithName:count:</TokenIdentifier>
+			<Abstract type="html">Creates a MDLTag and initializes its name and count properties.</Abstract>
+			<DeclaredIn>MDLTag.h</DeclaredIn>			
+			
+			<Declaration>+ (MDLTag *)tagWithName:(NSString *)name count:(NSNumber *)count</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>name</Name>
+					<Abstract type="html">The name of the tag.</Abstract>
+				</Parameter><Parameter>
+					<Name>count</Name>
+					<Abstract type="html">The count of the tag.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">The newly-initialized tag.</Abstract></ReturnValue>
+			<Anchor>//api/name/tagWithName:count:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/MDLTag/fetchLastTagsInPublicLibraryForCategory:success:failure:</TokenIdentifier>
+			<Abstract type="html">Sends a last tags API request using the shared client and fetches the response as an array of MDLTag.</Abstract>
+			<DeclaredIn>MDLTag.h</DeclaredIn>			
+			
+			<Declaration>+ (void)fetchLastTagsInPublicLibraryForCategory:(NSString *)categoryIdentifier success:(void ( ^ ) ( NSArray *))success failure:(void ( ^ ) ( NSError *))failure</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>categoryIdentifier</Name>
+					<Abstract type="html">The identifier of the category. This value must not be nil.</Abstract>
+				</Parameter><Parameter>
+					<Name>success</Name>
+					<Abstract type="html">A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of MDLTag objects.</Abstract>
+				</Parameter><Parameter>
+					<Name>failure</Name>
+					<Abstract type="html">A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the NSError object describing the network or parsing error that occurred.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/fetchLastTagsInPublicLibraryForCategory:success:failure:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/MDLTag/fetchLastTagsInUserLibrarySuccess:failure:</TokenIdentifier>
+			<Abstract type="html">Sends a user last tags API request using the shared client and fetches the response as an array of MDLTag.</Abstract>
+			<DeclaredIn>MDLTag.h</DeclaredIn>			
+			
+			<Declaration>+ (void)fetchLastTagsInUserLibrarySuccess:(void ( ^ ) ( NSArray *))success failure:(void ( ^ ) ( NSError *))failure</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>success</Name>
+					<Abstract type="html">A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of MDLTag objects.</Abstract>
+				</Parameter><Parameter>
+					<Name>failure</Name>
+					<Abstract type="html">A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the NSError object describing the network or parsing error that occurred.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/fetchLastTagsInUserLibrarySuccess:failure:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

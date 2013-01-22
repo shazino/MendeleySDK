@@ -45,7 +45,12 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
 
 @interface AFOAuth1Client ()
 
-- (void)signCallPerAuthHeaderWithPath:(NSString *)path andParameters:(NSDictionary *)parameters andMethod:(NSString *)method;
+- (NSDictionary *)OAuthParameters;
+- (NSString *)OAuthSignatureForMethod:(NSString *)method
+                                 path:(NSString *)path
+                           parameters:(NSDictionary *)parameters
+                                token:(AFOAuth1Token *)requestToken;
+- (NSString *)authorizationHeaderForParameters:(NSDictionary *)parameters;
 
 @end
 
@@ -131,13 +136,63 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
 
 #pragma mark - Operation
 
+- (NSMutableURLRequest *)requestWithMethod:(NSString *)method
+                                      path:(NSString *)path
+                                parameters:(NSDictionary *)parameters
+{
+    if (parameters[@"consumer_key"] || [path isEqualToString:@"oauth/authorize"])
+    {
+        NSURL *url = [NSURL URLWithString:path relativeToURL:self.baseURL];
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+        [request setHTTPMethod:method];
+        url = [NSURL URLWithString:[[url absoluteString] stringByAppendingFormat:[path rangeOfString:@"?"].location == NSNotFound ? @"?%@" : @"&%@", AFQueryStringFromParametersWithEncoding(parameters, self.stringEncoding)]];
+        [request setURL:url];
+        return request;
+    }
+    else
+    {
+        NSMutableDictionary *mutableParameters = parameters ? [parameters mutableCopy] : [NSMutableDictionary dictionary];
+        NSMutableDictionary *escapedParameters = [NSMutableDictionary dictionary];
+        for (NSString *key in mutableParameters) {
+            if ([mutableParameters[key] isKindOfClass:[NSString class]])
+                escapedParameters[key] = [mutableParameters[key] stringByReplacingOccurrencesOfString:@"," withString:@"%2C"];
+            else
+                escapedParameters[key] = mutableParameters[key];
+        }
+        mutableParameters = escapedParameters;
+        
+        if (self.accessToken) {
+            [mutableParameters addEntriesFromDictionary:[self OAuthParameters]];
+            [mutableParameters setValue:self.accessToken.key forKey:@"oauth_token"];
+        }
+        
+        [mutableParameters setValue:[self OAuthSignatureForMethod:method path:path parameters:mutableParameters token:self.accessToken] forKey:@"oauth_signature"];
+        
+        NSMutableURLRequest *request = [super requestWithMethod:method path:path parameters:parameters];
+        [request setValue:[self authorizationHeaderForParameters:mutableParameters] forHTTPHeaderField:@"Authorization"];
+        [request setHTTPShouldHandleCookies:NO];
+        
+        return request;
+    }
+}
+
+- (void)acquireOAuthAccessTokenWithPath:(NSString *)path
+                           requestToken:(AFOAuth1Token *)requestToken
+                           accessMethod:(NSString *)accessMethod
+                                success:(void (^)(AFOAuth1Token *accessToken))success
+                                failure:(void (^)(NSError *error))failure
+{
+    self.accessToken = requestToken;
+    [super acquireOAuthAccessTokenWithPath:path requestToken:requestToken accessMethod:accessMethod success:success failure:failure];
+}
+
 - (void)getPath:(NSString *)path requiresAuthentication:(BOOL)requiresAuthentication parameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary *requestParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
     if (!requiresAuthentication)
         requestParameters[@"consumer_key"] = kMDLConsumerKey;
     
-    [super getPath:path
+    [self getPath:path
         parameters:requestParameters
            success:^(AFHTTPRequestOperation *operation, id responseObject) {
                [self updateRateLimitRemainingWithOperation:operation];
@@ -156,8 +211,6 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
 
 - (void)getPath:(NSString *)path requiresAuthentication:(BOOL)requiresAuthentication parameters:(NSDictionary *)parameters outputStreamToFileAtPath:(NSString *)filePath success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(NSError *))failure
 {
-    [self signCallPerAuthHeaderWithPath:path andParameters:parameters andMethod:@"GET"];
-    
     NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:parameters];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     operation.outputStream = [NSOutputStream outputStreamToFileAtPath:filePath append:NO];
@@ -214,10 +267,8 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
 }
 
 - (void)putPath:(NSString *)path fileAtURL:(NSURL *)fileURL success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(NSError *))failure
-{
-    [self signCallPerAuthHeaderWithPath:path andParameters:@{@"oauth_body_hash" : [MDLMendeleyAPIClient SHA1ForFileAtURL:fileURL]} andMethod:@"PUT"];
-    
-    NSMutableURLRequest *request= [self requestWithMethod:@"PUT" path:path parameters:nil];
+{   
+    NSMutableURLRequest *request= [self requestWithMethod:@"PUT" path:path parameters:@{@"oauth_body_hash" : [MDLMendeleyAPIClient SHA1ForFileAtURL:fileURL]}];
     request.HTTPBody = [NSData dataWithContentsOfURL:fileURL];
     [request setValue:[NSString stringWithFormat:@"attachment; filename=\"%@\"", [[fileURL path] lastPathComponent]] forHTTPHeaderField:@"Content-Disposition"];
 	

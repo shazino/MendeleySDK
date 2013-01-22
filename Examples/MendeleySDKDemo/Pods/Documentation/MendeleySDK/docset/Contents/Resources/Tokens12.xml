@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Categories/NSDictionary+PaginatedResponse.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cat/NSDictionary(PaginatedResponse)</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>MDLMendeleyAPIClient.h</DeclaredIn>
+			
+			<NodeRef refid="12"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSDictionary(PaginatedResponse)/responseTotalResults</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>MDLMendeleyAPIClient.h</DeclaredIn>			
+			
+			<Declaration>- (NSUInteger)responseTotalResults</Declaration>
+			
+			
+			<Anchor>//api/name/responseTotalResults</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSDictionary(PaginatedResponse)/responseTotalPages</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>MDLMendeleyAPIClient.h</DeclaredIn>			
+			
+			<Declaration>- (NSUInteger)responseTotalPages</Declaration>
+			
+			
+			<Anchor>//api/name/responseTotalPages</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSDictionary(PaginatedResponse)/responsePageIndex</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>MDLMendeleyAPIClient.h</DeclaredIn>			
+			
+			<Declaration>- (NSUInteger)responsePageIndex</Declaration>
+			
+			
+			<Anchor>//api/name/responsePageIndex</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSDictionary(PaginatedResponse)/responseItemsPerPage</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>MDLMendeleyAPIClient.h</DeclaredIn>			
+			
+			<Declaration>- (NSUInteger)responseItemsPerPage</Declaration>
+			
+			
+			<Anchor>//api/name/responseItemsPerPage</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSDictionary(PaginatedResponse)/parametersForCategory:upAndComing:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>MDLMendeleyAPIClient.h</DeclaredIn>			
+			
+			<Declaration>+ (NSDictionary *)parametersForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing</Declaration>
+			
+			
+			<Anchor>//api/name/parametersForCategory:upAndComing:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>
