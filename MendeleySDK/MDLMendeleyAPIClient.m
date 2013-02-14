@@ -334,6 +334,19 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
     return numberOrString;
 }
 
++ (NSNumber *)boolNumberFromString:(id)string
+{
+    if (string)
+    {
+        if ([@"1" isEqualToString:string])
+            return @(YES);
+        else
+            return @(NO);
+    }
+    
+    return nil;
+}
+
 @end
 
 

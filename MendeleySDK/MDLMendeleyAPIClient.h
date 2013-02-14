@@ -115,6 +115,7 @@ extern NSString * const kMDLNotificationFailedToAcquireAccessToken;
 @interface NSNumber (NiceNumber)
 
 + (NSNumber *)numberOrNumberFromString:(id)numberOrString;
++ (NSNumber *)boolNumberFromString:(id)string;
 
 @end
 

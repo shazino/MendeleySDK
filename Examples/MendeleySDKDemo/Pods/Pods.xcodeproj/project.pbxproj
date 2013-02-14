@@ -10,7 +10,7 @@
 	<string>46</string>
 	<key>objects</key>
 	<dict>
-		<key>022B42607F734566827FA4D2</key>
+		<key>044F6F73088A4FDFBC210CA5</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -19,16 +19,16 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>AFOAuth1Client.m</string>
+			<string>MDLTag.m</string>
 			<key>path</key>
-			<string>AFOAuth1Client/AFOAuth1Client/AFOAuth1Client.m</string>
+			<string>../../../MendeleySDK/MDLTag.m</string>
 			<key>sourceTree</key>
 			<string>SOURCE_ROOT</string>
 		</dict>
-		<key>0485F32D948E40A7BC84FAF9</key>
+		<key>0563B69A22D8434C9695DE9E</key>
 		<dict>
 			<key>fileRef</key>
-			<string>1A0D217EFBE94B7B88B7CB6E</string>
+			<string>CD16A9B619A54B409E55EBC3</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -39,10 +39,10 @@
 				</array>
 			</dict>
 		</dict>
-		<key>04D30682800E4C58AC1D42C4</key>
+		<key>08C2E761B3464ACC933AF3B5</key>
 		<dict>
 			<key>fileRef</key>
-			<string>A7F2A15EBE7E40FA8A5F7994</string>
+			<string>4DC05E5977F34BD3B4BF4209</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -53,88 +53,7 @@
 				</array>
 			</dict>
 		</dict>
-		<key>08F773C71CEA46D0ADAAF681</key>
-		<dict>
-			<key>fileRef</key>
-			<string>6314B54D243D4B3C80CB38BB</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc</string>
-			</dict>
-		</dict>
-		<key>09E1D18F8850415AAB49FCB6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>C77866547636421DA2E877B7</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>0A211A54BDAF4D9EBEC9A335</key>
-		<dict>
-			<key>fileRef</key>
-			<string>883C8BEDA3654339856A02AA</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc</string>
-			</dict>
-		</dict>
-		<key>0BA9C6D1E7C84945983F8E21</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>0E4E51D8631842D1B3B66BE3</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0E4E51D8631842D1B3B66BE3</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>libPods.a</string>
-			<key>path</key>
-			<string>libPods.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>1068E07672504576AC58F659</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>Foundation.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/Foundation.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>10FAA5EDC57E4D148AECFFEB</key>
+		<key>0A727574AED44E2FB5EF60C6</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -143,137 +62,28 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>MDLCategory.m</string>
+			<string>AFXMLRequestOperation.m</string>
 			<key>path</key>
-			<string>../../../MendeleySDK/MDLCategory.m</string>
+			<string>AFNetworking/AFNetworking/AFXMLRequestOperation.m</string>
 			<key>sourceTree</key>
 			<string>SOURCE_ROOT</string>
 		</dict>
-		<key>11501809A0994C05ABC071A1</key>
-		<dict>
-			<key>fileRef</key>
-			<string>5C3E7C2DDCE44FC1978C865C</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>122900141A944BE69F3F2AFB</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B74362F5E4C14D16879321FF</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>123BE4FE3ECE43CBAFBC6F49</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F53EF5064A1E4C578386C72F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc</string>
-			</dict>
-		</dict>
-		<key>14976FAAD3C64686B25FE1CD</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>D12B40E7D8F7432B9C78B479</string>
-			<key>buildPhases</key>
-			<array>
-				<string>D5A43EAC9DBC4D0AB539B29E</string>
-				<string>9CC6798A5556419AA05E37B1</string>
-				<string>D9C615E161A04B0C8DDECBF9</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>Pods</string>
-			<key>productName</key>
-			<string>Pods</string>
-			<key>productReference</key>
-			<string>0E4E51D8631842D1B3B66BE3</string>
-			<key>productType</key>
-			<string>com.apple.product-type.library.static</string>
-		</dict>
-		<key>1A0D217EFBE94B7B88B7CB6E</key>
+		<key>0AA2F920AC944D6193C6A8FD</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
+			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>MDLTag.h</string>
+			<string>MDLPublication.m</string>
 			<key>path</key>
-			<string>../../../MendeleySDK/MDLTag.h</string>
+			<string>../../../MendeleySDK/MDLPublication.m</string>
 			<key>sourceTree</key>
 			<string>SOURCE_ROOT</string>
 		</dict>
-		<key>1E2F04CF172348AF84A47F0F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>MDLPublication.h</string>
-			<key>path</key>
-			<string>../../../MendeleySDK/MDLPublication.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>2328B2F1F07B43A1B9476A61</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>AFImageRequestOperation.h</string>
-			<key>path</key>
-			<string>AFNetworking/AFNetworking/AFImageRequestOperation.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>233A1BEE709C47BC948CC89F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>932CE460DAAB4B82B43B16E1</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>23D8D1E9480C4D17A227F256</key>
+		<key>0D2BA212184241328A73FBE9</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -288,7 +98,7 @@
 			<key>sourceTree</key>
 			<string>SOURCE_ROOT</string>
 		</dict>
-		<key>24F8F523EF12475081A3A443</key>
+		<key>0DD6853CA31B4F9083ABAD91</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -297,53 +107,13 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>MDLMendeleyAPIClient.m</string>
+			<string>AFHTTPClient.m</string>
 			<key>path</key>
-			<string>../../../MendeleySDK/MDLMendeleyAPIClient.m</string>
+			<string>AFNetworking/AFNetworking/AFHTTPClient.m</string>
 			<key>sourceTree</key>
 			<string>SOURCE_ROOT</string>
 		</dict>
-		<key>26479B108CCA4C5DAC707AF7</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E35AC6B36C54440FA170A630</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc</string>
-			</dict>
-		</dict>
-		<key>2BA28BC3D2C04173AB244465</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A70ED190AB0C4B05A084A517</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>2BB3A890E3BC4935A9DEE43D</key>
-		<dict>
-			<key>fileRef</key>
-			<string>2CE2F1F7924044ED95432958</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>2CE2F1F7924044ED95432958</key>
+		<key>12508FEBD19B4F11B9E481DD</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -352,64 +122,13 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>AFNetworking.h</string>
+			<string>MDLUser.h</string>
 			<key>path</key>
-			<string>AFNetworking/AFNetworking/AFNetworking.h</string>
+			<string>../../../MendeleySDK/MDLUser.h</string>
 			<key>sourceTree</key>
 			<string>SOURCE_ROOT</string>
 		</dict>
-		<key>2E823DA923F74822A22DE322</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>707D31DBA9F74124A880ADC1</string>
-				<string>022B42607F734566827FA4D2</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>AFOAuth1Client</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>31FA2D034D1B4F72B4399CBC</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B0B86E61890F40CA9CBF7029</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc</string>
-			</dict>
-		</dict>
-		<key>328383A27BF942BAAA82088C</key>
-		<dict>
-			<key>fileRef</key>
-			<string>FF734B080C264E2C98FB5A2E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc</string>
-			</dict>
-		</dict>
-		<key>353B9A4E4E6F4C9BBD7D4DD2</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>Pods-prefix.pch</string>
-			<key>path</key>
-			<string>Pods-prefix.pch</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>35A75135CA63467280017538</key>
+		<key>176A38197C2143A8A2117B7D</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -418,16 +137,409 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>MDLGroup.m</string>
+			<string>PodsDummy_Pods.m</string>
 			<key>path</key>
-			<string>../../../MendeleySDK/MDLGroup.m</string>
+			<string>PodsDummy_Pods.m</string>
 			<key>sourceTree</key>
 			<string>SOURCE_ROOT</string>
 		</dict>
-		<key>386505DBC02A41CC9CCE5D1E</key>
+		<key>19E084F41E9D44FBBEFA1765</key>
+		<dict>
+			<key>fileRef</key>
+			<string>0AA2F920AC944D6193C6A8FD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc</string>
+			</dict>
+		</dict>
+		<key>19E8DA26020E4778834C5DB4</key>
+		<dict>
+			<key>fileRef</key>
+			<string>47ED31620820480C8A93E645</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc</string>
+			</dict>
+		</dict>
+		<key>1F126051D0FC42D09B651E73</key>
+		<dict>
+			<key>fileRef</key>
+			<string>C6BC5240DDE14D62A542C208</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict/>
+		</dict>
+		<key>2055AA425E7C401D89947202</key>
+		<dict>
+			<key>fileRef</key>
+			<string>60A6E9BCE587487E855969ED</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>2356C69481B44BB3AF045F10</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8E23DB7AC30547EAA51091D6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>2373F28DAA9049449930DB4C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>B3F47E7AEC26440591D87656</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc</string>
+			</dict>
+		</dict>
+		<key>2413A1EF91234514B94E746E</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>EF00F70461F74E83AFC3B208</string>
+				<string>E66D3820799548A3ACE4D5E7</string>
+				<string>77FF83166D9D47848F7EC065</string>
+				<string>378F62BB5313404C881B5503</string>
+				<string>C727C108EDC64718954F4CA0</string>
+				<string>60A6E9BCE587487E855969ED</string>
+				<string>3F82B07F648E451C9EA9CEC5</string>
+				<string>4DC05E5977F34BD3B4BF4209</string>
+				<string>412F743DCE3444628940456F</string>
+				<string>CD16A9B619A54B409E55EBC3</string>
+				<string>0DD6853CA31B4F9083ABAD91</string>
+				<string>53C23DE83C084C18BD002762</string>
+				<string>67F6827BBB0D4A51A0618C60</string>
+				<string>3D58927F4CFD466382222141</string>
+				<string>8CB9CDB42F1249EB993B54DF</string>
+				<string>4D3E3ACD24F8459E848EB875</string>
+				<string>A926EFB209374F78922312A5</string>
+				<string>0A727574AED44E2FB5EF60C6</string>
+				<string>47ED31620820480C8A93E645</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>AFNetworking</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>258C992686164E14AD3D6A82</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>MDLPublication.h</string>
+			<key>path</key>
+			<string>../../../MendeleySDK/MDLPublication.h</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>2CFC3277CA704EE7B2EF0970</key>
+		<dict>
+			<key>fileRef</key>
+			<string>4D79E417DF44457AB32B2287</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>35D0D782A68046159D1F8E72</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>Pods-prefix.pch</string>
+			<key>path</key>
+			<string>Pods-prefix.pch</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>378F62BB5313404C881B5503</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>AFJSONRequestOperation.h</string>
+			<key>path</key>
+			<string>AFNetworking/AFNetworking/AFJSONRequestOperation.h</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>38E757628A4240F9955F764D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>MDLDocument.h</string>
+			<key>path</key>
+			<string>../../../MendeleySDK/MDLDocument.h</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>38ED4CC293534030B8A2C279</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>MDLMendeleyAPIClient.h</string>
+			<key>path</key>
+			<string>../../../MendeleySDK/MDLMendeleyAPIClient.h</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>399C0C6EDA6749DBB45CE660</key>
+		<dict>
+			<key>fileRef</key>
+			<string>7B2BADD12A414EF2855C6688</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc</string>
+			</dict>
+		</dict>
+		<key>3D58927F4CFD466382222141</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>AFJSONRequestOperation.m</string>
+			<key>path</key>
+			<string>AFNetworking/AFNetworking/AFJSONRequestOperation.m</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>3F0E8D3C15F44A72A448A27C</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>MDLFolder.h</string>
+			<key>path</key>
+			<string>../../../MendeleySDK/MDLFolder.h</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>3F82B07F648E451C9EA9CEC5</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>AFPropertyListRequestOperation.h</string>
+			<key>path</key>
+			<string>AFNetworking/AFNetworking/AFPropertyListRequestOperation.h</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>4119751E03774CE2B9976336</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>MDLFolder.m</string>
+			<key>path</key>
+			<string>../../../MendeleySDK/MDLFolder.m</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>412F743DCE3444628940456F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>AFXMLRequestOperation.h</string>
+			<key>path</key>
+			<string>AFNetworking/AFNetworking/AFXMLRequestOperation.h</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>45B79D4C300748438C7A326D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>AFOAuth1Client.h</string>
+			<key>path</key>
+			<string>AFOAuth1Client/AFOAuth1Client/AFOAuth1Client.h</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>45ED8409441648768AADDD92</key>
+		<dict>
+			<key>fileRef</key>
+			<string>C6A0B40BEB55409FBA001BBD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>474D0081E180434B8A12237D</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>99523262EA8642F79D052D4C</string>
+				<string>5046C7E89E8B4253B2A38558</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>47D381851A3742CBB21B2FFF</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A926EFB209374F78922312A5</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc</string>
+			</dict>
+		</dict>
+		<key>47ED31620820480C8A93E645</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>UIImageView+AFNetworking.m</string>
+			<key>path</key>
+			<string>AFNetworking/AFNetworking/UIImageView+AFNetworking.m</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>4D3E3ACD24F8459E848EB875</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>AFPropertyListRequestOperation.m</string>
+			<key>path</key>
+			<string>AFNetworking/AFNetworking/AFPropertyListRequestOperation.m</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>4D79E417DF44457AB32B2287</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>MDLSubcategory.h</string>
+			<key>path</key>
+			<string>../../../MendeleySDK/MDLSubcategory.h</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>4DC05E5977F34BD3B4BF4209</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>AFURLConnectionOperation.h</string>
+			<key>path</key>
+			<string>AFNetworking/AFNetworking/AFURLConnectionOperation.h</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>5046C7E89E8B4253B2A38558</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>AC0B323A1A2F415FACFFF8ED</string>
+			<string>94905F6CEF2341FC837CA9AF</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>ALWAYS_SEARCH_USER_PATHS</key>
@@ -483,19 +595,22 @@
 			<key>name</key>
 			<string>Debug</string>
 		</dict>
-		<key>3A52B2BB1A594D84A6EDE5B2</key>
+		<key>52FB1F236EAD4E0CA079D9E2</key>
 		<dict>
-			<key>fileRef</key>
-			<string>3B9C2AD13EF1428A9988287D</string>
+			<key>includeInIndex</key>
+			<string>1</string>
 			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc</string>
-			</dict>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>MDLCategory.m</string>
+			<key>path</key>
+			<string>../../../MendeleySDK/MDLCategory.m</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
 		</dict>
-		<key>3B9C2AD13EF1428A9988287D</key>
+		<key>53C23DE83C084C18BD002762</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -510,10 +625,24 @@
 			<key>sourceTree</key>
 			<string>SOURCE_ROOT</string>
 		</dict>
-		<key>3FA12BF0596F4A558D6FB2DB</key>
+		<key>54ECE587C4A64A31B08B777D</key>
 		<dict>
 			<key>fileRef</key>
-			<string>6F70A5BFABC543D89DFB60AA</string>
+			<string>F88ECDB1E9D84DD0A1513B88</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>57F0B97957474C8583A1D24A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>52FB1F236EAD4E0CA079D9E2</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -522,7 +651,7 @@
 				<string>-fobjc-arc</string>
 			</dict>
 		</dict>
-		<key>4603028888AA41D5B5937742</key>
+		<key>5DDD43A12A1E43E6AE4D3ABA</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -531,27 +660,13 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>MDLDocument.h</string>
+			<string>MDLAuthor.h</string>
 			<key>path</key>
-			<string>../../../MendeleySDK/MDLDocument.h</string>
+			<string>../../../MendeleySDK/MDLAuthor.h</string>
 			<key>sourceTree</key>
 			<string>SOURCE_ROOT</string>
 		</dict>
-		<key>4D4263C556B94F7CA70DDD13</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>D214C99BE5D14DE0B1AC18BF</string>
-				<string>A4EE1F8B28AA4D4E9A29BE37</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>4DAA0261A02E4C02A9931E7C</key>
+		<key>60A6E9BCE587487E855969ED</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -560,68 +675,40 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>AFURLConnectionOperation.h</string>
+			<string>AFNetworking.h</string>
 			<key>path</key>
-			<string>AFNetworking/AFNetworking/AFURLConnectionOperation.h</string>
+			<string>AFNetworking/AFNetworking/AFNetworking.h</string>
 			<key>sourceTree</key>
 			<string>SOURCE_ROOT</string>
 		</dict>
-		<key>545900B210534B7A9166EBC1</key>
+		<key>6170D35105764A50AD6E768C</key>
 		<dict>
 			<key>fileRef</key>
-			<string>D80F83840E1B43DAA588F916</string>
+			<string>38E757628A4240F9955F764D</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
 			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc</string>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
 			</dict>
 		</dict>
-		<key>5697ADCB9443468AA51943D8</key>
-		<dict>
-			<key>fileRef</key>
-			<string>8AD06D6EB59540E88BC060AB</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict/>
-		</dict>
-		<key>57DA21DC2936451D94A3E9A6</key>
+		<key>6686A4A43C87432EBEB6AFF1</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>B93611F4FE2049BE8F231784</string>
-				<string>A70ED190AB0C4B05A084A517</string>
-				<string>4603028888AA41D5B5937742</string>
-				<string>5C3E7C2DDCE44FC1978C865C</string>
-				<string>880E179C9C2E4CC8B99F1695</string>
-				<string>7614F569BD61465D800CD4A0</string>
-				<string>FB7D068A37DB4EAD91BAF04E</string>
-				<string>1E2F04CF172348AF84A47F0F</string>
-				<string>B74362F5E4C14D16879321FF</string>
-				<string>1A0D217EFBE94B7B88B7CB6E</string>
-				<string>E7DE2912FBA64186A1594D7A</string>
-				<string>B0B86E61890F40CA9CBF7029</string>
-				<string>10FAA5EDC57E4D148AECFFEB</string>
-				<string>E2C7427ADF4542F599287157</string>
-				<string>D7B04CA2482D4144A291DDBE</string>
-				<string>8AE259D5581540088643E7AE</string>
-				<string>35A75135CA63467280017538</string>
-				<string>24F8F523EF12475081A3A443</string>
-				<string>F53EF5064A1E4C578386C72F</string>
-				<string>23D8D1E9480C4D17A227F256</string>
-				<string>FF734B080C264E2C98FB5A2E</string>
-				<string>7AF2A762BDF94419BB27A9F1</string>
+				<string>81D405960D54495DA04F1C6A</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>MendeleySDK</string>
+			<string>Products</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>5AA3A726AB084B538E45B126</key>
+		<key>67F6827BBB0D4A51A0618C60</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -630,73 +717,31 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>AFNetworkActivityIndicatorManager.m</string>
+			<string>AFImageRequestOperation.m</string>
 			<key>path</key>
-			<string>AFNetworking/AFNetworking/AFNetworkActivityIndicatorManager.m</string>
+			<string>AFNetworking/AFNetworking/AFImageRequestOperation.m</string>
 			<key>sourceTree</key>
 			<string>SOURCE_ROOT</string>
 		</dict>
-		<key>5B030028E7C9439CB22FCA66</key>
+		<key>69E7101AC7A8492E8D260E74</key>
 		<dict>
-			<key>fileRef</key>
-			<string>880E179C9C2E4CC8B99F1695</string>
+			<key>children</key>
+			<array>
+				<string>EEF6B87BCBED48B896248C59</string>
+				<string>35D0D782A68046159D1F8E72</string>
+				<string>94905F6CEF2341FC837CA9AF</string>
+			</array>
 			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>5C3E7C2DDCE44FC1978C865C</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
+			<string>PBXGroup</string>
 			<key>name</key>
-			<string>MDLFile.h</string>
-			<key>path</key>
-			<string>../../../MendeleySDK/MDLFile.h</string>
+			<string>Pods</string>
 			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
+			<string>&lt;group&gt;</string>
 		</dict>
-		<key>5CF594A3C01C4D3693A9328F</key>
+		<key>6DD06C4EFF5B4637ACB14760</key>
 		<dict>
 			<key>fileRef</key>
-			<string>B93611F4FE2049BE8F231784</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>5D3C3F333DC1492593F252EA</key>
-		<dict>
-			<key>fileRef</key>
-			<string>2328B2F1F07B43A1B9476A61</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>5D6BD55440E24889B4AF9D44</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A4C3BDE57E93442D9D9F0845</string>
+			<string>0DD6853CA31B4F9083ABAD91</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -705,35 +750,7 @@
 				<string>-fobjc-arc</string>
 			</dict>
 		</dict>
-		<key>5F49294BFC4E4D348DBAD37F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>8A43427264FD499686360C0C</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>5FC3DA639FC244A38B10B46A</key>
-		<dict>
-			<key>fileRef</key>
-			<string>707D31DBA9F74124A880ADC1</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>6314B54D243D4B3C80CB38BB</key>
+		<key>77A083C0BB374D8384560D0C</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -742,66 +759,13 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>AFJSONRequestOperation.m</string>
+			<string>MDLGroup.m</string>
 			<key>path</key>
-			<string>AFNetworking/AFNetworking/AFJSONRequestOperation.m</string>
+			<string>../../../MendeleySDK/MDLGroup.m</string>
 			<key>sourceTree</key>
 			<string>SOURCE_ROOT</string>
 		</dict>
-		<key>638D776CBA614477A75C7026</key>
-		<dict>
-			<key>fileRef</key>
-			<string>10FAA5EDC57E4D148AECFFEB</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc</string>
-			</dict>
-		</dict>
-		<key>6664E2F1582B4426A5C8AF75</key>
-		<dict>
-			<key>fileRef</key>
-			<string>5AA3A726AB084B538E45B126</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc</string>
-			</dict>
-		</dict>
-		<key>6EA8E499878E4998B2D39EAD</key>
-		<dict>
-			<key>fileRef</key>
-			<string>4603028888AA41D5B5937742</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>6F70A5BFABC543D89DFB60AA</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>AFPropertyListRequestOperation.m</string>
-			<key>path</key>
-			<string>AFNetworking/AFNetworking/AFPropertyListRequestOperation.m</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>707D31DBA9F74124A880ADC1</key>
+		<key>77FF83166D9D47848F7EC065</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -810,85 +774,13 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>AFOAuth1Client.h</string>
+			<string>AFImageRequestOperation.h</string>
 			<key>path</key>
-			<string>AFOAuth1Client/AFOAuth1Client/AFOAuth1Client.h</string>
+			<string>AFNetworking/AFNetworking/AFImageRequestOperation.h</string>
 			<key>sourceTree</key>
 			<string>SOURCE_ROOT</string>
 		</dict>
-		<key>7579D09C45364B84817E85D4</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A0A5616248644945A6868412</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>7614F569BD61465D800CD4A0</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>MDLGroup.h</string>
-			<key>path</key>
-			<string>../../../MendeleySDK/MDLGroup.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>763B34C49F754DC88E556D62</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>AFXMLRequestOperation.h</string>
-			<key>path</key>
-			<string>AFNetworking/AFNetworking/AFXMLRequestOperation.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>790A372D18A6465891C7EB82</key>
-		<dict>
-			<key>fileRef</key>
-			<string>1E2F04CF172348AF84A47F0F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>79E23CAF608E4C87B05F280B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>763B34C49F754DC88E556D62</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>7AF2A762BDF94419BB27A9F1</key>
+		<key>7B2BADD12A414EF2855C6688</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -903,10 +795,130 @@
 			<key>sourceTree</key>
 			<string>SOURCE_ROOT</string>
 		</dict>
-		<key>7B3BFCFA5C6F4EC3B7C460DC</key>
+		<key>7C74AB6F48A44EABB5BFE127</key>
 		<dict>
 			<key>fileRef</key>
-			<string>E2C7427ADF4542F599287157</string>
+			<string>258C992686164E14AD3D6A82</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>7CD2D8719C5A445FB4D2289D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>MDLAuthor.m</string>
+			<key>path</key>
+			<string>../../../MendeleySDK/MDLAuthor.m</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>7D5DDFB9E82F440DB400C984</key>
+		<dict>
+			<key>fileRef</key>
+			<string>77FF83166D9D47848F7EC065</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>7FCFEFA4CB064984A4F0F6A2</key>
+		<dict>
+			<key>fileRef</key>
+			<string>38ED4CC293534030B8A2C279</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>810F91300A1E4705A740826B</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>69E7101AC7A8492E8D260E74</string>
+				<string>176A38197C2143A8A2117B7D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Targets Support Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>81D405960D54495DA04F1C6A</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>libPods.a</string>
+			<key>path</key>
+			<string>libPods.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>84B7AD1476B7463F9CF91BF2</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>474D0081E180434B8A12237D</string>
+			<key>buildPhases</key>
+			<array>
+				<string>D5E40062DCC244C4B6ECD8B3</string>
+				<string>F446A07F0C1544EE8A6CD303</string>
+				<string>A7F9C599925B4A88A9252A54</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>productName</key>
+			<string>Pods</string>
+			<key>productReference</key>
+			<string>81D405960D54495DA04F1C6A</string>
+			<key>productType</key>
+			<string>com.apple.product-type.library.static</string>
+		</dict>
+		<key>8659D004C4B84913BE1665F1</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict/>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>8C94A81D58614DEC9EBC01BA</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8CB9CDB42F1249EB993B54DF</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -915,10 +927,54 @@
 				<string>-fobjc-arc</string>
 			</dict>
 		</dict>
-		<key>7CEB0807063C47F8B50959ED</key>
+		<key>8CB9CDB42F1249EB993B54DF</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>AFNetworkActivityIndicatorManager.m</string>
+			<key>path</key>
+			<string>AFNetworking/AFNetworking/AFNetworkActivityIndicatorManager.m</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>8E23DB7AC30547EAA51091D6</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>MDLGroup.h</string>
+			<key>path</key>
+			<string>../../../MendeleySDK/MDLGroup.h</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>905F93D3BB8A4854871EF304</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>8659D004C4B84913BE1665F1</string>
+				<string>B300DC66573C40B0BC3CF914</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>911221A4840C4CFA8A7BC060</key>
 		<dict>
 			<key>fileRef</key>
-			<string>D7B04CA2482D4144A291DDBE</string>
+			<string>3D58927F4CFD466382222141</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -927,10 +983,25 @@
 				<string>-fobjc-arc</string>
 			</dict>
 		</dict>
-		<key>7E6D2C70063F49F9961FE2BB</key>
+		<key>94905F6CEF2341FC837CA9AF</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods.xcconfig</string>
+			<key>path</key>
+			<string>Pods.xcconfig</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>99523262EA8642F79D052D4C</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>AC0B323A1A2F415FACFFF8ED</string>
+			<string>94905F6CEF2341FC837CA9AF</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>ALWAYS_SEARCH_USER_PATHS</key>
@@ -977,21 +1048,7 @@
 			<key>name</key>
 			<string>Release</string>
 		</dict>
-		<key>87F4A9D7AA4B4B5CA92F91BC</key>
-		<dict>
-			<key>fileRef</key>
-			<string>BCF1A793431C43CE8443567F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>880E179C9C2E4CC8B99F1695</key>
+		<key>99B5F9A6DBE54394813607DE</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1000,342 +1057,18 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>MDLFolder.h</string>
+			<string>MDLFile.h</string>
 			<key>path</key>
-			<string>../../../MendeleySDK/MDLFolder.h</string>
+			<string>../../../MendeleySDK/MDLFile.h</string>
 			<key>sourceTree</key>
 			<string>SOURCE_ROOT</string>
 		</dict>
-		<key>883C8BEDA3654339856A02AA</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>AFHTTPClient.m</string>
-			<key>path</key>
-			<string>AFNetworking/AFNetworking/AFHTTPClient.m</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>8A43427264FD499686360C0C</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>AFHTTPRequestOperation.h</string>
-			<key>path</key>
-			<string>AFNetworking/AFNetworking/AFHTTPRequestOperation.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>8AD06D6EB59540E88BC060AB</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>PodsDummy_Pods.m</string>
-			<key>path</key>
-			<string>PodsDummy_Pods.m</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>8AE259D5581540088643E7AE</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>MDLFolder.m</string>
-			<key>path</key>
-			<string>../../../MendeleySDK/MDLFolder.m</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>8C71B00456454F73835DA92F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>AFImageRequestOperation.m</string>
-			<key>path</key>
-			<string>AFNetworking/AFNetworking/AFImageRequestOperation.m</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>8EEFE3981D5E4EB88397122E</key>
+		<key>9C7DBDC478B5406E838BFEA9</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>B68411CC947F4CFC83912D7A</string>
-				<string>8AD06D6EB59540E88BC060AB</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Targets Support Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>932CE460DAAB4B82B43B16E1</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>AFHTTPClient.h</string>
-			<key>path</key>
-			<string>AFNetworking/AFNetworking/AFHTTPClient.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>9BF2A4CD658C4632A4FD5DD6</key>
-		<dict>
-			<key>fileRef</key>
-			<string>4DAA0261A02E4C02A9931E7C</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>9C0E1120DBC242DAADB0FB1A</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>1068E07672504576AC58F659</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9CC6798A5556419AA05E37B1</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>A1B6368D6694421586EA74BA</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>A0A5616248644945A6868412</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>AFPropertyListRequestOperation.h</string>
-			<key>path</key>
-			<string>AFNetworking/AFNetworking/AFPropertyListRequestOperation.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>A1B6368D6694421586EA74BA</key>
-		<dict>
-			<key>fileRef</key>
-			<string>1068E07672504576AC58F659</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict/>
-		</dict>
-		<key>A4C3BDE57E93442D9D9F0845</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>AFXMLRequestOperation.m</string>
-			<key>path</key>
-			<string>AFNetworking/AFNetworking/AFXMLRequestOperation.m</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>A4EE1F8B28AA4D4E9A29BE37</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict/>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>A66CACB2DE074A889034F8AF</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E7DE2912FBA64186A1594D7A</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>A70ED190AB0C4B05A084A517</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>MDLCategory.h</string>
-			<key>path</key>
-			<string>../../../MendeleySDK/MDLCategory.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>A7F2A15EBE7E40FA8A5F7994</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>AFNetworkActivityIndicatorManager.h</string>
-			<key>path</key>
-			<string>AFNetworking/AFNetworking/AFNetworkActivityIndicatorManager.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>A9FF7387A56A4E9C8BFE661E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>FB7D068A37DB4EAD91BAF04E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>AC0B323A1A2F415FACFFF8ED</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods.xcconfig</string>
-			<key>path</key>
-			<string>Pods.xcconfig</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>B0B86E61890F40CA9CBF7029</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>MDLAuthor.m</string>
-			<key>path</key>
-			<string>../../../MendeleySDK/MDLAuthor.m</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>B4E20BE0873B40DF93229A5A</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>932CE460DAAB4B82B43B16E1</string>
-				<string>8A43427264FD499686360C0C</string>
-				<string>2328B2F1F07B43A1B9476A61</string>
-				<string>BCF1A793431C43CE8443567F</string>
-				<string>A7F2A15EBE7E40FA8A5F7994</string>
-				<string>2CE2F1F7924044ED95432958</string>
-				<string>A0A5616248644945A6868412</string>
-				<string>4DAA0261A02E4C02A9931E7C</string>
-				<string>763B34C49F754DC88E556D62</string>
-				<string>C77866547636421DA2E877B7</string>
-				<string>883C8BEDA3654339856A02AA</string>
-				<string>3B9C2AD13EF1428A9988287D</string>
-				<string>8C71B00456454F73835DA92F</string>
-				<string>6314B54D243D4B3C80CB38BB</string>
-				<string>5AA3A726AB084B538E45B126</string>
-				<string>6F70A5BFABC543D89DFB60AA</string>
-				<string>E35AC6B36C54440FA170A630</string>
-				<string>A4C3BDE57E93442D9D9F0845</string>
-				<string>D80F83840E1B43DAA588F916</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>AFNetworking</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B64BAEF7F74D44ED8AB47510</key>
-		<dict>
-			<key>fileRef</key>
-			<string>7AF2A762BDF94419BB27A9F1</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc</string>
-			</dict>
-		</dict>
-		<key>B68411CC947F4CFC83912D7A</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>D75852CEEF6941CEB0EFDC7E</string>
-				<string>353B9A4E4E6F4C9BBD7D4DD2</string>
-				<string>AC0B323A1A2F415FACFFF8ED</string>
+				<string>2413A1EF91234514B94E746E</string>
+				<string>E1684173B26C49C08C5C7C11</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -1344,40 +1077,49 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>B74362F5E4C14D16879321FF</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>MDLSubcategory.h</string>
-			<key>path</key>
-			<string>../../../MendeleySDK/MDLSubcategory.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>B93611F4FE2049BE8F231784</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>MDLAuthor.h</string>
-			<key>path</key>
-			<string>../../../MendeleySDK/MDLAuthor.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>B9FC8AEA96B04EFDB54AACAE</key>
+		<key>9F6C32675B64407488EC7E09</key>
 		<dict>
 			<key>fileRef</key>
-			<string>7614F569BD61465D800CD4A0</string>
+			<string>0D2BA212184241328A73FBE9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc</string>
+			</dict>
+		</dict>
+		<key>A0C8BE5B8DF34B6AB90877F5</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>AFOAuth1Client.m</string>
+			<key>path</key>
+			<string>AFOAuth1Client/AFOAuth1Client/AFOAuth1Client.m</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>A17AD1585330431B866430FA</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A937F1BE21134719B6F7C76F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc</string>
+			</dict>
+		</dict>
+		<key>A2C28296759140ACA7652BA5</key>
+		<dict>
+			<key>fileRef</key>
+			<string>EF00F70461F74E83AFC3B208</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1388,25 +1130,10 @@
 				</array>
 			</dict>
 		</dict>
-		<key>BCF1A793431C43CE8443567F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>AFJSONRequestOperation.h</string>
-			<key>path</key>
-			<string>AFNetworking/AFNetworking/AFJSONRequestOperation.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>C33515915D1440CD9FFCD140</key>
+		<key>A32184F7C109431BBBF909E8</key>
 		<dict>
 			<key>fileRef</key>
-			<string>24F8F523EF12475081A3A443</string>
+			<string>4119751E03774CE2B9976336</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1415,241 +1142,45 @@
 				<string>-fobjc-arc</string>
 			</dict>
 		</dict>
-		<key>C77866547636421DA2E877B7</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>UIImageView+AFNetworking.h</string>
-			<key>path</key>
-			<string>AFNetworking/AFNetworking/UIImageView+AFNetworking.h</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>C9FF0ADEB99343CDA2B0EE14</key>
-		<dict>
-			<key>fileRef</key>
-			<string>022B42607F734566827FA4D2</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc</string>
-			</dict>
-		</dict>
-		<key>D0A9A89E094C4E6185CA6824</key>
-		<dict>
-			<key>attributes</key>
-			<dict>
-				<key>LastUpgradeCheck</key>
-				<string>0450</string>
-			</dict>
-			<key>buildConfigurationList</key>
-			<string>4D4263C556B94F7CA70DDD13</string>
-			<key>compatibilityVersion</key>
-			<string>Xcode 3.2</string>
-			<key>developmentRegion</key>
-			<string>English</string>
-			<key>hasScannedForEncodings</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXProject</string>
-			<key>knownRegions</key>
-			<array>
-				<string>en</string>
-			</array>
-			<key>mainGroup</key>
-			<string>E6555F9DB47E46E0B829A8EB</string>
-			<key>productRefGroup</key>
-			<string>0BA9C6D1E7C84945983F8E21</string>
-			<key>projectReferences</key>
-			<array/>
-			<key>targets</key>
-			<array>
-				<string>14976FAAD3C64686B25FE1CD</string>
-			</array>
-		</dict>
-		<key>D12B40E7D8F7432B9C78B479</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>7E6D2C70063F49F9961FE2BB</string>
-				<string>386505DBC02A41CC9CCE5D1E</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>D1F901E07FED4214A53BFADC</key>
-		<dict>
-			<key>fileRef</key>
-			<string>8C71B00456454F73835DA92F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc</string>
-			</dict>
-		</dict>
-		<key>D214C99BE5D14DE0B1AC18BF</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict/>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>D3A5B3BB9DA64AC09310624E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B4E20BE0873B40DF93229A5A</string>
-				<string>2E823DA923F74822A22DE322</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>D5A43EAC9DBC4D0AB539B29E</key>
+		<key>A7F9C599925B4A88A9252A54</key>
 		<dict>
 			<key>buildActionMask</key>
 			<string>2147483647</string>
 			<key>files</key>
 			<array>
-				<string>0A211A54BDAF4D9EBEC9A335</string>
-				<string>3A52B2BB1A594D84A6EDE5B2</string>
-				<string>D1F901E07FED4214A53BFADC</string>
-				<string>08F773C71CEA46D0ADAAF681</string>
-				<string>6664E2F1582B4426A5C8AF75</string>
-				<string>3FA12BF0596F4A558D6FB2DB</string>
-				<string>26479B108CCA4C5DAC707AF7</string>
-				<string>5D6BD55440E24889B4AF9D44</string>
-				<string>545900B210534B7A9166EBC1</string>
-				<string>C9FF0ADEB99343CDA2B0EE14</string>
-				<string>31FA2D034D1B4F72B4399CBC</string>
-				<string>638D776CBA614477A75C7026</string>
-				<string>7B3BFCFA5C6F4EC3B7C460DC</string>
-				<string>7CEB0807063C47F8B50959ED</string>
-				<string>E56953E61ACC4F488547D35F</string>
-				<string>D6F7D4016847453CAAA66577</string>
-				<string>C33515915D1440CD9FFCD140</string>
-				<string>123BE4FE3ECE43CBAFBC6F49</string>
-				<string>E1180A3C817540CBA723F116</string>
-				<string>328383A27BF942BAAA82088C</string>
-				<string>B64BAEF7F74D44ED8AB47510</string>
-				<string>5697ADCB9443468AA51943D8</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>D6F7D4016847453CAAA66577</key>
-		<dict>
-			<key>fileRef</key>
-			<string>35A75135CA63467280017538</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc</string>
-			</dict>
-		</dict>
-		<key>D75852CEEF6941CEB0EFDC7E</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>Pods-resources.sh</string>
-			<key>path</key>
-			<string>Pods-resources.sh</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>D7B04CA2482D4144A291DDBE</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>MDLFile.m</string>
-			<key>path</key>
-			<string>../../../MendeleySDK/MDLFile.m</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>D80F83840E1B43DAA588F916</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>UIImageView+AFNetworking.m</string>
-			<key>path</key>
-			<string>AFNetworking/AFNetworking/UIImageView+AFNetworking.m</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>D9C615E161A04B0C8DDECBF9</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>233A1BEE709C47BC948CC89F</string>
-				<string>5F49294BFC4E4D348DBAD37F</string>
-				<string>5D3C3F333DC1492593F252EA</string>
-				<string>87F4A9D7AA4B4B5CA92F91BC</string>
-				<string>04D30682800E4C58AC1D42C4</string>
-				<string>2BB3A890E3BC4935A9DEE43D</string>
-				<string>7579D09C45364B84817E85D4</string>
-				<string>9BF2A4CD658C4632A4FD5DD6</string>
-				<string>79E23CAF608E4C87B05F280B</string>
-				<string>09E1D18F8850415AAB49FCB6</string>
-				<string>5FC3DA639FC244A38B10B46A</string>
-				<string>5CF594A3C01C4D3693A9328F</string>
-				<string>2BA28BC3D2C04173AB244465</string>
-				<string>6EA8E499878E4998B2D39EAD</string>
-				<string>11501809A0994C05ABC071A1</string>
-				<string>5B030028E7C9439CB22FCA66</string>
-				<string>B9FC8AEA96B04EFDB54AACAE</string>
-				<string>A9FF7387A56A4E9C8BFE661E</string>
-				<string>790A372D18A6465891C7EB82</string>
-				<string>122900141A944BE69F3F2AFB</string>
-				<string>0485F32D948E40A7BC84FAF9</string>
-				<string>A66CACB2DE074A889034F8AF</string>
+				<string>A2C28296759140ACA7652BA5</string>
+				<string>FE87F662E56B4A95A577C233</string>
+				<string>7D5DDFB9E82F440DB400C984</string>
+				<string>FE2FFB1084D240D4A86EA91D</string>
+				<string>AE71DEB2585D4E2293C9F7EB</string>
+				<string>2055AA425E7C401D89947202</string>
+				<string>E0372EFFE0C046FF91503D41</string>
+				<string>08C2E761B3464ACC933AF3B5</string>
+				<string>B0B3158216764762B07C8161</string>
+				<string>0563B69A22D8434C9695DE9E</string>
+				<string>D0E5451753DF48DFB76950E4</string>
+				<string>B7938820609341DC8A0FFDEE</string>
+				<string>45ED8409441648768AADDD92</string>
+				<string>6170D35105764A50AD6E768C</string>
+				<string>BD94F4D0D9E3497B9BB3442E</string>
+				<string>F2C0A27D6F684449BEA4B18F</string>
+				<string>2356C69481B44BB3AF045F10</string>
+				<string>7FCFEFA4CB064984A4F0F6A2</string>
+				<string>7C74AB6F48A44EABB5BFE127</string>
+				<string>2CFC3277CA704EE7B2EF0970</string>
+				<string>B62F8FAB0F8C4B07AA4AAB65</string>
+				<string>D6886121C6EB4B68A33820CD</string>
+				<string>54ECE587C4A64A31B08B777D</string>
 			</array>
 			<key>isa</key>
 			<string>PBXHeadersBuildPhase</string>
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
-		<key>E1180A3C817540CBA723F116</key>
+		<key>A8846425045E4DC89019BB7B</key>
 		<dict>
 			<key>fileRef</key>
-			<string>23D8D1E9480C4D17A227F256</string>
+			<string>4D3E3ACD24F8459E848EB875</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1658,22 +1189,7 @@
 				<string>-fobjc-arc</string>
 			</dict>
 		</dict>
-		<key>E2C7427ADF4542F599287157</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>MDLDocument.m</string>
-			<key>path</key>
-			<string>../../../MendeleySDK/MDLDocument.m</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>E35AC6B36C54440FA170A630</key>
+		<key>A926EFB209374F78922312A5</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1688,53 +1204,40 @@
 			<key>sourceTree</key>
 			<string>SOURCE_ROOT</string>
 		</dict>
-		<key>E56953E61ACC4F488547D35F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>8AE259D5581540088643E7AE</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fobjc-arc</string>
-			</dict>
-		</dict>
-		<key>E6555F9DB47E46E0B829A8EB</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>0BA9C6D1E7C84945983F8E21</string>
-				<string>9C0E1120DBC242DAADB0FB1A</string>
-				<string>D3A5B3BB9DA64AC09310624E</string>
-				<string>8EEFE3981D5E4EB88397122E</string>
-				<string>E996C18DD21D4143857E34AC</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E7DE2912FBA64186A1594D7A</key>
+		<key>A937F1BE21134719B6F7C76F</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
+			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>MDLUser.h</string>
+			<string>MDLMendeleyAPIClient.m</string>
 			<key>path</key>
-			<string>../../../MendeleySDK/MDLUser.h</string>
+			<string>../../../MendeleySDK/MDLMendeleyAPIClient.m</string>
 			<key>sourceTree</key>
 			<string>SOURCE_ROOT</string>
 		</dict>
-		<key>E996C18DD21D4143857E34AC</key>
+		<key>AE71DEB2585D4E2293C9F7EB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>C727C108EDC64718954F4CA0</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>B0123819E6ED4DEB84818C4E</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>57DA21DC2936451D94A3E9A6</string>
+				<string>C9EEAEAF4DF944D8A2D5C76C</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -1743,7 +1246,30 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>F53EF5064A1E4C578386C72F</key>
+		<key>B0B3158216764762B07C8161</key>
+		<dict>
+			<key>fileRef</key>
+			<string>412F743DCE3444628940456F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>B300DC66573C40B0BC3CF914</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict/>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>B3F47E7AEC26440591D87656</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1752,13 +1278,100 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>MDLPublication.m</string>
+			<string>MDLDocument.m</string>
 			<key>path</key>
-			<string>../../../MendeleySDK/MDLPublication.m</string>
+			<string>../../../MendeleySDK/MDLDocument.m</string>
 			<key>sourceTree</key>
 			<string>SOURCE_ROOT</string>
 		</dict>
-		<key>FB7D068A37DB4EAD91BAF04E</key>
+		<key>B62F8FAB0F8C4B07AA4AAB65</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F19CF9F7264C40B1BB3D9786</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>B7938820609341DC8A0FFDEE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>5DDD43A12A1E43E6AE4D3ABA</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>BB63007F61C147DA852A59C2</key>
+		<dict>
+			<key>fileRef</key>
+			<string>7CD2D8719C5A445FB4D2289D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc</string>
+			</dict>
+		</dict>
+		<key>BC7A7D0243FF445C9545DC4F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>53C23DE83C084C18BD002762</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc</string>
+			</dict>
+		</dict>
+		<key>BD94F4D0D9E3497B9BB3442E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>99B5F9A6DBE54394813607DE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>C066BF9C62024DDDB4572D46</key>
+		<dict>
+			<key>fileRef</key>
+			<string>176A38197C2143A8A2117B7D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict/>
+		</dict>
+		<key>C10944F49B02439099FF721A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D847F5D149B1401B879B451E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc</string>
+			</dict>
+		</dict>
+		<key>C6A0B40BEB55409FBA001BBD</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1767,13 +1380,170 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>MDLMendeleyAPIClient.h</string>
+			<string>MDLCategory.h</string>
 			<key>path</key>
-			<string>../../../MendeleySDK/MDLMendeleyAPIClient.h</string>
+			<string>../../../MendeleySDK/MDLCategory.h</string>
 			<key>sourceTree</key>
 			<string>SOURCE_ROOT</string>
 		</dict>
-		<key>FF734B080C264E2C98FB5A2E</key>
+		<key>C6BC5240DDE14D62A542C208</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Foundation.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/Foundation.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>C727C108EDC64718954F4CA0</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>AFNetworkActivityIndicatorManager.h</string>
+			<key>path</key>
+			<string>AFNetworking/AFNetworking/AFNetworkActivityIndicatorManager.h</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>C9EEAEAF4DF944D8A2D5C76C</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>5DDD43A12A1E43E6AE4D3ABA</string>
+				<string>C6A0B40BEB55409FBA001BBD</string>
+				<string>38E757628A4240F9955F764D</string>
+				<string>99B5F9A6DBE54394813607DE</string>
+				<string>3F0E8D3C15F44A72A448A27C</string>
+				<string>8E23DB7AC30547EAA51091D6</string>
+				<string>38ED4CC293534030B8A2C279</string>
+				<string>258C992686164E14AD3D6A82</string>
+				<string>4D79E417DF44457AB32B2287</string>
+				<string>F19CF9F7264C40B1BB3D9786</string>
+				<string>12508FEBD19B4F11B9E481DD</string>
+				<string>F88ECDB1E9D84DD0A1513B88</string>
+				<string>7CD2D8719C5A445FB4D2289D</string>
+				<string>52FB1F236EAD4E0CA079D9E2</string>
+				<string>B3F47E7AEC26440591D87656</string>
+				<string>D847F5D149B1401B879B451E</string>
+				<string>4119751E03774CE2B9976336</string>
+				<string>77A083C0BB374D8384560D0C</string>
+				<string>A937F1BE21134719B6F7C76F</string>
+				<string>0AA2F920AC944D6193C6A8FD</string>
+				<string>0D2BA212184241328A73FBE9</string>
+				<string>044F6F73088A4FDFBC210CA5</string>
+				<string>7B2BADD12A414EF2855C6688</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>MendeleySDK</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CC57B8CC04D7472990F98E5A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6686A4A43C87432EBEB6AFF1</string>
+				<string>FEC4DFB03F3F42F8B06A8DBD</string>
+				<string>9C7DBDC478B5406E838BFEA9</string>
+				<string>810F91300A1E4705A740826B</string>
+				<string>B0123819E6ED4DEB84818C4E</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CD16A9B619A54B409E55EBC3</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>UIImageView+AFNetworking.h</string>
+			<key>path</key>
+			<string>AFNetworking/AFNetworking/UIImageView+AFNetworking.h</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>D0E5451753DF48DFB76950E4</key>
+		<dict>
+			<key>fileRef</key>
+			<string>45B79D4C300748438C7A326D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>D5E40062DCC244C4B6ECD8B3</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>6DD06C4EFF5B4637ACB14760</string>
+				<string>BC7A7D0243FF445C9545DC4F</string>
+				<string>E483B519D35D4DA599C03935</string>
+				<string>911221A4840C4CFA8A7BC060</string>
+				<string>8C94A81D58614DEC9EBC01BA</string>
+				<string>A8846425045E4DC89019BB7B</string>
+				<string>47D381851A3742CBB21B2FFF</string>
+				<string>E7CBAABEC23A43C381991327</string>
+				<string>19E8DA26020E4778834C5DB4</string>
+				<string>E239F18F86F44FF5BB5AD34D</string>
+				<string>BB63007F61C147DA852A59C2</string>
+				<string>57F0B97957474C8583A1D24A</string>
+				<string>2373F28DAA9049449930DB4C</string>
+				<string>C10944F49B02439099FF721A</string>
+				<string>A32184F7C109431BBBF909E8</string>
+				<string>E4153F74F8414E0ABBD69056</string>
+				<string>A17AD1585330431B866430FA</string>
+				<string>19E084F41E9D44FBBEFA1765</string>
+				<string>9F6C32675B64407488EC7E09</string>
+				<string>DC69E3A2552844AB8D1CFE39</string>
+				<string>399C0C6EDA6749DBB45CE660</string>
+				<string>C066BF9C62024DDDB4572D46</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>D6886121C6EB4B68A33820CD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>12508FEBD19B4F11B9E481DD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>D847F5D149B1401B879B451E</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1782,14 +1552,275 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>MDLTag.m</string>
+			<string>MDLFile.m</string>
 			<key>path</key>
-			<string>../../../MendeleySDK/MDLTag.m</string>
+			<string>../../../MendeleySDK/MDLFile.m</string>
 			<key>sourceTree</key>
 			<string>SOURCE_ROOT</string>
 		</dict>
+		<key>D9ECA877D5654BAB931B4F13</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>LastUpgradeCheck</key>
+				<string>0450</string>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>905F93D3BB8A4854871EF304</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 3.2</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+			</array>
+			<key>mainGroup</key>
+			<string>CC57B8CC04D7472990F98E5A</string>
+			<key>productRefGroup</key>
+			<string>6686A4A43C87432EBEB6AFF1</string>
+			<key>projectReferences</key>
+			<array/>
+			<key>targets</key>
+			<array>
+				<string>84B7AD1476B7463F9CF91BF2</string>
+			</array>
+		</dict>
+		<key>DC69E3A2552844AB8D1CFE39</key>
+		<dict>
+			<key>fileRef</key>
+			<string>044F6F73088A4FDFBC210CA5</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc</string>
+			</dict>
+		</dict>
+		<key>E0372EFFE0C046FF91503D41</key>
+		<dict>
+			<key>fileRef</key>
+			<string>3F82B07F648E451C9EA9CEC5</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>E1684173B26C49C08C5C7C11</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>45B79D4C300748438C7A326D</string>
+				<string>A0C8BE5B8DF34B6AB90877F5</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>AFOAuth1Client</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E239F18F86F44FF5BB5AD34D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A0C8BE5B8DF34B6AB90877F5</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc</string>
+			</dict>
+		</dict>
+		<key>E4153F74F8414E0ABBD69056</key>
+		<dict>
+			<key>fileRef</key>
+			<string>77A083C0BB374D8384560D0C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc</string>
+			</dict>
+		</dict>
+		<key>E483B519D35D4DA599C03935</key>
+		<dict>
+			<key>fileRef</key>
+			<string>67F6827BBB0D4A51A0618C60</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc</string>
+			</dict>
+		</dict>
+		<key>E66D3820799548A3ACE4D5E7</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>AFHTTPRequestOperation.h</string>
+			<key>path</key>
+			<string>AFNetworking/AFNetworking/AFHTTPRequestOperation.h</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>E7CBAABEC23A43C381991327</key>
+		<dict>
+			<key>fileRef</key>
+			<string>0A727574AED44E2FB5EF60C6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc</string>
+			</dict>
+		</dict>
+		<key>EEF6B87BCBED48B896248C59</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>Pods-resources.sh</string>
+			<key>path</key>
+			<string>Pods-resources.sh</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>EF00F70461F74E83AFC3B208</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>AFHTTPClient.h</string>
+			<key>path</key>
+			<string>AFNetworking/AFNetworking/AFHTTPClient.h</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>F19CF9F7264C40B1BB3D9786</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>MDLTag.h</string>
+			<key>path</key>
+			<string>../../../MendeleySDK/MDLTag.h</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>F2C0A27D6F684449BEA4B18F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>3F0E8D3C15F44A72A448A27C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>F446A07F0C1544EE8A6CD303</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>1F126051D0FC42D09B651E73</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>F88ECDB1E9D84DD0A1513B88</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>MendeleySDK.h</string>
+			<key>path</key>
+			<string>../../../MendeleySDK/MendeleySDK.h</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>FE2FFB1084D240D4A86EA91D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>378F62BB5313404C881B5503</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>FE87F662E56B4A95A577C233</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E66D3820799548A3ACE4D5E7</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>FEC4DFB03F3F42F8B06A8DBD</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>C6BC5240DDE14D62A542C208</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 	</dict>
 	<key>rootObject</key>
-	<string>D0A9A89E094C4E6185CA6824</string>
+	<string>D9ECA877D5654BAB931B4F13</string>
 </dict>
 </plist>

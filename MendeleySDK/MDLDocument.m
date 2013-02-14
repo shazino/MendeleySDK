@@ -198,11 +198,15 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
                           requiresAuthentication:self.isInUserLibrary || (self.group.type == MDLGroupTypePrivate)
                                       parameters:nil
                                          success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
-                                             self.abstract       = responseObject[@"abstract"];
-                                             self.title          = responseObject[@"title"];
-                                             self.type           = responseObject[@"type"];
-                                             self.year           = [NSNumber numberOrNumberFromString:responseObject[@"year"]];
-                                             self.mendeleyURL    = [NSURL URLWithString:responseObject[@"mendeley_url"]];
+                                             self.abstract      = responseObject[@"abstract"];
+                                             self.title         = responseObject[@"title"];
+                                             self.type          = responseObject[@"type"];
+                                             self.volume        = responseObject[@"volume"];
+                                             self.pages         = responseObject[@"pages"];
+                                             self.read          = [NSNumber boolNumberFromString:responseObject[@"isRead"]];
+                                             self.starred       = [NSNumber boolNumberFromString:responseObject[@"isStarred"]];
+                                             self.year          = [NSNumber numberOrNumberFromString:responseObject[@"year"]];
+                                             self.mendeleyURL   = [NSURL URLWithString:responseObject[@"mendeley_url"]];
                                              
                                              NSMutableArray *authors = [NSMutableArray array];
                                              for (NSDictionary *author in responseObject[@"authors"])
@@ -225,6 +229,26 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
                                                  success(self);
                                          }
                                          failure:failure];
+}
+
+- (void)markAsRead:(BOOL)read success:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure
+{
+    [[MDLMendeleyAPIClient sharedClient] postPath:[NSString stringWithFormat:@"/oapi/library/documents/%@/", self.identifier]
+                                          bodyKey:@"document" bodyContent:@{@"isRead": read ? @"1" : @"0"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              self.read = @(read);
+                                              if (success)
+                                                  success(self);
+                                          } failure:failure];
+}
+
+- (void)markAsStarred:(BOOL)starred success:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure
+{
+    [[MDLMendeleyAPIClient sharedClient] postPath:[NSString stringWithFormat:@"/oapi/library/documents/%@/", self.identifier]
+                                          bodyKey:@"document" bodyContent:@{@"isStarred": starred ? @"1" : @"0"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              self.starred = @(starred);
+                                              if (success)
+                                                  success(self);
+                                          } failure:failure];
 }
 
 - (void)fetchRelatedDocumentsAtPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure

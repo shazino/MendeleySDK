@@ -22,7 +22,7 @@
 // THE SOFTWARE.
 
 #import "MDLAppDelegate.h"
-#import "AFOAuth1Client.h"
+#import <MendeleySDK.h>
 #import "AFNetworkActivityIndicatorManager.h"
 
 NSString * const kMDLConsumerKey    = @"##consumer_key##";

@@ -93,6 +93,26 @@ extern NSString * const kMDLDocumentTypeGeneric;
 @property (strong, nonatomic) MDLGroup *group;
 
 /**
+ The read status of the document
+ */
+@property (assign, nonatomic) NSNumber *read;
+
+/**
+ The star status of the document
+ */
+@property (assign, nonatomic) NSNumber *starred;
+
+/**
+ The volume of the document.
+ */
+@property (copy, nonatomic) NSString *volume;
+
+/**
+ The pages of the document.
+ */
+@property (copy, nonatomic) NSString *pages;
+
+/**
  A Boolean value that corresponds to whether the document is in the user library.
  */
 @property (readonly) BOOL isInUserLibrary;
@@ -242,6 +262,28 @@ extern NSString * const kMDLDocumentTypeGeneric;
  @see [API documentation: Search Related](http://apidocs.mendeley.com/home/public-resources/search-related)
  */
 - (void)fetchRelatedDocumentsAtPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
+
+/**
+ Sends an update document API request using the shared client.
+ 
+ @param read The read status.
+ @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: a `MDLDocument` object.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ 
+ @see [API documentation: User Library Update Document](http://apidocs.mendeley.com/home/user-specific-methods/user-library-update-document)
+ */
+- (void)markAsRead:(BOOL)read success:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure;
+
+/**
+ Sends an update document API request using the shared client.
+ 
+ @param starred The starred status.
+ @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: a `MDLDocument` object.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ 
+ @see [API documentation: User Library Update Document](http://apidocs.mendeley.com/home/user-specific-methods/user-library-update-document)
+ */
+- (void)markAsStarred:(BOOL)starred success:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure;
 
 /**
  Sends a delete document API request using the shared client.
