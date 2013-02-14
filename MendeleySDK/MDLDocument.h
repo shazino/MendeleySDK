@@ -108,9 +108,19 @@ extern NSString * const kMDLDocumentTypeGeneric;
 @property (copy, nonatomic) NSString *volume;
 
 /**
+ The issue of the document.
+ */
+@property (copy, nonatomic) NSString *issue;
+
+/**
  The pages of the document.
  */
 @property (copy, nonatomic) NSString *pages;
+
+/**
+ The added date of the document.
+ */
+@property (strong, nonatomic) NSDate *addedDate;
 
 /**
  A Boolean value that corresponds to whether the document is in the user library.

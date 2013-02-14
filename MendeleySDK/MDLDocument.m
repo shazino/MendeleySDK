@@ -202,7 +202,10 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
                                              self.title         = responseObject[@"title"];
                                              self.type          = responseObject[@"type"];
                                              self.volume        = responseObject[@"volume"];
+                                             self.issue         = responseObject[@"issue"];
                                              self.pages         = responseObject[@"pages"];
+                                             self.DOI           = responseObject[@"doi"];
+                                             self.addedDate     = [NSDate dateWithTimeIntervalSince1970:[[NSNumber numberOrNumberFromString:responseObject[@"added"]] doubleValue]];
                                              self.read          = [NSNumber boolNumberFromString:responseObject[@"isRead"]];
                                              self.starred       = [NSNumber boolNumberFromString:responseObject[@"isStarred"]];
                                              self.year          = [NSNumber numberOrNumberFromString:responseObject[@"year"]];
@@ -210,7 +213,7 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
                                              
                                              NSMutableArray *authors = [NSMutableArray array];
                                              for (NSDictionary *author in responseObject[@"authors"])
-                                                 [authors addObject:[MDLAuthor authorWithName:[NSString stringWithFormat:@"%@ %@", author[@"forename"], author[@"surname"]]]];
+                                                 [authors addObject:[MDLAuthor authorWithName:[NSString stringWithFormat:@"%@%@%@", author[@"forename"], ([author[@"forename"] length] > 0 && [author[@"surname"] length] > 0) ? @" " : @"", author[@"surname"]]]];
                                              self.authors = authors;
                                              
                                              if (responseObject[@"publication_outlet"])
