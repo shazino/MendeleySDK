@@ -36,8 +36,6 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
 
 @interface MDLDocument ()
 
-@property (strong, nonatomic) NSNumber *inUserLibrary;
-
 + (MDLDocument *)documentWithRawDocument:(NSDictionary *)rawDocument;
 + (void)fetchDocumentsWithPath:(NSString *)path public:(BOOL)public parameters:(NSDictionary *)parameters atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure;
 

@@ -297,7 +297,8 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
         } failure:^(NSError *authError) {
             for (NSOperation *operation in [self.operationQueue operations])
                 [operation cancel];
-            failure([NSError errorWithDomain:AFNetworkingErrorDomain code:NSURLErrorUserCancelledAuthentication userInfo:nil]);
+            if (failure)
+                failure([NSError errorWithDomain:AFNetworkingErrorDomain code:NSURLErrorUserCancelledAuthentication userInfo:nil]);
             [[NSNotificationCenter defaultCenter] postNotificationName:kMDLNotificationFailedToAcquireAccessToken object:self];
         }];
     }

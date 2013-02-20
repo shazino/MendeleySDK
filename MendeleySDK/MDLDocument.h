@@ -125,6 +125,7 @@ extern NSString * const kMDLDocumentTypeGeneric;
 /**
  A Boolean value that corresponds to whether the document is in the user library.
  */
+@property (strong, nonatomic) NSNumber *inUserLibrary;
 @property (readonly) BOOL isInUserLibrary;
 
 /**
