@@ -78,6 +78,11 @@ extern NSString * const kMDLDocumentTypeGeneric;
 @property (strong, nonatomic) MDLPublication *publication;
 
 /**
+ The folder identifier of the document.
+ */
+@property (copy, nonatomic) NSString *folderIdentifier;
+
+/**
  The year of the document.
  */
 @property (strong, nonatomic) NSNumber *year;
