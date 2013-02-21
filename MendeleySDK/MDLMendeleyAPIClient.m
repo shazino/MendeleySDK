@@ -2,17 +2,17 @@
 // MDLMendeleyAPIClient.m
 //
 // Copyright (c) 2012 shazino (shazino SAS), http://www.shazino.com/
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -32,6 +32,9 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
 
 @interface MDLMendeleyAPIClient ()
 
+@property (strong, nonatomic) id applicationLaunchObserver;
+
++ (MDLMendeleyAPIClient *)sharedClientReset:(BOOL)reset;
 + (NSString *)SHA1ForFileAtURL:(NSURL *)fileURL;
 + (id)deserializeAndSanitizeJSONObjectWithData:(NSData *)JSONData;
 + (id)sanitizeObject:(id)object;
@@ -39,7 +42,8 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
 - (void)analyseFailureFromRequestOperation:(AFHTTPRequestOperation *)requestOperation
                                      error:(NSError *)error
                                    failure:(void (^)(NSError *))failure
- andAuthorizeUsingOAuthIfNeededWithSuccess:(void (^)())authenticationSuccess;
+ andAuthorizeUsingOAuthIfNeededWithSuccess:(void (^)(AFOAuth1Token *))authenticationSuccess;
+- (void)authenticateWithSuccess:(void (^)(AFOAuth1Token *))success failure:(void (^)(NSError *))failure;
 
 @end
 
@@ -54,17 +58,63 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
 
 @end
 
+static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    if (queryString) {
+        NSScanner *parameterScanner = [[NSScanner alloc] initWithString:queryString];
+        NSString *name = nil;
+        NSString *value = nil;
+        
+        while (![parameterScanner isAtEnd]) {
+            name = nil;
+            [parameterScanner scanUpToString:@"=" intoString:&name];
+            [parameterScanner scanString:@"=" intoString:NULL];
+            
+            value = nil;
+            [parameterScanner scanUpToString:@"&" intoString:&value];
+            [parameterScanner scanString:@"&" intoString:NULL];
+            
+            if (name && value) {
+                [parameters setValue:[value stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding] forKey:[name stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+            }
+        }
+    }
+    
+    return parameters;
+}
+
+@interface AFOAuth1Token ()
+@property (readwrite, nonatomic, copy) NSString *verifier;
+@end
+
 @implementation MDLMendeleyAPIClient
+
++ (MDLMendeleyAPIClient *)sharedClientReset:(BOOL)reset
+{
+    static MDLMendeleyAPIClient *_sharedClient = nil;
+    @synchronized(self)
+    {
+        if (reset)
+        {
+            if (_sharedClient.applicationLaunchObserver)
+                [[NSNotificationCenter defaultCenter] removeObserver:_sharedClient.applicationLaunchObserver];
+            _sharedClient = nil;
+        }
+        if (!_sharedClient)
+            _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:kMDLMendeleyAPIBaseURLString] key:kMDLConsumerKey secret:kMDLConsumerSecret];
+    }
+    
+    return _sharedClient;
+}
 
 + (MDLMendeleyAPIClient *)sharedClient
 {
-    static MDLMendeleyAPIClient *_sharedClient = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:kMDLMendeleyAPIBaseURLString] key:kMDLConsumerKey secret:kMDLConsumerSecret];
-    });
-    
-    return _sharedClient;
+    return [self sharedClientReset:NO];
+}
+
++ (void)resetSharedClient
+{
+    [self sharedClientReset:YES];
 }
 
 - (id)initWithBaseURL:(NSURL *)url key:(NSString *)key secret:(NSString *)secret
@@ -193,20 +243,20 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
         requestParameters[@"consumer_key"] = kMDLConsumerKey;
     
     [self getPath:path
-        parameters:requestParameters
-           success:^(AFHTTPRequestOperation *operation, id responseObject) {
-               [self updateRateLimitRemainingWithOperation:operation];
-               if (success)
-                   success(operation, [MDLMendeleyAPIClient deserializeAndSanitizeJSONObjectWithData:responseObject]);
-           }
-           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-               if (requiresAuthentication)
-                   [self analyseFailureFromRequestOperation:operation error:error failure:failure andAuthorizeUsingOAuthIfNeededWithSuccess:^{
-                       [self getPath:path requiresAuthentication:requiresAuthentication parameters:parameters success:success failure:failure];
-                   }];
-               else
-                   failure(error);
-           }];
+       parameters:requestParameters
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              [self updateRateLimitRemainingWithOperation:operation];
+              if (success)
+                  success(operation, [MDLMendeleyAPIClient deserializeAndSanitizeJSONObjectWithData:responseObject]);
+          }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              if (requiresAuthentication)
+                  [self analyseFailureFromRequestOperation:operation error:error failure:failure andAuthorizeUsingOAuthIfNeededWithSuccess:^(AFOAuth1Token *accessToken) {
+                      [self getPath:path requiresAuthentication:requiresAuthentication parameters:parameters success:success failure:failure];
+                  }];
+              else
+                  failure(error);
+          }];
 }
 
 - (void)getPath:(NSString *)path requiresAuthentication:(BOOL)requiresAuthentication parameters:(NSDictionary *)parameters outputStreamToFileAtPath:(NSString *)filePath success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(NSError *))failure
@@ -244,7 +294,7 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
                    success(operation, [MDLMendeleyAPIClient deserializeAndSanitizeJSONObjectWithData:responseObject]);
            }
            failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-               [self analyseFailureFromRequestOperation:operation error:error failure:failure andAuthorizeUsingOAuthIfNeededWithSuccess:^{
+               [self analyseFailureFromRequestOperation:operation error:error failure:failure andAuthorizeUsingOAuthIfNeededWithSuccess:^(AFOAuth1Token *accessToken) {
                    [self postPath:path bodyKey:bodyKey bodyContent:bodyContent success:success failure:failure];
                }];
            }];
@@ -260,14 +310,14 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
                       success(operation, [MDLMendeleyAPIClient deserializeAndSanitizeJSONObjectWithData:responseObject]);
               }
               failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                  [self analyseFailureFromRequestOperation:operation error:error failure:failure andAuthorizeUsingOAuthIfNeededWithSuccess:^{
+                  [self analyseFailureFromRequestOperation:operation error:error failure:failure andAuthorizeUsingOAuthIfNeededWithSuccess:^(AFOAuth1Token *accessToken) {
                       [self deletePath:path parameters:parameters success:success failure:failure];
                   }];
               }];
 }
 
 - (void)putPath:(NSString *)path fileAtURL:(NSURL *)fileURL success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(NSError *))failure
-{   
+{
     NSMutableURLRequest *request= [self requestWithMethod:@"PUT" path:path parameters:@{@"oauth_body_hash" : [MDLMendeleyAPIClient SHA1ForFileAtURL:fileURL]}];
     request.HTTPBody = [NSData dataWithContentsOfURL:fileURL];
     [request setValue:[NSString stringWithFormat:@"attachment; filename=\"%@\"", [[fileURL path] lastPathComponent]] forHTTPHeaderField:@"Content-Disposition"];
@@ -277,7 +327,7 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
         if (success)
             success(operation, responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self analyseFailureFromRequestOperation:operation error:error failure:failure andAuthorizeUsingOAuthIfNeededWithSuccess:^{
+        [self analyseFailureFromRequestOperation:operation error:error failure:failure andAuthorizeUsingOAuthIfNeededWithSuccess:^(AFOAuth1Token *accessToken) {
             [self putPath:path fileAtURL:fileURL success:success failure:failure];
         }];
     }];
@@ -287,23 +337,72 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
 - (void)analyseFailureFromRequestOperation:(AFHTTPRequestOperation *)requestOperation
                                      error:(NSError *)error
                                    failure:(void (^)(NSError *))failure
- andAuthorizeUsingOAuthIfNeededWithSuccess:(void (^)())authenticationSuccess
+ andAuthorizeUsingOAuthIfNeededWithSuccess:(void (^)(AFOAuth1Token *))authenticationSuccess
 {
     if (requestOperation.response.statusCode == 401 && self.isAutomaticAuthenticationEnabled)
-    {
-        [self authorizeUsingOAuthWithRequestTokenPath:@"oauth/request_token" userAuthorizationPath:@"oauth/authorize" callbackURL:[NSURL URLWithString:[kMDLURLScheme stringByAppendingString:@"://"]] accessTokenPath:@"oauth/access_token" accessMethod:@"GET" success:^(AFOAuth1Token *accessToken) {
-            authenticationSuccess();
-            [[NSNotificationCenter defaultCenter] postNotificationName:kMDLNotificationDidAcquireAccessToken object:self];
-        } failure:^(NSError *authError) {
-            for (NSOperation *operation in [self.operationQueue operations])
-                [operation cancel];
-            if (failure)
-                failure([NSError errorWithDomain:AFNetworkingErrorDomain code:NSURLErrorUserCancelledAuthentication userInfo:nil]);
-            [[NSNotificationCenter defaultCenter] postNotificationName:kMDLNotificationFailedToAcquireAccessToken object:self];
-        }];
-    }
-    else
+        [self authenticateWithSuccess:authenticationSuccess failure:failure];
+    else if (failure)
         failure(error);
+}
+
+- (void)authenticateWithSuccess:(void (^)(AFOAuth1Token *))success failure:(void (^)(NSError *))failure
+{
+    NSLog(@"authenticateWithSuccess");
+    [self authorizeUsingOAuthWithRequestTokenPath:@"oauth/request_token" userAuthorizationPath:@"oauth/authorize" callbackURL:[NSURL URLWithString:[kMDLURLScheme stringByAppendingString:@"://"]] accessTokenPath:@"oauth/access_token" accessMethod:@"GET" success:^(AFOAuth1Token *accessToken) {
+        if (success)
+            success(accessToken);
+        [[NSNotificationCenter defaultCenter] postNotificationName:kMDLNotificationDidAcquireAccessToken object:self];
+    } failure:^(NSError *authError) {
+        [self.operationQueue cancelAllOperations];
+        self.accessToken = nil;
+        if (failure)
+            failure(authError);
+        [[NSNotificationCenter defaultCenter] postNotificationName:kMDLNotificationFailedToAcquireAccessToken object:self];
+    }];
+}
+
+- (void)authorizeUsingOAuthWithRequestTokenPath:(NSString *)requestTokenPath
+                          userAuthorizationPath:(NSString *)userAuthorizationPath
+                                    callbackURL:(NSURL *)callbackURL
+                                accessTokenPath:(NSString *)accessTokenPath
+                                   accessMethod:(NSString *)accessMethod
+                                        success:(void (^)(AFOAuth1Token *accessToken))success
+                                        failure:(void (^)(NSError *error))failure
+{
+    [self acquireOAuthRequestTokenWithPath:requestTokenPath callback:callbackURL accessMethod:(NSString *)accessMethod success:^(AFOAuth1Token *requestToken) {
+        __block AFOAuth1Token *currentRequestToken = requestToken;
+        if (self.applicationLaunchObserver)
+            [[NSNotificationCenter defaultCenter] removeObserver:self.applicationLaunchObserver];
+        self.applicationLaunchObserver = [[NSNotificationCenter defaultCenter] addObserverForName:kAFApplicationLaunchedWithURLNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
+            NSURL *url = [[notification userInfo] valueForKey:kAFApplicationLaunchOptionsURLKey];
+            
+            currentRequestToken.verifier = [AFParametersFromQueryString([url query]) valueForKey:@"oauth_verifier"];
+            
+            [self acquireOAuthAccessTokenWithPath:accessTokenPath requestToken:currentRequestToken accessMethod:accessMethod success:^(AFOAuth1Token * accessToken) {
+                self.accessToken = accessToken;
+                
+                if (success) {
+                    success(accessToken);
+                }
+            } failure:^(NSError *error) {
+                if (failure) {
+                    failure(error);
+                }
+            }];
+        }];
+        
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        [parameters setValue:requestToken.key forKey:@"oauth_token"];
+#if __IPHONE_OS_VERSION_MIN_REQUIRED
+        [[UIApplication sharedApplication] openURL:[[self requestWithMethod:@"GET" path:userAuthorizationPath parameters:parameters] URL]];
+#else
+        [[NSWorkspace sharedWorkspace] openURL:[[self requestWithMethod:@"GET" path:userAuthorizationPath parameters:parameters] URL]];
+#endif
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
 }
 
 #pragma mark - Crypto
@@ -384,3 +483,4 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
 }
 
 @end
+
