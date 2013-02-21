@@ -347,7 +347,6 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
 
 - (void)authenticateWithSuccess:(void (^)(AFOAuth1Token *))success failure:(void (^)(NSError *))failure
 {
-    NSLog(@"authenticateWithSuccess");
     [self authorizeUsingOAuthWithRequestTokenPath:@"oauth/request_token" userAuthorizationPath:@"oauth/authorize" callbackURL:[NSURL URLWithString:[kMDLURLScheme stringByAppendingString:@"://"]] accessTokenPath:@"oauth/access_token" accessMethod:@"GET" success:^(AFOAuth1Token *accessToken) {
         if (success)
             success(accessToken);
