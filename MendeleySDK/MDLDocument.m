@@ -74,6 +74,7 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
     document.title      = rawDocument[@"title"];
     document.type       = rawDocument[@"type"];
     document.DOI        = rawDocument[@"doi"];
+    document.version    = [NSNumber numberOrNumberFromString:rawDocument[@"version"]];
     return document;
 }
 
@@ -199,7 +200,6 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
                                              self.abstract      = responseObject[@"abstract"];
                                              self.title         = responseObject[@"title"];
                                              self.type          = responseObject[@"type"];
-                                             self.volume        = responseObject[@"volume"];
                                              self.issue         = responseObject[@"issue"];
                                              self.pages         = responseObject[@"pages"];
                                              self.DOI           = responseObject[@"doi"];
@@ -208,8 +208,11 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
                                              self.addedDate     = [NSDate dateWithTimeIntervalSince1970:[[NSNumber numberOrNumberFromString:responseObject[@"added"]] doubleValue]];
                                              self.read          = [NSNumber boolNumberFromString:responseObject[@"isRead"]];
                                              self.starred       = [NSNumber boolNumberFromString:responseObject[@"isStarred"]];
-                                             self.year          = [NSNumber numberOrNumberFromString:responseObject[@"year"]];
+                                             self.deletionPending = [NSNumber boolNumberFromString:responseObject[@"deletionPending"]];
                                              self.mendeleyURL   = [NSURL URLWithString:responseObject[@"mendeley_url"]];
+                                             self.version       = [NSNumber numberOrNumberFromString:responseObject[@"version"]];
+                                             self.volume        = responseObject[@"volume"];
+                                             self.year          = [NSNumber numberOrNumberFromString:responseObject[@"year"]];
                                              
                                              NSMutableArray *authors = [NSMutableArray array];
                                              for (NSDictionary *author in responseObject[@"authors"])

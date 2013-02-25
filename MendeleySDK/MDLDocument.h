@@ -100,12 +100,17 @@ extern NSString * const kMDLDocumentTypeGeneric;
 /**
  The read status of the document
  */
-@property (assign, nonatomic) NSNumber *read;
+@property (strong, nonatomic) NSNumber *read;
 
 /**
  The star status of the document
  */
-@property (assign, nonatomic) NSNumber *starred;
+@property (strong, nonatomic) NSNumber *starred;
+
+/**
+ The deletion pending status of the document
+ */
+@property (strong, nonatomic) NSNumber *deletionPending;
 
 /**
  The volume of the document.
@@ -126,6 +131,11 @@ extern NSString * const kMDLDocumentTypeGeneric;
  The added date of the document.
  */
 @property (strong, nonatomic) NSDate *addedDate;
+
+/**
+ The version of the document.
+ */
+@property (strong, nonatomic) NSNumber *version;
 
 /**
  A Boolean value that corresponds to whether the document is in the user library.
