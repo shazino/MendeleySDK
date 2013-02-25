@@ -43,7 +43,6 @@ NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotification
                                      error:(NSError *)error
                                    failure:(void (^)(NSError *))failure
  andAuthorizeUsingOAuthIfNeededWithSuccess:(void (^)(AFOAuth1Token *))authenticationSuccess;
-- (void)authenticateWithSuccess:(void (^)(AFOAuth1Token *))success failure:(void (^)(NSError *))failure;
 
 @end
 
