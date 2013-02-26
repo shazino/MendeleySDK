@@ -203,8 +203,8 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
                                              self.issue         = responseObject[@"issue"];
                                              self.pages         = responseObject[@"pages"];
                                              self.DOI           = responseObject[@"doi"];
-                                             self.keywords      = ([responseObject[@"keywords"] isKindOfClass:[NSArray class]]) ? [(NSArray *)responseObject[@"keywords"] componentsJoinedByString:@","] : nil;
-                                             self.tags          = ([responseObject[@"tags"] isKindOfClass:[NSArray class]]) ? [(NSArray *)responseObject[@"tags"] componentsJoinedByString:@","] : nil;
+                                             self.keywords      = responseObject[@"keywords"];
+                                             self.tags          = responseObject[@"tags"];
                                              if (responseObject[@"folders_ids"] && [responseObject[@"folders_ids"] isKindOfClass:[NSArray class]])
                                                  self.folderIdentifier = [(NSArray *)responseObject[@"folders_ids"] lastObject];
                                              self.addedDate     = [NSDate dateWithTimeIntervalSince1970:[[NSNumber numberOrNumberFromString:responseObject[@"added"]] doubleValue]];
