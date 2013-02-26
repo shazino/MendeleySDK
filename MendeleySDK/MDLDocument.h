@@ -128,6 +128,16 @@ extern NSString * const kMDLDocumentTypeGeneric;
 @property (copy, nonatomic) NSString *pages;
 
 /**
+ The keywords of the document, comma-separated.
+ */
+@property (copy, nonatomic) NSString *keywords;
+
+/**
+ The tags of the document, comma-separated.
+ */
+@property (copy, nonatomic) NSString *tags;
+
+/**
  The added date of the document.
  */
 @property (strong, nonatomic) NSDate *addedDate;
