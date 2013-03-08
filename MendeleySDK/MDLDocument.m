@@ -259,6 +259,16 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
                                           } failure:failure];
 }
 
+- (void)moveToTrashSuccess:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure
+{
+    [[MDLMendeleyAPIClient sharedClient] postPath:[NSString stringWithFormat:@"/oapi/library/documents/%@/", self.identifier]
+                                          bodyKey:@"document" bodyContent:@{@"deletionPending": @"1"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              self.deletionPending = @(YES);
+                                              if (success)
+                                                  success(self);
+                                          } failure:failure];
+}
+
 - (void)fetchRelatedDocumentsAtPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     [[MDLMendeleyAPIClient sharedClient] getPath:[NSString stringWithFormat:@"/oapi/documents/related/%@/", self.identifier]
