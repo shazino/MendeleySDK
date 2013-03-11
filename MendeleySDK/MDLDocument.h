@@ -43,9 +43,24 @@ extern NSString * const kMDLDocumentTypeGeneric;
 @property (copy, nonatomic) NSString *identifier;
 
 /**
+ The document identifiers.
+ */
+@property (strong, nonatomic) NSDictionary *identifiers;
+
+/**
  The document DOI (Digital Object Identifier).
  */
 @property (copy, nonatomic) NSString *DOI;
+
+/**
+ The canonical identifier of the document.
+ */
+@property (copy, nonatomic) NSString *canonicalIdentifier;
+
+/**
+ The PubMed identifier (PMID) of the document.
+ */
+@property (copy, nonatomic) NSString *PubMedIdentifier;
 
 /**
  The type of the document. This is `@"Generic"` by default.
@@ -65,7 +80,12 @@ extern NSString * const kMDLDocumentTypeGeneric;
 /**
  The Mendeley URL of the document.
  */
-@property (strong, nonatomic) NSURL *mendeleyURL;
+@property (strong, nonatomic) NSURL *MendeleyURL;
+
+/**
+ The URL of the document.
+ */
+@property (strong, nonatomic) NSURL *URL;
 
 /**
  The authors of the document stored as MDLAuthor.
@@ -73,14 +93,24 @@ extern NSString * const kMDLDocumentTypeGeneric;
 @property (strong, nonatomic) NSArray *authors;
 
 /**
+ The publication outlet of the document.
+ */
+@property (strong, nonatomic) MDLPublication *publicationOutlet;
+
+/**
  The publication of the document.
  */
 @property (strong, nonatomic) MDLPublication *publication;
 
 /**
- The folder identifier of the document.
+ The publisher of the document.
  */
-@property (copy, nonatomic) NSString *folderIdentifier;
+@property (copy, nonatomic) NSString *publisher;
+
+/**
+ The folder identifiers of the document.
+ */
+@property (copy, nonatomic) NSArray *foldersIdentifiers;
 
 /**
  The year of the document.
@@ -108,9 +138,29 @@ extern NSString * const kMDLDocumentTypeGeneric;
 @property (strong, nonatomic) NSNumber *starred;
 
 /**
+ The authored status of the document
+ */
+@property (strong, nonatomic) NSNumber *authored;
+
+/**
  The deletion pending status of the document
  */
 @property (strong, nonatomic) NSNumber *deletionPending;
+
+/**
+ The discipline of the document.
+ */
+@property (copy, nonatomic) NSString *discipline;
+
+/**
+ The subdiscipline of the document.
+ */
+@property (copy, nonatomic) NSString *subdiscipline;
+
+/**
+ The institution of the document.
+ */
+@property (copy, nonatomic) NSString *institution;
 
 /**
  The volume of the document.
@@ -128,6 +178,11 @@ extern NSString * const kMDLDocumentTypeGeneric;
 @property (copy, nonatomic) NSString *pages;
 
 /**
+ The notes of the document.
+ */
+@property (copy, nonatomic) NSString *notes;
+
+/**
  The keywords of the document.
  */
 @property (strong, nonatomic) NSArray *keywords;
@@ -138,9 +193,34 @@ extern NSString * const kMDLDocumentTypeGeneric;
 @property (strong, nonatomic) NSArray *tags;
 
 /**
+ The cast of the document.
+ */
+@property (strong, nonatomic) NSArray *cast;
+
+/**
+ The editors of the document.
+ */
+@property (strong, nonatomic) NSArray *editors;
+
+/**
+ The producers of the document.
+ */
+@property (strong, nonatomic) NSArray *producers;
+
+/**
+ The translators of the document.
+ */
+@property (strong, nonatomic) NSArray *translators;
+
+/**
  The added date of the document.
  */
 @property (strong, nonatomic) NSDate *addedDate;
+
+/**
+ The modified date of the document.
+ */
+@property (strong, nonatomic) NSDate *modifiedDate;
 
 /**
  The version of the document.

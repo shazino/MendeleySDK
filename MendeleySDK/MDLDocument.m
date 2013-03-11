@@ -197,34 +197,49 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
                           requiresAuthentication:self.isInUserLibrary || (self.group.type == MDLGroupTypePrivate)
                                       parameters:nil
                                          success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
-                                             self.abstract      = responseObject[@"abstract"];
-                                             self.title         = responseObject[@"title"];
-                                             self.type          = responseObject[@"type"];
-                                             self.issue         = responseObject[@"issue"];
-                                             self.pages         = responseObject[@"pages"];
-                                             self.DOI           = responseObject[@"doi"];
-                                             self.keywords      = responseObject[@"keywords"];
-                                             self.tags          = responseObject[@"tags"];
-                                             if (responseObject[@"folders_ids"] && [responseObject[@"folders_ids"] isKindOfClass:[NSArray class]])
-                                                 self.folderIdentifier = [(NSArray *)responseObject[@"folders_ids"] lastObject];
-                                             self.addedDate     = [NSDate dateWithTimeIntervalSince1970:[[NSNumber numberOrNumberFromString:responseObject[@"added"]] doubleValue]];
-                                             self.read          = [NSNumber boolNumberFromString:responseObject[@"isRead"]];
-                                             self.starred       = [NSNumber boolNumberFromString:responseObject[@"isStarred"]];
-                                             self.deletionPending = [NSNumber boolNumberFromString:responseObject[@"deletionPending"]];
-                                             self.mendeleyURL   = [NSURL URLWithString:responseObject[@"mendeley_url"]];
-                                             self.version       = [NSNumber numberOrNumberFromString:responseObject[@"version"]];
-                                             self.volume        = responseObject[@"volume"];
-                                             self.year          = [NSNumber numberOrNumberFromString:responseObject[@"year"]];
+                                             self.abstract          = responseObject[@"abstract"];
+                                             self.addedDate         = [NSDate dateWithTimeIntervalSince1970:[[NSNumber numberOrNumberFromString:responseObject[@"added"]] doubleValue]];
+                                             self.canonicalIdentifier = responseObject[@"canonical_id"];
+                                             self.cast              = responseObject[@"cast"];
+                                             self.deletionPending   = [NSNumber boolNumberFromString:responseObject[@"deletionPending"]];
+                                             self.discipline        = responseObject[@"discipline"];
+                                             self.DOI               = responseObject[@"doi"];
+                                             self.editors           = responseObject[@"editors"];
+                                             if ([responseObject[@"folders_ids"] isKindOfClass:[NSArray class]])
+                                                 self.foldersIdentifiers = responseObject[@"folders_ids"];
+                                             self.identifier        = responseObject[@"id"];
+                                             self.identifiers       = ([responseObject[@"identifiers"] isKindOfClass:[NSDictionary class]]) ? responseObject[@"identifiers"] : nil;
+                                             self.institution       = responseObject[@"institution"];
+                                             self.authored          = [NSNumber boolNumberFromString:responseObject[@"isAuthor"]];
+                                             self.read              = [NSNumber boolNumberFromString:responseObject[@"isRead"]];
+                                             self.starred           = [NSNumber boolNumberFromString:responseObject[@"isStarred"]];
+                                             self.issue             = responseObject[@"issue"];
+                                             self.keywords          = responseObject[@"keywords"];
+                                             self.MendeleyURL       = [NSURL URLWithString:responseObject[@"mendeley_url"]];
+                                             self.modifiedDate      = [NSDate dateWithTimeIntervalSince1970:[[NSNumber numberOrNumberFromString:responseObject[@"modified"]] doubleValue]];
+                                             self.notes             = responseObject[@"notes"];
+                                             self.pages             = responseObject[@"pages"];
+                                             self.PubMedIdentifier  = responseObject[@"pmid"];
+                                             self.producers         = responseObject[@"producers"];
+                                             if (responseObject[@"publication_outlet"])
+                                                 self.publicationOutlet = [MDLPublication publicationWithName:responseObject[@"publication_outlet"]];
+                                             else if (responseObject[@"published_in"])
+                                                 self.publication = [MDLPublication publicationWithName:responseObject[@"published_in"]];
+                                             self.publisher         = responseObject[@"publisher"];
+                                             self.subdiscipline     = responseObject[@"subdiscipline"];
+                                             self.tags              = responseObject[@"tags"];
+                                             self.title             = responseObject[@"title"];
+                                             self.translators       = responseObject[@"translators"];
+                                             self.type              = responseObject[@"type"];
+                                             self.URL               = [NSURL URLWithString:responseObject[@"url"]];
+                                             self.version           = [NSNumber numberOrNumberFromString:responseObject[@"version"]];
+                                             self.volume            = responseObject[@"volume"];
+                                             self.year              = [NSNumber numberOrNumberFromString:responseObject[@"year"]];
                                              
                                              NSMutableArray *authors = [NSMutableArray array];
                                              for (NSDictionary *author in responseObject[@"authors"])
                                                  [authors addObject:[MDLAuthor authorWithName:[NSString stringWithFormat:@"%@%@%@", author[@"forename"], ([author[@"forename"] length] > 0 && [author[@"surname"] length] > 0) ? @" " : @"", author[@"surname"]]]];
                                              self.authors = authors;
-                                             
-                                             if (responseObject[@"publication_outlet"])
-                                                 self.publication = [MDLPublication publicationWithName:responseObject[@"publication_outlet"]];
-                                             else if (responseObject[@"published_in"])
-                                                 self.publication = [MDLPublication publicationWithName:responseObject[@"published_in"]];
                                              
                                              NSMutableArray *files = [NSMutableArray array];
                                              NSDateFormatter *fileDateFormatter = [[NSDateFormatter alloc] init];
