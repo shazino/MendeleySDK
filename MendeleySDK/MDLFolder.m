@@ -40,7 +40,7 @@
     MDLFolder *folder = [MDLFolder new];
     folder.identifier = identifier;
     folder.name = name;
-    folder.numberOfDocmuents = [NSNumber numberOrNumberFromString:numberOfDocuments];
+    folder.numberOfDocuments = [NSNumber numberOrNumberFromString:numberOfDocuments];
     if (! ([parentIdentifier isKindOfClass:[NSNumber class]] && [parentIdentifier isEqual:@(-1)]))
         folder.parentIdentifier = parentIdentifier;
     folder.subfolders = @[];
