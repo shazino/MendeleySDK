@@ -23,7 +23,7 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString * const kMDLDocumentTypeGeneric;
+extern NSString * const MDLDocumentTypeGeneric;
 
 @class MDLPublication;
 @class MDLCategory;

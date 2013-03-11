@@ -32,7 +32,7 @@
 #import "MDLFile.h"
 #import "AFNetworking.h"
 
-NSString * const kMDLDocumentTypeGeneric = @"Generic";
+NSString * const MDLDocumentTypeGeneric = @"Generic";
 
 @interface MDLDocument ()
 
@@ -47,7 +47,7 @@ NSString * const kMDLDocumentTypeGeneric = @"Generic";
 {
     MDLDocument *newDocument = [MDLDocument new];
     newDocument.title   = title;
-    newDocument.type    = kMDLDocumentTypeGeneric;
+    newDocument.type    = MDLDocumentTypeGeneric;
     
     NSMutableDictionary *bodyContent = [NSMutableDictionary dictionaryWithDictionary:parameters];
     bodyContent[@"type"] = newDocument.type;

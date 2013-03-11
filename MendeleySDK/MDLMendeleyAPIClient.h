@@ -23,12 +23,12 @@
 
 #import "AFOAuth1Client.h"
 
-extern NSString * const kMDLConsumerKey;
-extern NSString * const kMDLConsumerSecret;
-extern NSString * const kMDLURLScheme;
+extern NSString * const MDLConsumerKey;
+extern NSString * const MDLConsumerSecret;
+extern NSString * const MDLURLScheme;
 
-extern NSString * const kMDLNotificationDidAcquireAccessToken;
-extern NSString * const kMDLNotificationFailedToAcquireAccessToken;
+extern NSString * const MDLNotificationDidAcquireAccessToken;
+extern NSString * const MDLNotificationFailedToAcquireAccessToken;
 
 /**
  `MDLMendeleyAPIClient` is an HTTP client preconfigured for accessing Mendeley Open API.

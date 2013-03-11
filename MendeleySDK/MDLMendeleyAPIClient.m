@@ -26,9 +26,9 @@
 
 #import <CommonCrypto/CommonDigest.h>
 
-static NSString * const kMDLMendeleyAPIBaseURLString = @"http://api.mendeley.com/";
-NSString * const kMDLNotificationDidAcquireAccessToken = @"kMDLNotificationDidAcquireAccessToken";
-NSString * const kMDLNotificationFailedToAcquireAccessToken = @"kMDLNotificationFailedToAcquireAccessToken";
+static NSString * const MDLMendeleyAPIBaseURLString = @"http://api.mendeley.com/";
+NSString * const MDLNotificationDidAcquireAccessToken = @"MDLNotificationDidAcquireAccessToken";
+NSString * const MDLNotificationFailedToAcquireAccessToken = @"MDLNotificationFailedToAcquireAccessToken";
 
 @interface MDLMendeleyAPIClient ()
 
@@ -100,7 +100,7 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
             _sharedClient = nil;
         }
         if (!_sharedClient)
-            _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:kMDLMendeleyAPIBaseURLString] key:kMDLConsumerKey secret:kMDLConsumerSecret];
+            _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:MDLMendeleyAPIBaseURLString] key:MDLConsumerKey secret:MDLConsumerSecret];
     }
     
     return _sharedClient;
@@ -239,7 +239,7 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
 {
     NSMutableDictionary *requestParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
     if (!requiresAuthentication)
-        requestParameters[@"consumer_key"] = kMDLConsumerKey;
+        requestParameters[@"consumer_key"] = MDLConsumerKey;
     
     [self getPath:path
        parameters:requestParameters
@@ -346,16 +346,16 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
 
 - (void)authenticateWithSuccess:(void (^)(AFOAuth1Token *))success failure:(void (^)(NSError *))failure
 {
-    [self authorizeUsingOAuthWithRequestTokenPath:@"oauth/request_token" userAuthorizationPath:@"oauth/authorize" callbackURL:[NSURL URLWithString:[kMDLURLScheme stringByAppendingString:@"://"]] accessTokenPath:@"oauth/access_token" accessMethod:@"GET" success:^(AFOAuth1Token *accessToken) {
+    [self authorizeUsingOAuthWithRequestTokenPath:@"oauth/request_token" userAuthorizationPath:@"oauth/authorize" callbackURL:[NSURL URLWithString:[MDLURLScheme stringByAppendingString:@"://"]] accessTokenPath:@"oauth/access_token" accessMethod:@"GET" success:^(AFOAuth1Token *accessToken) {
         if (success)
             success(accessToken);
-        [[NSNotificationCenter defaultCenter] postNotificationName:kMDLNotificationDidAcquireAccessToken object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:MDLNotificationDidAcquireAccessToken object:self];
     } failure:^(NSError *authError) {
         [self.operationQueue cancelAllOperations];
         self.accessToken = nil;
         if (failure)
             failure(authError);
-        [[NSNotificationCenter defaultCenter] postNotificationName:kMDLNotificationFailedToAcquireAccessToken object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:MDLNotificationFailedToAcquireAccessToken object:self];
     }];
 }
 
