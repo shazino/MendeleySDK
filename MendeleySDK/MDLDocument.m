@@ -207,7 +207,7 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
                                              self.editors           = responseObject[@"editors"];
                                              if ([responseObject[@"folders_ids"] isKindOfClass:[NSArray class]])
                                                  self.foldersIdentifiers = responseObject[@"folders_ids"];
-                                             self.identifier        = responseObject[@"id"];
+                                             self.identifier        = (responseObject[@"id"]) ?: (responseObject[@"uuid"]) ?: nil ;
                                              self.identifiers       = ([responseObject[@"identifiers"] isKindOfClass:[NSDictionary class]]) ? responseObject[@"identifiers"] : nil;
                                              self.institution       = responseObject[@"institution"];
                                              self.authored          = [NSNumber boolNumberFromString:responseObject[@"isAuthor"]];
@@ -238,7 +238,7 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
                                              
                                              NSMutableArray *authors = [NSMutableArray array];
                                              for (NSDictionary *author in responseObject[@"authors"])
-                                                 [authors addObject:[MDLAuthor authorWithName:[NSString stringWithFormat:@"%@%@%@", author[@"forename"], ([author[@"forename"] length] > 0 && [author[@"surname"] length] > 0) ? @" " : @"", author[@"surname"]]]];
+                                                 [authors addObject:[MDLAuthor authorWithName:[NSString stringWithFormat:@"%@%@%@", author[@"forename"] ?: @"", ([author[@"forename"] length] > 0 && [author[@"surname"] length] > 0) ? @" " : @"", author[@"surname"]]]];
                                              self.authors = authors;
                                              
                                              NSMutableArray *files = [NSMutableArray array];
