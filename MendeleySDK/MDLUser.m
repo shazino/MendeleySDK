@@ -57,7 +57,17 @@
                                              user.photoURL      = [NSURL URLWithString:profileMain[@"photo"]];
                                              user.identifier    = profileMain[@"profile_id"];
                                              user.researchInterests = profileMain[@"research_interests"];
-                                             user.mendeleyURL   = [NSURL URLWithString:profileMain[@"url"]];
+                                             user.MendeleyURL   = [NSURL URLWithString:profileMain[@"url"]];
+                                             
+                                             NSDictionary *profileContact = responseDictionary[@"contact"];
+                                             user.contactAddress = profileContact[@"address"];
+                                             user.contactEmail = profileContact[@"email"];
+                                             user.contactFax = profileContact[@"fax"];
+                                             user.contactMobile = profileContact[@"mobile"];
+                                             user.contactPhone = profileContact[@"phone"];
+                                             user.contactWebpage = profileContact[@"webpage"];
+                                             user.contactZIPCode = profileContact[@"zipcode"];
+                                             
                                              if (success)
                                                  success(user);
                                          } failure:failure];
