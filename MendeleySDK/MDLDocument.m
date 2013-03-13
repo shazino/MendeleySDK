@@ -241,12 +241,17 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
                                                  [authors addObject:[MDLAuthor authorWithName:[NSString stringWithFormat:@"%@%@%@", author[@"forename"] ?: @"", ([author[@"forename"] length] > 0 && [author[@"surname"] length] > 0) ? @" " : @"", author[@"surname"]]]];
                                              self.authors = authors;
                                              
-                                             NSMutableArray *files = [NSMutableArray array];
-                                             NSDateFormatter *fileDateFormatter = [[NSDateFormatter alloc] init];
-                                             fileDateFormatter.dateFormat = @"y-M-d H:m:s";
-                                             for (NSDictionary *file in responseObject[@"files"])
-                                                 [files addObject:[MDLFile fileWithDateAdded:[fileDateFormatter dateFromString:file[@"date_added"]] extension:file[@"file_extension"] hash:file[@"file_hash"] size:[NSNumber numberOrNumberFromString:file[@"file_size"]] document:self]];
-                                             self.files = files;
+                                             if (responseObject[@"files"])
+                                             {
+                                                 NSMutableArray *files = [NSMutableArray array];
+                                                 NSDateFormatter *fileDateFormatter = [[NSDateFormatter alloc] init];
+                                                 fileDateFormatter.dateFormat = @"y-M-d H:m:s";
+                                                 for (NSDictionary *file in responseObject[@"files"])
+                                                     [files addObject:[MDLFile fileWithDateAdded:[fileDateFormatter dateFromString:file[@"date_added"]] extension:file[@"file_extension"] hash:file[@"file_hash"] size:[NSNumber numberOrNumberFromString:file[@"file_size"]] document:self]];
+                                                 self.files = files;
+                                             }
+                                             else if (responseObject[@"file_url"])
+                                                 self.files = @[[MDLFile fileWithPublicURL:responseObject[@"file_url"] document:self]];
                                              
                                              if (success)
                                                  success(self);
