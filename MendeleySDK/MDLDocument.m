@@ -254,7 +254,7 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
                                                  self.files = files;
                                              }
                                              else if (responseObject[@"file_url"])
-                                                 self.files = @[[MDLFile fileWithPublicURL:responseObject[@"file_url"] document:self]];
+                                                 self.files = @[[MDLFile fileWithPublicURL:[NSURL URLWithString:responseObject[@"file_url"]] document:self]];
                                              
                                              if (success)
                                                  success(self);
