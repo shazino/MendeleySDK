@@ -236,6 +236,9 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
                                              self.volume            = responseObject[@"volume"];
                                              self.year              = [NSNumber numberOrNumberFromString:responseObject[@"year"]];
                                              
+                                             if (!self.DOI && self.identifiers[@"doi"])
+                                                 self.DOI = self.identifiers[@"doi"];
+                                             
                                              NSMutableArray *authors = [NSMutableArray array];
                                              for (NSDictionary *author in responseObject[@"authors"])
                                                  [authors addObject:[MDLAuthor authorWithName:[NSString stringWithFormat:@"%@%@%@", author[@"forename"] ?: @"", ([author[@"forename"] length] > 0 && [author[@"surname"] length] > 0) ? @" " : @"", author[@"surname"]]]];
