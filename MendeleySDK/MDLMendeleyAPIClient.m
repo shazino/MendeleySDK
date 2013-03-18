@@ -29,6 +29,7 @@
 static NSString * const MDLMendeleyAPIBaseURLString = @"http://api.mendeley.com/";
 NSString * const MDLNotificationDidAcquireAccessToken = @"MDLNotificationDidAcquireAccessToken";
 NSString * const MDLNotificationFailedToAcquireAccessToken = @"MDLNotificationFailedToAcquireAccessToken";
+NSString * const MDLNotificationRateLimitExceeded = @"MDLNotificationRateLimitExceeded";
 
 @interface MDLMendeleyAPIClient ()
 
@@ -181,6 +182,8 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
     NSString *rateLimitRemaining = operation.response.allHeaderFields[@"x-ratelimit-remaining"];
     if (!rateLimitRemaining || ![[NSScanner scannerWithString:rateLimitRemaining] scanInteger:&_rateLimitRemainingForLatestRequest])
         self.rateLimitRemainingForLatestRequest = NSNotFound;
+    if (self.rateLimitRemainingForLatestRequest == 0)
+        [[NSNotificationCenter defaultCenter] postNotificationName:MDLNotificationRateLimitExceeded object:operation];
 }
 
 #pragma mark - Operation

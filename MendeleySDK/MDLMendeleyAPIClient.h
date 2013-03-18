@@ -29,6 +29,7 @@ extern NSString * const MDLURLScheme;
 
 extern NSString * const MDLNotificationDidAcquireAccessToken;
 extern NSString * const MDLNotificationFailedToAcquireAccessToken;
+extern NSString * const MDLNotificationRateLimitExceeded;
 
 /**
  `MDLMendeleyAPIClient` is an HTTP client preconfigured for accessing Mendeley Open API.
