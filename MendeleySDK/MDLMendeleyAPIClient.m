@@ -435,14 +435,18 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
     return numberOrString;
 }
 
-+ (NSNumber *)boolNumberFromString:(id)string
++ (NSNumber *)boolNumberFromNumberOrString:(id)numberOrString
 {
-    if (string && [string isKindOfClass:[NSString class]])
+    if ([numberOrString isKindOfClass:[NSString class]])
     {
-        if ([@"1" isEqualToString:string])
+        if ([@"1" isEqualToString:numberOrString])
             return @(YES);
         else
             return @(NO);
+    }
+    else if ([numberOrString isKindOfClass:[NSNumber class]])
+    {
+        return @([numberOrString boolValue]);
     }
     
     return nil;

@@ -129,7 +129,7 @@ extern NSString * const MDLNotificationRateLimitExceeded;
 @interface NSNumber (NiceNumber)
 
 + (NSNumber *)numberOrNumberFromString:(id)numberOrString;
-+ (NSNumber *)boolNumberFromString:(id)string;
++ (NSNumber *)boolNumberFromNumberOrString:(id)numberOrString;
 
 @end
 
