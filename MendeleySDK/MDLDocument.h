@@ -228,6 +228,11 @@ extern NSString * const MDLDocumentTypeGeneric;
 @property (strong, nonatomic) NSNumber *version;
 
 /**
+ The Open Access status of the document
+ */
+@property (strong, nonatomic) NSNumber *openAccess;
+
+/**
  A Boolean value that corresponds to whether the document is in the user library.
  */
 @property (strong, nonatomic) NSNumber *inUserLibrary;

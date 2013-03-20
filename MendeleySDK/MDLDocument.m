@@ -218,6 +218,7 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
                                              self.MendeleyURL       = [NSURL URLWithString:responseObject[@"mendeley_url"]];
                                              self.modifiedDate      = [NSDate dateWithTimeIntervalSince1970:[[NSNumber numberOrNumberFromString:responseObject[@"modified"]] doubleValue]];
                                              self.notes             = responseObject[@"notes"];
+                                             self.openAccess        = [NSNumber boolNumberFromString:responseObject[@"oa_journal"]];
                                              self.pages             = responseObject[@"pages"];
                                              self.PubMedIdentifier  = responseObject[@"pmid"];
                                              self.producers         = responseObject[@"producers"];

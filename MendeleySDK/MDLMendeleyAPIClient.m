@@ -437,7 +437,7 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
 
 + (NSNumber *)boolNumberFromString:(id)string
 {
-    if (string)
+    if (string && [string isKindOfClass:[NSString class]])
     {
         if ([@"1" isEqualToString:string])
             return @(YES);
