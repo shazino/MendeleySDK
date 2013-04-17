@@ -47,7 +47,7 @@ The Mendeley Open API uses [3leg OAuth 1.0](http://apidocs.mendeley.com/home/aut
 ```objective-c
 #import "AFOAuth1Client.h"
 
-NSString * const MDLURLScheme = @"##INSERT-URL-SCHEME-HERE##";
+NSString * const MDLURLScheme = @"##my_URL_scheme##";
 
 (…)
 
