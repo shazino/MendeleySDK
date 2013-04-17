@@ -103,7 +103,7 @@
 
 - (IBAction)openMendeleyURL:(id)sender
 {
-    [[UIApplication sharedApplication] openURL:self.document.MendeleyURL];
+    [[UIApplication sharedApplication] openURL:self.document.mendeleyURL];
 }
 
 @end

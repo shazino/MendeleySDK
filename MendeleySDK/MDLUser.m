@@ -60,7 +60,7 @@
                                                  user.photoURL      = [NSURL URLWithString:profileMain[@"photo"]];
                                                  user.identifier    = profileMain[@"profile_id"];
                                                  user.researchInterests = profileMain[@"research_interests"];
-                                                 user.MendeleyURL   = [NSURL URLWithString:profileMain[@"url"]];
+                                                 user.mendeleyURL   = [NSURL URLWithString:profileMain[@"url"]];
                                              }
                                              
                                              NSDictionary *profileContact = responseDictionary[@"contact"];

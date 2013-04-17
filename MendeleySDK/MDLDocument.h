@@ -80,7 +80,7 @@ extern NSString * const MDLDocumentTypeGeneric;
 /**
  The Mendeley URL of the document.
  */
-@property (strong, nonatomic) NSURL *MendeleyURL;
+@property (strong, nonatomic) NSURL *mendeleyURL;
 
 /**
  The URL of the document.

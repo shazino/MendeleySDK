@@ -78,7 +78,7 @@
 
 - (IBAction)openWebUserProfile:(id)sender
 {
-    [[UIApplication sharedApplication] openURL:self.user.MendeleyURL];
+    [[UIApplication sharedApplication] openURL:self.user.mendeleyURL];
 }
 
 @end

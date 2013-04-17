@@ -79,7 +79,7 @@
 /**
  The user Mendeley URL.
  */
-@property (strong, nonatomic) NSURL *MendeleyURL;
+@property (strong, nonatomic) NSURL *mendeleyURL;
 
 /**
  The user contact address
