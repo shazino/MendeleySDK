@@ -44,7 +44,14 @@ NSString * const MDLNotificationRateLimitExceeded = @"MDLNotificationRateLimitEx
                                      error:(NSError *)error
                                    failure:(void (^)(NSError *))failure
  andAuthorizeUsingOAuthIfNeededWithSuccess:(void (^)(AFOAuth1Token *))authenticationSuccess;
-
+- (void)authorizeUsingOAuthWithRequestTokenPath:(NSString *)requestTokenPath
+                          userAuthorizationPath:(NSString *)userAuthorizationPath
+                                    callbackURL:(NSURL *)callbackURL
+                                accessTokenPath:(NSString *)accessTokenPath
+                                   accessMethod:(NSString *)accessMethod
+                       webAuthorizationCallback:(void (^)(NSURL *))webAuthorizationCallback
+                                        success:(void (^)(AFOAuth1Token *accessToken))success
+                                        failure:(void (^)(NSError *error))failure;
 @end
 
 @interface AFOAuth1Client ()
@@ -349,7 +356,12 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
 
 - (void)authenticateWithSuccess:(void (^)(AFOAuth1Token *))success failure:(void (^)(NSError *))failure
 {
-    [self authorizeUsingOAuthWithRequestTokenPath:@"oauth/request_token" userAuthorizationPath:@"oauth/authorize" callbackURL:[NSURL URLWithString:[MDLURLScheme stringByAppendingString:@"://"]] accessTokenPath:@"oauth/access_token" accessMethod:@"GET" success:^(AFOAuth1Token *accessToken) {
+    [self authenticateWithWebAuthorizationCallback:nil success:success failure:failure];
+}
+
+- (void)authenticateWithWebAuthorizationCallback:(void (^)(NSURL *))webAuthorizationCallback success:(void (^)(AFOAuth1Token *))success failure:(void (^)(NSError *))failure
+{
+    [self authorizeUsingOAuthWithRequestTokenPath:@"oauth/request_token" userAuthorizationPath:@"oauth/authorize" callbackURL:[NSURL URLWithString:[MDLURLScheme stringByAppendingString:@"://"]] accessTokenPath:@"oauth/access_token" accessMethod:@"GET" webAuthorizationCallback:webAuthorizationCallback success:^(AFOAuth1Token *accessToken) {
         if (success)
             success(accessToken);
         [[NSNotificationCenter defaultCenter] postNotificationName:MDLNotificationDidAcquireAccessToken object:self];
@@ -367,6 +379,18 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
                                     callbackURL:(NSURL *)callbackURL
                                 accessTokenPath:(NSString *)accessTokenPath
                                    accessMethod:(NSString *)accessMethod
+                                        success:(void (^)(AFOAuth1Token *accessToken))success
+                                        failure:(void (^)(NSError *error))failure
+{
+    [self authorizeUsingOAuthWithRequestTokenPath:requestTokenPath userAuthorizationPath:userAuthorizationPath callbackURL:callbackURL accessTokenPath:accessTokenPath accessMethod:accessMethod webAuthorizationCallback:nil success:success failure:failure];
+}
+
+- (void)authorizeUsingOAuthWithRequestTokenPath:(NSString *)requestTokenPath
+                          userAuthorizationPath:(NSString *)userAuthorizationPath
+                                    callbackURL:(NSURL *)callbackURL
+                                accessTokenPath:(NSString *)accessTokenPath
+                                   accessMethod:(NSString *)accessMethod
+                       webAuthorizationCallback:(void (^)(NSURL *))webAuthorizationCallback
                                         success:(void (^)(AFOAuth1Token *accessToken))success
                                         failure:(void (^)(NSError *error))failure
 {
@@ -394,10 +418,15 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
         
         NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
         [parameters setValue:requestToken.key forKey:@"oauth_token"];
+        NSURL *requestURL = [[self requestWithMethod:@"GET" path:userAuthorizationPath parameters:parameters] URL];
+        
+        if (webAuthorizationCallback)
+            webAuthorizationCallback(requestURL);
+        else
 #if __IPHONE_OS_VERSION_MIN_REQUIRED
-        [[UIApplication sharedApplication] openURL:[[self requestWithMethod:@"GET" path:userAuthorizationPath parameters:parameters] URL]];
+            [[UIApplication sharedApplication] openURL:requestURL];
 #else
-        [[NSWorkspace sharedWorkspace] openURL:[[self requestWithMethod:@"GET" path:userAuthorizationPath parameters:parameters] URL]];
+            [[NSWorkspace sharedWorkspace] openURL:requestURL];
 #endif
     } failure:^(NSError *error) {
         if (failure) {

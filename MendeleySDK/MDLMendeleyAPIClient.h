@@ -71,6 +71,15 @@ extern NSString * const MDLNotificationRateLimitExceeded;
 - (void)authenticateWithSuccess:(void (^)(AFOAuth1Token *))success failure:(void (^)(NSError *))failure;
 
 /**
+ Creates an authentication request with in-app web authorization callback, and enqueues it to the HTTP client’s operation queue.
+ 
+ @param webAuthorizationCallback A block object to be executed when the request operation needs to switch to the web-based authorization process. This block has no return value and takes one argument: the URL for its authorization request.
+ @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: the newly acquired access token.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully. This block has no return value and takes one argument: the `NSError` object describing the network or authentication error that occurred.
+ */
+- (void)authenticateWithWebAuthorizationCallback:(void (^)(NSURL *))webAuthorizationCallback success:(void (^)(AFOAuth1Token *))success failure:(void (^)(NSError *))failure;
+
+/**
  Creates an `AFHTTPRequestOperation` with a `GET` request, and enqueues it to the HTTP client’s operation queue.
  
  @param path The path to be appended to the HTTP client’s base URL and used as the request URL.
