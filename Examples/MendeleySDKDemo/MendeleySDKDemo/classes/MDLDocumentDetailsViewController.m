@@ -78,7 +78,7 @@
             [authors appendString:@", "];
     }];
     self.authorsLabel.text = authors;
-    self.publicationLabel.text = (document.publication || document.year) ? [NSString stringWithFormat:@"%@ (%@)", (document.publication) ? document.publication.name : @"?", (document.year) ? document.year : @"?"] : @"";
+    self.publicationLabel.text = (document.publicationOutlet || document.year) ? [NSString stringWithFormat:@"%@ (%@)", (document.publicationOutlet.name) ?: @"?", (document.year) ?: @"?"] : @"";
     self.relatedDocumentsButton.enabled = !document.isInUserLibrary;
     
     self.filesButton.enabled = ([document.files count] > 0);
