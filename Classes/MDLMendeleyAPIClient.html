@@ -49,12 +49,18 @@
 	
 	<option value="class_methods">Class Methods</option>
 	
+	<option value="//api/name/resetSharedClient">&nbsp;&nbsp;&nbsp;&nbsp;+ resetSharedClient</option>
+	
 	<option value="//api/name/sharedClient">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedClient</option>
 	
 	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/authenticateWithSuccess:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- authenticateWithSuccess:failure:</option>
+	
+	<option value="//api/name/authenticateWithWebAuthorizationCallback:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- authenticateWithWebAuthorizationCallback:success:failure:</option>
 	
 	<option value="//api/name/deletePath:parameters:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- deletePath:parameters:success:failure:</option>
 	
@@ -100,6 +106,8 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/resetSharedClient">resetSharedClient</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedClient">sharedClient</a></span></li>
 	
 </ul></li>
@@ -107,6 +115,10 @@
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authenticateWithSuccess:failure:">authenticateWithSuccess:failure:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authenticateWithWebAuthorizationCallback:success:failure:">authenticateWithWebAuthorizationCallback:success:failure:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deletePath:parameters:success:failure:">deletePath:parameters:success:failure:</a></span></li>
 	
@@ -190,6 +202,27 @@ Note that the default rate limit for calls varies depending on the method being 
 	<span class="tooltip">
 		<code><a href="#//api/name/sharedClient">+&nbsp;sharedClient</a></code>
 		<span class="tooltip"><p>Creates and initializes if needed a singleton instance of a <code>MDLMendeleyAPIClient</code> object configured with Mendeley Open API URL.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/resetSharedClient">+&nbsp;resetSharedClient</a></code>
+		<span class="tooltip"><p>Deallocates the singleton instance returned by <a href="#//api/name/sharedClient"><code>sharedClient</code></a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/authenticateWithSuccess:failure:">&ndash;&nbsp;authenticateWithSuccess:failure:</a></code>
+		<span class="tooltip"><p>Creates an authentication request, and enqueues it to the HTTP client’s operation queue.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/authenticateWithWebAuthorizationCallback:success:failure:">&ndash;&nbsp;authenticateWithWebAuthorizationCallback:success:failure:</a></code>
+		<span class="tooltip"><p>Creates an authentication request with in-app web authorization callback, and enqueues it to the HTTP client’s operation queue.</p></span>
 	</span>
 	
 	
@@ -343,6 +376,47 @@ Note that the default rate limit for calls varies depending on the method being 
 						<h2 class="subtitle subtitle-methods">Class Methods</h2>
 						
 						<div class="section-method">
+	<a name="//api/name/resetSharedClient" title="resetSharedClient"></a>
+	<h3 class="subsubtitle method-title">resetSharedClient</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Deallocates the singleton instance returned by <a href="#//api/name/sharedClient"><code>sharedClient</code></a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)resetSharedClient</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Deallocates the singleton instance returned by <a href="#//api/name/sharedClient"><code>sharedClient</code></a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MDLMendeleyAPIClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/sharedClient" title="sharedClient"></a>
 	<h3 class="subsubtitle method-title">sharedClient</h3>
 	
@@ -395,6 +469,123 @@ Note that the default rate limit for calls varies depending on the method being 
 					<div class="section section-methods">
 						<a title="Instance Methods" name="instance_methods"></a>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/authenticateWithSuccess:failure:" title="authenticateWithSuccess:failure:"></a>
+	<h3 class="subsubtitle method-title">authenticateWithSuccess:failure:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates an authentication request, and enqueues it to the HTTP client’s operation queue.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)authenticateWithSuccess:(void ( ^ ) ( AFOAuth1Token *))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>success</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: the newly acquired access token.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>failure</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or authentication error that occurred.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Creates an authentication request, and enqueues it to the HTTP client’s operation queue.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MDLMendeleyAPIClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/authenticateWithWebAuthorizationCallback:success:failure:" title="authenticateWithWebAuthorizationCallback:success:failure:"></a>
+	<h3 class="subsubtitle method-title">authenticateWithWebAuthorizationCallback:success:failure:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates an authentication request with in-app web authorization callback, and enqueues it to the HTTP client’s operation queue.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)authenticateWithWebAuthorizationCallback:(void ( ^ ) ( NSURL *))<em>webAuthorizationCallback</em> success:(void ( ^ ) ( AFOAuth1Token *))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>webAuthorizationCallback</em></dt>
+			<dd><p>A block object to be executed when the request operation needs to switch to the web-based authorization process. This block has no return value and takes one argument: the URL for its authorization request.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>success</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: the newly acquired access token.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>failure</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or authentication error that occurred.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Creates an authentication request with in-app web authorization callback, and enqueues it to the HTTP client’s operation queue.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MDLMendeleyAPIClient.h</code><br />
+	</div>				
+	
+	
+</div>
 						
 						<div class="section-method">
 	<a name="//api/name/deletePath:parameters:success:failure:" title="deletePath:parameters:success:failure:"></a>
@@ -759,7 +950,7 @@ Note that the default rate limit for calls varies depending on the method being 
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 shazino. All rights reserved. (Last updated: 2012-11-22)</span><br />
+						<p><span class="copyright">&copy; 2013 shazino. All rights reserved. (Last updated: 2013-04-30)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
