@@ -82,6 +82,41 @@
 @property (strong, nonatomic) NSURL *mendeleyURL;
 
 /**
+ The user contact address
+ */
+@property (copy, nonatomic) NSString *contactAddress;
+
+/**
+ The user contact email
+ */
+@property (copy, nonatomic) NSString *contactEmail;
+
+/**
+ The user contact fax
+ */
+@property (copy, nonatomic) NSString *contactFax;
+
+/**
+ The user contact mobile
+ */
+@property (copy, nonatomic) NSString *contactMobile;
+
+/**
+ The user contact phone
+ */
+@property (copy, nonatomic) NSString *contactPhone;
+
+/**
+ The user contact webpage
+ */
+@property (copy, nonatomic) NSString *contactWebpage;
+
+/**
+ The user contact ZIP code
+ */
+@property (copy, nonatomic) NSString *contactZIPCode;
+
+/**
  Creates a `MDLUser` and initializes its identifier and name properties.
  
  @param identifier The identifier of the user.

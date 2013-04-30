@@ -47,17 +47,34 @@
                           requiresAuthentication:YES
                                       parameters:nil
                                          success:^(AFHTTPRequestOperation *operation, NSDictionary *responseDictionary) {
+                                             
                                              NSDictionary *profileMain = responseDictionary[@"main"];
-                                             user.name          = profileMain[@"name"];
-                                             user.academicStatus = profileMain[@"academic_status"];
-                                             user.academicStatusIdentifier = profileMain[@"academic_status_id"];
-                                             user.bio           = profileMain[@"bio"];
-                                             user.category      = [MDLCategory categoryWithIdentifier:profileMain[@"discipline_id"] name:profileMain[@"discipline_name"] slug:nil];
-                                             user.location      = profileMain[@"location"];
-                                             user.photoURL      = [NSURL URLWithString:profileMain[@"photo"]];
-                                             user.identifier    = profileMain[@"profile_id"];
-                                             user.researchInterests = profileMain[@"research_interests"];
-                                             user.mendeleyURL   = [NSURL URLWithString:profileMain[@"url"]];
+                                             if ([profileMain isKindOfClass:[NSDictionary class]])
+                                             {
+                                                 user.name          = profileMain[@"name"];
+                                                 user.academicStatus = profileMain[@"academic_status"];
+                                                 user.academicStatusIdentifier = profileMain[@"academic_status_id"];
+                                                 user.bio           = profileMain[@"bio"];
+                                                 user.category      = [MDLCategory categoryWithIdentifier:profileMain[@"discipline_id"] name:profileMain[@"discipline_name"] slug:nil];
+                                                 user.location      = profileMain[@"location"];
+                                                 user.photoURL      = [NSURL URLWithString:profileMain[@"photo"]];
+                                                 user.identifier    = profileMain[@"profile_id"];
+                                                 user.researchInterests = profileMain[@"research_interests"];
+                                                 user.mendeleyURL   = [NSURL URLWithString:profileMain[@"url"]];
+                                             }
+                                             
+                                             NSDictionary *profileContact = responseDictionary[@"contact"];
+                                             if ([profileContact isKindOfClass:[NSDictionary class]])
+                                             {
+                                                 user.contactAddress = profileContact[@"address"];
+                                                 user.contactEmail = profileContact[@"email"];
+                                                 user.contactFax = profileContact[@"fax"];
+                                                 user.contactMobile = profileContact[@"mobile"];
+                                                 user.contactPhone = profileContact[@"phone"];
+                                                 user.contactWebpage = profileContact[@"webpage"];
+                                                 user.contactZIPCode = profileContact[@"zipcode"];
+                                             }
+                                             
                                              if (success)
                                                  success(user);
                                          } failure:failure];

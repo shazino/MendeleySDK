@@ -25,11 +25,7 @@
 
 #import "MDLTopViewController.h"
 #import "MDLDocumentSearchResultsViewController.h"
-#import "MDLPublication.h"
-#import "MDLAuthor.h"
-#import "MDLDocument.h"
-#import "MDLGroup.h"
-#import "MDLTag.h"
+#import <MendeleySDK.h>
 
 @implementation MDLMenuViewController
 

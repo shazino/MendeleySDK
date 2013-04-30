@@ -59,7 +59,7 @@
 /**
  The folder number of documents.
  */
-@property (strong, nonatomic) NSNumber *numberOfDocmuents;
+@property (strong, nonatomic) NSNumber *numberOfDocuments;
 
 /**
  The folder documents.

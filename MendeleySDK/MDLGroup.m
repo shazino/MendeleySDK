@@ -147,7 +147,7 @@
             self.type = MDLGroupTypePrivate;
         else if([rawGroup[@"type"] isEqualToString:[MDLGroup stringValueForType:MDLGroupTypeInvite]])
             self.type = MDLGroupTypeInvite;
-        else if([rawGroup[@"type"] isEqualToString:[MDLGroup stringValueForType:MDLGroupTypeOpen]])
+        else if([rawGroup[@"type"] isEqualToString:[MDLGroup stringValueForType:MDLGroupTypeOpen]] || [rawGroup[@"type"] isEqualToString:@"public"])
             self.type = MDLGroupTypeOpen;
     }
 }
@@ -157,6 +157,7 @@
     if (self.type == MDLGroupTypePrivate)
     {
         success(self);
+        return;
     }
     
     [[MDLMendeleyAPIClient sharedClient] getPath:[NSString stringWithFormat:@"/oapi/documents/groups/%@/", self.identifier]
@@ -189,6 +190,8 @@
                                              self.numberOfMembers = @([self.members count]);
                                              self.followers = [MDLGroup usersFromRawUsers:responseObject[@"followers"]];
                                              self.numberOfFollowers = @([self.followers count]);
+                                             if (responseObject[@"owner"])
+                                                 self.owner = [MDLUser userWithIdentifier:responseObject[@"owner"][@"user_id"] name:responseObject[@"owner"][@"name"]];
                                              
                                              if (success)
                                                  success(self);

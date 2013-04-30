@@ -2,17 +2,17 @@
 // MDLMendeleyAPIClient.h
 //
 // Copyright (c) 2012 shazino (shazino SAS), http://www.shazino.com/
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -23,12 +23,13 @@
 
 #import "AFOAuth1Client.h"
 
-extern NSString * const kMDLConsumerKey;
-extern NSString * const kMDLConsumerSecret;
-extern NSString * const kMDLURLScheme;
+extern NSString * const MDLConsumerKey;
+extern NSString * const MDLConsumerSecret;
+extern NSString * const MDLURLScheme;
 
-extern NSString * const kMDLNotificationDidAcquireAccessToken;
-extern NSString * const kMDLNotificationFailedToAcquireAccessToken;
+extern NSString * const MDLNotificationDidAcquireAccessToken;
+extern NSString * const MDLNotificationFailedToAcquireAccessToken;
+extern NSString * const MDLNotificationRateLimitExceeded;
 
 /**
  `MDLMendeleyAPIClient` is an HTTP client preconfigured for accessing Mendeley Open API.
@@ -55,6 +56,28 @@ extern NSString * const kMDLNotificationFailedToAcquireAccessToken;
  @return The newly-initialized client
  */
 + (MDLMendeleyAPIClient *)sharedClient;
+
+/**
+ Deallocates the singleton instance returned by `sharedClient`.
+ */
++ (void)resetSharedClient;
+
+/**
+ Creates an authentication request, and enqueues it to the HTTP client’s operation queue.
+ 
+ @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: the newly acquired access token.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully. This block has no return value and takes one argument: the `NSError` object describing the network or authentication error that occurred.
+ */
+- (void)authenticateWithSuccess:(void (^)(AFOAuth1Token *))success failure:(void (^)(NSError *))failure;
+
+/**
+ Creates an authentication request with in-app web authorization callback, and enqueues it to the HTTP client’s operation queue.
+ 
+ @param webAuthorizationCallback A block object to be executed when the request operation needs to switch to the web-based authorization process. This block has no return value and takes one argument: the URL for its authorization request.
+ @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: the newly acquired access token.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully. This block has no return value and takes one argument: the `NSError` object describing the network or authentication error that occurred.
+ */
+- (void)authenticateWithWebAuthorizationCallback:(void (^)(NSURL *))webAuthorizationCallback success:(void (^)(AFOAuth1Token *))success failure:(void (^)(NSError *))failure;
 
 /**
  Creates an `AFHTTPRequestOperation` with a `GET` request, and enqueues it to the HTTP client’s operation queue.
@@ -115,6 +138,7 @@ extern NSString * const kMDLNotificationFailedToAcquireAccessToken;
 @interface NSNumber (NiceNumber)
 
 + (NSNumber *)numberOrNumberFromString:(id)numberOrString;
++ (NSNumber *)boolNumberFromNumberOrString:(id)numberOrString;
 
 @end
 

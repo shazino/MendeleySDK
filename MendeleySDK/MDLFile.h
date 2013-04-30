@@ -52,6 +52,11 @@
 @property (strong, nonatomic) NSNumber *size;
 
 /**
+ The file public URL.
+ */
+@property (strong, nonatomic) NSURL *publicURL;
+
+/**
  The file document.
  */
 @property (weak, nonatomic) MDLDocument *document;
@@ -68,6 +73,16 @@
  @return  The newly-initialized file.
  */
 + (MDLFile *)fileWithDateAdded:(NSDate *)dateAdded extension:(NSString *)extension hash:(NSString *)hash size:(NSNumber *)size document:(MDLDocument *)document;
+
+/**
+ Creates a `MDLFile` and initializes its public URL property.
+ 
+ @param publicURL The document public URL.
+ @param document The document of the file.
+ 
+ @return  The newly-initialized file.
+ */
++ (MDLFile *)fileWithPublicURL:(NSURL *)publicURL document:(MDLDocument *)document;
 
 /**
  Sends a download file API request using the shared client.

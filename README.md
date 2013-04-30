@@ -19,7 +19,7 @@ Here’s an example podfile that installs MendeleySDK and its dependency, AFOAut
 ```ruby
 platform :ios, '5.0'
 
-pod 'MendeleySDK', '1.0'
+pod 'MendeleySDK', '1.1'
 ```
 
 ### App credentials
@@ -27,8 +27,8 @@ pod 'MendeleySDK', '1.0'
 Define your API consumer key and secret (in your AppDelegate.m, for instance):
 
 ```objective-c
-NSString * const kMDLConsumerKey    = @"###my_consumer_key###";
-NSString * const kMDLConsumerSecret = @"###my_consumer_secret###";
+NSString * const MDLConsumerKey    = @"###my_consumer_key###";
+NSString * const MDLConsumerSecret = @"###my_consumer_secret###";
 ```
 
 If you don’t have a consumer key and secret, go to the [Mendeley Developers Portal](http://dev.mendeley.com/applications/register/) and register your application first.
@@ -47,15 +47,15 @@ The Mendeley Open API uses [3leg OAuth 1.0](http://apidocs.mendeley.com/home/aut
 ```objective-c
 #import "AFOAuth1Client.h"
 
-NSString * const kMDLURLScheme = @"##INSERT-URL-SCHEME-HERE##";
+NSString * const MDLURLScheme = @"##my_URL_scheme##";
 
 (…)
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    if ([[url scheme] isEqualToString:kMDLURLScheme])
+    if ([[url scheme] isEqualToString:MDLURLScheme])
     {
-        NSNotification *notification = [NSNotification notificationWithName:kAFApplicationLaunchedWithURLNotification object:nil userInfo:[NSDictionary dictionaryWithObject:url forKey:kAFApplicationLaunchOptionsURLKey]];
+        NSNotification *notification = [NSNotification notificationWithName:kAFApplicationLaunchedWithURLNotification object:nil userInfo:@{kAFApplicationLaunchOptionsURLKey: url}];
         [[NSNotificationCenter defaultCenter] postNotification:notification];
     }
     

@@ -23,7 +23,7 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString * const kMDLDocumentTypeGeneric;
+extern NSString * const MDLDocumentTypeGeneric;
 
 @class MDLPublication;
 @class MDLCategory;
@@ -43,9 +43,24 @@ extern NSString * const kMDLDocumentTypeGeneric;
 @property (copy, nonatomic) NSString *identifier;
 
 /**
+ The document identifiers.
+ */
+@property (strong, nonatomic) NSDictionary *identifiers;
+
+/**
  The document DOI (Digital Object Identifier).
  */
 @property (copy, nonatomic) NSString *DOI;
+
+/**
+ The canonical identifier of the document.
+ */
+@property (copy, nonatomic) NSString *canonicalIdentifier;
+
+/**
+ The PubMed identifier (PMID) of the document.
+ */
+@property (copy, nonatomic) NSString *PubMedIdentifier;
 
 /**
  The type of the document. This is `@"Generic"` by default.
@@ -68,14 +83,34 @@ extern NSString * const kMDLDocumentTypeGeneric;
 @property (strong, nonatomic) NSURL *mendeleyURL;
 
 /**
+ The URL of the document.
+ */
+@property (strong, nonatomic) NSURL *URL;
+
+/**
  The authors of the document stored as MDLAuthor.
  */
 @property (strong, nonatomic) NSArray *authors;
 
 /**
+ The publication outlet of the document.
+ */
+@property (strong, nonatomic) MDLPublication *publicationOutlet;
+
+/**
  The publication of the document.
  */
 @property (strong, nonatomic) MDLPublication *publication;
+
+/**
+ The publisher of the document.
+ */
+@property (copy, nonatomic) NSString *publisher;
+
+/**
+ The folder identifiers of the document.
+ */
+@property (copy, nonatomic) NSArray *foldersIdentifiers;
 
 /**
  The year of the document.
@@ -93,8 +128,114 @@ extern NSString * const kMDLDocumentTypeGeneric;
 @property (strong, nonatomic) MDLGroup *group;
 
 /**
+ The read status of the document
+ */
+@property (strong, nonatomic) NSNumber *read;
+
+/**
+ The star status of the document
+ */
+@property (strong, nonatomic) NSNumber *starred;
+
+/**
+ The authored status of the document
+ */
+@property (strong, nonatomic) NSNumber *authored;
+
+/**
+ The deletion pending status of the document
+ */
+@property (strong, nonatomic) NSNumber *deletionPending;
+
+/**
+ The discipline of the document.
+ */
+@property (copy, nonatomic) NSString *discipline;
+
+/**
+ The subdiscipline of the document.
+ */
+@property (copy, nonatomic) NSString *subdiscipline;
+
+/**
+ The institution of the document.
+ */
+@property (copy, nonatomic) NSString *institution;
+
+/**
+ The volume of the document.
+ */
+@property (copy, nonatomic) NSString *volume;
+
+/**
+ The issue of the document.
+ */
+@property (copy, nonatomic) NSString *issue;
+
+/**
+ The pages of the document.
+ */
+@property (copy, nonatomic) NSString *pages;
+
+/**
+ The notes of the document.
+ */
+@property (copy, nonatomic) NSString *notes;
+
+/**
+ The keywords of the document.
+ */
+@property (strong, nonatomic) NSArray *keywords;
+
+/**
+ The tags of the document.
+ */
+@property (strong, nonatomic) NSArray *tags;
+
+/**
+ The cast of the document.
+ */
+@property (strong, nonatomic) NSArray *cast;
+
+/**
+ The editors of the document.
+ */
+@property (strong, nonatomic) NSArray *editors;
+
+/**
+ The producers of the document.
+ */
+@property (strong, nonatomic) NSArray *producers;
+
+/**
+ The translators of the document.
+ */
+@property (strong, nonatomic) NSArray *translators;
+
+/**
+ The added date of the document.
+ */
+@property (strong, nonatomic) NSDate *addedDate;
+
+/**
+ The modified date of the document.
+ */
+@property (strong, nonatomic) NSDate *modifiedDate;
+
+/**
+ The version of the document.
+ */
+@property (strong, nonatomic) NSNumber *version;
+
+/**
+ The Open Access status of the document
+ */
+@property (strong, nonatomic) NSNumber *openAccess;
+
+/**
  A Boolean value that corresponds to whether the document is in the user library.
  */
+@property (strong, nonatomic) NSNumber *inUserLibrary;
 @property (readonly) BOOL isInUserLibrary;
 
 /**
@@ -242,6 +383,38 @@ extern NSString * const kMDLDocumentTypeGeneric;
  @see [API documentation: Search Related](http://apidocs.mendeley.com/home/public-resources/search-related)
  */
 - (void)fetchRelatedDocumentsAtPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
+
+/**
+ Sends an update document API request using the shared client.
+ 
+ @param read The read status.
+ @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: a `MDLDocument` object.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ 
+ @see [API documentation: User Library Update Document](http://apidocs.mendeley.com/home/user-specific-methods/user-library-update-document)
+ */
+- (void)markAsRead:(BOOL)read success:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure;
+
+/**
+ Sends an update document API request using the shared client.
+ 
+ @param starred The starred status.
+ @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: a `MDLDocument` object.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ 
+ @see [API documentation: User Library Update Document](http://apidocs.mendeley.com/home/user-specific-methods/user-library-update-document)
+ */
+- (void)markAsStarred:(BOOL)starred success:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure;
+
+/**
+ Sends an update document API request using the shared client.
+ 
+ @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: a `MDLDocument` object.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ 
+ @see [API documentation: User Library Update Document](http://apidocs.mendeley.com/home/user-specific-methods/user-library-update-document)
+ */
+- (void)moveToTrashSuccess:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure;
 
 /**
  Sends a delete document API request using the shared client.

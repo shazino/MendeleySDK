@@ -39,9 +39,17 @@
     return file;
 }
 
++ (MDLFile *)fileWithPublicURL:(NSURL *)publicURL document:(MDLDocument *)document
+{
+    MDLFile *file = [MDLFile new];
+    file.publicURL = publicURL;
+    file.document = document;
+    return file;
+}
+
 - (void)downloadToFileAtPath:(NSString *)path success:(void (^)())success failure:(void (^)(NSError *))failure
 {
-    [[MDLMendeleyAPIClient sharedClient] getPath:[NSString stringWithFormat:@"/oapi/library/documents/%@/file/%@//", self.document.identifier, self.hash]
+    [[MDLMendeleyAPIClient sharedClient] getPath:(self.publicURL) ? [self.publicURL absoluteString] : [NSString stringWithFormat:@"/oapi/library/documents/%@/file/%@//", self.document.identifier, self.hash]
                           requiresAuthentication:self.document.isInUserLibrary
                                       parameters:nil
                         outputStreamToFileAtPath:path
