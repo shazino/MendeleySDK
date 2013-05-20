@@ -61,7 +61,6 @@ NSString * const MDLNotificationRateLimitExceeded = @"MDLNotificationRateLimitEx
                                  path:(NSString *)path
                            parameters:(NSDictionary *)parameters
                                 token:(AFOAuth1Token *)requestToken;
-- (NSString *)authorizationHeaderForParameters:(NSDictionary *)parameters;
 
 @end
 
@@ -89,10 +88,6 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
     
     return parameters;
 }
-
-@interface AFOAuth1Token ()
-@property (readwrite, nonatomic, copy) NSString *verifier;
-@end
 
 @implementation MDLMendeleyAPIClient
 
@@ -210,35 +205,14 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
     }
     else
     {
-        NSMutableDictionary *mutableParameters = parameters ? [parameters mutableCopy] : [NSMutableDictionary dictionary];
-        NSMutableDictionary *escapedParameters = [NSMutableDictionary dictionary];
-        for (NSString *key in mutableParameters) {
-            if ([mutableParameters[key] isKindOfClass:[NSString class]])
-                escapedParameters[key] = [mutableParameters[key] stringByReplacingOccurrencesOfString:@"," withString:@"%2C"];
-            else
-                escapedParameters[key] = mutableParameters[key];
-        }
-        mutableParameters = escapedParameters;
-        
-        if (self.accessToken) {
-            [mutableParameters addEntriesFromDictionary:[self OAuthParameters]];
-            [mutableParameters setValue:self.accessToken.key forKey:@"oauth_token"];
-        }
-        
-        [mutableParameters setValue:[self OAuthSignatureForMethod:method path:path parameters:mutableParameters token:self.accessToken] forKey:@"oauth_signature"];
-        
-        NSMutableURLRequest *request = [super requestWithMethod:method path:path parameters:parameters];
-        [request setValue:[self authorizationHeaderForParameters:mutableParameters] forHTTPHeaderField:@"Authorization"];
-        [request setHTTPShouldHandleCookies:NO];
-        
-        return request;
+        return [super requestWithMethod:method path:path parameters:parameters];
     }
 }
 
 - (void)acquireOAuthAccessTokenWithPath:(NSString *)path
                            requestToken:(AFOAuth1Token *)requestToken
                            accessMethod:(NSString *)accessMethod
-                                success:(void (^)(AFOAuth1Token *accessToken))success
+                                success:(void (^)(AFOAuth1Token *accessToken, id responseObject))success
                                 failure:(void (^)(NSError *error))failure
 {
     self.accessToken = requestToken;
@@ -394,7 +368,7 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
                                         success:(void (^)(AFOAuth1Token *accessToken))success
                                         failure:(void (^)(NSError *error))failure
 {
-    [self acquireOAuthRequestTokenWithPath:requestTokenPath callback:callbackURL accessMethod:(NSString *)accessMethod success:^(AFOAuth1Token *requestToken) {
+    [self acquireOAuthRequestTokenWithPath:requestTokenPath callbackURL:callbackURL accessMethod:(NSString *)accessMethod scope:nil success:^(AFOAuth1Token *requestToken, id responseObject) {
         __block AFOAuth1Token *currentRequestToken = requestToken;
         if (self.applicationLaunchObserver)
             [[NSNotificationCenter defaultCenter] removeObserver:self.applicationLaunchObserver];
@@ -403,7 +377,7 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
             
             currentRequestToken.verifier = [AFParametersFromQueryString([url query]) valueForKey:@"oauth_verifier"];
             
-            [self acquireOAuthAccessTokenWithPath:accessTokenPath requestToken:currentRequestToken accessMethod:accessMethod success:^(AFOAuth1Token * accessToken) {
+            [self acquireOAuthAccessTokenWithPath:accessTokenPath requestToken:currentRequestToken accessMethod:accessMethod success:^(AFOAuth1Token * accessToken, id responseObject) {
                 self.accessToken = accessToken;
                 
                 if (success) {
