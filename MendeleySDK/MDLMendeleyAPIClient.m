@@ -1,7 +1,7 @@
 //
 // MDLMendeleyAPIClient.m
 //
-// Copyright (c) 2012 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,10 +26,10 @@
 
 #import <CommonCrypto/CommonDigest.h>
 
-static NSString * const MDLMendeleyAPIBaseURLString = @"http://api.mendeley.com/";
-NSString * const MDLNotificationDidAcquireAccessToken = @"MDLNotificationDidAcquireAccessToken";
+static NSString * const MDLMendeleyAPIBaseURLString        = @"http://api.mendeley.com/";
+NSString * const MDLNotificationDidAcquireAccessToken      = @"MDLNotificationDidAcquireAccessToken";
 NSString * const MDLNotificationFailedToAcquireAccessToken = @"MDLNotificationFailedToAcquireAccessToken";
-NSString * const MDLNotificationRateLimitExceeded = @"MDLNotificationRateLimitExceeded";
+NSString * const MDLNotificationRateLimitExceeded          = @"MDLNotificationRateLimitExceeded";
 
 @interface MDLMendeleyAPIClient ()
 
@@ -81,7 +81,8 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
             [parameterScanner scanString:@"&" intoString:NULL];
             
             if (name && value) {
-                [parameters setValue:[value stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding] forKey:[name stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+                [parameters setValue:[value stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
+                              forKey:[name stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
             }
         }
     }
@@ -103,7 +104,9 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
             _sharedClient = nil;
         }
         if (!_sharedClient)
-            _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:MDLMendeleyAPIBaseURLString] key:MDLConsumerKey secret:MDLConsumerSecret];
+            _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:MDLMendeleyAPIBaseURLString]
+                                                      key:MDLConsumerKey
+                                                   secret:MDLConsumerSecret];
     }
     
     return _sharedClient;
@@ -216,10 +219,18 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
                                 failure:(void (^)(NSError *error))failure
 {
     self.accessToken = requestToken;
-    [super acquireOAuthAccessTokenWithPath:path requestToken:requestToken accessMethod:accessMethod success:success failure:failure];
+    [super acquireOAuthAccessTokenWithPath:path
+                              requestToken:requestToken
+                              accessMethod:accessMethod
+                                   success:success
+                                   failure:failure];
 }
 
-- (void)getPath:(NSString *)path requiresAuthentication:(BOOL)requiresAuthentication parameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(NSError *))failure
+- (void)getPath:(NSString *)path
+requiresAuthentication:(BOOL)requiresAuthentication
+     parameters:(NSDictionary *)parameters
+        success:(void (^)(AFHTTPRequestOperation *, id))success
+        failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary *requestParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
     if (!requiresAuthentication)
@@ -242,7 +253,13 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
           }];
 }
 
-- (void)getPath:(NSString *)path requiresAuthentication:(BOOL)requiresAuthentication parameters:(NSDictionary *)parameters outputStreamToFileAtPath:(NSString *)filePath success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(NSError *))failure
+- (AFHTTPRequestOperation *)getPath:(NSString *)path
+             requiresAuthentication:(BOOL)requiresAuthentication
+                         parameters:(NSDictionary *)parameters
+           outputStreamToFileAtPath:(NSString *)filePath
+                           progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress
+                            success:(void (^)(AFHTTPRequestOperation *, id))success
+                            failure:(void (^)(NSError *))failure
 {
     NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:parameters];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
@@ -257,10 +274,17 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
             failure(error);
     }];
     
+    [operation setDownloadProgressBlock:progress];
+    
     [self enqueueHTTPRequestOperation:operation];
+    return operation;
 }
 
-- (void)postPath:(NSString *)path bodyKey:(NSString *)bodyKey bodyContent:(id)bodyContent success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(NSError *))failure
+- (void)postPath:(NSString *)path
+         bodyKey:(NSString *)bodyKey
+     bodyContent:(id)bodyContent
+         success:(void (^)(AFHTTPRequestOperation *, id))success
+         failure:(void (^)(NSError *))failure
 {
     NSDictionary *parameters;
     if (bodyKey && bodyContent)
@@ -283,7 +307,10 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
            }];
 }
 
-- (void)deletePath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(NSError *))failure
+- (void)deletePath:(NSString *)path
+        parameters:(NSDictionary *)parameters
+           success:(void (^)(AFHTTPRequestOperation *, id))success
+           failure:(void (^)(NSError *))failure
 {
     [super deletePath:path
            parameters:parameters
@@ -299,7 +326,10 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
               }];
 }
 
-- (void)putPath:(NSString *)path fileAtURL:(NSURL *)fileURL success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(NSError *))failure
+- (void)putPath:(NSString *)path
+      fileAtURL:(NSURL *)fileURL
+        success:(void (^)(AFHTTPRequestOperation *, id))success
+        failure:(void (^)(NSError *))failure
 {
     NSMutableURLRequest *request= [self requestWithMethod:@"PUT" path:path parameters:@{@"oauth_body_hash" : [MDLMendeleyAPIClient SHA1ForFileAtURL:fileURL]}];
     request.HTTPBody = [NSData dataWithContentsOfURL:fileURL];
@@ -328,12 +358,15 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
         failure(error);
 }
 
-- (void)authenticateWithSuccess:(void (^)(AFOAuth1Token *))success failure:(void (^)(NSError *))failure
+- (void)authenticateWithSuccess:(void (^)(AFOAuth1Token *))success
+                        failure:(void (^)(NSError *))failure
 {
     [self authenticateWithWebAuthorizationCallback:nil success:success failure:failure];
 }
 
-- (void)authenticateWithWebAuthorizationCallback:(void (^)(NSURL *))webAuthorizationCallback success:(void (^)(AFOAuth1Token *))success failure:(void (^)(NSError *))failure
+- (void)authenticateWithWebAuthorizationCallback:(void (^)(NSURL *))webAuthorizationCallback
+                                         success:(void (^)(AFOAuth1Token *))success
+                                         failure:(void (^)(NSError *))failure
 {
     [self authorizeUsingOAuthWithRequestTokenPath:@"oauth/request_token" userAuthorizationPath:@"oauth/authorize" callbackURL:[NSURL URLWithString:[MDLURLScheme stringByAppendingString:@"://"]] accessTokenPath:@"oauth/access_token" accessMethod:@"GET" webAuthorizationCallback:webAuthorizationCallback success:^(AFOAuth1Token *accessToken) {
         if (success)
@@ -356,7 +389,14 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
                                         success:(void (^)(AFOAuth1Token *accessToken))success
                                         failure:(void (^)(NSError *error))failure
 {
-    [self authorizeUsingOAuthWithRequestTokenPath:requestTokenPath userAuthorizationPath:userAuthorizationPath callbackURL:callbackURL accessTokenPath:accessTokenPath accessMethod:accessMethod webAuthorizationCallback:nil success:success failure:failure];
+    [self authorizeUsingOAuthWithRequestTokenPath:requestTokenPath
+                            userAuthorizationPath:userAuthorizationPath
+                                      callbackURL:callbackURL
+                                  accessTokenPath:accessTokenPath
+                                     accessMethod:accessMethod
+                         webAuthorizationCallback:nil
+                                          success:success
+                                          failure:failure];
 }
 
 - (void)authorizeUsingOAuthWithRequestTokenPath:(NSString *)requestTokenPath
@@ -443,9 +483,9 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
     if ([numberOrString isKindOfClass:[NSString class]])
     {
         if ([@"1" isEqualToString:numberOrString])
-            return @(YES);
+            return @YES;
         else
-            return @(NO);
+            return @NO;
     }
     else if ([numberOrString isKindOfClass:[NSNumber class]])
     {

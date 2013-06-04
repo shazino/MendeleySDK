@@ -1,7 +1,7 @@
 //
 // MDLFilesViewController.m
 //
-// Copyright (c) 2012 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,14 +23,27 @@
 
 #import "MDLFilesViewController.h"
 #import "MDLFile.h"
+#import <AFNetworking.h>
 
 @interface MDLFilesViewController () <UIDocumentInteractionControllerDelegate>
+
+@property (strong, nonatomic) AFHTTPRequestOperation *operation;
 
 - (void)showAlertViewWithError:(NSError *)error;
 
 @end
 
 @implementation MDLFilesViewController
+
+#pragma mark - View lifecycle
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [self.navigationController setToolbarHidden:YES animated:animated];
+    [self.operation cancel];
+}
 
 - (void)showAlertViewWithError:(NSError *)error
 {
@@ -54,11 +67,12 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MDLFileCell" forIndexPath:indexPath];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.timeStyle = NSDateFormatterShortStyle;
     dateFormatter.dateStyle = NSDateFormatterLongStyle;
     dateFormatter.doesRelativeDateFormatting = YES;
-    dateFormatter.timeStyle = NSDateFormatterShortStyle;
+    
     MDLFile *file = self.files[indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ file", [file.extension uppercaseString]];
+    cell.textLabel.text       = [NSString stringWithFormat:@"%@ file", [file.extension uppercaseString]];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (%d Kb)", [dateFormatter stringFromDate:file.dateAdded], [file.size intValue]/1000];
     
     return cell;
@@ -68,13 +82,31 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UIProgressView *progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleBar];
+    progressView.frame = CGRectMake(0, 0, self.view.frame.size.width - 30, 20);
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:progressView];
+    self.toolbarItems = @[barButtonItem];
+    self.navigationController.toolbar.tintColor = self.navigationController.navigationBar.tintColor;
+    [self.navigationController setToolbarHidden:NO animated:YES];
+    
+    [self.operation cancel];
+    
     MDLFile *file = self.files[indexPath.row];
     NSString *path = [[NSTemporaryDirectory() stringByAppendingPathComponent:@"file"] stringByAppendingPathExtension:file.extension];
-    [file downloadToFileAtPath:path success:^{
+    self.operation = [file downloadToFileAtPath:path progress:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
+        progressView.progress = (float)totalBytesRead/totalBytesExpectedToRead;
+    } success:^{
+        [self.navigationController setToolbarHidden:YES animated:YES];
         UIDocumentInteractionController *interactionController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:path]];
         interactionController.delegate = self;
         [interactionController presentPreviewAnimated:YES];
-    } failure:^(NSError *error) { [self showAlertViewWithError:error]; }];
+    } failure:^(NSError *error) {
+        if (error.code != NSURLErrorCancelled)
+        {
+            [self.navigationController setToolbarHidden:YES animated:YES];
+            [self showAlertViewWithError:error];
+        }
+    }];
 }
 
 #pragma mark - Document interaction controller delegate

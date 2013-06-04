@@ -1,7 +1,7 @@
 //
 // MDLFile.h
 //
-// Copyright (c) 2012 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class MDLDocument;
+@class MDLDocument, AFHTTPRequestOperation;
 
 /**
  `MDLFile` represents a document’s file, as described by Mendeley.
@@ -72,7 +72,11 @@
  
  @return  The newly-initialized file.
  */
-+ (MDLFile *)fileWithDateAdded:(NSDate *)dateAdded extension:(NSString *)extension hash:(NSString *)hash size:(NSNumber *)size document:(MDLDocument *)document;
++ (MDLFile *)fileWithDateAdded:(NSDate *)dateAdded
+                     extension:(NSString *)extension
+                          hash:(NSString *)hash
+                          size:(NSNumber *)size
+                      document:(MDLDocument *)document;
 
 /**
  Creates a `MDLFile` and initializes its public URL property.
@@ -91,8 +95,13 @@
  @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes no argument.
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  
+ @return A new HTTP request operation
+ 
  @see [API documentation: Download file](http://apidocs.mendeley.com/home/user-specific-methods/download-file)
  */
-- (void)downloadToFileAtPath:(NSString *)path success:(void (^)())success failure:(void (^)(NSError *))failure;
+- (AFHTTPRequestOperation *)downloadToFileAtPath:(NSString *)path
+                                        progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress
+                                         success:(void (^)())success
+                                         failure:(void (^)(NSError *))failure;
 
 @end
