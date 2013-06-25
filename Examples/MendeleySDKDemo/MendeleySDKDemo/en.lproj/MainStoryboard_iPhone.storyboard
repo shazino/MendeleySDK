@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3U7-0m-to9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3U7-0m-to9">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
         <!--New Folder View Controller - New Folder-->
@@ -1416,7 +1416,7 @@
                     <navigationItem key="navigationItem" title="Document Details" id="zZt-PS-r5y">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="CWm-Rq-126">
                             <connections>
-                                <action selector="openMendeleyURL:" destination="qIJ-Bo-7nv" id="etO-oP-hfr"/>
+                                <action selector="presentActions:" destination="qIJ-Bo-7nv" id="Kk3-YA-Ncy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1554,134 +1554,18 @@
             <point key="canvasLocation" x="2382" y="-2020"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="MDLCategoriesViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MDLCategoriesViewController.h"/>
-        </class>
-        <class className="MDLCategoryViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MDLCategoryViewController.h"/>
-        </class>
-        <class className="MDLDocumentCreatorViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MDLDocumentCreatorViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="action" name="textFieldEditingChanged:"/>
-                <relationship kind="action" name="upload:"/>
-                <relationship kind="outlet" name="activityStatusLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="contentTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="uploadButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="MDLDocumentDetailsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MDLDocumentDetailsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="openMendeleyURL:"/>
-                <relationship kind="outlet" name="abstractTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="authorsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="filesButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="publicationLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="relatedDocumentsButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="typeLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MDLDocumentSearchResultsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MDLDocumentSearchResultsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="addDocument:"/>
-            </relationships>
-        </class>
-        <class className="MDLDocumentSearchViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MDLDocumentSearchViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="authorsTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="genericTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="tagsTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="titleTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="yearTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="MDLFilesViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MDLFilesViewController.h"/>
-        </class>
-        <class className="MDLFoldersViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MDLFoldersViewController.h"/>
-        </class>
-        <class className="MDLGroupViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MDLGroupViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="deleteGroup:"/>
-                <relationship kind="action" name="leaveGroup:"/>
-                <relationship kind="action" name="openWebGroupProfile:"/>
-                <relationship kind="action" name="showActions:"/>
-                <relationship kind="action" name="unfollowGroup:"/>
-                <relationship kind="outlet" name="categoryLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="numberOfAdminsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="numberOfDocumentsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="numberOfFollowersLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="numberOfMembersLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="ownerLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="publicLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MDLGroupsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MDLGroupsViewController.h"/>
-        </class>
-        <class className="MDLMenuViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MDLMenuViewController.h"/>
-        </class>
-        <class className="MDLNewFolderViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MDLNewFolderViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="action" name="done:"/>
-                <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="MDLNewGroupViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MDLNewGroupViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="action" name="done:"/>
-                <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="typeSegmentedControl" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-        <class className="MDLTopViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MDLTopViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="switchValueChanged:" candidateClass="UISwitch"/>
-            </relationships>
-        </class>
-        <class className="MDLUserProfileViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MDLUserProfileViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="openWebUserProfile:"/>
-                <relationship kind="outlet" name="categoryLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="interestsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="locationLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="profileImageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="MDLUsersViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MDLUsersViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="dFP-9E-juU"/>
+        <segue reference="qqk-lu-GNd"/>
         <segue reference="3tz-h0-ISH"/>
         <segue reference="1KB-ME-WuK"/>
-        <segue reference="qqk-lu-GNd"/>
         <segue reference="RDu-ox-ENK"/>
         <segue reference="DfY-sk-TCK"/>
         <segue reference="LzS-Kg-P05"/>
+        <segue reference="Uu8-2e-baS"/>
     </inferredMetricsTieBreakers>
 </document>

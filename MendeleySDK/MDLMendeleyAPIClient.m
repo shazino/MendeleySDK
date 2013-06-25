@@ -289,7 +289,11 @@ requiresAuthentication:(BOOL)requiresAuthentication
     NSDictionary *parameters;
     if (bodyKey && bodyContent)
     {
-        NSString *serializedParameters = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:bodyContent options:kNilOptions error:nil] encoding:NSUTF8StringEncoding];
+        NSString *serializedParameters;
+        if ([bodyContent isKindOfClass:[NSString class]])
+            serializedParameters = bodyContent;
+        else
+            serializedParameters = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:bodyContent options:kNilOptions error:nil] encoding:NSUTF8StringEncoding];
         parameters = @{bodyKey : serializedParameters};
     }
     

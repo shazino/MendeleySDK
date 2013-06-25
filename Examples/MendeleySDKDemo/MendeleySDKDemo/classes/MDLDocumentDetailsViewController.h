@@ -37,4 +37,8 @@
 
 @property (nonatomic, strong) MDLDocument *document;
 
+- (IBAction)presentActions:(id)sender;
+- (IBAction)openMendeleyURL:(id)sender;
+- (IBAction)importToUserLibrary:(id)sender;
+
 @end

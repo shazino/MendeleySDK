@@ -72,8 +72,8 @@
     dateFormatter.doesRelativeDateFormatting = YES;
     
     MDLFile *file = self.files[indexPath.row];
-    cell.textLabel.text       = [NSString stringWithFormat:@"%@ file", [file.extension uppercaseString]];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (%d Kb)", [dateFormatter stringFromDate:file.dateAdded], [file.size intValue]/1000];
+    cell.textLabel.text       = (file.extension) ? [NSString stringWithFormat:@"%@ file", [file.extension uppercaseString]] : @"File";
+    cell.detailTextLabel.text = (file.dateAdded) ? [NSString stringWithFormat:@"%@ (%d Kb)", [dateFormatter stringFromDate:file.dateAdded], [file.size intValue]/1000] : [file.publicURL absoluteString];
     
     return cell;
 }
@@ -92,7 +92,7 @@
     [self.operation cancel];
     
     MDLFile *file = self.files[indexPath.row];
-    NSString *path = [[NSTemporaryDirectory() stringByAppendingPathComponent:@"file"] stringByAppendingPathExtension:file.extension];
+    NSString *path = [[NSTemporaryDirectory() stringByAppendingPathComponent:@"file"] stringByAppendingPathExtension:file.extension ?: @"pdf"];
     self.operation = [file downloadToFileAtPath:path progress:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
         progressView.progress = (float)totalBytesRead/totalBytesExpectedToRead;
     } success:^{

@@ -407,6 +407,16 @@ extern NSString * const MDLDocumentTypeGeneric;
 - (void)markAsStarred:(BOOL)starred success:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure;
 
 /**
+ Sends an import document API request using the shared client.
+ 
+ @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: a `NSString` for the identifier for the newly-created document.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ 
+ @see [API documentation:  ‎User Library Create Document‎ > ‎By Canonical ID](http://apidocs.mendeley.com/home/user-specific-methods/user-library-create-document/by-canonical-id)
+ */
+- (void)importToUserLibraryWithSuccess:(void (^)(NSString *newDocumentIdentifier))success failure:(void (^)(NSError *))failure;
+
+/**
  Sends an update document API request using the shared client.
  
  @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: a `MDLDocument` object.

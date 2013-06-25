@@ -307,6 +307,17 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
                                          } failure:failure];
 }
 
+- (void)importToUserLibraryWithSuccess:(void (^)(NSString *newDocumentIdentifier))success failure:(void (^)(NSError *))failure
+{
+    [[MDLMendeleyAPIClient sharedClient] postPath:@"/oapi/library/documents/"
+                                          bodyKey:@"canonical_id"
+                                      bodyContent:self.identifier
+                                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              if (success)
+                                                  success(responseObject[@"document_id"]);
+                                          } failure:failure];
+}
+
 - (void)deleteSuccess:(void (^)())success failure:(void (^)(NSError *))failure
 {
     [[MDLMendeleyAPIClient sharedClient] deletePath:[NSString stringWithFormat:@"/oapi/library/documents/%@/", self.identifier]

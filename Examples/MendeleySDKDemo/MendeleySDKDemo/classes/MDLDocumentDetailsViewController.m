@@ -30,10 +30,9 @@
 #import "MDLDocumentSearchResultsViewController.h"
 #import "MDLFilesViewController.h"
 
-@interface MDLDocumentDetailsViewController ()
+@interface MDLDocumentDetailsViewController () <UIActionSheetDelegate>
 
 - (void)updateOutletsWithDocument:(MDLDocument *)document;
-- (IBAction)openMendeleyURL:(id)sender;
 
 @end
 
@@ -101,9 +100,39 @@
 
 #pragma mark - Actions
 
+- (IBAction)presentActions:(id)sender
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Open in Safari", @"Import to User Library", nil];
+    if ([sender isKindOfClass:[UIBarButtonItem class]])
+        [actionSheet showFromBarButtonItem:sender animated:YES];
+}
+
 - (IBAction)openMendeleyURL:(id)sender
 {
     [[UIApplication sharedApplication] openURL:self.document.mendeleyURL];
+}
+
+- (IBAction)importToUserLibrary:(id)sender
+{
+    [self.document importToUserLibraryWithSuccess:^(NSString *newDocumentIdentifier) {
+        [[[UIAlertView alloc] initWithTitle:@"File Imported" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    } failure:^(NSError *error) {
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    }];
+}
+
+#pragma mark - Action sheet delegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        case 0:
+            [self openMendeleyURL:nil];
+            break;
+        case 1:
+            [self importToUserLibrary:nil];
+            break;
+    }
 }
 
 @end
