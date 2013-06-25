@@ -1,7 +1,7 @@
 //
 // MDLDocument.m
 //
-// Copyright (c) 2012 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -305,6 +305,17 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
                                              if (success)
                                                  success(documents);
                                          } failure:failure];
+}
+
+- (void)importToUserLibrarySuccess:(void (^)(NSString *newDocumentIdentifier))success failure:(void (^)(NSError *))failure
+{
+    [[MDLMendeleyAPIClient sharedClient] postPath:@"/oapi/library/documents/"
+                                          bodyKey:@"canonical_id"
+                                      bodyContent:self.identifier
+                                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              if (success)
+                                                  success(responseObject[@"document_id"]);
+                                          } failure:failure];
 }
 
 - (void)deleteSuccess:(void (^)())success failure:(void (^)(NSError *))failure
