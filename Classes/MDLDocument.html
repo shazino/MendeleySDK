@@ -152,6 +152,8 @@
 	
 	<option value="//api/name/fetchRelatedDocumentsAtPage:count:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- fetchRelatedDocumentsAtPage:count:success:failure:</option>
 	
+	<option value="//api/name/importToUserLibrarySuccess:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- importToUserLibrarySuccess:failure:</option>
+	
 	<option value="//api/name/markAsRead:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- markAsRead:success:failure:</option>
 	
 	<option value="//api/name/markAsStarred:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- markAsStarred:success:failure:</option>
@@ -297,6 +299,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fetchDetailsSuccess:failure:">fetchDetailsSuccess:failure:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fetchRelatedDocumentsAtPage:count:success:failure:">fetchRelatedDocumentsAtPage:count:success:failure:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/importToUserLibrarySuccess:failure:">importToUserLibrarySuccess:failure:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/markAsRead:success:failure:">markAsRead:success:failure:</a></span></li>
 	
@@ -727,6 +731,13 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/markAsStarred:success:failure:">&ndash;&nbsp;markAsStarred:success:failure:</a></code>
 		<span class="tooltip"><p>Sends an update document API request using the shared client.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/importToUserLibrarySuccess:failure:">&ndash;&nbsp;importToUserLibrarySuccess:failure:</a></code>
+		<span class="tooltip"><p>Sends an import document API request using the shared client.</p></span>
 	</span>
 	
 	
@@ -2436,12 +2447,14 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>success</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: the created document with its newly assigned document <a href="#//api/name/identifier">identifier</a>.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes successfully.
+  This block has no return value and takes one argument: the created document with its newly assigned document <a href="#//api/name/identifier">identifier</a>.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data.
+  This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
 		</dl>
 		
 	</div>
@@ -2516,12 +2529,14 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>success</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes five arguments: an array of <code>MDLDocument</code> objects, the total number of results, the total number of <a href="#//api/name/pages">pages</a>, the index of the current page, and the number of items per page.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes successfully.
+  This block has no return value and takes five arguments: an array of <code>MDLDocument</code> objects, the total number of results, the total number of <a href="#//api/name/pages">pages</a>, the index of the current page, and the number of items per page.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data.
+  This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
 		</dl>
 		
 	</div>
@@ -2591,12 +2606,14 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>success</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes five arguments: an array of <code>MDLDocument</code> objects, the total number of results, the total number of <a href="#//api/name/pages">pages</a>, the index of the current page, and the number of items per page.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes successfully.
+  This block has no return value and takes five arguments: an array of <code>MDLDocument</code> objects, the total number of results, the total number of <a href="#//api/name/pages">pages</a>, the index of the current page, and the number of items per page.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data.
+  This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
 		</dl>
 		
 	</div>
@@ -2666,12 +2683,14 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>success</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of <code>MDLDocument</code> objects.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes successfully.
+  This block has no return value and takes one argument: an array of <code>MDLDocument</code> objects.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data.
+  This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
 		</dl>
 		
 	</div>
@@ -2751,12 +2770,14 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>success</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes five arguments: an array of <code>MDLDocument</code> objects for the match, the total number of results, the total number of <a href="#//api/name/pages">pages</a>, the index of the current page, and the number of items per page.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes successfully.
+  This block has no return value and takes five arguments: an array of <code>MDLDocument</code> objects for the match, the total number of results, the total number of <a href="#//api/name/pages">pages</a>, the index of the current page, and the number of items per page.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data.
+  This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
 		</dl>
 		
 	</div>
@@ -2841,12 +2862,14 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>success</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes five arguments: an array of <code>MDLDocument</code> objects for the match, the total number of results, the total number of <a href="#//api/name/pages">pages</a>, the index of the current page, and the number of items per page.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes successfully.
+  This block has no return value and takes five arguments: an array of <code>MDLDocument</code> objects for the match, the total number of results, the total number of <a href="#//api/name/pages">pages</a>, the index of the current page, and the number of items per page.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data.
+  This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
 		</dl>
 		
 	</div>
@@ -2941,12 +2964,14 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>success</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes five arguments: an array of <code>MDLDocument</code> objects for the match, the total number of results, the total number of <a href="#//api/name/pages">pages</a>, the index of the current page, and the number of items per page.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes successfully.
+  This block has no return value and takes five arguments: an array of <code>MDLDocument</code> objects for the match, the total number of results, the total number of <a href="#//api/name/pages">pages</a>, the index of the current page, and the number of items per page.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data.
+  This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
 		</dl>
 		
 	</div>
@@ -3021,12 +3046,14 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>success</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes five arguments: an array of <code>MDLDocument</code> objects for the match, the total number of results, the total number of <a href="#//api/name/pages">pages</a>, the index of the current page, and the number of items per page.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes successfully.
+  This block has no return value and takes five arguments: an array of <code>MDLDocument</code> objects for the match, the total number of results, the total number of <a href="#//api/name/pages">pages</a>, the index of the current page, and the number of items per page.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data.
+  This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
 		</dl>
 		
 	</div>
@@ -3094,12 +3121,14 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>success</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of <code>MDLDocument</code> objects.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes successfully.
+  This block has no return value and takes one argument: an array of <code>MDLDocument</code> objects.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data.
+  This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
 		</dl>
 		
 	</div>
@@ -3159,12 +3188,14 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>success</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: the current document with its newly assigned details.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes successfully.
+  This block has no return value and takes one argument: the current document with its newly assigned details.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data.
+  This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
 		</dl>
 		
 	</div>
@@ -3238,12 +3269,14 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>success</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of <code>MDLDocument</code> objects.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes successfully.
+  This block has no return value and takes one argument: an array of <code>MDLDocument</code> objects.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data.
+  This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
 		</dl>
 		
 	</div>
@@ -3268,6 +3301,73 @@
 		<ul>
 			
 			<li><code><p><a href="http://apidocs.mendeley.com/home/public-resources/search-related">API documentation: Search Related</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">MDLDocument.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/importToUserLibrarySuccess:failure:" title="importToUserLibrarySuccess:failure:"></a>
+	<h3 class="subsubtitle method-title">importToUserLibrarySuccess:failure:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sends an import document API request using the shared client.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)importToUserLibrarySuccess:(void ( ^ ) ( NSString *newDocumentIdentifier ))<em>success</em> failure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>success</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes successfully.
+  This block has no return value and takes one argument: a <code>NSString</code> for the <a href="#//api/name/identifier">identifier</a> for the newly-created document.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>failure</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data.
+  This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Sends an import document API request using the shared client.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="http://apidocs.mendeley.com/home/user-specific-methods/user-library-create-document/by-canonical-id">API documentation:  ‎User Library Create Document‎ > ‎By Canonical ID</a></p></code></li>
 			
 		</ul>
 	</div>
@@ -3308,12 +3408,14 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>success</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: a <code>MDLDocument</code> object.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes successfully.
+  This block has no return value and takes one argument: a <code>MDLDocument</code> object.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data.
+  This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
 		</dl>
 		
 	</div>
@@ -3378,12 +3480,14 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>success</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: a <code>MDLDocument</code> object.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes successfully.
+  This block has no return value and takes one argument: a <code>MDLDocument</code> object.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data.
+  This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
 		</dl>
 		
 	</div>
@@ -3443,12 +3547,14 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>success</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: a <code>MDLDocument</code> object.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes successfully.
+  This block has no return value and takes one argument: a <code>MDLDocument</code> object.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data.
+  This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
 		</dl>
 		
 	</div>
@@ -3513,12 +3619,14 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>success</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes successfully. This block has no return value and takes no argument.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes successfully.
+  This block has no return value and takes no argument.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
-			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
+			<dd><p>A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data.
+  This block has no return value and takes one argument: the <code>NSError</code> object describing the network or parsing error that occurred.</p></dd>
 		</dl>
 		
 	</div>
@@ -3572,7 +3680,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 shazino. All rights reserved. (Last updated: 2013-04-30)</span><br />
+						<p><span class="copyright">&copy; 2013 shazino. All rights reserved. (Last updated: 2013-06-25)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
