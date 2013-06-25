@@ -1,5 +1,5 @@
 PODS:
-  - AFNetworking (1.3.0)
+  - AFNetworking (1.3.1)
   - AFOAuth1Client (0.2.0):
     - AFNetworking (>= 1.0)
   - MendeleySDK (1.1):
@@ -13,7 +13,7 @@ EXTERNAL SOURCES:
     :path: ../../
 
 SPEC CHECKSUMS:
-  AFNetworking: e528f20d06b1b818c3571266fb5efa20031a8ace
+  AFNetworking: 9ec8aafb9269236a7630bd8d9838ce2ba30fa2a0
   AFOAuth1Client: 3e01e6e4218116c2e279671c8ab086133514a350
   MendeleySDK: 3ebc6b73f9018663e3c2e20d24f1af7f5644ebd7
 
