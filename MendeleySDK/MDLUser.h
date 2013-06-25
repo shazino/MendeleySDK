@@ -1,7 +1,7 @@
 //
 // MDLUser.h
 //
-// Copyright (c) 2012 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -129,41 +129,53 @@
 /**
  Sends a profile information API request using the shared client and fetches the response as a `MDLUser`.
  
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: a `MDLUser` object.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes one argument: a `MDLUser` object.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  
  @see [API documentation: Profile Information](http://apidocs.mendeley.com/home/user-specific-methods/profile-information)
  */
-+ (void)fetchMyUserProfileSuccess:(void (^)(MDLUser *))success failure:(void (^)(NSError *))failure;
++ (void)fetchMyUserProfileSuccess:(void (^)(MDLUser *))success
+                          failure:(void (^)(NSError *))failure;
 
 /**
  Sends a contacts API request using the shared client and fetches the response as an array of `MDLUser`.
  
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `MDLUser` objects.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes one argument: an array of `MDLUser` objects.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data.
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  
  @see [API documentation: User Profile Contacts](http://apidocs.mendeley.com/home/user-specific-methods/user-profile-contacts)
  */
-+ (void)fetchContactsSuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
++ (void)fetchContactsSuccess:(void (^)(NSArray *))success
+                     failure:(void (^)(NSError *))failure;
 
 /**
  Sends a profile information API request using the shared client and fetches the response as a `MDLUser`.
  
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: a `MDLUser` object.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the request operation finishes successfully.
+  This block has no return value and takes one argument: a `MDLUser` object.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  
  @see [API documentation: Profile Information](http://apidocs.mendeley.com/home/user-specific-methods/profile-information)
  */
-- (void)fetchProfileSuccess:(void (^)(MDLUser *))success failure:(void (^)(NSError *))failure;
+- (void)fetchProfileSuccess:(void (^)(MDLUser *))success
+                    failure:(void (^)(NSError *))failure;
 
 /**
  Sends an add contact API request using the shared client.
  
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes no argument.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes no argument.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  
  @see [API documentation: User Profile Add Contact](http://apidocs.mendeley.com/home/user-specific-methods/user-profile-add-contact)
  */
-- (void)sendContactRequestSuccess:(void (^)())success failure:(void (^)(NSError *))failure;
+- (void)sendContactRequestSuccess:(void (^)())success
+                          failure:(void (^)(NSError *))failure;
 
 @end

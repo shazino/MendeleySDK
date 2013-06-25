@@ -1,7 +1,7 @@
 //
 // MDLMendeleyAPIClient.h
 //
-// Copyright (c) 2012 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -30,6 +30,8 @@ extern NSString * const MDLURLScheme;
 extern NSString * const MDLNotificationDidAcquireAccessToken;
 extern NSString * const MDLNotificationFailedToAcquireAccessToken;
 extern NSString * const MDLNotificationRateLimitExceeded;
+
+@class AFHTTPRequestOperation;
 
 /**
  `MDLMendeleyAPIClient` is an HTTP client preconfigured for accessing Mendeley Open API.
@@ -65,19 +67,27 @@ extern NSString * const MDLNotificationRateLimitExceeded;
 /**
  Creates an authentication request, and enqueues it to the HTTP client’s operation queue.
  
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: the newly acquired access token.
- @param failure A block object to be executed when the request operation finishes unsuccessfully. This block has no return value and takes one argument: the `NSError` object describing the network or authentication error that occurred.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes one argument: the newly acquired access token.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or authentication error that occurred.
  */
-- (void)authenticateWithSuccess:(void (^)(AFOAuth1Token *))success failure:(void (^)(NSError *))failure;
+- (void)authenticateWithSuccess:(void (^)(AFOAuth1Token *))success
+                        failure:(void (^)(NSError *))failure;
 
 /**
  Creates an authentication request with in-app web authorization callback, and enqueues it to the HTTP client’s operation queue.
  
- @param webAuthorizationCallback A block object to be executed when the request operation needs to switch to the web-based authorization process. This block has no return value and takes one argument: the URL for its authorization request.
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: the newly acquired access token.
- @param failure A block object to be executed when the request operation finishes unsuccessfully. This block has no return value and takes one argument: the `NSError` object describing the network or authentication error that occurred.
+ @param webAuthorizationCallback A block object to be executed when the request operation needs to switch to the web-based authorization process. 
+  This block has no return value and takes one argument: the URL for its authorization request.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes one argument: the newly acquired access token.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or authentication error that occurred.
  */
-- (void)authenticateWithWebAuthorizationCallback:(void (^)(NSURL *))webAuthorizationCallback success:(void (^)(AFOAuth1Token *))success failure:(void (^)(NSError *))failure;
+- (void)authenticateWithWebAuthorizationCallback:(void (^)(NSURL *))webAuthorizationCallback
+                                         success:(void (^)(AFOAuth1Token *))success
+                                         failure:(void (^)(NSError *))failure;
 
 /**
  Creates an `AFHTTPRequestOperation` with a `GET` request, and enqueues it to the HTTP client’s operation queue.
@@ -85,10 +95,16 @@ extern NSString * const MDLNotificationRateLimitExceeded;
  @param path The path to be appended to the HTTP client’s base URL and used as the request URL.
  @param requiresAuthentication A boolean value that corresponds to whether the resource requires authentication
  @param parameters The parameters of the request.
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: the created request operation and the deserialized JSON object created from the response data of request.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes two arguments: the created request operation and the deserialized JSON object created from the response data of request.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)getPath:(NSString *)path requiresAuthentication:(BOOL)requiresAuthentication parameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(NSError *))failure;
+- (void)getPath:(NSString *)path
+requiresAuthentication:(BOOL)requiresAuthentication
+     parameters:(NSDictionary *)parameters
+        success:(void (^)(AFHTTPRequestOperation *, id))success
+        failure:(void (^)(NSError *))failure;
 
 /**
  Creates an `AFHTTPRequestOperation` with a `GET` request, setup outstream to a file, and enqueues it to the HTTP client’s operation queue.
@@ -97,10 +113,23 @@ extern NSString * const MDLNotificationRateLimitExceeded;
  @param requiresAuthentication A boolean value that corresponds to whether the resource requires authentication.
  @param parameters The parameters of the request.
  @param filePath The path to the file output stream to.
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: the created request operation and the deserialized JSON object created from the response data of request.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param progress A block object to be called when an undetermined number of bytes have been downloaded from the server. 
+  This block has no return value and takes three arguments: the number of bytes read since the last time the download progress block was called, the total bytes read, and the total bytes expected to be read during the request, as initially determined by the expected content size of the `NSHTTPURLResponse` object. 
+  This block may be called multiple times, and will execute on the main thread.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes two arguments: the created request operation and the deserialized JSON object created from the response data of request.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ 
+ @return A new HTTP request operation
  */
-- (void)getPath:(NSString *)path requiresAuthentication:(BOOL)requiresAuthentication parameters:(NSDictionary *)parameters outputStreamToFileAtPath:(NSString *)filePath success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(NSError *))failure;
+- (AFHTTPRequestOperation *)getPath:(NSString *)path
+             requiresAuthentication:(BOOL)requiresAuthentication
+                         parameters:(NSDictionary *)parameters
+           outputStreamToFileAtPath:(NSString *)filePath
+                           progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress
+                            success:(void (^)(AFHTTPRequestOperation *, id))success
+                            failure:(void (^)(NSError *))failure;
 
 /**
  Creates an `AFHTTPRequestOperation` with a `POST` request, and enqueues it to the HTTP client’s operation queue.
@@ -108,30 +137,46 @@ extern NSString * const MDLNotificationRateLimitExceeded;
  @param path The path to be appended to the HTTP client’s base URL and used as the request URL.
  @param bodyKey The key for the object to be encoded and set in the request HTTP body.
  @param bodyContent The object to be encoded and set in the request HTTP body.
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: the created request operation and the deserialized JSON object created from the response data of request.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes two arguments: the created request operation and the deserialized JSON object created from the response data of request.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)postPath:(NSString *)path bodyKey:(NSString *)bodyKey bodyContent:(id)bodyContent success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(NSError *))failure;
+- (void)postPath:(NSString *)path
+         bodyKey:(NSString *)bodyKey
+     bodyContent:(id)bodyContent
+         success:(void (^)(AFHTTPRequestOperation *, id))success
+         failure:(void (^)(NSError *))failure;
 
 /**
  Creates an `AFHTTPRequestOperation` with a `DELETE` request, and enqueues it to the HTTP client’s operation queue.
  
  @param path The path to be appended to the HTTP client’s base URL and used as the request URL.
  @param parameters The parameters of the request.
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: the created request operation and the deserialized JSON object created from the response data of request.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes two arguments: the created request operation and the deserialized JSON object created from the response data of request.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)deletePath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(NSError *))failure;
+- (void)deletePath:(NSString *)path
+        parameters:(NSDictionary *)parameters
+           success:(void (^)(AFHTTPRequestOperation *, id))success
+           failure:(void (^)(NSError *))failure;
 
 /**
  Creates an `AFHTTPRequestOperation` with a `PUT` request, and enqueues it to the HTTP client’s operation queue.
  
  @param path The path to be appended to the HTTP client’s base URL and used as the request URL.
  @param fileURL The local URL for the object to be encoded and set in the request HTTP body.
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes two arguments: the created request operation and the object created from the response data of request.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes two arguments: the created request operation and the object created from the response data of request.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)putPath:(NSString *)path fileAtURL:(NSURL *)fileURL success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(NSError *))failure;
+- (void)putPath:(NSString *)path
+      fileAtURL:(NSURL *)fileURL
+        success:(void (^)(AFHTTPRequestOperation *, id))success
+        failure:(void (^)(NSError *))failure;
 
 @end
 
@@ -148,6 +193,7 @@ extern NSString * const MDLNotificationRateLimitExceeded;
 - (NSUInteger)responseTotalPages;
 - (NSUInteger)responsePageIndex;
 - (NSUInteger)responseItemsPerPage;
-+ (NSDictionary *)parametersForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing;
++ (NSDictionary *)parametersForCategory:(NSString *)categoryIdentifier
+                            upAndComing:(BOOL)upAndComing;
 
 @end

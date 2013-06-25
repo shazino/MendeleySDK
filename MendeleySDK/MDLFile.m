@@ -1,7 +1,7 @@
 //
 // MDLFile.m
 //
-// Copyright (c) 2012 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -47,14 +47,19 @@
     return file;
 }
 
-- (void)downloadToFileAtPath:(NSString *)path success:(void (^)())success failure:(void (^)(NSError *))failure
+- (AFHTTPRequestOperation *)downloadToFileAtPath:(NSString *)path
+                                        progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress
+                                         success:(void (^)())success
+                                         failure:(void (^)(NSError *))failure
 {
-    [[MDLMendeleyAPIClient sharedClient] getPath:(self.publicURL) ? [self.publicURL absoluteString] : [NSString stringWithFormat:@"/oapi/library/documents/%@/file/%@//", self.document.identifier, self.hash]
-                          requiresAuthentication:self.document.isInUserLibrary
-                                      parameters:nil
-                        outputStreamToFileAtPath:path
-                                         success:^(AFHTTPRequestOperation *requestOperation, id responseObject) { if (success) success(); }
-                                         failure:failure];
+    NSString *resourcePath = (self.publicURL) ? [self.publicURL absoluteString] : [NSString stringWithFormat:@"/oapi/library/documents/%@/file/%@//", self.document.identifier, self.hash];
+    return [[MDLMendeleyAPIClient sharedClient] getPath:resourcePath
+                                 requiresAuthentication:self.document.isInUserLibrary
+                                             parameters:nil
+                               outputStreamToFileAtPath:path
+                                               progress:progress
+                                                success:^(AFHTTPRequestOperation *requestOperation, id responseObject) { if (success) success(); }
+                                                failure:failure];
 }
 
 @end

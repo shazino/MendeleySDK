@@ -1,7 +1,7 @@
 //
 // MDLDocumentDetailsViewController.h
 //
-// Copyright (c) 2012 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -36,5 +36,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *filesButton;
 
 @property (nonatomic, strong) MDLDocument *document;
+
+- (IBAction)presentActions:(id)sender;
+- (IBAction)openMendeleyURL:(id)sender;
+- (IBAction)importToUserLibrary:(id)sender;
 
 @end

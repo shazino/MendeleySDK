@@ -1,7 +1,7 @@
 //
 // MDLSubcategory.h
 //
-// Copyright (c) 2012 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -53,6 +53,8 @@
  
  @return  The newly-initialized subcategory.
  */
-+ (MDLSubcategory *)subcategoryWithIdentifier:(NSString *)identifier name:(NSString *)name slug:(NSString *)slug;
++ (MDLSubcategory *)subcategoryWithIdentifier:(NSString *)identifier
+                                         name:(NSString *)name
+                                         slug:(NSString *)slug;
 
 @end
