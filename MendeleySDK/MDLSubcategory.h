@@ -53,6 +53,8 @@
  
  @return  The newly-initialized subcategory.
  */
-+ (MDLSubcategory *)subcategoryWithIdentifier:(NSString *)identifier name:(NSString *)name slug:(NSString *)slug;
++ (MDLSubcategory *)subcategoryWithIdentifier:(NSString *)identifier
+                                         name:(NSString *)name
+                                         slug:(NSString *)slug;
 
 @end

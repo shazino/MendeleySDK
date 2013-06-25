@@ -113,14 +113,19 @@ typedef NS_ENUM(NSUInteger, MDLGroupType)
  
  @param name The name of the group.
  @param type The type of the group.
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: the created `MDLGroup` with its newly assigned group identifier.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes one argument: the created `MDLGroup` with its newly assigned group identifier.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  
  @return  The newly-initialized group, with group identifier = `nil`.
  
  @see [API documentation: User Library Create Document](http://apidocs.mendeley.com/home/user-specific-methods/user-library-create-document)
  */
-+ (MDLGroup *)createGroupWithName:(NSString *)name type:(MDLGroupType)type success:(void (^)(MDLGroup *))success failure:(void (^)(NSError *))failure;
++ (MDLGroup *)createGroupWithName:(NSString *)name
+                             type:(MDLGroupType)type
+                          success:(void (^)(MDLGroup *))success
+                          failure:(void (^)(NSError *))failure;
 
 /**
  Sends a public group overview API request using the shared client and fetches the response as an array of `MDLGroup`.
@@ -128,85 +133,114 @@ typedef NS_ENUM(NSUInteger, MDLGroupType)
  @param categoryIdentifier The identifier of the category.
  @param pageIndex The page index. `O` is first page.
  @param count The number of items returned per page. Maximum is `1000`.
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes five arguments: an array of `MDLGroup` objects, the total number of results, the total number of pages, the index of the current page, and the number of items per page.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes five arguments: an array of `MDLGroup` objects, the total number of results, the total number of pages, the index of the current page, and the number of items per page.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  
  @see [API documentation: Search Public Groups](http://apidocs.mendeley.com/home/public-resources/search-public-groups)
  */
-+ (void)fetchTopGroupsInPublicLibraryForCategory:(NSString *)categoryIdentifier atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure;
++ (void)fetchTopGroupsInPublicLibraryForCategory:(NSString *)categoryIdentifier
+                                          atPage:(NSUInteger)pageIndex
+                                           count:(NSUInteger)count
+                                         success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success
+                                         failure:(void (^)(NSError *))failure;
 
 /**
  Sends a user library groups API request using the shared client and fetches the response as an array of `MDLGroup`.
  
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: an array of `MDLGroup` objects.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes one argument: an array of `MDLGroup` objects.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  
  @see [API documentation: User Library Groups](http://apidocs.mendeley.com/home/user-specific-methods/user-library-groups)
  */
-+ (void)fetchGroupsInUserLibrarySuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
++ (void)fetchGroupsInUserLibrarySuccess:(void (^)(NSArray *))success
+                                failure:(void (^)(NSError *))failure;
 
 /**
  Sends a public groups details API request for the current document using the shared client.
  
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: the current group with its newly assigned details.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes one argument: the current group with its newly assigned details.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  
  @see [API documentation: Public Groups Details](http://apidocs.mendeley.com/home/public-resources/public-groups-details)
  */
-- (void)fetchDetailsSuccess:(void (^)(MDLGroup *))success failure:(void (^)(NSError *))failure;
+- (void)fetchDetailsSuccess:(void (^)(MDLGroup *))success
+                    failure:(void (^)(NSError *))failure;
 
 /**
  Sends a groups people API request for the current document using the shared client.
  
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes one argument: the current group with its newly assigned people.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes one argument: the current group with its newly assigned people.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  
  @see [API documentation: Public Groups People](http://apidocs.mendeley.com/home/public-resources/public-groups-people)
  @see [API documentation: User Library Group People](http://apidocs.mendeley.com/home/user-specific-methods/user-library-group-people)
  */
-- (void)fetchPeopleSuccess:(void (^)(MDLGroup *))success failure:(void (^)(NSError *))failure;
+- (void)fetchPeopleSuccess:(void (^)(MDLGroup *))success
+                   failure:(void (^)(NSError *))failure;
 
 /**
  Sends a groups documents API request for the current document using the shared client.
  
  @param pageIndex The page index. `O` is first page.
  @param count The number of items returned per page.
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes five arguments: an array of `MDLDocument` objects, the total number of results, the total number of pages, the index of the current page, and the number of items per page.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes five arguments: an array of `MDLDocument` objects, the total number of results, the total number of pages, the index of the current page, and the number of items per page.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  
  @see [API documentation: Public Groups Documents](http://apidocs.mendeley.com/home/public-resources/public-groups-documents)
  @see [API documentation: User Library Group Documents](http://apidocs.mendeley.com/home/user-specific-methods/user-library-group-documents)
  */
-- (void)fetchDocumentsAtPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure;
+- (void)fetchDocumentsAtPage:(NSUInteger)pageIndex
+                       count:(NSUInteger)count
+                     success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success
+                     failure:(void (^)(NSError *))failure;
 
 /**
  Sends a delete group API request using the shared client (you need to be a owner of the group).
  
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes no argument.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes no argument.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  
  @see [API documentation: Delete Group](http://apidocs.mendeley.com/home/user-specific-methods/user-library-delete-group)
  */
-- (void)deleteSuccess:(void (^)())success failure:(void (^)(NSError *))failure;
+- (void)deleteSuccess:(void (^)())success
+              failure:(void (^)(NSError *))failure;
 
 /**
  Sends a leave group API request using the shared client (you need to be an administrator or a member of the group).
  
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes no argument.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the request operation finishes successfully.
+  This block has no return value and takes no argument.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data.
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  
  @see [API documentation: Delete Group](http://apidocs.mendeley.com/home/user-specific-methods/user-library-delete-group)
  */
-- (void)leaveSuccess:(void (^)())success failure:(void (^)(NSError *))failure;
+- (void)leaveSuccess:(void (^)())success
+             failure:(void (^)(NSError *))failure;
 
 /**
  Sends a unfollow group API request using the shared client (you need to be a follower of the group).
  
- @param success A block object to be executed when the request operation finishes successfully. This block has no return value and takes no argument.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ @param success A block object to be executed when the request operation finishes successfully. 
+  This block has no return value and takes no argument.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data.
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  
  @see [API documentation: Delete Group](http://apidocs.mendeley.com/home/user-specific-methods/user-library-delete-group)
  */
-- (void)unfollowSuccess:(void (^)())success failure:(void (^)(NSError *))failure;
+- (void)unfollowSuccess:(void (^)())success
+                failure:(void (^)(NSError *))failure;
 
 @end
