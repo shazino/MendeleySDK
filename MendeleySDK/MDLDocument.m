@@ -307,7 +307,7 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
                                          } failure:failure];
 }
 
-- (void)importToUserLibraryWithSuccess:(void (^)(NSString *newDocumentIdentifier))success failure:(void (^)(NSError *))failure
+- (void)importToUserLibrarySuccess:(void (^)(NSString *newDocumentIdentifier))success failure:(void (^)(NSError *))failure
 {
     [[MDLMendeleyAPIClient sharedClient] postPath:@"/oapi/library/documents/"
                                           bodyKey:@"canonical_id"

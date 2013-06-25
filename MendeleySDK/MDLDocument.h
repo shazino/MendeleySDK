@@ -487,8 +487,8 @@ extern NSString * const MDLDocumentTypeGeneric;
  
  @see [API documentation:  ‎User Library Create Document‎ > ‎By Canonical ID](http://apidocs.mendeley.com/home/user-specific-methods/user-library-create-document/by-canonical-id)
  */
-- (void)importToUserLibraryWithSuccess:(void (^)(NSString *newDocumentIdentifier))success
-                               failure:(void (^)(NSError *))failure;
+- (void)importToUserLibrarySuccess:(void (^)(NSString *newDocumentIdentifier))success
+                           failure:(void (^)(NSError *))failure;
 
 /**
  Sends an update document API request using the shared client.

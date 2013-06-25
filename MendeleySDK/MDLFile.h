@@ -92,6 +92,9 @@
  Sends a download file API request using the shared client.
  
  @param path The path to the file to download to.
+ @param progress A block object to be called when an undetermined number of bytes have been downloaded from the server. 
+  This block has no return value and takes three arguments: the number of bytes read since the last time the download progress block was called, the total bytes read, and the total bytes expected to be read during the request, as initially determined by the expected content size of the `NSHTTPURLResponse` object. 
+  This block may be called multiple times, and will execute on the main thread.
  @param success A block object to be executed when the request operation finishes successfully. 
   This block has no return value and takes no argument.
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 

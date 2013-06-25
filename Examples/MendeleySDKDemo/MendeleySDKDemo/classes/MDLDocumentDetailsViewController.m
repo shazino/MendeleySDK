@@ -114,7 +114,7 @@
 
 - (IBAction)importToUserLibrary:(id)sender
 {
-    [self.document importToUserLibraryWithSuccess:^(NSString *newDocumentIdentifier) {
+    [self.document importToUserLibrarySuccess:^(NSString *newDocumentIdentifier) {
         [[[UIAlertView alloc] initWithTitle:@"File Imported" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     } failure:^(NSError *error) {
         [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
