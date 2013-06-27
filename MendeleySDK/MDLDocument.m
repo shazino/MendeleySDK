@@ -171,7 +171,7 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
     return [self.inUserLibrary boolValue];
 }
 
-- (void)uploadFileAtURL:(NSURL *)fileURL success:(void (^)())success failure:(void (^)(NSError *))failure
+- (AFHTTPRequestOperation *)uploadFileAtURL:(NSURL *)fileURL success:(void (^)())success failure:(void (^)(NSError *))failure
 {
     if (!self.identifier)
     {
@@ -179,10 +179,11 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
         return;
     }
     
-    [[MDLMendeleyAPIClient sharedClient] putPath:[NSString stringWithFormat:@"/oapi/library/documents/%@/", self.identifier]
-                                       fileAtURL:fileURL
-                                         success:^(AFHTTPRequestOperation *operation, id responseObject) { if (success) success(); }
-                                         failure:failure];
+    NSString *path = [NSString stringWithFormat:@"/oapi/library/documents/%@/", self.identifier];
+    return [[MDLMendeleyAPIClient sharedClient] putPath:path
+                                              fileAtURL:fileURL
+                                                success:^(AFHTTPRequestOperation *operation, id responseObject) { if (success) success(); }
+                                                failure:failure];
 }
 
 - (void)fetchDetailsSuccess:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure

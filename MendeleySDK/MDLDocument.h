@@ -25,11 +25,9 @@
 
 extern NSString * const MDLDocumentTypeGeneric;
 
-@class MDLPublication;
-@class MDLCategory;
-@class MDLSubcategory;
-@class MDLGroup;
+@class MDLPublication, MDLCategory, MDLSubcategory, MDLGroup;
 @class MDLMendeleyAPIClient;
+@class AFHTTPRequestOperation;
 
 /**
  `MDLDocument` represents a user’s document, as described by Mendeley.
@@ -409,11 +407,13 @@ extern NSString * const MDLDocumentTypeGeneric;
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  
+ @return A new HTTP request operation
+ 
  @see [API documentation: File Upload](http://apidocs.mendeley.com/home/user-specific-methods/file-upload)
  */
-- (void)uploadFileAtURL:(NSURL *)fileURL
-                success:(void (^)())success
-                failure:(void (^)(NSError *))failure;
+- (AFHTTPRequestOperation *)uploadFileAtURL:(NSURL *)fileURL
+                                    success:(void (^)())success
+                                    failure:(void (^)(NSError *))failure;
 
 /**
  Sends an API details request for the current document using the shared client.
