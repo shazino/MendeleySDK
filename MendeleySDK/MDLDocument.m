@@ -284,6 +284,40 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
                                           } failure:failure];
 }
 
+- (void)updateDetailsSuccess:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary *bodyContent = [NSMutableDictionary dictionary];
+    bodyContent[@"issue"]  = self.issue ?: @"";
+    bodyContent[@"pages"]  = self.pages ?: @"";
+    bodyContent[@"title"]  = self.title ?: @"";
+    bodyContent[@"volume"] = self.volume ?: @"";
+    bodyContent[@"year"]   = self.year ?: @"";
+    bodyContent[@"publisher"] = self.publisher ?: @"";
+    bodyContent[@"published_in"] = self.publication.name ?: @"";
+    bodyContent[@"keywords"] = self.keywords ?: @"";
+    bodyContent[@"tags"]     = self.tags ?: @"";
+    bodyContent[@"notes"]    = self.notes ?: @"";
+    bodyContent[@"doi"]      = self.DOI ?: @"";
+    bodyContent[@"pmid"]     = self.PubMedIdentifier ?: @"";
+    bodyContent[@"url"]      = self.URL ? [self.URL absoluteString] : @"";
+    
+    NSMutableArray *authors = [NSMutableArray array];
+    for (MDLAuthor *author in self.authors) {
+        if (author.name)
+            [authors addObject:author.name];
+    }
+    bodyContent[@"authors"] = authors;
+    
+    [[MDLMendeleyAPIClient sharedClient] postPath:[NSString stringWithFormat:@"/oapi/library/documents/%@/", self.identifier]
+                                          bodyKey:@"document"
+                                      bodyContent:bodyContent
+                                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              if (success)
+                                                  success(self);
+                                          }
+                                          failure:failure];
+}
+
 - (void)moveToTrashSuccess:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure
 {
     [[MDLMendeleyAPIClient sharedClient] postPath:[NSString stringWithFormat:@"/oapi/library/documents/%@/", self.identifier]
