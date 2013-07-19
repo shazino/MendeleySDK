@@ -233,13 +233,18 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
                                              self.title             = responseObject[@"title"];
                                              self.translators       = responseObject[@"translators"];
                                              self.type              = responseObject[@"type"];
-                                             self.URL               = [NSURL URLWithString:responseObject[@"url"]];
                                              self.version           = [NSNumber numberOrNumberFromString:responseObject[@"version"]];
                                              self.volume            = responseObject[@"volume"];
                                              self.year              = [NSNumber numberOrNumberFromString:responseObject[@"year"]];
                                              
                                              if (!self.DOI && self.identifiers[@"doi"])
                                                  self.DOI = self.identifiers[@"doi"];
+                                             
+                                             NSMutableArray *URLs = [NSMutableArray array];
+                                             for (NSString *URLString in [responseObject[@"url"] componentsSeparatedByString:@"\n"]) {
+                                                 [URLs addObject:[NSURL URLWithString:URLString]];
+                                             }
+                                             self.URLs = URLs;
                                              
                                              NSMutableArray *authors = [NSMutableArray array];
                                              for (NSDictionary *author in responseObject[@"authors"])
@@ -299,7 +304,12 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
     bodyContent[@"notes"]    = self.notes ?: @"";
     bodyContent[@"doi"]      = self.DOI ?: @"";
     bodyContent[@"pmid"]     = self.PubMedIdentifier ?: @"";
-    bodyContent[@"url"]      = self.URL ? [self.URL absoluteString] : @"";
+    
+    NSMutableArray *URLsStrings = [NSMutableArray array];
+    for (NSURL *URL in self.URLs) {
+        [URLsStrings addObject:[URL absoluteString]];
+    }
+    bodyContent[@"url"] = [URLsStrings componentsJoinedByString:@"\n"];
     
     NSMutableArray *authors = [NSMutableArray array];
     for (MDLAuthor *author in self.authors) {

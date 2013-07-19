@@ -81,9 +81,9 @@ extern NSString * const MDLDocumentTypeGeneric;
 @property (strong, nonatomic) NSURL *mendeleyURL;
 
 /**
- The URL of the document.
+ The URLs of the document, as a NSArray of NSURL objects.
  */
-@property (strong, nonatomic) NSURL *URL;
+@property (strong, nonatomic) NSArray *URLs;
 
 /**
  The authors of the document stored as MDLAuthor.
