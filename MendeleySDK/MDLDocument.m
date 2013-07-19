@@ -47,7 +47,7 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
 {
     MDLDocument *newDocument = [MDLDocument new];
     newDocument.title   = title;
-    newDocument.type    = MDLDocumentTypeGeneric;
+    newDocument.type    = parameters[@"type"] ?: MDLDocumentTypeGeneric;
     
     NSMutableDictionary *bodyContent = [NSMutableDictionary dictionaryWithDictionary:parameters];
     bodyContent[@"type"] = newDocument.type;
