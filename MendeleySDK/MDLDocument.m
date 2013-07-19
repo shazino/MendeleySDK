@@ -37,6 +37,7 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
 @interface MDLDocument ()
 
 + (MDLDocument *)documentWithRawDocument:(NSDictionary *)rawDocument;
++ (NSDictionary *)detailsContentForDocument:(MDLDocument *)document;
 + (void)fetchDocumentsWithPath:(NSString *)path public:(BOOL)public parameters:(NSDictionary *)parameters atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure;
 
 @end
@@ -65,6 +66,24 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
     return newDocument;
 }
 
++ (MDLDocument *)createDocument:(MDLDocument *)document
+                        success:(void (^)(MDLDocument *))success
+                        failure:(void (^)(NSError *))failure
+{
+    NSDictionary *bodyContent = [MDLDocument detailsContentForDocument:document];
+    
+    [[MDLMendeleyAPIClient sharedClient] postPath:@"/oapi/library/documents/"
+                                          bodyKey:@"document"
+                                      bodyContent:bodyContent
+                                          success:^(AFHTTPRequestOperation *operation, id responseDictionary) {
+                                              MDLDocument *newDocument = [MDLDocument new];
+                                              newDocument.identifier = responseDictionary[@"document_id"];
+                                              if (success)
+                                                  success(newDocument);
+                                          } failure:failure];
+    return document;
+}
+
 + (MDLDocument *)documentWithRawDocument:(NSDictionary *)rawDocument
 {
     MDLDocument *document = [MDLDocument new];
@@ -76,6 +95,39 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
     document.DOI        = rawDocument[@"doi"];
     document.version    = [NSNumber numberOrNumberFromString:rawDocument[@"version"]];
     return document;
+}
+
++ (NSDictionary *)detailsContentForDocument:(MDLDocument *)document
+{
+    NSMutableDictionary *bodyContent = [NSMutableDictionary dictionary];
+    bodyContent[@"issue"]  = document.issue ?: @"";
+    bodyContent[@"pages"]  = document.pages ?: @"";
+    bodyContent[@"title"]  = document.title ?: @"";
+    bodyContent[@"volume"] = document.volume ?: @"";
+    bodyContent[@"year"]   = document.year ?: @"";
+    bodyContent[@"publisher"] = document.publisher ?: @"";
+    bodyContent[@"published_in"] = document.publication.name ?: @"";
+    bodyContent[@"keywords"] = document.keywords ?: @"";
+    bodyContent[@"tags"]     = document.tags ?: @"";
+    bodyContent[@"notes"]    = document.notes ?: @"";
+    bodyContent[@"doi"]      = document.DOI ?: @"";
+    bodyContent[@"pmid"]     = document.PubMedIdentifier ?: @"";
+    bodyContent[@"type"]     = document.type ?: MDLDocumentTypeGeneric;
+    
+    NSMutableArray *URLsStrings = [NSMutableArray array];
+    for (NSURL *URL in document.URLs) {
+        [URLsStrings addObject:[URL absoluteString]];
+    }
+    bodyContent[@"url"] = [URLsStrings componentsJoinedByString:@"\n"];
+    
+    NSMutableArray *authors = [NSMutableArray array];
+    for (MDLAuthor *author in document.authors) {
+        if (author.name)
+            [authors addObject:author.name];
+    }
+    bodyContent[@"authors"] = authors;
+    
+    return bodyContent;
 }
 
 + (void)fetchDocumentsWithPath:(NSString *)path public:(BOOL)public parameters:(NSDictionary *)parameters atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure
@@ -269,6 +321,20 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
                                          failure:failure];
 }
 
+- (void)updateDetailsSuccess:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure
+{
+    NSDictionary *bodyContent = [MDLDocument detailsContentForDocument:self];
+    
+    [[MDLMendeleyAPIClient sharedClient] postPath:[NSString stringWithFormat:@"/oapi/library/documents/%@/", self.identifier]
+                                          bodyKey:@"document"
+                                      bodyContent:bodyContent
+                                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              if (success)
+                                                  success(self);
+                                          }
+                                          failure:failure];
+}
+
 - (void)markAsRead:(BOOL)read success:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure
 {
     [[MDLMendeleyAPIClient sharedClient] postPath:[NSString stringWithFormat:@"/oapi/library/documents/%@/", self.identifier]
@@ -287,45 +353,6 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
                                               if (success)
                                                   success(self);
                                           } failure:failure];
-}
-
-- (void)updateDetailsSuccess:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure
-{
-    NSMutableDictionary *bodyContent = [NSMutableDictionary dictionary];
-    bodyContent[@"issue"]  = self.issue ?: @"";
-    bodyContent[@"pages"]  = self.pages ?: @"";
-    bodyContent[@"title"]  = self.title ?: @"";
-    bodyContent[@"volume"] = self.volume ?: @"";
-    bodyContent[@"year"]   = self.year ?: @"";
-    bodyContent[@"publisher"] = self.publisher ?: @"";
-    bodyContent[@"published_in"] = self.publication.name ?: @"";
-    bodyContent[@"keywords"] = self.keywords ?: @"";
-    bodyContent[@"tags"]     = self.tags ?: @"";
-    bodyContent[@"notes"]    = self.notes ?: @"";
-    bodyContent[@"doi"]      = self.DOI ?: @"";
-    bodyContent[@"pmid"]     = self.PubMedIdentifier ?: @"";
-    
-    NSMutableArray *URLsStrings = [NSMutableArray array];
-    for (NSURL *URL in self.URLs) {
-        [URLsStrings addObject:[URL absoluteString]];
-    }
-    bodyContent[@"url"] = [URLsStrings componentsJoinedByString:@"\n"];
-    
-    NSMutableArray *authors = [NSMutableArray array];
-    for (MDLAuthor *author in self.authors) {
-        if (author.name)
-            [authors addObject:author.name];
-    }
-    bodyContent[@"authors"] = authors;
-    
-    [[MDLMendeleyAPIClient sharedClient] postPath:[NSString stringWithFormat:@"/oapi/library/documents/%@/", self.identifier]
-                                          bodyKey:@"document"
-                                      bodyContent:bodyContent
-                                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                              if (success)
-                                                  success(self);
-                                          }
-                                          failure:failure];
 }
 
 - (void)moveToTrashSuccess:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure
