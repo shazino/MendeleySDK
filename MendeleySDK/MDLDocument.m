@@ -146,7 +146,8 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
                                              {
                                                  MDLDocument *document = [MDLDocument documentWithRawDocument:rawDocument];
                                                  document.inUserLibrary = @(!public);
-                                                 [documents addObject:document];
+                                                 if (document)
+                                                     [documents addObject:document];
                                              }
                                              if (success)
                                                  success(documents, [responseDictionary responseTotalResults], [responseDictionary responseTotalPages], [responseDictionary responsePageIndex], [responseDictionary responseItemsPerPage]);
@@ -294,7 +295,9 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
                                              
                                              NSMutableArray *URLs = [NSMutableArray array];
                                              for (NSString *URLString in [responseObject[@"url"] componentsSeparatedByString:@"\n"]) {
-                                                 [URLs addObject:[NSURL URLWithString:URLString]];
+                                                 NSURL *URL = [NSURL URLWithString:URLString];
+                                                 if (URL)
+                                                     [URLs addObject:URL];
                                              }
                                              self.URLs = URLs;
                                              
