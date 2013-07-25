@@ -113,6 +113,10 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
     bodyContent[@"doi"]      = document.DOI ?: @"";
     bodyContent[@"pmid"]     = document.PubMedIdentifier ?: @"";
     bodyContent[@"type"]     = document.type ?: MDLDocumentTypeGeneric;
+    if (document.starred)
+        bodyContent[@"isStarred"] = document.starred.boolValue ? @"1" : @"0";
+    if (document.read)
+        bodyContent[@"isRead"] = document.read.boolValue ? @"1" : @"0";
     
     NSMutableArray *URLsStrings = [NSMutableArray array];
     for (NSURL *URL in document.URLs) {
