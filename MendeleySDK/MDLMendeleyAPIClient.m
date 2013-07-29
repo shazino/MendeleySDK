@@ -341,17 +341,18 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
 
 - (AFHTTPRequestOperation *)putPath:(NSString *)path
                           fileAtURL:(NSURL *)fileURL
-                            success:(void (^)(AFHTTPRequestOperation *, id))success
+                            success:(void (^)(AFHTTPRequestOperation *operation, NSString *fileHash, id responseObject))success
                             failure:(void (^)(NSError *))failure
 {
-    NSMutableURLRequest *request= [self requestWithMethod:@"PUT" path:path parameters:@{@"oauth_body_hash" : [MDLMendeleyAPIClient SHA1ForFileAtURL:fileURL]}];
+    NSString *fileHash = [MDLMendeleyAPIClient SHA1ForFileAtURL:fileURL];
+    NSMutableURLRequest *request= [self requestWithMethod:@"PUT" path:path parameters:@{@"oauth_body_hash" : fileHash ?: @""}];
     request.HTTPBody = [NSData dataWithContentsOfURL:fileURL];
     [request setValue:[NSString stringWithFormat:@"attachment; filename=\"%@\"", [[fileURL path] lastPathComponent]] forHTTPHeaderField:@"Content-Disposition"];
 	
     AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self updateRateLimitRemainingWithOperation:operation];
         if (success)
-            success(operation, responseObject);
+            success(operation, fileHash, responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self analyseFailureFromRequestOperation:operation error:error failure:failure andAuthorizeUsingOAuthIfNeededWithSuccess:^(AFOAuth1Token *accessToken) {
             [self putPath:path fileAtURL:fileURL success:success failure:failure];

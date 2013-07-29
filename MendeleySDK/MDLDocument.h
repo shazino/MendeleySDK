@@ -25,7 +25,7 @@
 
 extern NSString * const MDLDocumentTypeGeneric;
 
-@class MDLPublication, MDLCategory, MDLSubcategory, MDLGroup;
+@class MDLPublication, MDLCategory, MDLSubcategory, MDLGroup, MDLFile;
 @class MDLMendeleyAPIClient;
 @class AFHTTPRequestOperation;
 
@@ -420,7 +420,7 @@ extern NSString * const MDLDocumentTypeGeneric;
  
  @param fileURL The local URL for the file to upload.
  @param success A block object to be executed when the request operation finishes successfully. 
-  This block has no return value and takes no argument.
+  This block has no return value and takes one argument: a `MDLFile` for the newly-uploaded file.
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  
@@ -429,7 +429,7 @@ extern NSString * const MDLDocumentTypeGeneric;
  @see [API documentation: File Upload](http://apidocs.mendeley.com/home/user-specific-methods/file-upload)
  */
 - (AFHTTPRequestOperation *)uploadFileAtURL:(NSURL *)fileURL
-                                    success:(void (^)())success
+                                    success:(void (^)(MDLFile *newFile))success
                                     failure:(void (^)(NSError *))failure;
 
 /**
