@@ -43,7 +43,23 @@
 		14C1E33916247003005D914C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C1E33816247003005D914C /* CoreData.framework */; };
 		14E5CB73162C007C00B94796 /* MDLDocumentDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E5CB72162C007C00B94796 /* MDLDocumentDetailsViewController.m */; };
 		284E1B9D9537461F80096ACF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832F2E967DA64F8BBB1F5D0F /* libPods.a */; };
+		67163A2217A69C07006455E0 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C1E2F016246F28005D914C /* SenTestingKit.framework */; };
+		67163A2317A69C07006455E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C1E2C916246F27005D914C /* UIKit.framework */; };
+		67163A2417A69C07006455E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C1E2CB16246F27005D914C /* Foundation.framework */; };
+		67163A2A17A69C07006455E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 67163A2817A69C07006455E0 /* InfoPlist.strings */; };
+		67163A2D17A69C07006455E0 /* MendeleySDKDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67163A2C17A69C07006455E0 /* MendeleySDKDemoTests.m */; };
+		AF35B007CEF441899E6D065B /* libPods-MendeleySDKDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BB60F78853F46E187B04464 /* libPods-MendeleySDKDemoTests.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		67163A3217A69F9E006455E0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 14C1E2BC16246F27005D914C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 14C1E2C416246F27005D914C;
+			remoteInfo = MendeleySDKDemo;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1409F0A61654FFF70072D455 /* MDLFilesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = MDLFilesViewController.h; path = classes/MDLFilesViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -102,6 +118,14 @@
 		14C1E33816247003005D914C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		14E5CB71162C007C00B94796 /* MDLDocumentDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = MDLDocumentDetailsViewController.h; path = classes/MDLDocumentDetailsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		14E5CB72162C007C00B94796 /* MDLDocumentDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = MDLDocumentDetailsViewController.m; path = classes/MDLDocumentDetailsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		4ADF9635D136455AA2D91CAE /* Pods-MendeleySDKDemoTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MendeleySDKDemoTests.xcconfig"; path = "Pods/Pods-MendeleySDKDemoTests.xcconfig"; sourceTree = SOURCE_ROOT; };
+		67163A2117A69C07006455E0 /* MendeleySDKDemoTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MendeleySDKDemoTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		67163A2717A69C07006455E0 /* MendeleySDKDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MendeleySDKDemoTests-Info.plist"; sourceTree = "<group>"; };
+		67163A2917A69C07006455E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		67163A2B17A69C07006455E0 /* MendeleySDKDemoTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MendeleySDKDemoTests.h; sourceTree = "<group>"; };
+		67163A2C17A69C07006455E0 /* MendeleySDKDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MendeleySDKDemoTests.m; sourceTree = "<group>"; };
+		67163A2E17A69C07006455E0 /* MendeleySDKDemoTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MendeleySDKDemoTests-Prefix.pch"; sourceTree = "<group>"; };
+		7BB60F78853F46E187B04464 /* libPods-MendeleySDKDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MendeleySDKDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		832F2E967DA64F8BBB1F5D0F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F64E61F2C04B49A3BB0F250F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -116,6 +140,17 @@
 				14C1E2CC16246F27005D914C /* Foundation.framework in Frameworks */,
 				14C1E2CE16246F27005D914C /* CoreGraphics.framework in Frameworks */,
 				284E1B9D9537461F80096ACF /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67163A1D17A69C07006455E0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67163A2217A69C07006455E0 /* SenTestingKit.framework in Frameworks */,
+				67163A2317A69C07006455E0 /* UIKit.framework in Frameworks */,
+				67163A2417A69C07006455E0 /* Foundation.framework in Frameworks */,
+				AF35B007CEF441899E6D065B /* libPods-MendeleySDKDemoTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,9 +259,11 @@
 			isa = PBXGroup;
 			children = (
 				14C1E2CF16246F27005D914C /* MendeleySDKDemo */,
+				67163A2517A69C07006455E0 /* MendeleySDKDemoTests */,
 				14C1E2C816246F27005D914C /* Frameworks */,
 				14C1E2C616246F27005D914C /* Products */,
 				F64E61F2C04B49A3BB0F250F /* Pods.xcconfig */,
+				4ADF9635D136455AA2D91CAE /* Pods-MendeleySDKDemoTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -234,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				14C1E2C516246F27005D914C /* MendeleySDKDemo.app */,
+				67163A2117A69C07006455E0 /* MendeleySDKDemoTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -247,6 +285,7 @@
 				14C1E2CD16246F27005D914C /* CoreGraphics.framework */,
 				14C1E2F016246F28005D914C /* SenTestingKit.framework */,
 				832F2E967DA64F8BBB1F5D0F /* libPods.a */,
+				7BB60F78853F46E187B04464 /* libPods-MendeleySDKDemoTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -291,6 +330,26 @@
 			name = Interface;
 			sourceTree = "<group>";
 		};
+		67163A2517A69C07006455E0 /* MendeleySDKDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				67163A2B17A69C07006455E0 /* MendeleySDKDemoTests.h */,
+				67163A2C17A69C07006455E0 /* MendeleySDKDemoTests.m */,
+				67163A2617A69C07006455E0 /* Supporting Files */,
+			);
+			path = MendeleySDKDemoTests;
+			sourceTree = "<group>";
+		};
+		67163A2617A69C07006455E0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				67163A2717A69C07006455E0 /* MendeleySDKDemoTests-Info.plist */,
+				67163A2817A69C07006455E0 /* InfoPlist.strings */,
+				67163A2E17A69C07006455E0 /* MendeleySDKDemoTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -311,6 +370,27 @@
 			productName = MendeleySDKDemo;
 			productReference = 14C1E2C516246F27005D914C /* MendeleySDKDemo.app */;
 			productType = "com.apple.product-type.application";
+		};
+		67163A2017A69C07006455E0 /* MendeleySDKDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67163A3117A69C07006455E0 /* Build configuration list for PBXNativeTarget "MendeleySDKDemoTests" */;
+			buildPhases = (
+				587BD1AA852A42938C8FDECD /* Check Pods Manifest.lock */,
+				67163A1C17A69C07006455E0 /* Sources */,
+				67163A1D17A69C07006455E0 /* Frameworks */,
+				67163A1E17A69C07006455E0 /* Resources */,
+				67163A1F17A69C07006455E0 /* ShellScript */,
+				D52220F0097A42CCBC869956 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				67163A3317A69F9E006455E0 /* PBXTargetDependency */,
+			);
+			name = MendeleySDKDemoTests;
+			productName = MendeleySDKDemoTests;
+			productReference = 67163A2117A69C07006455E0 /* MendeleySDKDemoTests.octest */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -335,6 +415,7 @@
 			projectRoot = "";
 			targets = (
 				14C1E2C416246F27005D914C /* MendeleySDKDemo */,
+				67163A2017A69C07006455E0 /* MendeleySDKDemoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -360,9 +441,45 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		67163A1E17A69C07006455E0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67163A2A17A69C07006455E0 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		587BD1AA852A42938C8FDECD /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		67163A1F17A69C07006455E0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
 		C1C3FABB279143BDA1A1BCFD /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -376,6 +493,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+		D52220F0097A42CCBC869956 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-MendeleySDKDemoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -405,7 +537,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		67163A1C17A69C07006455E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67163A2D17A69C07006455E0 /* MendeleySDKDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		67163A3317A69F9E006455E0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 14C1E2C416246F27005D914C /* MendeleySDKDemo */;
+			targetProxy = 67163A3217A69F9E006455E0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		14C1E2D216246F27005D914C /* InfoPlist.strings */ = {
@@ -424,6 +572,14 @@
 			);
 			name = MainStoryboard_iPhone.storyboard;
 			path = ../MendeleySDKDemo;
+			sourceTree = "<group>";
+		};
+		67163A2817A69C07006455E0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				67163A2917A69C07006455E0 /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -504,6 +660,53 @@
 			};
 			name = Release;
 		};
+		67163A2F17A69C07006455E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4ADF9635D136455AA2D91CAE /* Pods-MendeleySDKDemoTests.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MendeleySDKDemo.app/MendeleySDKDemo";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MendeleySDKDemoTests/MendeleySDKDemoTests-Prefix.pch";
+				INFOPLIST_FILE = "MendeleySDKDemoTests/MendeleySDKDemoTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_AFTER_BUILD = YES;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		67163A3017A69C07006455E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4ADF9635D136455AA2D91CAE /* Pods-MendeleySDKDemoTests.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MendeleySDKDemo.app/MendeleySDKDemo";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MendeleySDKDemoTests/MendeleySDKDemoTests-Prefix.pch";
+				INFOPLIST_FILE = "MendeleySDKDemoTests/MendeleySDKDemoTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_AFTER_BUILD = YES;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -521,6 +724,15 @@
 			buildConfigurations = (
 				14C1E30216246F28005D914C /* Debug */,
 				14C1E30316246F28005D914C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67163A3117A69C07006455E0 /* Build configuration list for PBXNativeTarget "MendeleySDKDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67163A2F17A69C07006455E0 /* Debug */,
+				67163A3017A69C07006455E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
