@@ -1,2 +1,2 @@
 language: objective-c
-script: ./Examples/MendeleySDKDemo/RunTests.sh
+script: ./Examples/MendeleySDKDemoOSX/RunTests.sh
