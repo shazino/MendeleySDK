@@ -306,8 +306,11 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
                                              self.URLs = URLs;
                                              
                                              NSMutableArray *authors = [NSMutableArray array];
-                                             for (NSDictionary *author in responseObject[@"authors"])
-                                                 [authors addObject:[MDLAuthor authorWithName:[NSString stringWithFormat:@"%@%@%@", author[@"forename"] ?: @"", ([author[@"forename"] length] > 0 && [author[@"surname"] length] > 0) ? @" " : @"", author[@"surname"]]]];
+                                             for (NSDictionary *authorDictionary in responseObject[@"authors"]) {
+                                                 MDLAuthor *author = [MDLAuthor authorWithName:[NSString stringWithFormat:@"%@%@%@", authorDictionary[@"forename"] ?: @"", ([authorDictionary[@"forename"] length] > 0 && [authorDictionary[@"surname"] length] > 0) ? @" " : @"", authorDictionary[@"surname"]]];
+                                                 if (author)
+                                                     [authors addObject:author];
+                                             }
                                              self.authors = authors;
                                              
                                              if (responseObject[@"files"])
@@ -315,8 +318,11 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
                                                  NSMutableArray *files = [NSMutableArray array];
                                                  NSDateFormatter *fileDateFormatter = [[NSDateFormatter alloc] init];
                                                  fileDateFormatter.dateFormat = @"y-M-d H:m:s";
-                                                 for (NSDictionary *file in responseObject[@"files"])
-                                                     [files addObject:[MDLFile fileWithDateAdded:[fileDateFormatter dateFromString:file[@"date_added"]] extension:file[@"file_extension"] hash:file[@"file_hash"] size:[NSNumber numberOrNumberFromString:file[@"file_size"]] document:self]];
+                                                 for (NSDictionary *fileDictionary in responseObject[@"files"]) {
+                                                     MDLFile *file = [MDLFile fileWithDateAdded:[fileDateFormatter dateFromString:fileDictionary[@"date_added"]] extension:fileDictionary[@"file_extension"] hash:fileDictionary[@"file_hash"] size:[NSNumber numberOrNumberFromString:fileDictionary[@"file_size"]] document:self];
+                                                     if (file)
+                                                         [files addObject:file];
+                                                 }
                                                  self.files = files;
                                              }
                                              else if (responseObject[@"file_url"])
