@@ -1,0 +1,9 @@
+#ifdef __OBJC__
+#import <Cocoa/Cocoa.h>
+#endif
+
+#import "Pods-MendeleySDKDemoOSXTests-environment.h"
+#ifdef __OBJC__
+  #import <Security/Security.h>
+#endif /* __OBJC__*/
+

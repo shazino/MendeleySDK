@@ -1,5 +1,6 @@
 # MendeleySDK
 **Objective-C client for the Mendeley Open API.**
+[![Build Status](https://travis-ci.org/shazino/MendeleySDK.png?branch=master)](https://travis-ci.org/shazino/MendeleySDK)
 
 > _This is still in early stages of development, so proceed with caution when using this in a production application.
 > Any bug reports, feature requests, or general feedback at this point would be greatly appreciated._
