@@ -126,7 +126,11 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
     
     NSMutableArray *authors = [NSMutableArray array];
     for (MDLAuthor *author in document.authors) {
-        if (author.name)
+        if (author.forename.length > 0 || author.surname.length > 0)
+            [authors addObject:@{
+             @"forename": author.forename ?: @"",
+             @"surname": author.surname ?: @""}];
+        else if (author.name)
             [authors addObject:author.name];
     }
     bodyContent[@"authors"] = authors;
@@ -315,7 +319,7 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
                                              
                                              NSMutableArray *authors = [NSMutableArray array];
                                              for (NSDictionary *authorDictionary in responseObject[@"authors"]) {
-                                                 MDLAuthor *author = [MDLAuthor authorWithName:[NSString stringWithFormat:@"%@%@%@", authorDictionary[@"forename"] ?: @"", ([authorDictionary[@"forename"] length] > 0 && [authorDictionary[@"surname"] length] > 0) ? @" " : @"", authorDictionary[@"surname"]]];
+                                                 MDLAuthor *author = [MDLAuthor authorWithForename:authorDictionary[@"forename"] surname:authorDictionary[@"surname"]];
                                                  if (author)
                                                      [authors addObject:author];
                                              }
