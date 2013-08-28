@@ -25,11 +25,9 @@
 
 extern NSString * const MDLDocumentTypeGeneric;
 
-@class MDLPublication;
-@class MDLCategory;
-@class MDLSubcategory;
-@class MDLGroup;
+@class MDLPublication, MDLCategory, MDLSubcategory, MDLGroup, MDLFile;
 @class MDLMendeleyAPIClient;
+@class AFHTTPRequestOperation;
 
 /**
  `MDLDocument` represents a user’s document, as described by Mendeley.
@@ -58,6 +56,11 @@ extern NSString * const MDLDocumentTypeGeneric;
 @property (copy, nonatomic) NSString *canonicalIdentifier;
 
 /**
+ The citation key of the document.
+ */
+@property (copy, nonatomic) NSString *citationKey;
+
+/**
  The PubMed identifier (PMID) of the document.
  */
 @property (copy, nonatomic) NSString *PubMedIdentifier;
@@ -83,9 +86,9 @@ extern NSString * const MDLDocumentTypeGeneric;
 @property (strong, nonatomic) NSURL *mendeleyURL;
 
 /**
- The URL of the document.
+ The URLs of the document, as a NSArray of NSURL objects.
  */
-@property (strong, nonatomic) NSURL *URL;
+@property (strong, nonatomic) NSArray *URLs;
 
 /**
  The authors of the document stored as MDLAuthor.
@@ -258,6 +261,23 @@ extern NSString * const MDLDocumentTypeGeneric;
                                  failure:(void (^)(NSError *))failure;
 
 /**
+ Creates a `MDLDocument` and sends an API creation request using the shared client.
+ 
+ @param document The document to create.
+ @param success A block object to be executed when the request operation finishes successfully.
+ This block has no return value and takes one argument: the created document with its newly assigned document identifier.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data.
+ This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ 
+ @return  The newly-initialized document, with document identifier = `nil`.
+ 
+ @see [API documentation: User Library Create Document](http://apidocs.mendeley.com/home/user-specific-methods/user-library-create-document)
+ */
++ (MDLDocument *)createDocument:(MDLDocument *)document
+                        success:(void (^)(MDLDocument *))success
+                        failure:(void (^)(NSError *))failure;
+
+/**
  Sends an API search request with generic terms using the shared client.
  
  @param terms The terms for the search query
@@ -405,15 +425,17 @@ extern NSString * const MDLDocumentTypeGeneric;
  
  @param fileURL The local URL for the file to upload.
  @param success A block object to be executed when the request operation finishes successfully. 
-  This block has no return value and takes no argument.
+  This block has no return value and takes one argument: a `MDLFile` for the newly-uploaded file.
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  
+ @return A new HTTP request operation
+ 
  @see [API documentation: File Upload](http://apidocs.mendeley.com/home/user-specific-methods/file-upload)
  */
-- (void)uploadFileAtURL:(NSURL *)fileURL
-                success:(void (^)())success
-                failure:(void (^)(NSError *))failure;
+- (AFHTTPRequestOperation *)uploadFileAtURL:(NSURL *)fileURL
+                                    success:(void (^)(MDLFile *newFile))success
+                                    failure:(void (^)(NSError *))failure;
 
 /**
  Sends an API details request for the current document using the shared client.
@@ -476,6 +498,18 @@ extern NSString * const MDLDocumentTypeGeneric;
 - (void)markAsStarred:(BOOL)starred
               success:(void (^)(MDLDocument *))success
               failure:(void (^)(NSError *))failure;
+
+/**
+ Sends an update document API request using the shared client.
+ 
+ @param success A block object to be executed when the request operation finishes successfully.
+  This block has no return value and takes one argument: a `MDLDocument` object.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data.
+  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+ 
+ @see [API documentation: User Library Update Document](http://apidocs.mendeley.com/home/user-specific-methods/user-library-update-document)
+ */
+- (void)updateDetailsSuccess:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure;
 
 /**
  Sends an import document API request using the shared client.

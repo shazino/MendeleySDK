@@ -35,6 +35,16 @@
 @property (copy, nonatomic) NSString *name;
 
 /**
+ The author forename
+ */
+@property (copy, nonatomic) NSString *forename;
+
+/**
+ The author surname
+ */
+@property (copy, nonatomic) NSString *surname;
+
+/**
  Creates a `MDLAuthor` and initializes its name property.
  
  @param name The name of the author.
@@ -42,6 +52,16 @@
  @return  The newly-initialized author.
  */
 + (MDLAuthor *)authorWithName:(NSString *)name;
+
+/**
+ Creates a `MDLAuthor` and initializes its name, forename, and surname property.
+ 
+ @param forename The forename of the author.
+ @param surname The surname of the author.
+ 
+ @return  The newly-initialized author.
+ */
++ (MDLAuthor *)authorWithForename:(NSString *)forename surname:(NSString *)surname;
 
 /**
  Sends a top authors API request using the shared client and fetches the response as an array of `MDLAuthor`.

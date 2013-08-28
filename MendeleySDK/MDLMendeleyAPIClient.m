@@ -127,7 +127,7 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
     self = [super initWithBaseURL:url key:key secret:secret];
     if (!self)
         return nil;
-
+    
     self.automaticAuthenticationEnabled = YES;
     self.rateLimitRemainingForLatestRequest = NSNotFound;
     [self setDefaultHeader:@"Accept" value:@"application/json"];
@@ -226,31 +226,34 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
                                    failure:failure];
 }
 
-- (void)getPath:(NSString *)path
-requiresAuthentication:(BOOL)requiresAuthentication
-     parameters:(NSDictionary *)parameters
-        success:(void (^)(AFHTTPRequestOperation *, id))success
-        failure:(void (^)(NSError *))failure
+- (AFHTTPRequestOperation *)getPath:(NSString *)path
+             requiresAuthentication:(BOOL)requiresAuthentication
+                         parameters:(NSDictionary *)parameters
+                            success:(void (^)(AFHTTPRequestOperation *, id))success
+                            failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary *requestParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
     if (!requiresAuthentication)
         requestParameters[@"consumer_key"] = MDLConsumerKey;
     
-    [self getPath:path
-       parameters:requestParameters
-          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-              [self updateRateLimitRemainingWithOperation:operation];
-              if (success)
-                  success(operation, [MDLMendeleyAPIClient deserializeAndSanitizeJSONObjectWithData:responseObject]);
-          }
-          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-              if (requiresAuthentication)
-                  [self analyseFailureFromRequestOperation:operation error:error failure:failure andAuthorizeUsingOAuthIfNeededWithSuccess:^(AFOAuth1Token *accessToken) {
-                      [self getPath:path requiresAuthentication:requiresAuthentication parameters:parameters success:success failure:failure];
-                  }];
-              else
-                  failure(error);
-          }];
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:requestParameters];
+    AFHTTPRequestOperation *operation;
+    operation = [self HTTPRequestOperationWithRequest:request
+                                              success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                                  [self updateRateLimitRemainingWithOperation:operation];
+                                                  if (success)
+                                                      success(operation, [MDLMendeleyAPIClient deserializeAndSanitizeJSONObjectWithData:responseObject]);
+                                              }
+                                              failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                                  if (requiresAuthentication)
+                                                      [self analyseFailureFromRequestOperation:operation error:error failure:failure andAuthorizeUsingOAuthIfNeededWithSuccess:^(AFOAuth1Token *accessToken) {
+                                                          [self getPath:path requiresAuthentication:requiresAuthentication parameters:parameters success:success failure:failure];
+                                                      }];
+                                                  else
+                                                      failure(error);
+                                              }];
+    [self enqueueHTTPRequestOperation:operation];
+    return operation;
 }
 
 - (AFHTTPRequestOperation *)getPath:(NSString *)path
@@ -280,11 +283,11 @@ requiresAuthentication:(BOOL)requiresAuthentication
     return operation;
 }
 
-- (void)postPath:(NSString *)path
-         bodyKey:(NSString *)bodyKey
-     bodyContent:(id)bodyContent
-         success:(void (^)(AFHTTPRequestOperation *, id))success
-         failure:(void (^)(NSError *))failure
+- (AFHTTPRequestOperation *)postPath:(NSString *)path
+                             bodyKey:(NSString *)bodyKey
+                         bodyContent:(id)bodyContent
+                             success:(void (^)(AFHTTPRequestOperation *, id))success
+                             failure:(void (^)(NSError *))failure
 {
     NSDictionary *parameters;
     if (bodyKey && bodyContent)
@@ -297,58 +300,67 @@ requiresAuthentication:(BOOL)requiresAuthentication
         parameters = @{bodyKey : serializedParameters};
     }
     
-    [self postPath:path
-        parameters:parameters
-           success:^(AFHTTPRequestOperation *operation, id responseObject) {
-               [self updateRateLimitRemainingWithOperation:operation];
-               if (success)
-                   success(operation, [MDLMendeleyAPIClient deserializeAndSanitizeJSONObjectWithData:responseObject]);
-           }
-           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-               [self analyseFailureFromRequestOperation:operation error:error failure:failure andAuthorizeUsingOAuthIfNeededWithSuccess:^(AFOAuth1Token *accessToken) {
-                   [self postPath:path bodyKey:bodyKey bodyContent:bodyContent success:success failure:failure];
-               }];
-           }];
+    NSURLRequest *request = [self requestWithMethod:@"POST" path:path parameters:parameters];
+	AFHTTPRequestOperation *operation;
+    operation = [self HTTPRequestOperationWithRequest:request
+                                              success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                                  [self updateRateLimitRemainingWithOperation:operation];
+                                                  if (success)
+                                                      success(operation, [MDLMendeleyAPIClient deserializeAndSanitizeJSONObjectWithData:responseObject]);
+                                              }
+                                              failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                                  [self analyseFailureFromRequestOperation:operation error:error failure:failure andAuthorizeUsingOAuthIfNeededWithSuccess:^(AFOAuth1Token *accessToken) {
+                                                      [self postPath:path bodyKey:bodyKey bodyContent:bodyContent success:success failure:failure];
+                                                  }];
+                                              }];
+    [self enqueueHTTPRequestOperation:operation];
+    return operation;
 }
 
-- (void)deletePath:(NSString *)path
-        parameters:(NSDictionary *)parameters
-           success:(void (^)(AFHTTPRequestOperation *, id))success
-           failure:(void (^)(NSError *))failure
+- (AFHTTPRequestOperation *)deletePath:(NSString *)path
+                            parameters:(NSDictionary *)parameters
+                               success:(void (^)(AFHTTPRequestOperation *, id))success
+                               failure:(void (^)(NSError *))failure
 {
-    [super deletePath:path
-           parameters:parameters
-              success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                  [self updateRateLimitRemainingWithOperation:operation];
-                  if (success)
-                      success(operation, [MDLMendeleyAPIClient deserializeAndSanitizeJSONObjectWithData:responseObject]);
-              }
-              failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                  [self analyseFailureFromRequestOperation:operation error:error failure:failure andAuthorizeUsingOAuthIfNeededWithSuccess:^(AFOAuth1Token *accessToken) {
-                      [self deletePath:path parameters:parameters success:success failure:failure];
-                  }];
-              }];
+    NSURLRequest *request = [self requestWithMethod:@"DELETE" path:path parameters:parameters];
+	AFHTTPRequestOperation *operation;
+    operation = [self HTTPRequestOperationWithRequest:request
+                                              success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                                  [self updateRateLimitRemainingWithOperation:operation];
+                                                  if (success)
+                                                      success(operation, [MDLMendeleyAPIClient deserializeAndSanitizeJSONObjectWithData:responseObject]);
+                                              }
+                                              failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                                  [self analyseFailureFromRequestOperation:operation error:error failure:failure andAuthorizeUsingOAuthIfNeededWithSuccess:^(AFOAuth1Token *accessToken) {
+                                                      [self deletePath:path parameters:parameters success:success failure:failure];
+                                                  }];
+                                              }];
+    [self enqueueHTTPRequestOperation:operation];
+    return operation;
 }
 
-- (void)putPath:(NSString *)path
-      fileAtURL:(NSURL *)fileURL
-        success:(void (^)(AFHTTPRequestOperation *, id))success
-        failure:(void (^)(NSError *))failure
+- (AFHTTPRequestOperation *)putPath:(NSString *)path
+                          fileAtURL:(NSURL *)fileURL
+                            success:(void (^)(AFHTTPRequestOperation *operation, NSString *fileHash, id responseObject))success
+                            failure:(void (^)(NSError *))failure
 {
-    NSMutableURLRequest *request= [self requestWithMethod:@"PUT" path:path parameters:@{@"oauth_body_hash" : [MDLMendeleyAPIClient SHA1ForFileAtURL:fileURL]}];
+    NSString *fileHash = [MDLMendeleyAPIClient SHA1ForFileAtURL:fileURL];
+    NSMutableURLRequest *request= [self requestWithMethod:@"PUT" path:path parameters:@{@"oauth_body_hash" : fileHash ?: @""}];
     request.HTTPBody = [NSData dataWithContentsOfURL:fileURL];
     [request setValue:[NSString stringWithFormat:@"attachment; filename=\"%@\"", [[fileURL path] lastPathComponent]] forHTTPHeaderField:@"Content-Disposition"];
 	
     AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self updateRateLimitRemainingWithOperation:operation];
         if (success)
-            success(operation, responseObject);
+            success(operation, fileHash, responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self analyseFailureFromRequestOperation:operation error:error failure:failure andAuthorizeUsingOAuthIfNeededWithSuccess:^(AFOAuth1Token *accessToken) {
             [self putPath:path fileAtURL:fileURL success:success failure:failure];
         }];
     }];
     [self enqueueHTTPRequestOperation:operation];
+    
+    return operation;
 }
 
 - (void)analyseFailureFromRequestOperation:(AFHTTPRequestOperation *)requestOperation
@@ -444,7 +456,7 @@ requiresAuthentication:(BOOL)requiresAuthentication
 #if __IPHONE_OS_VERSION_MIN_REQUIRED
             [[UIApplication sharedApplication] openURL:requestURL];
 #else
-            [[NSWorkspace sharedWorkspace] openURL:requestURL];
+        [[NSWorkspace sharedWorkspace] openURL:requestURL];
 #endif
     } failure:^(NSError *error) {
         if (failure) {
