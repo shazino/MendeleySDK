@@ -2,9 +2,6 @@
 **Objective-C client for the Mendeley Open API.**
 [![Build Status](https://travis-ci.org/shazino/MendeleySDK.png?branch=master)](https://travis-ci.org/shazino/MendeleySDK)
 
-> _This is still in early stages of development, so proceed with caution when using this in a production application.
-> Any bug reports, feature requests, or general feedback at this point would be greatly appreciated._
-
 MendeleySDK is a [Mendeley API](http://apidocs.mendeley.com) client for iOS and Mac OS X. It’s built on top of [AFNetworking](http://www.github.com/AFNetworking/AFNetworking) and [AFOAuth1Client](http://www.github.com/AFNetworking/AFOAuth1Client) to deal with network operations and authentication.
 
 ![Demo app screenshot paper](https://github.com/shazino/MendeleySDK/wiki/images/demo-app-screenshot-paper.png) ![Demo app screenshot publication](https://github.com/shazino/MendeleySDK/wiki/images/demo-app-screenshot-pub.png)
