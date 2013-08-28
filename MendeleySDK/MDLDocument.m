@@ -101,6 +101,7 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
 {
     NSMutableDictionary *bodyContent = [NSMutableDictionary dictionary];
     bodyContent[@"issue"]  = document.issue ?: @"";
+    bodyContent[@"citation_key"] = document.citationKey ?: @"";
     bodyContent[@"pages"]  = document.pages ?: @"";
     bodyContent[@"title"]  = document.title ?: @"";
     bodyContent[@"volume"] = document.volume ?: @"";
