@@ -271,6 +271,7 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
                                              self.addedDate         = [NSDate dateWithTimeIntervalSince1970:[[NSNumber numberOrNumberFromString:responseObject[@"added"]] doubleValue]];
                                              self.canonicalIdentifier = responseObject[@"canonical_id"];
                                              self.cast              = responseObject[@"cast"];
+                                             self.citationKey       = responseObject[@"citation_key"];
                                              self.deletionPending   = [NSNumber boolNumberFromNumberOrString:responseObject[@"deletionPending"]];
                                              self.discipline        = responseObject[@"discipline"];
                                              self.DOI               = responseObject[@"doi"];

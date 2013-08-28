@@ -56,6 +56,11 @@ extern NSString * const MDLDocumentTypeGeneric;
 @property (copy, nonatomic) NSString *canonicalIdentifier;
 
 /**
+ The citation key of the document.
+ */
+@property (copy, nonatomic) NSString *citationKey;
+
+/**
  The PubMed identifier (PMID) of the document.
  */
 @property (copy, nonatomic) NSString *PubMedIdentifier;
