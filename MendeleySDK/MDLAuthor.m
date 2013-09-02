@@ -26,7 +26,11 @@
 
 @interface MDLAuthor ()
 
-+ (void)fetchAuthorsAtPath:(NSString *)path requiresAuthentication:(BOOL)requiresAuthentication parameters:(NSDictionary *)parameters success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
++ (void)fetchAuthorsAtPath:(NSString *)path
+    requiresAuthentication:(BOOL)requiresAuthentication
+                parameters:(NSDictionary *)parameters
+                   success:(void (^)(NSArray *))success
+                   failure:(void (^)(NSError *))failure;
 
 @end
 
@@ -39,7 +43,23 @@
     return author;
 }
 
-+ (void)fetchAuthorsAtPath:(NSString *)path requiresAuthentication:(BOOL)requiresAuthentication parameters:(NSDictionary *)parameters success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (MDLAuthor *)authorWithForename:(NSString *)forename surname:(NSString *)surname
+{
+    MDLAuthor *author = [MDLAuthor new];
+    author.forename = forename;
+    author.surname  = surname;
+    author.name     = [NSString stringWithFormat:@"%@%@%@",
+                       forename ?: @"",
+                       (forename.length > 0 && surname.length > 0) ? @" " : @"",
+                       surname];
+    return author;
+}
+
++ (void)fetchAuthorsAtPath:(NSString *)path
+    requiresAuthentication:(BOOL)requiresAuthentication
+                parameters:(NSDictionary *)parameters
+                   success:(void (^)(NSArray *))success
+                   failure:(void (^)(NSError *))failure
 {
     [[MDLMendeleyAPIClient sharedClient] getPath:path
                           requiresAuthentication:requiresAuthentication
@@ -53,14 +73,33 @@
                                          } failure:failure];
 }
 
-+ (void)fetchTopAuthorsInPublicLibraryForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)fetchTopAuthorsInPublicLibraryForCategory:(NSString *)categoryIdentifier
+                                      upAndComing:(BOOL)upAndComing
+                                          success:(void (^)(NSArray *))success
+                                          failure:(void (^)(NSError *))failure
 {
-    [self fetchAuthorsAtPath:@"/oapi/stats/authors/" requiresAuthentication:NO parameters:[NSDictionary parametersForCategory:categoryIdentifier upAndComing:upAndComing] success:success failure:failure];
+    [self fetchAuthorsAtPath:@"/oapi/stats/authors/"
+      requiresAuthentication:NO
+                  parameters:[NSDictionary parametersForCategory:categoryIdentifier
+                                                     upAndComing:upAndComing]
+                     success:success
+                     failure:failure];
 }
 
-+ (void)fetchTopAuthorsInUserLibrarySuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)fetchTopAuthorsInUserLibrarySuccess:(void (^)(NSArray *))success
+                                    failure:(void (^)(NSError *))failure
 {
-    [self fetchAuthorsAtPath:@"/oapi/library/authors/" requiresAuthentication:YES parameters:nil success:success failure:failure];
+    [self fetchAuthorsAtPath:@"/oapi/library/authors/"
+      requiresAuthentication:YES
+                  parameters:nil
+                     success:success
+                     failure:failure];
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"Name: %@; Forename: %@; Surname: %@;",
+            self.name, self.forename, self.surname];
 }
 
 @end

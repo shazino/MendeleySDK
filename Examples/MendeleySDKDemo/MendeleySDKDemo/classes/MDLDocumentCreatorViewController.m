@@ -78,7 +78,7 @@
         self.activityStatusLabel.text = @"Creating document...";
         [MDLDocument createDocumentWithTitle:documentTitle parameters:@{@"year" : @"2012", @"authors" : @[@"Me"]} success:^(MDLDocument *document) {
             self.activityStatusLabel.text = [NSString stringWithFormat:@"Document created\nTitle: %@\nType: %@\nId: %@", document.title, document.type, document.identifier];
-            [document uploadFileAtURL:fileURL success:^() {
+            [document uploadFileAtURL:fileURL success:^(MDLFile *newFile) {
                 self.activityStatusLabel.text = [NSString stringWithFormat:@"Document created and uploaded\nTitle: %@\nType: %@\nId: %@", document.title, document.type, document.identifier];
             } failure:^(NSError *error) {
                 self.activityStatusLabel.text = [NSString stringWithFormat:@"Document created, but cannot upload file\n(Error: %@)", [error localizedDescription]];
