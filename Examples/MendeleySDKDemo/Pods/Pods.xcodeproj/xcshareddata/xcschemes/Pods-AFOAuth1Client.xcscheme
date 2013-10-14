@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0460"
+   LastUpgradeVersion = "0500"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "50FA4ADE339047199DF28B05"
+               BlueprintIdentifier = "423FAE1D1211449E9FD2439A"
                BuildableName = "libPods-AFOAuth1Client.a"
                BlueprintName = "Pods-AFOAuth1Client"
                ReferencedContainer = "container:Pods.xcodeproj">
