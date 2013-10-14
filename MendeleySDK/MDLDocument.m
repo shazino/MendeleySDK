@@ -238,7 +238,7 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
     if (!self.identifier)
     {
         failure([NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorCancelled userInfo:nil]);
-        return;
+        return nil;
     }
     
     NSString *path = [NSString stringWithFormat:@"/oapi/library/documents/%@/", self.identifier];
