@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0460"
+   LastUpgradeVersion = "0500"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6D4D5B1409A041709AD49C6C"
+               BlueprintIdentifier = "EA90FC1257384059931A997D"
                BuildableName = "libPods-MendeleySDKDemoTests-AFOAuth1Client.a"
                BlueprintName = "Pods-MendeleySDKDemoTests-AFOAuth1Client"
                ReferencedContainer = "container:Pods.xcodeproj">

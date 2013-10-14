@@ -1,1 +1,1 @@
-PODS_MENDELEYSDKDEMOTESTS_AFOAUTH_CLIENT_OTHER_LDFLAGS = -framework Security
+PODS_MENDELEYSDKDEMOTESTS_AFOAUTH_CLIENT_OTHER_LDFLAGS = -framework CoreGraphics -framework MobileCoreServices -framework Security -framework SystemConfiguration

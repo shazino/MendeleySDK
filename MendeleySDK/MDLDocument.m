@@ -238,7 +238,7 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
     if (!self.identifier)
     {
         failure([NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorCancelled userInfo:nil]);
-        return;
+        return nil;
     }
     
     NSString *path = [NSString stringWithFormat:@"/oapi/library/documents/%@/", self.identifier];
@@ -268,6 +268,13 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
                           requiresAuthentication:self.isInUserLibrary || (self.group.type == MDLGroupTypePrivate)
                                       parameters:nil
                                          success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+                                             
+                                             if (![responseObject isKindOfClass:[NSDictionary class]]) {
+                                                 if (failure)
+                                                     failure(nil);
+                                                 return;
+                                             }
+                                             
                                              self.abstract          = responseObject[@"abstract"];
                                              self.addedDate         = [NSDate dateWithTimeIntervalSince1970:[[NSNumber numberOrNumberFromString:responseObject[@"added"]] doubleValue]];
                                              self.canonicalIdentifier = responseObject[@"canonical_id"];
