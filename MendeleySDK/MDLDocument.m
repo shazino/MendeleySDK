@@ -118,6 +118,8 @@ NSString * const MDLDocumentTypeGeneric = @"Generic";
         bodyContent[@"isStarred"] = document.starred.boolValue ? @"1" : @"0";
     if (document.read)
         bodyContent[@"isRead"] = document.read.boolValue ? @"1" : @"0";
+    if (document.identifiers.count > 0)
+        bodyContent[@"identifiers"] = document.identifiers;
     
     NSMutableArray *URLsStrings = [NSMutableArray array];
     for (NSURL *URL in document.URLs) {
