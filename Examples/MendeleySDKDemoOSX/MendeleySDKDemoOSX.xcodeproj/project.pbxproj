@@ -203,7 +203,6 @@
 				67B79ED417A6A65B00A4CEB5 /* Sources */,
 				67B79ED517A6A65B00A4CEB5 /* Frameworks */,
 				67B79ED617A6A65B00A4CEB5 /* Resources */,
-				67B79ED717A6A65B00A4CEB5 /* ShellScript */,
 				EF8EAC15F0D047EF87A8C7B0 /* Copy Pods Resources */,
 			);
 			buildRules = (
@@ -295,19 +294,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		67B79ED717A6A65B00A4CEB5 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
 		EF8EAC15F0D047EF87A8C7B0 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
