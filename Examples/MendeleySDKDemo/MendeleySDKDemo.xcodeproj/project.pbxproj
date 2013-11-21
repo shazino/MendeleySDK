@@ -9,21 +9,11 @@
 /* Begin PBXBuildFile section */
 		1409F0A81654FFF70072D455 /* MDLFilesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1409F0A71654FFF70072D455 /* MDLFilesViewController.m */; };
 		141E670016272670002939D2 /* MDLDocumentSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 141E66FF16272670002939D2 /* MDLDocumentSearchViewController.m */; };
-		141E67021627330E002939D2 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 141E67011627330E002939D2 /* Icon.png */; };
-		141E670416273311002939D2 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 141E670316273311002939D2 /* Icon@2x.png */; };
-		141E670616273319002939D2 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 141E670516273319002939D2 /* Icon-72.png */; };
-		141E67081627331C002939D2 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 141E67071627331C002939D2 /* Icon-72@2x.png */; };
+		1456FE34183E254D00359FCE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1456FE33183E254D00359FCE /* Images.xcassets */; };
 		1494E0C6162FECDE0064E8FD /* MDLUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1494E0C5162FECDE0064E8FD /* MDLUserProfileViewController.m */; };
 		1494E0E116303B140064E8FD /* MDLGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1494E0E016303B140064E8FD /* MDLGroupViewController.m */; };
 		1494E0E5163059D20064E8FD /* MDLUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1494E0E4163059D20064E8FD /* MDLUsersViewController.m */; };
 		14985327165B942D00948640 /* MDLGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14985326165B942D00948640 /* MDLGroupsViewController.m */; };
-		149C6CD4165E246F002EC94D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 149C6CD3165E246E002EC94D /* Default.png */; };
-		149C6CD7165E2473002EC94D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 149C6CD6165E2472002EC94D /* Default@2x.png */; };
-		149C6CD9165E2477002EC94D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 149C6CD8165E2476002EC94D /* Default-568h@2x.png */; };
-		149C6CDB165E2481002EC94D /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 149C6CDA165E2481002EC94D /* Default-Portrait~ipad.png */; };
-		149C6CDD165E2485002EC94D /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 149C6CDC165E2485002EC94D /* Default-Landscape@2x~ipad.png */; };
-		149C6CDF165E248B002EC94D /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 149C6CDE165E248A002EC94D /* Default-Landscape~ipad.png */; };
-		149C6CE1165E2493002EC94D /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 149C6CE0165E2492002EC94D /* Default-Portrait@2x~ipad.png */; };
 		149FB229165CE0C400C66686 /* MDLFoldersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149FB228165CE0C400C66686 /* MDLFoldersViewController.m */; };
 		149FB233165D179900C66686 /* MDLNewFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149FB232165D179900C66686 /* MDLNewFolderViewController.m */; };
 		149FBFB0162D49D700B16BCA /* MDLTopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149FBFAF162D49D700B16BCA /* MDLTopViewController.m */; };
@@ -66,10 +56,7 @@
 		1409F0A71654FFF70072D455 /* MDLFilesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = MDLFilesViewController.m; path = classes/MDLFilesViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		141E66FE16272670002939D2 /* MDLDocumentSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = MDLDocumentSearchViewController.h; path = classes/MDLDocumentSearchViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		141E66FF16272670002939D2 /* MDLDocumentSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = MDLDocumentSearchViewController.m; path = classes/MDLDocumentSearchViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		141E67011627330E002939D2 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
-		141E670316273311002939D2 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
-		141E670516273319002939D2 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../Icon-72.png"; sourceTree = "<group>"; };
-		141E67071627331C002939D2 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "../Icon-72@2x.png"; sourceTree = "<group>"; };
+		1456FE33183E254D00359FCE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1494E0C4162FECDE0064E8FD /* MDLUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDLUserProfileViewController.h; path = classes/MDLUserProfileViewController.h; sourceTree = "<group>"; };
 		1494E0C5162FECDE0064E8FD /* MDLUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = MDLUserProfileViewController.m; path = classes/MDLUserProfileViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1494E0DF16303B140064E8FD /* MDLGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = MDLGroupViewController.h; path = classes/MDLGroupViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -78,13 +65,6 @@
 		1494E0E4163059D20064E8FD /* MDLUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = MDLUsersViewController.m; path = classes/MDLUsersViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		14985325165B942D00948640 /* MDLGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = MDLGroupsViewController.h; path = classes/MDLGroupsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		14985326165B942D00948640 /* MDLGroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = MDLGroupsViewController.m; path = classes/MDLGroupsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		149C6CD3165E246E002EC94D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		149C6CD6165E2472002EC94D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		149C6CD8165E2476002EC94D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		149C6CDA165E2481002EC94D /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
-		149C6CDC165E2485002EC94D /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
-		149C6CDE165E248A002EC94D /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
-		149C6CE0165E2492002EC94D /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
 		149FB227165CE0C400C66686 /* MDLFoldersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = MDLFoldersViewController.h; path = classes/MDLFoldersViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		149FB228165CE0C400C66686 /* MDLFoldersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = MDLFoldersViewController.m; path = classes/MDLFoldersViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		149FB231165D179900C66686 /* MDLNewFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = MDLNewFolderViewController.h; path = classes/MDLNewFolderViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -118,7 +98,6 @@
 		14C1E33816247003005D914C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		14E5CB71162C007C00B94796 /* MDLDocumentDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = MDLDocumentDetailsViewController.h; path = classes/MDLDocumentDetailsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		14E5CB72162C007C00B94796 /* MDLDocumentDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = MDLDocumentDetailsViewController.m; path = classes/MDLDocumentDetailsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		4ADF9635D136455AA2D91CAE /* Pods-MendeleySDKDemoTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MendeleySDKDemoTests.xcconfig"; path = "Pods/Pods-MendeleySDKDemoTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 		67163A2117A69C07006455E0 /* MendeleySDKDemoTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MendeleySDKDemoTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		67163A2717A69C07006455E0 /* MendeleySDKDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MendeleySDKDemoTests-Info.plist"; sourceTree = "<group>"; };
 		67163A2917A69C07006455E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -157,15 +136,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		141E670916273371002939D2 /* Icons */ = {
+		1450EDC1183E241300317232 /* App delegate */ = {
 			isa = PBXGroup;
 			children = (
-				141E67071627331C002939D2 /* Icon-72@2x.png */,
-				141E670516273319002939D2 /* Icon-72.png */,
-				141E670316273311002939D2 /* Icon@2x.png */,
-				141E67011627330E002939D2 /* Icon.png */,
+				14C1E2D816246F27005D914C /* MDLAppDelegate.h */,
+				14C1E2D916246F27005D914C /* MDLAppDelegate.m */,
 			);
-			name = Icons;
+			name = "App delegate";
 			sourceTree = "<group>";
 		};
 		1494E0C7162FECE20064E8FD /* User */ = {
@@ -190,21 +167,6 @@
 				14AB286F165BE3EE00C7BBEC /* MDLNewGroupViewController.m */,
 			);
 			name = Group;
-			sourceTree = "<group>";
-		};
-		149C6CE2165E24B7002EC94D /* Defaults */ = {
-			isa = PBXGroup;
-			children = (
-				149C6CE0165E2492002EC94D /* Default-Portrait@2x~ipad.png */,
-				149C6CDE165E248A002EC94D /* Default-Landscape~ipad.png */,
-				149C6CDC165E2485002EC94D /* Default-Landscape@2x~ipad.png */,
-				149C6CDA165E2481002EC94D /* Default-Portrait~ipad.png */,
-				149C6CD8165E2476002EC94D /* Default-568h@2x.png */,
-				149C6CD6165E2472002EC94D /* Default@2x.png */,
-				149C6CD3165E246E002EC94D /* Default.png */,
-			);
-			name = Defaults;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		149FB226165CE02B00C66686 /* Folder */ = {
@@ -263,7 +225,6 @@
 				14C1E2C816246F27005D914C /* Frameworks */,
 				14C1E2C616246F27005D914C /* Products */,
 				F64E61F2C04B49A3BB0F250F /* Pods.xcconfig */,
-				4ADF9635D136455AA2D91CAE /* Pods-MendeleySDKDemoTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -293,12 +254,10 @@
 		14C1E2CF16246F27005D914C /* MendeleySDKDemo */ = {
 			isa = PBXGroup;
 			children = (
+				1450EDC1183E241300317232 /* App delegate */,
 				14C1E33716246FE5005D914C /* Interface */,
-				14C1E2D816246F27005D914C /* MDLAppDelegate.h */,
-				14C1E2D916246F27005D914C /* MDLAppDelegate.m */,
 				14C1E2D016246F27005D914C /* Supporting Files */,
-				141E670916273371002939D2 /* Icons */,
-				149C6CE2165E24B7002EC94D /* Defaults */,
+				1456FE33183E254D00359FCE /* Images.xcassets */,
 			);
 			path = MendeleySDKDemo;
 			sourceTree = "<group>";
@@ -379,7 +338,6 @@
 				67163A1C17A69C07006455E0 /* Sources */,
 				67163A1D17A69C07006455E0 /* Frameworks */,
 				67163A1E17A69C07006455E0 /* Resources */,
-				67163A1F17A69C07006455E0 /* ShellScript */,
 				D52220F0097A42CCBC869956 /* Copy Pods Resources */,
 			);
 			buildRules = (
@@ -427,17 +385,7 @@
 			files = (
 				14C1E2D416246F27005D914C /* InfoPlist.strings in Resources */,
 				14C1E2E316246F27005D914C /* MainStoryboard_iPhone.storyboard in Resources */,
-				141E67021627330E002939D2 /* Icon.png in Resources */,
-				141E670416273311002939D2 /* Icon@2x.png in Resources */,
-				141E670616273319002939D2 /* Icon-72.png in Resources */,
-				141E67081627331C002939D2 /* Icon-72@2x.png in Resources */,
-				149C6CD4165E246F002EC94D /* Default.png in Resources */,
-				149C6CD7165E2473002EC94D /* Default@2x.png in Resources */,
-				149C6CD9165E2477002EC94D /* Default-568h@2x.png in Resources */,
-				149C6CDB165E2481002EC94D /* Default-Portrait~ipad.png in Resources */,
-				149C6CDD165E2485002EC94D /* Default-Landscape@2x~ipad.png in Resources */,
-				149C6CDF165E248B002EC94D /* Default-Landscape~ipad.png in Resources */,
-				149C6CE1165E2493002EC94D /* Default-Portrait@2x~ipad.png in Resources */,
+				1456FE34183E254D00359FCE /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,19 +414,6 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
-		};
-		67163A1F17A69C07006455E0 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
 		C1C3FABB279143BDA1A1BCFD /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -641,9 +576,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F64E61F2C04B49A3BB0F250F /* Pods.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MendeleySDKDemo/MendeleySDKDemo-Prefix.pch";
 				INFOPLIST_FILE = "MendeleySDKDemo/MendeleySDKDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = MendeleySDKDemo;
 				WRAPPER_EXTENSION = app;
 			};
@@ -653,9 +591,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F64E61F2C04B49A3BB0F250F /* Pods.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MendeleySDKDemo/MendeleySDKDemo-Prefix.pch";
 				INFOPLIST_FILE = "MendeleySDKDemo/MendeleySDKDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = MendeleySDKDemo;
 				WRAPPER_EXTENSION = app;
 			};
@@ -663,7 +604,6 @@
 		};
 		67163A2F17A69C07006455E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4ADF9635D136455AA2D91CAE /* Pods-MendeleySDKDemoTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MendeleySDKDemo.app/MendeleySDKDemo";
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -687,7 +627,6 @@
 		};
 		67163A3017A69C07006455E0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4ADF9635D136455AA2D91CAE /* Pods-MendeleySDKDemoTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MendeleySDKDemo.app/MendeleySDKDemo";
 				CLANG_WARN_CONSTANT_CONVERSION = YES;

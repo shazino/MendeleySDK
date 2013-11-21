@@ -1,8 +1,8 @@
 PODS:
   - AFNetworking (1.3.3)
-  - AFOAuth1Client (0.3.1):
+  - AFOAuth1Client (0.3.3):
     - AFNetworking (~> 1.3)
-  - MendeleySDK (1.2):
+  - MendeleySDK (1.3.1):
     - AFOAuth1Client (~> 0.3.0)
 
 DEPENDENCIES:
@@ -14,7 +14,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 0700ec7a58c36ad217173e167f6e4df7270df66b
-  AFOAuth1Client: 8e83e357129c6dd4511dbb77b03977b206383dc1
-  MendeleySDK: 9a60755d89fbc47cc7fd34621498afa5fd82e853
+  AFOAuth1Client: 8b06e54087732068e19c4efcd7bed5d74bc9538a
+  MendeleySDK: dc8e9d11c677566b27c653ed7249c93253aebb1c
 
-COCOAPODS: 0.26.2
+COCOAPODS: 0.28.0
