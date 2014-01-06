@@ -53,6 +53,13 @@ extern NSString * const MDLNotificationRateLimitExceeded;
 @property (assign, nonatomic) NSInteger rateLimitRemainingForLatestRequest;
 
 /**
+ Fixed timestamp for OAuth headers. This is `nil` by default.
+ If this property equals `nil`, the system timestamp is used instead.
+ This property can be useful if the server rejects your system timestamp.
+ */
+@property (copy, nonatomic) NSString *fixedTimestamp;
+
+/**
  Creates and initializes if needed a singleton instance of a `MDLMendeleyAPIClient` object configured with Mendeley Open API URL.
  
  @return The newly-initialized client

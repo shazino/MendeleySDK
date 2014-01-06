@@ -193,6 +193,17 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
 
 #pragma mark - Operation
 
+- (NSDictionary *)OAuthParameters
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:[super OAuthParameters]];
+
+    if (self.fixedTimestamp && parameters[@"oauth_timestamp"]) {
+        parameters[@"oauth_timestamp"] = self.fixedTimestamp;
+    }
+
+    return parameters;
+}
+
 - (NSMutableURLRequest *)requestWithMethod:(NSString *)method
                                       path:(NSString *)path
                                 parameters:(NSDictionary *)parameters
