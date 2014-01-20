@@ -32,7 +32,8 @@
 #import "MDLFile.h"
 #import "AFNetworking.h"
 
-NSString * const MDLDocumentTypeGeneric = @"Generic";
+NSString * const MDLDocumentTypeGeneric        = @"Generic";
+NSString * const MDLDocumentTypeJournalArticle = @"Journal Article";
 
 @interface MDLDocument ()
 
