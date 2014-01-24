@@ -22,6 +22,8 @@
 // THE SOFTWARE.
 
 #import "MDLUserProfileViewController.h"
+
+#import <MDLMendeleyAPIClient.h>
 #import "MDLUser.h"
 #import "MDLCategory.h"
 #import "AFNetworking.h"
@@ -43,9 +45,9 @@
 - (void)setUser:(MDLUser *)user
 {
     _user = user;
-    self.nameLabel.text = user.name;
-    self.locationLabel.text = user.location;
-    self.categoryLabel.text = user.category.name;
+    self.nameLabel.text      = user.name;
+    self.locationLabel.text  = user.location;
+    self.categoryLabel.text  = user.category.name;
     self.interestsLabel.text = user.researchInterests;
     [self.profileImageView setImageWithURL:user.photoURL placeholderImage:nil];
 }
@@ -56,16 +58,14 @@
 {
     [super viewDidLoad];
     
-    if (self.user)
-    {
+    if (self.user) {
         [self.user fetchProfileSuccess:^(MDLUser *user) {
             self.user = user;
         } failure:^(NSError *error) {
             [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         }];
     }
-    else
-    {
+    else {
         [MDLUser fetchMyUserProfileSuccess:^(MDLUser *user) {
             self.user = user;
         } failure:^(NSError *error) {

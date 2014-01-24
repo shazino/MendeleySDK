@@ -50,8 +50,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.destinationViewController isKindOfClass:[MDLCategoryViewController class]])
-    {
+    if ([segue.destinationViewController isKindOfClass:[MDLCategoryViewController class]]) {
         MDLCategoryViewController *tagsViewController = (MDLCategoryViewController *)segue.destinationViewController;
         tagsViewController.category = self.categories[self.tableView.indexPathForSelectedRow.row];
     }

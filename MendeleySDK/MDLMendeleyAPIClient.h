@@ -21,7 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "AFOAuth1Client.h"
+#import "AFOAuth2Client.h"
 
 extern NSString * const MDLConsumerKey;
 extern NSString * const MDLConsumerSecret;
@@ -37,7 +37,7 @@ extern NSString * const MDLNotificationRateLimitExceeded;
  `MDLMendeleyAPIClient` is an HTTP client preconfigured for accessing Mendeley Open API.
  */
 
-@interface MDLMendeleyAPIClient : AFOAuth1Client
+@interface MDLMendeleyAPIClient : AFOAuth2Client
 
 /**
  When enabled, automatic authentication launch the authentication process upon receiving network responses with status code = 401. This is `YES` by default.
@@ -51,13 +51,6 @@ extern NSString * const MDLNotificationRateLimitExceeded;
  @see [API documentation: Rate Limiting](http://apidocs.mendeley.com/home/rate-limiting)
  */
 @property (assign, nonatomic) NSInteger rateLimitRemainingForLatestRequest;
-
-/**
- Fixed timestamp for OAuth headers. This is `nil` by default.
- If this property equals `nil`, the system timestamp is used instead.
- This property can be useful if the server rejects your system timestamp.
- */
-@property (copy, nonatomic) NSString *fixedTimestamp;
 
 /**
  Creates and initializes if needed a singleton instance of a `MDLMendeleyAPIClient` object configured with Mendeley Open API URL.
@@ -79,8 +72,18 @@ extern NSString * const MDLNotificationRateLimitExceeded;
  @param failure A block object to be executed when the request operation finishes unsuccessfully. 
   This block has no return value and takes one argument: the `NSError` object describing the network or authentication error that occurred.
  */
-- (void)authenticateWithSuccess:(void (^)(AFOAuth1Token *))success
-                        failure:(void (^)(NSError *))failure;
+
+- (NSURL *)authenticationWebURL;
+
+- (void)authenticateUsingOAuthWithSuccess:(void (^)(AFOAuthCredential *credential))success
+                                  failure:(void (^)(NSError *error))failure;
+
+- (void)validateOAuthCode:(NSString *)code
+                  success:(void (^)(AFOAuthCredential *credential))success
+                  failure:(void (^)(NSError *error))failure;
+
+//- (void)authenticateWithSuccess:(void (^)(AFOAuthCredential *))success
+//                        failure:(void (^)(NSError *))failure;
 
 /**
  Creates an authentication request with in-app web authorization callback, and enqueues it to the HTTP client’s operation queue.
@@ -92,9 +95,9 @@ extern NSString * const MDLNotificationRateLimitExceeded;
  @param failure A block object to be executed when the request operation finishes unsuccessfully. 
   This block has no return value and takes one argument: the `NSError` object describing the network or authentication error that occurred.
  */
-- (void)authenticateWithWebAuthorizationCallback:(void (^)(NSURL *))webAuthorizationCallback
-                                         success:(void (^)(AFOAuth1Token *))success
-                                         failure:(void (^)(NSError *))failure;
+//- (void)authenticateWithWebAuthorizationCallback:(void (^)(NSURL *))webAuthorizationCallback
+//                                         success:(void (^)(AFOAuthCredential *))success
+//                                         failure:(void (^)(NSError *))failure;
 
 /**
  Creates an `AFHTTPRequestOperation` with a `GET` request, and enqueues it to the HTTP client’s operation queue.

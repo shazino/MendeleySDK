@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
 
   s.osx.deployment_target = '10.7'
 
-  s.dependency 'AFOAuth1Client', '~> 0.3.0'
+  s.dependency 'AFOAuth2Client', '~> 0.1.2'
   
   s.prefix_header_contents = <<-EOS
   #import <Availability.h>

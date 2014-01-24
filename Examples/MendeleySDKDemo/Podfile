@@ -2,3 +2,6 @@ platform :ios, '6.0'
 
 pod 'MendeleySDK', :path => '../../'
 
+target :MendeleySDKDemoTests do
+  pod 'MendeleySDK', :path => '../../'
+end
