@@ -193,6 +193,17 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
 
 #pragma mark - Operation
 
+- (NSDictionary *)OAuthParameters
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:[super OAuthParameters]];
+
+    if (self.fixedTimestamp && parameters[@"oauth_timestamp"]) {
+        parameters[@"oauth_timestamp"] = self.fixedTimestamp;
+    }
+
+    return parameters;
+}
+
 - (NSMutableURLRequest *)requestWithMethod:(NSString *)method
                                       path:(NSString *)path
                                 parameters:(NSDictionary *)parameters
@@ -472,7 +483,7 @@ static NSDictionary * AFParametersFromQueryString(NSString *queryString) {
     NSData *data = [NSData dataWithContentsOfURL:fileURL];
     uint8_t digest[CC_SHA1_DIGEST_LENGTH];
     
-    CC_SHA1(data.bytes, data.length, digest);
+    CC_SHA1(data.bytes, (CC_LONG)data.length, digest);
     
     NSMutableString *output = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
     

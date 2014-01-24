@@ -22,9 +22,10 @@
 
 #import "AFHTTPClient.h"
 
-typedef enum {
-    AFHMACSHA1SignatureMethod = 1,
-} AFOAuthSignatureMethod;
+typedef NS_ENUM(NSUInteger, AFOAuthSignatureMethod) {
+    AFPlainTextSignatureMethod = 1,
+    AFHMACSHA1SignatureMethod = 2,
+};
 
 @class AFOAuth1Token;
 
@@ -103,6 +104,16 @@ typedef enum {
                                 success:(void (^)(AFOAuth1Token *accessToken, id responseObject))success
                                 failure:(void (^)(NSError *error))failure;
 
+///----------------------------------------------------
+/// @name Configuring Service Provider Request Handling
+///----------------------------------------------------
+
+/**
+ 
+ */
+- (void)setServiceProviderRequestHandler:(void (^)(NSURLRequest *request))block
+                              completion:(void (^)())completion;
+
 @end
 
 ///----------------
@@ -146,7 +157,6 @@ extern NSString * const kAFApplicationLaunchOptionsURLKey;
  */
 @property (nonatomic, copy) NSString *verifier;
 
-
 /**
 
  */
@@ -181,9 +191,9 @@ extern NSString * const kAFApplicationLaunchOptionsURLKey;
 /// @name Authenticating
 ///---------------------
 
-
 /**
- Stores the specified OAuth token for a given web service identifier in the Keychain.
+ Stores the specified OAuth token for a given web service identifier in the Keychain
+ with the default Keychain Accessibilty of kSecAttrAccessibleWhenUnlocked.
  
  @param token The OAuth credential to be stored.
  @param identifier The service identifier associated with the specified token.
@@ -192,6 +202,19 @@ extern NSString * const kAFApplicationLaunchOptionsURLKey;
  */
 + (BOOL)storeCredential:(AFOAuth1Token *)credential
          withIdentifier:(NSString *)identifier;
+
+/**
+ Stores the specified OAuth token for a given web service identifier in the Keychain.
+
+ @param token The OAuth credential to be stored.
+ @param identifier The service identifier associated with the specified token.
+ @param securityAccessibility The Keychain security accessibility to store the credential with.
+
+ @return Whether or not the credential was stored in the keychain.
+ */
++ (BOOL)storeCredential:(AFOAuth1Token *)credential
+         withIdentifier:(NSString *)identifier
+      withAccessibility:(id)securityAccessibility;
 
 /**
  Retrieves the OAuth credential stored with the specified service identifier from the Keychain.

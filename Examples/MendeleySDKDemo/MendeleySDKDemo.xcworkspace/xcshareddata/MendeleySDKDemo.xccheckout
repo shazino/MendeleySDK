@@ -5,16 +5,16 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>67ADE998-0561-43A4-9B03-F9461DE8C628</string>
+	<string>A7F8BFF6-2911-430F-A11C-C4688E462C20</string>
 	<key>IDESourceControlProjectName</key>
-	<string>MendeleySDKDemoOSX</string>
+	<string>MendeleySDKDemo</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>0134FB2E-703D-496F-9AE4-220AC0A98551</key>
 		<string>ssh://github.com/shazino/MendeleySDK.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Examples/MendeleySDKDemoOSX/MendeleySDKDemoOSX.xcworkspace</string>
+	<string>Examples/MendeleySDKDemo/MendeleySDKDemo.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>0134FB2E-703D-496F-9AE4-220AC0A98551</key>

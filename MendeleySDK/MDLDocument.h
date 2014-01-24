@@ -24,6 +24,7 @@
 #import <Foundation/Foundation.h>
 
 extern NSString * const MDLDocumentTypeGeneric;
+extern NSString * const MDLDocumentTypeJournalArticle;
 
 @class MDLPublication, MDLCategory, MDLSubcategory, MDLGroup, MDLFile;
 @class MDLMendeleyAPIClient;
