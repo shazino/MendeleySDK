@@ -58,14 +58,26 @@
                                          failure:(void (^)(NSError *))failure
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    NSString *resourcePath = (self.publicURL) ? [self.publicURL absoluteString] : [NSString stringWithFormat:@"/oapi/library/documents/%@/file/%@//", self.document.identifier, self.hash];
+    NSString *resourcePath;
+    if (self.publicURL) {
+        resourcePath = [self.publicURL absoluteString];
+    }
+    else {
+        resourcePath = [NSString stringWithFormat:@"/oapi/library/documents/%@/file/%@//",
+                        self.document.identifier,
+                        self.hash];
+    }
 
     return [client getPath:resourcePath
     requiresAuthentication:self.document.isInUserLibrary
                 parameters:nil
   outputStreamToFileAtPath:path
                   progress:progress
-                   success:^(AFHTTPRequestOperation *requestOperation, id responseObject) { if (success) success(); }
+                   success:^(AFHTTPRequestOperation *requestOperation, id responseObject) {
+                       if (success) {
+                           success();
+                       }
+                   }
                    failure:failure];
 }
 

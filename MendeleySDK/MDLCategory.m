@@ -29,16 +29,19 @@
 
 @implementation MDLCategory
 
-+ (MDLCategory *)categoryWithIdentifier:(NSString *)identifier name:(NSString *)name slug:(NSString *)slug
++ (MDLCategory *)categoryWithIdentifier:(NSString *)identifier
+                                   name:(NSString *)name
+                                   slug:(NSString *)slug
 {
     MDLCategory *category = [MDLCategory new];
     category.identifier = identifier;
-    category.name = name;
-    category.slug = slug;
+    category.name       = name;
+    category.slug       = slug;
     return category;
 }
 
-+ (void)fetchCategoriesSuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)fetchCategoriesSuccess:(void (^)(NSArray *))success
+                       failure:(void (^)(NSError *))failure
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
 
@@ -61,10 +64,12 @@ requiresAuthentication:NO
             failure:failure];
 }
 
-- (void)fetchSubcategoriesSuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+- (void)fetchSubcategoriesSuccess:(void (^)(NSArray *))success
+                          failure:(void (^)(NSError *))failure
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    NSString *path = [NSString stringWithFormat:@"/oapi/documents/subcategories/%@/", self.identifier];
+    NSString *path = [NSString stringWithFormat:@"/oapi/documents/subcategories/%@/",
+                      self.identifier];
 
     [client getPath:path
 requiresAuthentication:NO
@@ -85,9 +90,12 @@ requiresAuthentication:NO
             failure:failure];
 }
 
-- (void)fetchLastTagsInPublicLibrarySuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+- (void)fetchLastTagsInPublicLibrarySuccess:(void (^)(NSArray *))success
+                                    failure:(void (^)(NSError *))failure
 {
-    [MDLTag fetchLastTagsInPublicLibraryForCategory:self.identifier success:success failure:failure];
+    [MDLTag fetchLastTagsInPublicLibraryForCategory:self.identifier
+                                            success:success
+                                            failure:failure];
 }
 
 @end

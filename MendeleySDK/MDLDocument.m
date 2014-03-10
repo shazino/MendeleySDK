@@ -39,13 +39,22 @@ NSString * const MDLDocumentTypeJournalArticle = @"Journal Article";
 
 + (MDLDocument *)documentWithRawDocument:(NSDictionary *)rawDocument;
 + (NSDictionary *)detailsContentForDocument:(MDLDocument *)document;
-+ (void)fetchDocumentsWithPath:(NSString *)path public:(BOOL)public parameters:(NSDictionary *)parameters atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure;
++ (void)fetchDocumentsWithPath:(NSString *)path
+                        public:(BOOL)public
+                    parameters:(NSDictionary *)parameters
+                        atPage:(NSUInteger)pageIndex
+                         count:(NSUInteger)count
+                       success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success
+                       failure:(void (^)(NSError *))failure;
 
 @end
 
 @implementation MDLDocument
 
-+ (MDLDocument *)createDocumentWithTitle:(NSString *)title parameters:(NSDictionary *)parameters success:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure
++ (MDLDocument *)createDocumentWithTitle:(NSString *)title
+                              parameters:(NSDictionary *)parameters
+                                 success:(void (^)(MDLDocument *))success
+                                 failure:(void (^)(NSError *))failure
 {
     MDLDocument *newDocument = [MDLDocument new];
     newDocument.title   = title ?: @"";
@@ -83,6 +92,7 @@ NSString * const MDLDocumentTypeJournalArticle = @"Journal Article";
              success:^(AFHTTPRequestOperation *operation, id responseDictionary) {
                  MDLDocument *newDocument = [MDLDocument new];
                  newDocument.identifier = responseDictionary[@"document_id"];
+
                  if (success) {
                      success(newDocument);
                  }
@@ -160,7 +170,13 @@ NSString * const MDLDocumentTypeJournalArticle = @"Journal Article";
     return bodyContent;
 }
 
-+ (void)fetchDocumentsWithPath:(NSString *)path public:(BOOL)public parameters:(NSDictionary *)parameters atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure
++ (void)fetchDocumentsWithPath:(NSString *)path
+                        public:(BOOL)public
+                    parameters:(NSDictionary *)parameters
+                        atPage:(NSUInteger)pageIndex
+                         count:(NSUInteger)count
+                       success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success
+                       failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary *mutableParameters = [parameters mutableCopy];
     mutableParameters[@"page"]  = @(pageIndex);
@@ -193,53 +209,122 @@ requiresAuthentication:!public
             failure:failure];
 }
 
-+ (void)searchWithTerms:(NSString *)terms atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure
++ (void)searchWithTerms:(NSString *)terms
+                 atPage:(NSUInteger)pageIndex
+                  count:(NSUInteger)count
+                success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success
+                failure:(void (^)(NSError *))failure
 {
     NSString *encodedTerms = [terms stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     encodedTerms = [encodedTerms stringByReplacingOccurrencesOfString:@":" withString:@"%3A"];
+    NSString *path = [NSString stringWithFormat:@"/oapi/documents/search/%@/", encodedTerms];
 
-    [self fetchDocumentsWithPath:[NSString stringWithFormat:@"/oapi/documents/search/%@/", encodedTerms] public:YES parameters:nil atPage:pageIndex count:count success:success failure:failure];
+    [self fetchDocumentsWithPath:path
+                          public:YES
+                      parameters:nil
+                          atPage:pageIndex
+                           count:count
+                         success:success
+                         failure:failure];
 }
 
-+ (void)searchWithGenericTerms:(NSString *)genericTerms authors:(NSString *)authors title:(NSString *)title year:(NSNumber *)year tags:(NSString *)tags atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure
++ (void)searchWithGenericTerms:(NSString *)genericTerms
+                       authors:(NSString *)authors
+                         title:(NSString *)title
+                          year:(NSNumber *)year
+                          tags:(NSString *)tags
+                        atPage:(NSUInteger)pageIndex
+                         count:(NSUInteger)count
+                       success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success
+                       failure:(void (^)(NSError *))failure
 {
     NSMutableArray *terms = [NSMutableArray array];
-    if ([genericTerms length] > 0)
-        [terms addObject:genericTerms];
-    if ([authors length] > 0)
-        [terms addObject:[NSString stringWithFormat:@"author:%@", authors]];
-    if ([title length] > 0)
-        [terms addObject:[NSString stringWithFormat:@"title:%@", title]];
-    if (year)
-        [terms addObject:[NSString stringWithFormat:@"year:%@", [year stringValue]]];
-    if ([tags length] > 0)
-        [terms addObject:[NSString stringWithFormat:@"tags:%@", tags]];
 
-    [self searchWithTerms:[terms componentsJoinedByString:@" "] atPage:pageIndex count:count success:success failure:failure];
+    if ([genericTerms length] > 0) {
+        [terms addObject:genericTerms];
+    }
+
+    if ([authors length] > 0) {
+        [terms addObject:[NSString stringWithFormat:@"author:%@", authors]];
+    }
+
+    if ([title length] > 0) {
+        [terms addObject:[NSString stringWithFormat:@"title:%@", title]];
+    }
+
+    if (year) {
+        [terms addObject:[NSString stringWithFormat:@"year:%@", [year stringValue]]];
+    }
+
+    if ([tags length] > 0) {
+        [terms addObject:[NSString stringWithFormat:@"tags:%@", tags]];
+    }
+
+    [self searchWithTerms:[terms componentsJoinedByString:@" "]
+                   atPage:pageIndex
+                    count:count
+                  success:success
+                  failure:failure];
 }
 
-+ (void)searchTagged:(NSString *)tag category:(MDLCategory *)category subcategory:(MDLSubcategory *)subcategory atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure
++ (void)searchTagged:(NSString *)tag
+            category:(MDLCategory *)category
+         subcategory:(MDLSubcategory *)subcategory
+              atPage:(NSUInteger)pageIndex
+               count:(NSUInteger)count
+             success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success
+             failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    if (category)
+
+    if (category) {
         parameters[@"cat"] = category.identifier;
-    if (subcategory)
+    }
+
+    if (subcategory) {
         parameters[@"subcat"] = subcategory.identifier;
-    [self fetchDocumentsWithPath:[NSString stringWithFormat:@"/oapi/documents/tagged/%@/", tag] public:YES parameters:parameters atPage:pageIndex count:count success:success failure:failure];
+    }
+
+    NSString *path = [NSString stringWithFormat:@"/oapi/documents/tagged/%@/", tag];
+
+    [self fetchDocumentsWithPath:path
+                          public:YES
+                      parameters:parameters
+                          atPage:pageIndex
+                           count:count
+                         success:success
+                         failure:failure];
 }
 
-+ (void)searchAuthoredWithName:(NSString *)name year:(NSNumber *)year atPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure
++ (void)searchAuthoredWithName:(NSString *)name
+                          year:(NSNumber *)year
+                        atPage:(NSUInteger)pageIndex
+                         count:(NSUInteger)count
+                       success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success
+                       failure:(void (^)(NSError *))failure
 {
-    [self fetchDocumentsWithPath:[NSString stringWithFormat:@"/oapi/documents/authored/%@/", name] public:YES parameters:(year) ? @{@"year" : year} : nil atPage:pageIndex count:count success:success failure:failure];
+    NSString *path = [NSString stringWithFormat:@"/oapi/documents/authored/%@/", name];
+
+    [self fetchDocumentsWithPath:path
+                          public:YES
+                      parameters:(year) ? @{@"year" : year} : nil
+                          atPage:pageIndex
+                           count:count
+                         success:success
+                         failure:failure];
 }
 
-+ (void)fetchTopDocumentsInPublicLibraryForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)fetchTopDocumentsInPublicLibraryForCategory:(NSString *)categoryIdentifier
+                                        upAndComing:(BOOL)upAndComing
+                                            success:(void (^)(NSArray *))success
+                                            failure:(void (^)(NSError *))failure
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
 
     [client getPath:@"/oapi/stats/papers/"
 requiresAuthentication:NO
-         parameters:[NSDictionary parametersForCategory:categoryIdentifier upAndComing:upAndComing]
+         parameters:[NSDictionary parametersForCategory:categoryIdentifier
+                                            upAndComing:upAndComing]
             success:^(AFHTTPRequestOperation *operation, NSArray *responseArray) {
                 NSMutableArray *documents = [NSMutableArray array];
                 for (NSDictionary *rawDocument in responseArray) {
@@ -252,14 +337,32 @@ requiresAuthentication:NO
             } failure:failure];
 }
 
-+ (void)fetchDocumentsInUserLibraryAtPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure
++ (void)fetchDocumentsInUserLibraryAtPage:(NSUInteger)pageIndex
+                                    count:(NSUInteger)count
+                                  success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success
+                                  failure:(void (^)(NSError *))failure
 {
-    [self fetchDocumentsWithPath:@"/oapi/library/" public:NO parameters:nil atPage:pageIndex count:count success:success failure:failure];
+    [self fetchDocumentsWithPath:@"/oapi/library/"
+                          public:NO
+                      parameters:nil
+                          atPage:pageIndex
+                           count:count
+                         success:success
+                         failure:failure];
 }
 
-+ (void)fetchAuthoredDocumentsInUserLibraryAtPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure
++ (void)fetchAuthoredDocumentsInUserLibraryAtPage:(NSUInteger)pageIndex
+                                            count:(NSUInteger)count
+                                          success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success
+                                          failure:(void (^)(NSError *))failure
 {
-    [self fetchDocumentsWithPath:@"/oapi/library/documents/authored/" public:NO parameters:nil atPage:pageIndex count:count success:success failure:failure];
+    [self fetchDocumentsWithPath:@"/oapi/library/documents/authored/"
+                          public:NO
+                      parameters:nil
+                          atPage:pageIndex
+                           count:count
+                         success:success
+                         failure:failure];
 }
 
 - (BOOL)isInUserLibrary
@@ -267,10 +370,11 @@ requiresAuthentication:NO
     return [self.inUserLibrary boolValue];
 }
 
-- (AFHTTPRequestOperation *)uploadFileAtURL:(NSURL *)fileURL success:(void (^)(MDLFile *newFile))success failure:(void (^)(NSError *))failure
+- (AFHTTPRequestOperation *)uploadFileAtURL:(NSURL *)fileURL
+                                    success:(void (^)(MDLFile *newFile))success
+                                    failure:(void (^)(NSError *))failure
 {
-    if (!self.identifier)
-    {
+    if (!self.identifier) {
         failure([NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorCancelled userInfo:nil]);
         return nil;
     }
@@ -293,7 +397,8 @@ requiresAuthentication:NO
                    failure:failure];
 }
 
-- (void)fetchDetailsSuccess:(void (^)(MDLDocument *))success failure:(void (^)(NSError *))failure
+- (void)fetchDetailsSuccess:(void (^)(MDLDocument *))success
+                    failure:(void (^)(NSError *))failure
 {
     NSString *path;
     if (self.group) {
@@ -378,9 +483,11 @@ requiresAuthentication:self.isInUserLibrary || (self.group.type == MDLGroupTypeP
 
                 NSMutableArray *authors = [NSMutableArray array];
                 for (NSDictionary *authorDictionary in responseObject[@"authors"]) {
-                    MDLAuthor *author = [MDLAuthor authorWithForename:authorDictionary[@"forename"] surname:authorDictionary[@"surname"]];
-                    if (author)
+                    MDLAuthor *author = [MDLAuthor authorWithForename:authorDictionary[@"forename"]
+                                                              surname:authorDictionary[@"surname"]];
+                    if (author) {
                         [authors addObject:author];
+                    }
                 }
                 self.authors = authors;
 
@@ -389,7 +496,11 @@ requiresAuthentication:self.isInUserLibrary || (self.group.type == MDLGroupTypeP
                     NSDateFormatter *fileDateFormatter = [[NSDateFormatter alloc] init];
                     fileDateFormatter.dateFormat = @"y-M-d H:m:s";
                     for (NSDictionary *fileDictionary in responseObject[@"files"]) {
-                        MDLFile *file = [MDLFile fileWithDateAdded:[fileDateFormatter dateFromString:fileDictionary[@"date_added"]] extension:fileDictionary[@"file_extension"] hash:fileDictionary[@"file_hash"] size:[NSNumber numberOrNumberFromString:fileDictionary[@"file_size"]] document:self];
+                        MDLFile *file = [MDLFile fileWithDateAdded:[fileDateFormatter dateFromString:fileDictionary[@"date_added"]]
+                                                         extension:fileDictionary[@"file_extension"]
+                                                              hash:fileDictionary[@"file_hash"]
+                                                              size:[NSNumber numberOrNumberFromString:fileDictionary[@"file_size"]]
+                                                          document:self];
                         if (file) {
                             [files addObject:file];
                         }
@@ -411,7 +522,8 @@ requiresAuthentication:self.isInUserLibrary || (self.group.type == MDLGroupTypeP
                      failure:(void (^)(NSError *))failure
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    NSString *path = [NSString stringWithFormat:@"/oapi/library/documents/%@/", self.identifier];
+    NSString *path = [NSString stringWithFormat:@"/oapi/library/documents/%@/",
+                      self.identifier];
     NSDictionary *bodyContent = [MDLDocument detailsContentForDocument:self];
 
     [client postPath:path
@@ -430,7 +542,8 @@ requiresAuthentication:self.isInUserLibrary || (self.group.type == MDLGroupTypeP
            failure:(void (^)(NSError *))failure
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    NSString *path = [NSString stringWithFormat:@"/oapi/library/documents/%@/", self.identifier];
+    NSString *path = [NSString stringWithFormat:@"/oapi/library/documents/%@/",
+                      self.identifier];
 
     [client postPath:path
              bodyKey:@"document"
@@ -448,7 +561,8 @@ requiresAuthentication:self.isInUserLibrary || (self.group.type == MDLGroupTypeP
               failure:(void (^)(NSError *))failure
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    NSString *path = [NSString stringWithFormat:@"/oapi/library/documents/%@/", self.identifier];
+    NSString *path = [NSString stringWithFormat:@"/oapi/library/documents/%@/",
+                      self.identifier];
 
     [client postPath:path
              bodyKey:@"document"
@@ -465,7 +579,8 @@ requiresAuthentication:self.isInUserLibrary || (self.group.type == MDLGroupTypeP
                    failure:(void (^)(NSError *))failure
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    NSString *path = [NSString stringWithFormat:@"/oapi/library/documents/%@/", self.identifier];
+    NSString *path = [NSString stringWithFormat:@"/oapi/library/documents/%@/",
+                      self.identifier];
 
     [client postPath:path
              bodyKey:@"document"
@@ -484,8 +599,9 @@ requiresAuthentication:self.isInUserLibrary || (self.group.type == MDLGroupTypeP
                             failure:(void (^)(NSError *))failure
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    NSString *path = [NSString stringWithFormat:@"/oapi/documents/related/%@/", self.identifier];
-    
+    NSString *path = [NSString stringWithFormat:@"/oapi/documents/related/%@/",
+                      self.identifier];
+
     [client getPath:path
 requiresAuthentication:NO
          parameters:@{@"page" : @(pageIndex), @"items" : @(count)}
@@ -520,10 +636,16 @@ requiresAuthentication:NO
               failure:(void (^)(NSError *))failure
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    NSString *path = [NSString stringWithFormat:@"/oapi/library/documents/%@/", self.identifier];
+    NSString *path = [NSString stringWithFormat:@"/oapi/library/documents/%@/",
+                      self.identifier];
+
     [client deletePath:path
             parameters:nil
-               success:^(AFHTTPRequestOperation *requestOperation, id responseObject) { if (success) success(); }
+               success:^(AFHTTPRequestOperation *requestOperation, id responseObject) {
+                   if (success) {
+                       success();
+                   }
+               }
                failure:failure];
 }
 
