@@ -43,7 +43,8 @@
     return author;
 }
 
-+ (MDLAuthor *)authorWithForename:(NSString *)forename surname:(NSString *)surname
++ (MDLAuthor *)authorWithForename:(NSString *)forename
+                          surname:(NSString *)surname
 {
     MDLAuthor *author = [MDLAuthor new];
     author.forename = forename;
@@ -61,16 +62,20 @@
                    success:(void (^)(NSArray *))success
                    failure:(void (^)(NSError *))failure
 {
-    [[MDLMendeleyAPIClient sharedClient] getPath:path
-                          requiresAuthentication:requiresAuthentication
-                                      parameters:parameters
-                                         success:^(AFHTTPRequestOperation *operation, NSArray *responseArray) {
-                                             NSMutableArray *authors = [NSMutableArray array];
-                                             for (NSDictionary *rawAuthor in responseArray)
-                                                 [authors addObject:[MDLAuthor authorWithName:rawAuthor[@"name"]]];
-                                             if (success)
-                                                 success(authors);
-                                         } failure:failure];
+    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
+    [client getPath:path
+requiresAuthentication:requiresAuthentication
+         parameters:parameters
+            success:^(AFHTTPRequestOperation *operation, NSArray *responseArray) {
+                NSMutableArray *authors = [NSMutableArray array];
+                for (NSDictionary *rawAuthor in responseArray) {
+                    [authors addObject:[MDLAuthor authorWithName:rawAuthor[@"name"]]];
+                }
+
+                if (success) {
+                    success(authors);
+                }
+            } failure:failure];
 }
 
 + (void)fetchTopAuthorsInPublicLibraryForCategory:(NSString *)categoryIdentifier
@@ -78,10 +83,12 @@
                                           success:(void (^)(NSArray *))success
                                           failure:(void (^)(NSError *))failure
 {
+    NSDictionary *parameters = [NSDictionary parametersForCategory:categoryIdentifier
+                                                       upAndComing:upAndComing];
+
     [self fetchAuthorsAtPath:@"/oapi/stats/authors/"
       requiresAuthentication:NO
-                  parameters:[NSDictionary parametersForCategory:categoryIdentifier
-                                                     upAndComing:upAndComing]
+                  parameters:parameters
                      success:success
                      failure:failure];
 }

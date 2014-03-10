@@ -34,9 +34,14 @@ NSString * const MDLNotificationRateLimitExceeded          = @"MDLNotificationRa
 
 @interface MDLMendeleyAPIClient ()
 
-@property (strong, nonatomic) id applicationLaunchObserver;
+@property (nonatomic, strong) id applicationLaunchObserver;
+@property (nonatomic, strong) NSURL *redirectURI;
 
-+ (MDLMendeleyAPIClient *)sharedClientReset:(BOOL)reset;
++ (MDLMendeleyAPIClient *)sharedClientReset:(BOOL)reset
+                               withClientID:(NSString *)clientID
+                                     secret:(NSString *)secret
+                                redirectURI:(NSURL *)redirectURI;
+
 + (NSString *)SHA1ForFileAtURL:(NSURL *)fileURL;
 + (id)deserializeAndSanitizeJSONObjectWithData:(NSData *)JSONData;
 + (id)sanitizeObject:(id)object;
@@ -48,40 +53,64 @@ NSString * const MDLNotificationRateLimitExceeded          = @"MDLNotificationRa
 @implementation MDLMendeleyAPIClient
 
 + (MDLMendeleyAPIClient *)sharedClientReset:(BOOL)reset
+                               withClientID:(NSString *)clientID
+                                     secret:(NSString *)secret
+                                redirectURI:(NSURL *)redirectURI
 {
     static MDLMendeleyAPIClient *_sharedClient = nil;
-    @synchronized(self)
-    {
-        if (reset)
-        {
-            if (_sharedClient.applicationLaunchObserver)
+    @synchronized(self) {
+        if (reset) {
+            if (_sharedClient.applicationLaunchObserver) {
                 [[NSNotificationCenter defaultCenter] removeObserver:_sharedClient.applicationLaunchObserver];
+            }
             _sharedClient = nil;
         }
-        if (!_sharedClient)
+
+        if (!_sharedClient) {
             _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:MDLMendeleyAPIBaseURLString]
-                                                 clientID:MDLConsumerKey
-                                                   secret:MDLConsumerSecret];
+                                                 clientID:clientID
+                                                   secret:secret];
+            _sharedClient.redirectURI = redirectURI;
+        }
     }
     
     return _sharedClient;
 }
 
++ (MDLMendeleyAPIClient *)sharedClientWithClientID:(NSString *)clientID
+                                            secret:(NSString *)secret
+                                       redirectURI:(NSURL *)redirectURI
+{
+    return [self sharedClientReset:YES
+                      withClientID:clientID
+                            secret:secret
+                       redirectURI:redirectURI];
+}
+
 + (MDLMendeleyAPIClient *)sharedClient
 {
-    return [self sharedClientReset:NO];
+    return [self sharedClientReset:NO
+                      withClientID:nil
+                            secret:nil
+                       redirectURI:nil];
 }
 
-+ (void)resetSharedClient
-{
-    [self sharedClientReset:YES];
-}
+//+ (void)resetSharedClient
+//{
+//    [self sharedClientReset:YES];
+//}
 
-- (id)initWithBaseURL:(NSURL *)url clientID:(NSString *)clientID secret:(NSString *)secret
+- (id)initWithBaseURL:(NSURL *)url
+             clientID:(NSString *)clientID
+               secret:(NSString *)secret
 {
-    self = [super initWithBaseURL:url clientID:clientID secret:secret];
-    if (!self)
+    self = [super initWithBaseURL:url
+                         clientID:clientID
+                           secret:secret];
+
+    if (!self) {
         return nil;
+    }
 
     self.automaticAuthenticationEnabled     = YES;
     self.rateLimitRemainingForLatestRequest = NSNotFound;
@@ -93,11 +122,13 @@ NSString * const MDLNotificationRateLimitExceeded          = @"MDLNotificationRa
 + (id)deserializeAndSanitizeJSONObjectWithData:(NSData *)JSONData
 {
     id object;
-    if ([JSONData isKindOfClass:[NSData class]])
+    if ([JSONData isKindOfClass:[NSData class]]) {
         object = [NSJSONSerialization JSONObjectWithData:JSONData options:kNilOptions error:nil];
-    else
+    }
+    else {
         object = JSONData;
-    
+    }
+
     return [self sanitizeObject:object];
 }
 
@@ -110,24 +141,28 @@ NSString * const MDLNotificationRateLimitExceeded          = @"MDLNotificationRa
         NSMutableArray *sanitizedArray = [NSMutableArray arrayWithArray:object];
         [object enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             id sanitized = [self sanitizeObject:obj];
-            if (!sanitized)
+            if (!sanitized) {
                 [sanitizedArray removeObjectIdenticalTo:obj];
-            else
+            }
+            else {
                 [sanitizedArray replaceObjectAtIndex:[sanitizedArray indexOfObject:obj] withObject:sanitized];
+            }
         }];
-        
+
         return [NSArray arrayWithArray:sanitizedArray];
     }
     else if ([object isKindOfClass:[NSDictionary class]]) {
         NSMutableDictionary *sanitizedDictionary = [NSMutableDictionary dictionaryWithDictionary:object];
         [object enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
             id sanitized = [self sanitizeObject:obj];
-            if (!sanitized)
+            if (!sanitized) {
                 [sanitizedDictionary removeObjectForKey:key];
-            else
+            }
+            else {
                 [sanitizedDictionary setObject:sanitized forKey:key];
+            }
         }];
-        
+
         return [NSDictionary dictionaryWithDictionary:sanitizedDictionary];
     }
     else {
@@ -138,10 +173,15 @@ NSString * const MDLNotificationRateLimitExceeded          = @"MDLNotificationRa
 - (void)updateRateLimitRemainingWithOperation:(AFHTTPRequestOperation *)operation
 {
     NSString *rateLimitRemaining = operation.response.allHeaderFields[@"x-ratelimit-remaining"];
-    if (!rateLimitRemaining || ![[NSScanner scannerWithString:rateLimitRemaining] scanInteger:&_rateLimitRemainingForLatestRequest])
+
+    if (!rateLimitRemaining || ![[NSScanner scannerWithString:rateLimitRemaining] scanInteger:&_rateLimitRemainingForLatestRequest]) {
         self.rateLimitRemainingForLatestRequest = NSNotFound;
-    if (self.rateLimitRemainingForLatestRequest == 0)
-        [[NSNotificationCenter defaultCenter] postNotificationName:MDLNotificationRateLimitExceeded object:operation];
+    }
+
+    if (self.rateLimitRemainingForLatestRequest == 0) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:MDLNotificationRateLimitExceeded
+                                                            object:operation];
+    }
 }
 
 #pragma mark - Operation
@@ -159,12 +199,14 @@ NSString * const MDLNotificationRateLimitExceeded          = @"MDLNotificationRa
     operation = [self HTTPRequestOperationWithRequest:request
                                               success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                                   [self updateRateLimitRemainingWithOperation:operation];
-                                                  if (success)
+                                                  if (success) {
                                                       success(operation, [MDLMendeleyAPIClient deserializeAndSanitizeJSONObjectWithData:responseObject]);
+                                                  }
                                               }
                                               failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                                  if (failure)
+                                                  if (failure) {
                                                       failure(error);
+                                                  }
                                               }];
     [self enqueueHTTPRequestOperation:operation];
     return operation;
@@ -175,7 +217,7 @@ NSString * const MDLNotificationRateLimitExceeded          = @"MDLNotificationRa
     NSDictionary *parameters = @{@"client_id": self.clientID,
                                  @"response_type": @"code",
                                  @"scope": @"all",
-                                 @"redirect_uri": MDLURLScheme};
+                                 @"redirect_uri": self.redirectURI.absoluteString};
     
     NSURLRequest *request = [self requestWithMethod:@"GET" path:@"oauth/authorize" parameters:parameters];
     return request.URL;
@@ -187,7 +229,7 @@ NSString * const MDLNotificationRateLimitExceeded          = @"MDLNotificationRa
 {
     [self authenticateUsingOAuthWithPath:@"oauth/token"
                                     code:code
-                             redirectURI:MDLURLScheme
+                             redirectURI:self.redirectURI.absoluteString
                                  success:success
                                  failure:failure];
 }
@@ -261,12 +303,14 @@ NSString * const MDLNotificationRateLimitExceeded          = @"MDLNotificationRa
     operation = [self HTTPRequestOperationWithRequest:request
                                               success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                                   [self updateRateLimitRemainingWithOperation:operation];
-                                                  if (success)
+                                                  if (success) {
                                                       success(operation, [MDLMendeleyAPIClient deserializeAndSanitizeJSONObjectWithData:responseObject]);
+                                                  }
                                               }
                                               failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                                  if (failure)
+                                                  if (failure) {
                                                       failure(error);
+                                                  }
                                               }];
     [self enqueueHTTPRequestOperation:operation];
     return operation;
@@ -281,14 +325,16 @@ NSString * const MDLNotificationRateLimitExceeded          = @"MDLNotificationRa
     NSMutableURLRequest *request= [self requestWithMethod:@"PUT" path:path parameters:@{@"oauth_body_hash" : fileHash ?: @""}];
     request.HTTPBody = [NSData dataWithContentsOfURL:fileURL];
     [request setValue:[NSString stringWithFormat:@"attachment; filename=\"%@\"", [[fileURL path] lastPathComponent]] forHTTPHeaderField:@"Content-Disposition"];
-	
+
     AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self updateRateLimitRemainingWithOperation:operation];
-        if (success)
+        if (success) {
             success(operation, fileHash, responseObject);
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (failure)
+        if (failure) {
             failure(error);
+        }
     }];
     [self enqueueHTTPRequestOperation:operation];
     
@@ -301,14 +347,15 @@ NSString * const MDLNotificationRateLimitExceeded          = @"MDLNotificationRa
 {
     NSData *data = [NSData dataWithContentsOfURL:fileURL];
     uint8_t digest[CC_SHA1_DIGEST_LENGTH];
-    
+
     CC_SHA1(data.bytes, data.length, digest);
-    
+
     NSMutableString *output = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
-    
-    for (int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++)
+
+    for (int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++) {
         [output appendFormat:@"%02x", digest[i]];
-    
+    }
+
     return output;
 }
 
@@ -319,23 +366,26 @@ NSString * const MDLNotificationRateLimitExceeded          = @"MDLNotificationRa
 
 + (NSNumber *)numberOrNumberFromString:(id)numberOrString
 {
-    if ([numberOrString isKindOfClass:[NSString class]])
+    if ([numberOrString isKindOfClass:[NSString class]]) {
         return [[NSNumberFormatter new] numberFromString:numberOrString];
+    }
     return numberOrString;
 }
 
 + (NSNumber *)boolNumberFromNumberOrString:(id)numberOrString
 {
     if ([numberOrString isKindOfClass:[NSString class]]) {
-        if ([@"1" isEqualToString:numberOrString])
+        if ([@"1" isEqualToString:numberOrString]) {
             return @YES;
-        else
+        }
+        else {
             return @NO;
+        }
     }
     else if ([numberOrString isKindOfClass:[NSNumber class]]) {
         return @([numberOrString boolValue]);
     }
-    
+
     return nil;
 }
 
@@ -364,14 +414,19 @@ NSString * const MDLNotificationRateLimitExceeded          = @"MDLNotificationRa
     return [[NSNumber numberOrNumberFromString:self[@"items_per_page"]] unsignedIntegerValue];
 }
 
-+ (NSDictionary *)parametersForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing
++ (NSDictionary *)parametersForCategory:(NSString *)categoryIdentifier
+                            upAndComing:(BOOL)upAndComing
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    if (upAndComing)
+
+    if (upAndComing) {
         parameters[@"upandcoming"] = @"true";
-    if (categoryIdentifier)
+    }
+
+    if (categoryIdentifier) {
         parameters[@"discipline"] = categoryIdentifier;
-    
+    }
+
     return parameters;
 }
 

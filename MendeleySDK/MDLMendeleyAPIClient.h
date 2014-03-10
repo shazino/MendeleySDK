@@ -23,9 +23,9 @@
 
 #import "AFOAuth2Client.h"
 
-extern NSString * const MDLConsumerKey;
-extern NSString * const MDLConsumerSecret;
-extern NSString * const MDLURLScheme;
+//extern NSString * const MDLConsumerKey;
+//extern NSString * const MDLConsumerSecret;
+//extern NSString * const MDLURLScheme;
 
 extern NSString * const MDLNotificationDidAcquireAccessToken;
 extern NSString * const MDLNotificationFailedToAcquireAccessToken;
@@ -58,6 +58,10 @@ extern NSString * const MDLNotificationRateLimitExceeded;
  @return The newly-initialized client
  */
 + (MDLMendeleyAPIClient *)sharedClient;
+
++ (MDLMendeleyAPIClient *)sharedClientWithClientID:(NSString *)clientID
+                                            secret:(NSString *)secret
+                                       redirectURI:(NSURL *)redirectURI;
 
 /**
  Deallocates the singleton instance returned by `sharedClient`.

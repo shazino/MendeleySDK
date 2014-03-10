@@ -40,32 +40,49 @@
 
 + (void)fetchCategoriesSuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    [[MDLMendeleyAPIClient sharedClient] getPath:@"/oapi/documents/categories/"
-                          requiresAuthentication:NO
-                                      parameters:nil
-                                         success:^(AFHTTPRequestOperation *operation, NSArray *responseArray) {
-                                             NSMutableArray *categories = [NSMutableArray array];
-                                             for (NSDictionary *rawCategory in responseArray)
-                                                 [categories addObject:[MDLCategory categoryWithIdentifier:rawCategory[@"id"] name:rawCategory[@"name"] slug:rawCategory[@"slug"]]];
-                                             if (success)
-                                                 success(categories);
-                                         }
-                                         failure:failure];
+    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
+
+    [client getPath:@"/oapi/documents/categories/"
+requiresAuthentication:NO
+         parameters:nil
+            success:^(AFHTTPRequestOperation *operation, NSArray *responseArray) {
+                NSMutableArray *categories = [NSMutableArray array];
+                for (NSDictionary *rawCategory in responseArray) {
+                    MDLCategory *category = [MDLCategory categoryWithIdentifier:rawCategory[@"id"]
+                                                                           name:rawCategory[@"name"]
+                                                                           slug:rawCategory[@"slug"]];
+                    [categories addObject:category];
+                }
+
+                if (success) {
+                    success(categories);
+                }
+            }
+            failure:failure];
 }
 
 - (void)fetchSubcategoriesSuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    [[MDLMendeleyAPIClient sharedClient] getPath:[NSString stringWithFormat:@"/oapi/documents/subcategories/%@/", self.identifier]
-                          requiresAuthentication:NO
-                                      parameters:nil
-                                         success:^(AFHTTPRequestOperation *operation, NSArray *responseArray) {
-                                             NSMutableArray *subcategories = [NSMutableArray array];
-                                             for (NSDictionary *rawSubcategory in responseArray)
-                                                 [subcategories addObject:[MDLSubcategory subcategoryWithIdentifier:rawSubcategory[@"id"] name:rawSubcategory[@"name"] slug:rawSubcategory[@"slug"]]];
-                                             if (success)
-                                                 success(subcategories);
-                                         }
-                                         failure:failure];
+    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
+    NSString *path = [NSString stringWithFormat:@"/oapi/documents/subcategories/%@/", self.identifier];
+
+    [client getPath:path
+requiresAuthentication:NO
+         parameters:nil
+            success:^(AFHTTPRequestOperation *operation, NSArray *responseArray) {
+                NSMutableArray *subcategories = [NSMutableArray array];
+                for (NSDictionary *rawSubcategory in responseArray) {
+                    MDLSubcategory *subcategory = [MDLSubcategory subcategoryWithIdentifier:rawSubcategory[@"id"]
+                                                                                       name:rawSubcategory[@"name"]
+                                                                                       slug:rawSubcategory[@"slug"]];
+                    [subcategories addObject:subcategory];
+                }
+
+                if (success) {
+                    success(subcategories);
+                }
+            }
+            failure:failure];
 }
 
 - (void)fetchLastTagsInPublicLibrarySuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure

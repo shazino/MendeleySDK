@@ -25,12 +25,14 @@
 
 @implementation MDLSubcategory
 
-+ (MDLSubcategory *)subcategoryWithIdentifier:(NSString *)identifier name:(NSString *)name slug:(NSString *)slug
++ (MDLSubcategory *)subcategoryWithIdentifier:(NSString *)identifier
+                                         name:(NSString *)name
+                                         slug:(NSString *)slug
 {
     MDLSubcategory *subcategory = [MDLSubcategory new];
     subcategory.identifier = identifier;
-    subcategory.name = name;
-    subcategory.slug = slug;
+    subcategory.name       = name;
+    subcategory.slug       = slug;
     return subcategory;
 }
 

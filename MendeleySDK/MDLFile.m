@@ -28,7 +28,11 @@
 
 @implementation MDLFile
 
-+ (MDLFile *)fileWithDateAdded:(NSDate *)dateAdded extension:(NSString *)extension hash:(NSString *)hash size:(NSNumber *)size document:(MDLDocument *)document
++ (MDLFile *)fileWithDateAdded:(NSDate *)dateAdded
+                     extension:(NSString *)extension
+                          hash:(NSString *)hash
+                          size:(NSNumber *)size
+                      document:(MDLDocument *)document
 {
     MDLFile *file = [MDLFile new];
     file.dateAdded = dateAdded;
@@ -39,7 +43,8 @@
     return file;
 }
 
-+ (MDLFile *)fileWithPublicURL:(NSURL *)publicURL document:(MDLDocument *)document
++ (MDLFile *)fileWithPublicURL:(NSURL *)publicURL
+                      document:(MDLDocument *)document
 {
     MDLFile *file = [MDLFile new];
     file.publicURL = publicURL;
@@ -52,14 +57,16 @@
                                          success:(void (^)())success
                                          failure:(void (^)(NSError *))failure
 {
+    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
     NSString *resourcePath = (self.publicURL) ? [self.publicURL absoluteString] : [NSString stringWithFormat:@"/oapi/library/documents/%@/file/%@//", self.document.identifier, self.hash];
-    return [[MDLMendeleyAPIClient sharedClient] getPath:resourcePath
-                                 requiresAuthentication:self.document.isInUserLibrary
-                                             parameters:nil
-                               outputStreamToFileAtPath:path
-                                               progress:progress
-                                                success:^(AFHTTPRequestOperation *requestOperation, id responseObject) { if (success) success(); }
-                                                failure:failure];
+
+    return [client getPath:resourcePath
+    requiresAuthentication:self.document.isInUserLibrary
+                parameters:nil
+  outputStreamToFileAtPath:path
+                  progress:progress
+                   success:^(AFHTTPRequestOperation *requestOperation, id responseObject) { if (success) success(); }
+                   failure:failure];
 }
 
 @end

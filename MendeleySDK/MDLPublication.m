@@ -26,7 +26,11 @@
 
 @interface MDLPublication ()
 
-+ (void)getPublicationsAtPath:(NSString *)path requiresAuthentication:(BOOL)requiresAuthentication parameters:(NSDictionary *)parameters success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
++ (void)getPublicationsAtPath:(NSString *)path
+       requiresAuthentication:(BOOL)requiresAuthentication
+                   parameters:(NSDictionary *)parameters
+                      success:(void (^)(NSArray *))success
+                      failure:(void (^)(NSError *))failure;
 
 @end
 
@@ -34,36 +38,62 @@
 
 + (MDLPublication *)publicationWithName:(NSString *)name
 {
-    if (!name)
+    if (!name) {
         return nil;
-    
+    }
+
     MDLPublication *publication = [MDLPublication new];
     publication.name = name;
     return publication;
 }
 
-+ (void)getPublicationsAtPath:(NSString *)path requiresAuthentication:(BOOL)requiresAuthentication parameters:(NSDictionary *)parameters success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)getPublicationsAtPath:(NSString *)path
+       requiresAuthentication:(BOOL)requiresAuthentication
+                   parameters:(NSDictionary *)parameters
+                      success:(void (^)(NSArray *))success
+                      failure:(void (^)(NSError *))failure
 {
-    [[MDLMendeleyAPIClient sharedClient] getPath:path
-                          requiresAuthentication:requiresAuthentication
-                                      parameters:parameters
-                                         success:^(AFHTTPRequestOperation *operation, NSArray *responseArray) {
-                                             NSMutableArray *publications = [NSMutableArray array];
-                                             for (NSDictionary *rawPublication in responseArray)
-                                                 [publications addObject:[MDLPublication publicationWithName:rawPublication[@"name"]]];
-                                             if (success)
-                                                 success(publications);
-                                         } failure:failure];
+    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
+
+    [client getPath:path
+requiresAuthentication:requiresAuthentication
+         parameters:parameters
+            success:^(AFHTTPRequestOperation *operation, NSArray *responseArray) {
+                NSMutableArray *publications = [NSMutableArray array];
+                for (NSDictionary *rawPublication in responseArray) {
+                    [publications addObject:[MDLPublication publicationWithName:rawPublication[@"name"]]];
+                }
+
+                if (success) {
+                    success(publications);
+                }
+            }
+            failure:failure];
 }
 
-+ (void)fetchTopPublicationsInPublicLibraryForCategory:(NSString *)categoryIdentifier upAndComing:(BOOL)upAndComing success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)fetchTopPublicationsInPublicLibraryForCategory:(NSString *)categoryIdentifier
+                                           upAndComing:(BOOL)upAndComing
+                                               success:(void (^)(NSArray *))success
+                                               failure:(void (^)(NSError *))failure
 {
-    [self getPublicationsAtPath:@"/oapi/stats/publications/" requiresAuthentication:NO parameters:[NSDictionary parametersForCategory:categoryIdentifier upAndComing:upAndComing] success:success failure:failure];
+    NSDictionary *parameters = [NSDictionary parametersForCategory:categoryIdentifier
+                                                       upAndComing:upAndComing];
+
+    [self getPublicationsAtPath:@"/oapi/stats/publications/"
+         requiresAuthentication:NO
+                     parameters:parameters
+                        success:success
+                        failure:failure];
 }
 
-+ (void)fetchTopPublicationsInUserLibrarySuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)fetchTopPublicationsInUserLibrarySuccess:(void (^)(NSArray *))success
+                                         failure:(void (^)(NSError *))failure
 {
-    [self getPublicationsAtPath:@"/oapi/library/publications/" requiresAuthentication:YES parameters:nil success:success failure:failure];
+    [self getPublicationsAtPath:@"/oapi/library/publications/"
+         requiresAuthentication:YES
+                     parameters:nil
+                        success:success
+                        failure:failure];
 }
 
 @end
