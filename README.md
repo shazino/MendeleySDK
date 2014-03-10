@@ -15,7 +15,7 @@ MendeleySDK is a [Mendeley API](http://apidocs.mendeley.com) client for iOS and 
 
 [CocoaPods](http://cocoapods.org) is the recommended way to add MendeleySDK to your project.
 
-Here’s an example podfile that installs MendeleySDK and its dependency, AFOAuth1Client. 
+Here’s an example podfile that installs MendeleySDK and its dependency, AFOAuth2Client. 
 
 ```ruby
 platform :ios, '5.0'
@@ -25,51 +25,25 @@ pod 'MendeleySDK', '1.3.2'
 
 ### App credentials
 
-Define your API consumer key and secret (in your AppDelegate.m, for instance):
+Configure the shared API client by calling `configureSharedClientWithClientID:secret:redirectURI:` with your application consumer key, secret, and redirect URI (in your `application:didFinishLaunchingWithOptions:`, for instance):
 
 ```objective-c
-NSString * const MDLConsumerKey    = @"###my_consumer_key###";
-NSString * const MDLConsumerSecret = @"###my_consumer_secret###";
+[MDLMendeleyAPIClient configureSharedClientWithClientID:@"###my_consumer_key###"
+                                                 secret:@"###my_consumer_secret###"
+                                            redirectURI:@"###mdl-custom-scheme://oauth?###"];
 ```
 
-If you don’t have a consumer key and secret, go to the [Mendeley Developers Portal](http://dev.mendeley.com/applications/register/) and register your application first.
+If you don’t have a consumer key and secret, go to the [Mendeley Developers Portal](https://sites.google.com/site/mendeleyapi/home/authentication) and register your application first.
 
-### OAuth callback URL
+**Note: if you already had an application for OAuth 1.0, you’ll need to register a new application for OAuth 2.0.**
 
-The Mendeley Open API uses [3leg OAuth 1.0](http://apidocs.mendeley.com/home/authentication)
- authentication. In order to gain access to protected resources, your application
- will open Mobile Safari and prompt for user credentials. iOS will then switch
- back to your application using a custom URL scheme. It means that you need to
- set it up in your Xcode project.
+### OAuth authorization flow
 
-- Open the project editor, select your main target, click the Info button.
-- Add a URL Type, and type a unique URL scheme (for instance ’mymendeleyclient’).
+Once the API client is configured, you need to present a web browser with a `authenticationWebURL` request. This page will make sure that your application is properly recognized, and prompt the user for his credentials. You can either use an in-app `UIWebView`, or open Safari and catch the response with a custom URL scheme. 
 
-![Xcode URL types](https://github.com/shazino/MendeleySDK/wiki/images/Xcode-URL-types.png)
+After being logged in, you’ll get an authorization code. You can then validate this code in order to obtain the access and refresh tokens with `validateOAuthCode:success:failure:`.
 
-- Update your app delegate to notify MendeleySDK as following:
-
-```objective-c
-#import "AFOAuth1Client.h"
-
-NSString * const MDLURLScheme = @"##my_URL_scheme##";
-
-(…)
-
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-{
-    if ([[url scheme] isEqualToString:MDLURLScheme])
-    {
-        NSNotification *notification = [NSNotification notificationWithName:kAFApplicationLaunchedWithURLNotification object:nil userInfo:@{kAFApplicationLaunchOptionsURLKey: url}];
-        [[NSNotificationCenter defaultCenter] postNotification:notification];
-    }
-    
-    return YES;
-}
-```
-_Note: you can skip this step if you only use public resources_
-
-Okay, you should be ready to go now! You can also take a look at the demo iOS app and see how things work.
+Okay, you should be ready to go now! You can also take a look at the demo apps and see how things work.
 
 ## Examples
 
