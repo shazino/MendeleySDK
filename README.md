@@ -4,6 +4,12 @@
 
 MendeleySDK is a [Mendeley API](http://apidocs.mendeley.com) client for iOS and Mac OS X, built on top of [AFNetworking](http://www.github.com/AFNetworking/AFNetworking) and [AFOAuth1Client](http://www.github.com/AFNetworking/AFOAuth1Client).
 
+> **Important Notice**
+>
+> Mendeley recently annouced that applications will have to be migrated to OAuth 2.0 by April 14, 2014 ([see instructions on Google Groups](https://groups.google.com/forum/#!topic/mendeley-open-api-developers/KmUQW9I0ST0)).
+>
+> The MendeleySDK is currently being refactored to comply with the new authentication flow, as you can see on the [`oauth2`](https://github.com/shazino/MendeleySDK/tree/oauth2) branch.
+
 ![Demo app screenshot paper](https://github.com/shazino/MendeleySDK/wiki/images/demo-app-screenshot-paper.png) ![Demo app screenshot publication](https://github.com/shazino/MendeleySDK/wiki/images/demo-app-screenshot-pub.png)
 
 ## Getting Started
