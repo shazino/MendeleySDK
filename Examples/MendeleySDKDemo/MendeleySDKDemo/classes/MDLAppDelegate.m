@@ -35,17 +35,23 @@ NSString * const MDLURLScheme      = @"mdl-mendeleysdkdemo";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    if ([((UINavigationController *)self.window.rootViewController).navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
-        [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.7 green:0 blue:0 alpha:1]];
+    [MDLMendeleyAPIClient configureSharedClientWithClientID:MDLConsumerKey
+                                                     secret:MDLConsumerSecret
+                                                redirectURI:MDLURLScheme];
+
+    UIColor *tintColor = [UIColor colorWithRed:0.7 green:0 blue:0 alpha:1];
+    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+    if ([navigationController.navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
+        [[UINavigationBar appearance] setBarTintColor:tintColor];
         [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
         [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
     }
     else {
-        [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.7 green:0 blue:0 alpha:1]];
+        [[UINavigationBar appearance] setTintColor:tintColor];
     }
-    
+
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
-    
+
     return YES;
 }
 

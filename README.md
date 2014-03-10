@@ -2,9 +2,12 @@
 **Objective-C client for the Mendeley Open API.**
 [![Build Status](https://travis-ci.org/shazino/MendeleySDK.png?branch=master)](https://travis-ci.org/shazino/MendeleySDK)
 
-MendeleySDK is a [Mendeley API](http://apidocs.mendeley.com) client for iOS and Mac OS X, built on top of [AFNetworking](http://www.github.com/AFNetworking/AFNetworking) and [AFOAuth1Client](http://www.github.com/AFNetworking/AFOAuth1Client).
+MendeleySDK is a [Mendeley API](http://apidocs.mendeley.com) client for iOS and OS X,
+ built on top of [AFNetworking](http://www.github.com/AFNetworking/AFNetworking)
+ and [AFOAuth2Client](http://www.github.com/AFNetworking/AFOAuth2Client).
 
-![Demo app screenshot paper](https://github.com/shazino/MendeleySDK/wiki/images/demo-app-screenshot-paper.png) ![Demo app screenshot publication](https://github.com/shazino/MendeleySDK/wiki/images/demo-app-screenshot-pub.png)
+![Demo app screenshot paper](https://github.com/shazino/MendeleySDK/wiki/images/demo-app-screenshot-paper.png) 
+![Demo app screenshot publication](https://github.com/shazino/MendeleySDK/wiki/images/demo-app-screenshot-pub.png)
 
 ## Getting Started
 
@@ -33,7 +36,11 @@ If you don’t have a consumer key and secret, go to the [Mendeley Developers Po
 
 ### OAuth callback URL
 
-The Mendeley Open API uses [3leg OAuth 1.0](http://apidocs.mendeley.com/home/authentication) authentication. In order to gain access to protected resources, your application will open Mobile Safari and prompt for user credentials. iOS will then switch back to your application using a custom URL scheme. It means that you need to set it up in your Xcode project.
+The Mendeley Open API uses [3leg OAuth 1.0](http://apidocs.mendeley.com/home/authentication)
+ authentication. In order to gain access to protected resources, your application
+ will open Mobile Safari and prompt for user credentials. iOS will then switch
+ back to your application using a custom URL scheme. It means that you need to
+ set it up in your Xcode project.
 
 - Open the project editor, select your main target, click the Info button.
 - Add a URL Type, and type a unique URL scheme (for instance ’mymendeleyclient’).
@@ -95,7 +102,11 @@ MDLDocument *document;
 
 ## Requirements
 
-MendeleySDK requires Xcode 4.4 with either the [iOS 5.0](http://developer.apple.com/library/ios/#releasenotes/General/WhatsNewIniPhoneOS/Articles/iOS5.html) or [Mac OS 10.6](http://developer.apple.com/library/mac/#releasenotes/MacOSX/WhatsNewInOSX/Articles/MacOSX10_6.html#//apple_ref/doc/uid/TP40008898-SW7) ([64-bit with modern Cocoa runtime](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtVersionsPlatforms.html)) SDK, as well as [AFOAuth1Client](https://github.com/AFNetworking/AFOAuth1Client).
+MendeleySDK requires Xcode 4.4 with either the
+ [iOS 5.0](http://developer.apple.com/library/ios/#releasenotes/General/WhatsNewIniPhoneOS/Articles/iOS5.html)
+ or [Mac OS 10.6](http://developer.apple.com/library/mac/#releasenotes/MacOSX/WhatsNewInOSX/Articles/MacOSX10_6.html#//apple_ref/doc/uid/TP40008898-SW7)
+ ([64-bit with modern Cocoa runtime](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtVersionsPlatforms.html)) SDK,
+ as well as [AFOAuth2Client](https://github.com/AFNetworking/AFOAuth2Client).
 
 ## Credits
 

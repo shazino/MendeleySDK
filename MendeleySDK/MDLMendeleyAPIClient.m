@@ -35,12 +35,12 @@ NSString * const MDLNotificationRateLimitExceeded          = @"MDLNotificationRa
 @interface MDLMendeleyAPIClient ()
 
 @property (nonatomic, strong) id applicationLaunchObserver;
-@property (nonatomic, strong) NSURL *redirectURI;
+@property (nonatomic, copy)   NSString *redirectURI;
 
 + (MDLMendeleyAPIClient *)sharedClientReset:(BOOL)reset
                                withClientID:(NSString *)clientID
                                      secret:(NSString *)secret
-                                redirectURI:(NSURL *)redirectURI;
+                                redirectURI:(NSString *)redirectURI;
 
 + (NSString *)SHA1ForFileAtURL:(NSURL *)fileURL;
 + (id)deserializeAndSanitizeJSONObjectWithData:(NSData *)JSONData;
@@ -55,7 +55,7 @@ NSString * const MDLNotificationRateLimitExceeded          = @"MDLNotificationRa
 + (MDLMendeleyAPIClient *)sharedClientReset:(BOOL)reset
                                withClientID:(NSString *)clientID
                                      secret:(NSString *)secret
-                                redirectURI:(NSURL *)redirectURI
+                                redirectURI:(NSString *)redirectURI
 {
     static MDLMendeleyAPIClient *_sharedClient = nil;
     @synchronized(self) {
@@ -66,7 +66,7 @@ NSString * const MDLNotificationRateLimitExceeded          = @"MDLNotificationRa
             _sharedClient = nil;
         }
 
-        if (!_sharedClient) {
+        if (!_sharedClient && clientID && secret && redirectURI) {
             _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:MDLMendeleyAPIBaseURLString]
                                                  clientID:clientID
                                                    secret:secret];
@@ -77,14 +77,14 @@ NSString * const MDLNotificationRateLimitExceeded          = @"MDLNotificationRa
     return _sharedClient;
 }
 
-+ (MDLMendeleyAPIClient *)sharedClientWithClientID:(NSString *)clientID
-                                            secret:(NSString *)secret
-                                       redirectURI:(NSURL *)redirectURI
++ (void)configureSharedClientWithClientID:(NSString *)clientID
+                                   secret:(NSString *)secret
+                              redirectURI:(NSString *)redirectURI
 {
-    return [self sharedClientReset:YES
-                      withClientID:clientID
-                            secret:secret
-                       redirectURI:redirectURI];
+    [self sharedClientReset:YES
+               withClientID:clientID
+                     secret:secret
+                redirectURI:redirectURI];
 }
 
 + (MDLMendeleyAPIClient *)sharedClient
@@ -95,10 +95,13 @@ NSString * const MDLNotificationRateLimitExceeded          = @"MDLNotificationRa
                        redirectURI:nil];
 }
 
-//+ (void)resetSharedClient
-//{
-//    [self sharedClientReset:YES];
-//}
++ (void)resetSharedClient
+{
+    [self sharedClientReset:YES
+               withClientID:nil
+                     secret:nil
+                redirectURI:nil];
+}
 
 - (id)initWithBaseURL:(NSURL *)url
              clientID:(NSString *)clientID
@@ -217,7 +220,7 @@ NSString * const MDLNotificationRateLimitExceeded          = @"MDLNotificationRa
     NSDictionary *parameters = @{@"client_id": self.clientID,
                                  @"response_type": @"code",
                                  @"scope": @"all",
-                                 @"redirect_uri": self.redirectURI.absoluteString};
+                                 @"redirect_uri": self.redirectURI};
     
     NSURLRequest *request = [self requestWithMethod:@"GET" path:@"oauth/authorize" parameters:parameters];
     return request.URL;
@@ -229,7 +232,7 @@ NSString * const MDLNotificationRateLimitExceeded          = @"MDLNotificationRa
 {
     [self authenticateUsingOAuthWithPath:@"oauth/token"
                                     code:code
-                             redirectURI:self.redirectURI.absoluteString
+                             redirectURI:self.redirectURI
                                  success:success
                                  failure:failure];
 }
@@ -348,7 +351,7 @@ NSString * const MDLNotificationRateLimitExceeded          = @"MDLNotificationRa
     NSData *data = [NSData dataWithContentsOfURL:fileURL];
     uint8_t digest[CC_SHA1_DIGEST_LENGTH];
 
-    CC_SHA1(data.bytes, data.length, digest);
+    CC_SHA1(data.bytes, (CC_LONG)data.length, digest);
 
     NSMutableString *output = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
 

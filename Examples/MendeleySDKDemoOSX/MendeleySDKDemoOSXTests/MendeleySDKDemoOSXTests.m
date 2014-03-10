@@ -27,6 +27,9 @@
 
 - (void)testInit
 {
+    [MDLMendeleyAPIClient configureSharedClientWithClientID:@"testID"
+                                                     secret:@"testSecret"
+                                                redirectURI:@"testURI"];
     STAssertNotNil([MDLMendeleyAPIClient sharedClient], @"The Mendeley SDK should be accessible");
 }
 

@@ -15,9 +15,11 @@ NSString * const MDLURLScheme      = @"mdl-mendeleysdkdemo";
 
 @implementation MDLAppDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+- (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
-    // Insert code here to initialize your application
+    [MDLMendeleyAPIClient configureSharedClientWithClientID:MDLConsumerKey
+                                                     secret:MDLConsumerSecret
+                                                redirectURI:MDLURLScheme];
 }
 
 @end
