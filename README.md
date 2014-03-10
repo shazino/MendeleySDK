@@ -43,6 +43,8 @@ Once the API client is configured, you need to present a web browser with a `aut
 
 After being logged in, you’ll get an authorization code. You can then validate this code in order to obtain the access and refresh tokens with `validateOAuthCode:success:failure:`.
 
+As of today, MendeleySDK doesn’t support the client credentials flow for public resources.
+
 Okay, you should be ready to go now! You can also take a look at the demo apps and see how things work.
 
 ## Examples
