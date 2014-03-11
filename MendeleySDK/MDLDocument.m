@@ -178,7 +178,7 @@ NSString * const MDLDocumentTypeJournalArticle = @"Journal Article";
                        success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success
                        failure:(void (^)(NSError *))failure
 {
-    NSMutableDictionary *mutableParameters = [parameters mutableCopy];
+    NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
     mutableParameters[@"page"]  = @(pageIndex);
     mutableParameters[@"items"] = @(count);
 
