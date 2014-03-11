@@ -196,7 +196,7 @@ NSString * const MDLNotificationRateLimitExceeded          = @"MDLNotificationRa
                             failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary *requestParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
-    
+
     NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:requestParameters];
     AFHTTPRequestOperation *operation;
     operation = [self HTTPRequestOperationWithRequest:request
@@ -221,7 +221,7 @@ NSString * const MDLNotificationRateLimitExceeded          = @"MDLNotificationRa
                                  @"response_type": @"code",
                                  @"scope": @"all",
                                  @"redirect_uri": self.redirectURI};
-    
+
     NSURLRequest *request = [self requestWithMethod:@"GET" path:@"oauth/authorize" parameters:parameters];
     return request.URL;
 }
@@ -237,6 +237,17 @@ NSString * const MDLNotificationRateLimitExceeded          = @"MDLNotificationRa
                                  failure:failure];
 }
 
+- (void)refreshToken:(NSString *)refreshToken
+             success:(void (^)(AFOAuthCredential *credential))success
+             failure:(void (^)(NSError *error))failure
+{
+    [self setDefaultHeader:@"Authorization" value:nil];
+    [self authenticateUsingOAuthWithPath:@"oauth/token"
+                            refreshToken:refreshToken
+                                 success:success
+                                 failure:failure];
+}
+
 - (AFHTTPRequestOperation *)getPath:(NSString *)path
              requiresAuthentication:(BOOL)requiresAuthentication
                          parameters:(NSDictionary *)parameters
@@ -248,7 +259,7 @@ NSString * const MDLNotificationRateLimitExceeded          = @"MDLNotificationRa
     NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:parameters];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     operation.outputStream = [NSOutputStream outputStreamToFileAtPath:filePath append:NO];
-    
+
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self updateRateLimitRemainingWithOperation:operation];
         if (success)
@@ -257,9 +268,9 @@ NSString * const MDLNotificationRateLimitExceeded          = @"MDLNotificationRa
         if (failure)
             failure(error);
     }];
-    
+
     [operation setDownloadProgressBlock:progress];
-    
+
     [self enqueueHTTPRequestOperation:operation];
     return operation;
 }
