@@ -35,10 +35,11 @@ requiresAuthentication:(BOOL)requiresAuthentication
 
 @implementation MDLTag
 
-+ (MDLTag *)tagWithName:(NSString *)name count:(NSNumber *)count
++ (instancetype)tagWithName:(NSString *)name
+                      count:(NSNumber *)count
 {
     MDLTag *tag = [MDLTag new];
-    tag.name = name;
+    tag.name  = name;
     tag.count = count;
     return tag;
 }
@@ -55,13 +56,18 @@ requiresAuthentication:requiresAuthentication
          parameters:nil
             success:^(AFHTTPRequestOperation *operation, NSArray *responseArray) {
                 NSMutableArray *tags = [NSMutableArray array];
+
                 for (NSDictionary *rawTagOrGroupOfTag in responseArray) {
                     if (rawTagOrGroupOfTag[@"name"] && rawTagOrGroupOfTag[@"count"]) {
-                        [tags addObject:[MDLTag tagWithName:rawTagOrGroupOfTag[@"name"] count:rawTagOrGroupOfTag[@"count"]]];
+                        MDLTag *tag = [MDLTag tagWithName:rawTagOrGroupOfTag[@"name"]
+                                                    count:rawTagOrGroupOfTag[@"count"]];
+                        [tags addObject:tag];
                     }
                     else if ([rawTagOrGroupOfTag[@"tags"] isKindOfClass:[NSArray class]]) {
                         for (NSDictionary *rawTag in rawTagOrGroupOfTag[@"tags"]) {
-                            [tags addObject:[MDLTag tagWithName:rawTag[@"name"] count:rawTag[@"count"]]];
+                            MDLTag *tag = [MDLTag tagWithName:rawTag[@"name"]
+                                                        count:rawTag[@"count"]];
+                            [tags addObject:tag];
                         }
                     }
                 }

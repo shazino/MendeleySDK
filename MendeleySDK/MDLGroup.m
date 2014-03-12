@@ -30,11 +30,16 @@
 @interface MDLGroup ()
 
 + (NSString *)stringValueForType:(MDLGroupType)type;
-+ (MDLGroup *)groupWithIdentifier:(NSString *)identifier name:(NSString *)name ownerName:(NSString *)ownerName category:(MDLCategory *)category;
-+ (MDLGroup *)groupWithRawGroup:(NSDictionary *)rawGroup;
++ (instancetype)groupWithIdentifier:(NSString *)identifier
+                               name:(NSString *)name
+                          ownerName:(NSString *)ownerName
+                           category:(MDLCategory *)category;
++ (instancetype)groupWithRawGroup:(NSDictionary *)rawGroup;
 + (NSArray *)usersFromRawUsers:(NSArray *)rawUsers;
 - (void)updateWithRawGroup:(NSDictionary *)rawGroup;
-- (void)deleteAtPath:(NSString *)path success:(void (^)())success failure:(void (^)(NSError *))failure;
+- (void)deleteAtPath:(NSString *)path
+             success:(void (^)())success
+             failure:(void (^)(NSError *))failure;
 
 @end
 
@@ -48,34 +53,36 @@
         case MDLGroupTypeInvite:
             return @"invite";
         case MDLGroupTypeOpen:
+        default:
             return @"open";
     }
 }
 
-+ (MDLGroup *)groupWithIdentifier:(NSString *)identifier
-                             name:(NSString *)name
-                        ownerName:(NSString *)ownerName
-                         category:(MDLCategory *)category
++ (instancetype)groupWithIdentifier:(NSString *)identifier
+                               name:(NSString *)name
+                          ownerName:(NSString *)ownerName
+                           category:(MDLCategory *)category
 {
     MDLGroup *group = [MDLGroup new];
     group.identifier = identifier;
-    group.name      = name;
-    group.owner     = [MDLUser userWithIdentifier:nil name:ownerName];
-    group.category  = category;
+    group.name       = name;
+    group.owner      = [MDLUser userWithIdentifier:nil
+                                              name:ownerName];
+    group.category   = category;
     return group;
 }
 
-+ (MDLGroup *)groupWithRawGroup:(NSDictionary *)rawGroup
++ (instancetype)groupWithRawGroup:(NSDictionary *)rawGroup
 {
     MDLGroup *group = [MDLGroup new];
     [group updateWithRawGroup:rawGroup];
     return group;
 }
 
-+ (MDLGroup *)createGroupWithName:(NSString *)name
-                             type:(MDLGroupType)type
-                          success:(void (^)(MDLGroup *))success
-                          failure:(void (^)(NSError *))failure
++ (instancetype)createGroupWithName:(NSString *)name
+                               type:(MDLGroupType)type
+                            success:(void (^)(MDLGroup *))success
+                            failure:(void (^)(NSError *))failure
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
 
@@ -83,11 +90,17 @@
     group.name = name;
     group.type = type;
 
+    NSDictionary *bodyContent = @{@"name" : group.name,
+                                  @"type" : [self stringValueForType:group.type]};
+
     [client postPath:@"/oapi/library/groups/"
              bodyKey:@"group"
-         bodyContent:@{@"name" : group.name, @"type" : [self stringValueForType:group.type]}
+         bodyContent:bodyContent
              success:^(AFHTTPRequestOperation *operation, id responseDictionary) {
-                 group.identifier = responseDictionary[@"group_id"];
+                 if ([responseDictionary isKindOfClass:[NSDictionary class]]) {
+                     group.identifier = responseDictionary[@"group_id"];
+                 }
+
                  if (success) {
                      success(group);
                  }
@@ -117,6 +130,7 @@ requiresAuthentication:NO
          parameters:parameters
             success:^(AFHTTPRequestOperation *operation, NSDictionary *responseDictionary) {
                 NSMutableArray *groups = [NSMutableArray array];
+
                 for (NSDictionary *rawGroup in responseDictionary[@"groups"]) {
                     [groups addObject:[self groupWithRawGroup:rawGroup]];
                 }
@@ -141,6 +155,7 @@ requiresAuthentication:YES
          parameters:nil
             success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
                 NSMutableArray *groups = [NSMutableArray array];
+
                 for (NSDictionary *rawGroup in responseObject) {
                     [groups addObject:[self groupWithRawGroup:rawGroup]];
                 }
@@ -162,7 +177,9 @@ requiresAuthentication:YES
     }
 
     self.owner.name         = rawGroup[@"owner"];
-    self.category           = [MDLCategory categoryWithIdentifier:rawGroup[@"disciplines"][@"id"] name:rawGroup[@"disciplines"][@"name"] slug:nil];
+    self.category           = [MDLCategory categoryWithIdentifier:rawGroup[@"disciplines"][@"id"]
+                                                             name:rawGroup[@"disciplines"][@"name"]
+                                                             slug:nil];
     self.mendeleyURL        = [NSURL URLWithString:rawGroup[@"public_url"]];
     self.numberOfDocuments  = (rawGroup[@"size"]) ? [formatter numberFromString:rawGroup[@"size"]] : rawGroup[@"total_documents"];
     self.numberOfAdmins     = [formatter numberFromString:rawGroup[@"people"][@"admins"]];
@@ -176,7 +193,8 @@ requiresAuthentication:YES
         else if([rawGroup[@"type"] isEqualToString:[MDLGroup stringValueForType:MDLGroupTypeInvite]]) {
             self.type = MDLGroupTypeInvite;
         }
-        else if([rawGroup[@"type"] isEqualToString:[MDLGroup stringValueForType:MDLGroupTypeOpen]] || [rawGroup[@"type"] isEqualToString:@"public"]) {
+        else if([rawGroup[@"type"] isEqualToString:[MDLGroup stringValueForType:MDLGroupTypeOpen]]
+                || [rawGroup[@"type"] isEqualToString:@"public"]) {
             self.type = MDLGroupTypeOpen;
         }
     }
@@ -281,8 +299,13 @@ requiresAuthentication:(self.type == MDLGroupTypePrivate)
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
 
-    [client deletePath:path parameters:nil
-               success:^(AFHTTPRequestOperation *requestOperation, id responseObject) { if (success) success(); }
+    [client deletePath:path
+            parameters:nil
+               success:^(AFHTTPRequestOperation *requestOperation, id responseObject) {
+                   if (success) {
+                       success();
+                   }
+               }
                failure:failure];
     
 }
@@ -290,7 +313,10 @@ requiresAuthentication:(self.type == MDLGroupTypePrivate)
 - (void)deleteSuccess:(void (^)())success
               failure:(void (^)(NSError *))failure
 {
-    [self deleteAtPath:[NSString stringWithFormat:@"/oapi/library/groups/%@/", self.identifier]
+    NSString *path = [NSString stringWithFormat:@"/oapi/library/groups/%@/",
+                      self.identifier];
+
+    [self deleteAtPath:path
                success:success
                failure:failure];
 }
@@ -298,7 +324,10 @@ requiresAuthentication:(self.type == MDLGroupTypePrivate)
 - (void)leaveSuccess:(void (^)())success
              failure:(void (^)(NSError *))failure
 {
-    [self deleteAtPath:[NSString stringWithFormat:@"/oapi/library/groups/%@/leave/", self.identifier]
+    NSString *path = [NSString stringWithFormat:@"/oapi/library/groups/%@/leave/",
+                      self.identifier];
+
+    [self deleteAtPath:path
                success:success
                failure:failure];
 }
@@ -306,7 +335,10 @@ requiresAuthentication:(self.type == MDLGroupTypePrivate)
 - (void)unfollowSuccess:(void (^)())success
                 failure:(void (^)(NSError *))failure
 {
-    [self deleteAtPath:[NSString stringWithFormat:@"/oapi/library/groups/%@/unfollow", self.identifier]
+    NSString *path = [NSString stringWithFormat:@"/oapi/library/groups/%@/unfollow",
+                      self.identifier];
+
+    [self deleteAtPath:path
                success:success
                failure:failure];
 }

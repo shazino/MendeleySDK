@@ -37,7 +37,7 @@ NSString * const MDLDocumentTypeJournalArticle = @"Journal Article";
 
 @interface MDLDocument ()
 
-+ (MDLDocument *)documentWithRawDocument:(NSDictionary *)rawDocument;
++ (instancetype)documentWithRawDocument:(NSDictionary *)rawDocument;
 + (NSDictionary *)detailsContentForDocument:(MDLDocument *)document;
 + (void)fetchDocumentsWithPath:(NSString *)path
                         public:(BOOL)public
@@ -51,14 +51,14 @@ NSString * const MDLDocumentTypeJournalArticle = @"Journal Article";
 
 @implementation MDLDocument
 
-+ (MDLDocument *)createDocumentWithTitle:(NSString *)title
-                              parameters:(NSDictionary *)parameters
-                                 success:(void (^)(MDLDocument *))success
-                                 failure:(void (^)(NSError *))failure
++ (instancetype)createDocumentWithTitle:(NSString *)title
+                             parameters:(NSDictionary *)parameters
+                                success:(void (^)(MDLDocument *))success
+                                failure:(void (^)(NSError *))failure
 {
     MDLDocument *newDocument = [MDLDocument new];
-    newDocument.title   = title ?: @"";
-    newDocument.type    = parameters[@"type"] ?: MDLDocumentTypeGeneric;
+    newDocument.title = title ?: @"";
+    newDocument.type  = parameters[@"type"] ?: MDLDocumentTypeGeneric;
 
     NSMutableDictionary *bodyContent = [parameters mutableCopy];
     bodyContent[@"type"]  = newDocument.type;
@@ -79,9 +79,9 @@ NSString * const MDLDocumentTypeJournalArticle = @"Journal Article";
     return newDocument;
 }
 
-+ (MDLDocument *)createDocument:(MDLDocument *)document
-                        success:(void (^)(MDLDocument *))success
-                        failure:(void (^)(NSError *))failure
++ (instancetype)createDocument:(MDLDocument *)document
+                       success:(void (^)(MDLDocument *))success
+                       failure:(void (^)(NSError *))failure
 {
     NSDictionary *bodyContent = [MDLDocument detailsContentForDocument:document];
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
@@ -100,7 +100,7 @@ NSString * const MDLDocumentTypeJournalArticle = @"Journal Article";
     return document;
 }
 
-+ (MDLDocument *)documentWithRawDocument:(NSDictionary *)rawDocument
++ (instancetype)documentWithRawDocument:(NSDictionary *)rawDocument
 {
     MDLDocument *document = [MDLDocument new];
 
@@ -190,6 +190,7 @@ requiresAuthentication:!public
             success:^(AFHTTPRequestOperation *operation, NSDictionary *responseDictionary) {
                 NSArray *rawDocuments = responseDictionary[@"documents"];
                 NSMutableArray *documents = [NSMutableArray array];
+
                 for (NSDictionary *rawDocument in rawDocuments) {
                     MDLDocument *document = [MDLDocument documentWithRawDocument:rawDocument];
                     document.inUserLibrary = @(!public);
@@ -240,24 +241,28 @@ requiresAuthentication:!public
 {
     NSMutableArray *terms = [NSMutableArray array];
 
-    if ([genericTerms length] > 0) {
+    if (genericTerms.length > 0) {
         [terms addObject:genericTerms];
     }
 
-    if ([authors length] > 0) {
-        [terms addObject:[NSString stringWithFormat:@"author:%@", authors]];
+    if (authors.length > 0) {
+        [terms addObject:[NSString stringWithFormat:@"author:%@",
+                          authors]];
     }
 
-    if ([title length] > 0) {
-        [terms addObject:[NSString stringWithFormat:@"title:%@", title]];
+    if (title.length > 0) {
+        [terms addObject:[NSString stringWithFormat:@"title:%@",
+                          title]];
     }
 
     if (year) {
-        [terms addObject:[NSString stringWithFormat:@"year:%@", [year stringValue]]];
+        [terms addObject:[NSString stringWithFormat:@"year:%@",
+                          year.stringValue]];
     }
 
-    if ([tags length] > 0) {
-        [terms addObject:[NSString stringWithFormat:@"tags:%@", tags]];
+    if (tags.length > 0) {
+        [terms addObject:[NSString stringWithFormat:@"tags:%@",
+                          tags]];
     }
 
     [self searchWithTerms:[terms componentsJoinedByString:@" "]
@@ -327,6 +332,7 @@ requiresAuthentication:NO
                                             upAndComing:upAndComing]
             success:^(AFHTTPRequestOperation *operation, NSArray *responseArray) {
                 NSMutableArray *documents = [NSMutableArray array];
+
                 for (NSDictionary *rawDocument in responseArray) {
                     [documents addObject:[MDLDocument documentWithRawDocument:rawDocument]];
                 }
@@ -386,7 +392,7 @@ requiresAuthentication:NO
                  fileAtURL:fileURL
                    success:^(AFHTTPRequestOperation *operation, NSString *fileHash, id responseObject) {
                        MDLFile *file = [MDLFile fileWithDateAdded:nil
-                                                        extension:[fileURL pathExtension]
+                                                        extension:fileURL.pathExtension
                                                              hash:fileHash
                                                              size:nil
                                                          document:nil];

@@ -36,7 +36,7 @@
 
 @implementation MDLPublication
 
-+ (MDLPublication *)publicationWithName:(NSString *)name
++ (instancetype)publicationWithName:(NSString *)name
 {
     if (!name) {
         return nil;
@@ -60,8 +60,13 @@ requiresAuthentication:requiresAuthentication
          parameters:parameters
             success:^(AFHTTPRequestOperation *operation, NSArray *responseArray) {
                 NSMutableArray *publications = [NSMutableArray array];
+
                 for (NSDictionary *rawPublication in responseArray) {
-                    [publications addObject:[MDLPublication publicationWithName:rawPublication[@"name"]]];
+                    NSString *name = rawPublication[@"name"];
+                    MDLPublication *publication = [MDLPublication publicationWithName:name];
+                    if (publication) {
+                        [publications addObject:publication];
+                    }
                 }
 
                 if (success) {

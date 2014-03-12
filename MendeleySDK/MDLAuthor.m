@@ -63,6 +63,7 @@
                    failure:(void (^)(NSError *))failure
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
+
     [client getPath:path
 requiresAuthentication:requiresAuthentication
          parameters:parameters

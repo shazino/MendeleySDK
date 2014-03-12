@@ -122,10 +122,10 @@ typedef NS_ENUM(NSUInteger, MDLGroupType)
  
  @see [API documentation: User Library Create Document](http://apidocs.mendeley.com/home/user-specific-methods/user-library-create-document)
  */
-+ (MDLGroup *)createGroupWithName:(NSString *)name
-                             type:(MDLGroupType)type
-                          success:(void (^)(MDLGroup *))success
-                          failure:(void (^)(NSError *))failure;
++ (instancetype)createGroupWithName:(NSString *)name
+                               type:(MDLGroupType)type
+                            success:(void (^)(MDLGroup *))success
+                            failure:(void (^)(NSError *))failure;
 
 /**
  Sends a public group overview API request using the shared client and fetches the response as an array of `MDLGroup`.

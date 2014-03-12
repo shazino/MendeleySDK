@@ -72,11 +72,11 @@
  
  @return  The newly-initialized file.
  */
-+ (MDLFile *)fileWithDateAdded:(NSDate *)dateAdded
-                     extension:(NSString *)extension
-                          hash:(NSString *)hash
-                          size:(NSNumber *)size
-                      document:(MDLDocument *)document;
++ (instancetype)fileWithDateAdded:(NSDate *)dateAdded
+                        extension:(NSString *)extension
+                             hash:(NSString *)hash
+                             size:(NSNumber *)size
+                         document:(MDLDocument *)document;
 
 /**
  Creates a `MDLFile` and initializes its public URL property.
@@ -86,7 +86,8 @@
  
  @return  The newly-initialized file.
  */
-+ (MDLFile *)fileWithPublicURL:(NSURL *)publicURL document:(MDLDocument *)document;
++ (instancetype)fileWithPublicURL:(NSURL *)publicURL
+                         document:(MDLDocument *)document;
 
 /**
  Sends a download file API request using the shared client.

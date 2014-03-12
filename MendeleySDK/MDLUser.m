@@ -33,9 +33,10 @@
 
 @implementation MDLUser
 
-+ (MDLUser *)userWithIdentifier:(NSString *)identifier name:(NSString *)name
++ (instancetype)userWithIdentifier:(NSString *)identifier
+                              name:(NSString *)name
 {
-    MDLUser *user   = [MDLUser new];
+    MDLUser *user = [MDLUser new];
     user.identifier = identifier;
     user.name       = name;
     return user;
@@ -47,7 +48,8 @@
                         failure:(void (^)(NSError *))failure
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    NSString *path = [NSString stringWithFormat:@"/oapi/profiles/info/%@/", identifier];
+    NSString *path = [NSString stringWithFormat:@"/oapi/profiles/info/%@/",
+                      identifier];
 
     [client getPath:path
 requiresAuthentication:YES
@@ -56,18 +58,18 @@ requiresAuthentication:YES
 
                 NSDictionary *profileMain = responseDictionary[@"main"];
                 if ([profileMain isKindOfClass:[NSDictionary class]]) {
-                    user.name          = profileMain[@"name"];
-                    user.academicStatus = profileMain[@"academic_status"];
+                    user.name              = profileMain[@"name"];
+                    user.academicStatus    = profileMain[@"academic_status"];
                     user.academicStatusIdentifier = profileMain[@"academic_status_id"];
-                    user.bio           = profileMain[@"bio"];
-                    user.category      = [MDLCategory categoryWithIdentifier:profileMain[@"discipline_id"]
+                    user.bio               = profileMain[@"bio"];
+                    user.category          = [MDLCategory categoryWithIdentifier:profileMain[@"discipline_id"]
                                                                         name:profileMain[@"discipline_name"]
                                                                         slug:nil];
-                    user.location      = profileMain[@"location"];
-                    user.photoURL      = [NSURL URLWithString:profileMain[@"photo"]];
-                    user.identifier    = profileMain[@"profile_id"];
+                    user.location          = profileMain[@"location"];
+                    user.photoURL          = [NSURL URLWithString:profileMain[@"photo"]];
+                    user.identifier        = profileMain[@"profile_id"];
                     user.researchInterests = profileMain[@"research_interests"];
-                    user.mendeleyURL   = [NSURL URLWithString:profileMain[@"url"]];
+                    user.mendeleyURL       = [NSURL URLWithString:profileMain[@"url"]];
                 }
 
                 NSDictionary *profileContact = responseDictionary[@"contact"];
@@ -90,7 +92,10 @@ requiresAuthentication:YES
 + (void)fetchMyUserProfileSuccess:(void (^)(MDLUser *))success
                           failure:(void (^)(NSError *))failure
 {
-    [self fetchUserProfileForUser:[MDLUser new] withIdentifier:@"me" success:success failure:failure];
+    [self fetchUserProfileForUser:[MDLUser new]
+                   withIdentifier:@"me"
+                          success:success
+                          failure:failure];
 }
 
 + (void)fetchContactsSuccess:(void (^)(NSArray *))success
@@ -103,6 +108,7 @@ requiresAuthentication:YES
          parameters:nil
             success:^(AFHTTPRequestOperation *operation, NSArray *responseArray) {
                 NSMutableArray *contacts = [NSMutableArray array];
+
                 for (NSDictionary *rawContact in responseArray) {
                     MDLUser *user = [MDLUser userWithIdentifier:rawContact[@"profile_id"]
                                                            name:rawContact[@"name"]];
@@ -132,7 +138,8 @@ requiresAuthentication:YES
                       self.identifier];
 
     [client postPath:path
-             bodyKey:nil bodyContent:nil
+             bodyKey:nil
+         bodyContent:nil
              success:^(AFHTTPRequestOperation *operation, id responseObject) {
                  if (success) {
                      success();

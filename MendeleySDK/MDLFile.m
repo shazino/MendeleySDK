@@ -28,27 +28,27 @@
 
 @implementation MDLFile
 
-+ (MDLFile *)fileWithDateAdded:(NSDate *)dateAdded
-                     extension:(NSString *)extension
-                          hash:(NSString *)hash
-                          size:(NSNumber *)size
-                      document:(MDLDocument *)document
++ (instancetype)fileWithDateAdded:(NSDate *)dateAdded
+                        extension:(NSString *)extension
+                             hash:(NSString *)hash
+                             size:(NSNumber *)size
+                         document:(MDLDocument *)document
 {
     MDLFile *file = [MDLFile new];
     file.dateAdded = dateAdded;
     file.extension = extension;
-    file.hash = hash;
-    file.size = size;
-    file.document = document;
+    file.hash      = hash;
+    file.size      = size;
+    file.document  = document;
     return file;
 }
 
-+ (MDLFile *)fileWithPublicURL:(NSURL *)publicURL
-                      document:(MDLDocument *)document
++ (instancetype)fileWithPublicURL:(NSURL *)publicURL
+                         document:(MDLDocument *)document
 {
     MDLFile *file = [MDLFile new];
     file.publicURL = publicURL;
-    file.document = document;
+    file.document  = document;
     return file;
 }
 
@@ -58,6 +58,7 @@
                                          failure:(void (^)(NSError *))failure
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
+
     NSString *resourcePath;
     if (self.publicURL) {
         resourcePath = [self.publicURL absoluteString];

@@ -124,7 +124,8 @@
  
  @return  The newly-initialized user.
  */
-+ (MDLUser *)userWithIdentifier:(NSString *)identifier name:(NSString *)name;
++ (instancetype)userWithIdentifier:(NSString *)identifier
+                              name:(NSString *)name;
 
 /**
  Sends a profile information API request using the shared client and fetches the response as a `MDLUser`.

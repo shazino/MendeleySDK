@@ -29,11 +29,11 @@
 
 @implementation MDLCategory
 
-+ (MDLCategory *)categoryWithIdentifier:(NSString *)identifier
++ (instancetype)categoryWithIdentifier:(NSString *)identifier
                                    name:(NSString *)name
                                    slug:(NSString *)slug
 {
-    MDLCategory *category = [MDLCategory new];
+    MDLCategory *category = [self new];
     category.identifier = identifier;
     category.name       = name;
     category.slug       = slug;

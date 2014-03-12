@@ -47,8 +47,8 @@
  
  @return  The newly-initialized tag.
  */
-+ (MDLTag *)tagWithName:(NSString *)name
-                  count:(NSNumber *)count;
++ (instancetype)tagWithName:(NSString *)name
+                      count:(NSNumber *)count;
 
 /**
  Sends a last tags API request using the shared client and fetches the response as an array of `MDLTag`.

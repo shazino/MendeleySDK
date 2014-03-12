@@ -53,9 +53,9 @@
  
  @return  The newly-initialized category.
  */
-+ (MDLCategory *)categoryWithIdentifier:(NSString *)identifier
-                                   name:(NSString *)name
-                                   slug:(NSString *)slug;
++ (instancetype)categoryWithIdentifier:(NSString *)identifier
+                                  name:(NSString *)name
+                                  slug:(NSString *)slug;
 
 /**
  Sends a categories API request using the shared client and fetches the response as an array of `MDLCategory`.

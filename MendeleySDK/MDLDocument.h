@@ -256,10 +256,10 @@ extern NSString * const MDLDocumentTypeJournalArticle;
  
  @see [API documentation: User Library Create Document](http://apidocs.mendeley.com/home/user-specific-methods/user-library-create-document)
  */
-+ (MDLDocument *)createDocumentWithTitle:(NSString *)title
-                              parameters:(NSDictionary *)parameters
-                                 success:(void (^)(MDLDocument *))success
-                                 failure:(void (^)(NSError *))failure;
++ (instancetype)createDocumentWithTitle:(NSString *)title
+                             parameters:(NSDictionary *)parameters
+                                success:(void (^)(MDLDocument *))success
+                                failure:(void (^)(NSError *))failure;
 
 /**
  Creates a `MDLDocument` and sends an API creation request using the shared client.
@@ -274,9 +274,9 @@ extern NSString * const MDLDocumentTypeJournalArticle;
  
  @see [API documentation: User Library Create Document](http://apidocs.mendeley.com/home/user-specific-methods/user-library-create-document)
  */
-+ (MDLDocument *)createDocument:(MDLDocument *)document
-                        success:(void (^)(MDLDocument *))success
-                        failure:(void (^)(NSError *))failure;
++ (instancetype)createDocument:(MDLDocument *)document
+                       success:(void (^)(MDLDocument *))success
+                       failure:(void (^)(NSError *))failure;
 
 /**
  Sends an API search request with generic terms using the shared client.

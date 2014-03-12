@@ -80,10 +80,10 @@
  
  @see [API documentation: Create Folder](http://apidocs.mendeley.com/user-library-create-folder)
  */
-+ (MDLFolder *)createFolderWithName:(NSString *)name
-                             parent:(MDLFolder *)parent
-                            success:(void (^)(MDLFolder *))success
-                            failure:(void (^)(NSError *))failure;
++ (instancetype)createFolderWithName:(NSString *)name
+                              parent:(MDLFolder *)parent
+                             success:(void (^)(MDLFolder *))success
+                             failure:(void (^)(NSError *))failure;
 
 /**
  Sends a folder API request using the shared client.

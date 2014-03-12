@@ -28,20 +28,20 @@
 
 @interface MDLFolder ()
 
-+ (MDLFolder *)folderWithIdentifier:(NSString *)identifier
-                               name:(NSString *)name
-                  numberOfDocuments:(NSNumber *)numberOfDocuments
-                   parentIdentifier:(NSString *)parentIdentifier;
++ (instancetype)folderWithIdentifier:(NSString *)identifier
+                                name:(NSString *)name
+                   numberOfDocuments:(NSNumber *)numberOfDocuments
+                    parentIdentifier:(NSString *)parentIdentifier;
 
 @end
 
 
 @implementation MDLFolder
 
-+ (MDLFolder *)folderWithIdentifier:(NSString *)identifier
-                               name:(NSString *)name
-                  numberOfDocuments:(NSNumber *)numberOfDocuments
-                   parentIdentifier:(NSString *)parentIdentifier
++ (instancetype)folderWithIdentifier:(NSString *)identifier
+                                name:(NSString *)name
+                   numberOfDocuments:(NSNumber *)numberOfDocuments
+                    parentIdentifier:(NSString *)parentIdentifier
 {
     MDLFolder *folder = [MDLFolder new];
     folder.identifier = identifier;
@@ -54,24 +54,34 @@
     return folder;
 }
 
-+ (MDLFolder *)createFolderWithName:(NSString *)name
-                             parent:(MDLFolder *)parent
-                            success:(void (^)(MDLFolder *))success
-                            failure:(void (^)(NSError *))failure
++ (instancetype)createFolderWithName:(NSString *)name
+                              parent:(MDLFolder *)parent
+                             success:(void (^)(MDLFolder *))success
+                             failure:(void (^)(NSError *))failure
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
 
     MDLFolder *folder = [MDLFolder new];
-    folder.name = name;
+    folder.name       = name;
     folder.subfolders = @[];
-    
+
+    NSDictionary *bodyContent;
+    if (parent) {
+        bodyContent = @{@"name" : folder.name,
+                        @"parent": parent.identifier};
+    }
+    else {
+        bodyContent = @{@"name" : folder.name};
+    }
+
     [client postPath:@"/oapi/library/folders/"
              bodyKey:@"folder"
-         bodyContent:(parent) ? @{@"name" : folder.name, @"parent": parent.identifier} : @{@"name" : folder.name}
+         bodyContent:bodyContent
              success:^(AFHTTPRequestOperation *operation, id responseDictionary) {
-                 folder.parent = parent;
+                 folder.parent     = parent;
                  parent.subfolders = [parent.subfolders arrayByAddingObject:folder];
                  folder.identifier = responseDictionary[@"folder_id"];
+
                  if (success) {
                      success(folder);
                  }
@@ -90,19 +100,30 @@ requiresAuthentication:YES
          parameters:nil
             success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
                 NSMutableArray *folders = [NSMutableArray array];
-                for (NSDictionary *rawFolder in responseObject)
-                    [folders addObject:[self folderWithIdentifier:rawFolder[@"id"] name:rawFolder[@"name"] numberOfDocuments:rawFolder[@"size"] parentIdentifier:rawFolder[@"parent"]]];
-                for (MDLFolder *folder in folders)
-                    if (folder.parentIdentifier)
-                        for (MDLFolder *aFolder in folders)
-                            if ([aFolder.identifier isEqualToString:folder.parentIdentifier])
-                            {
+
+                for (NSDictionary *rawFolder in responseObject) {
+                    [folders addObject:[self folderWithIdentifier:rawFolder[@"id"]
+                                                             name:rawFolder[@"name"]
+                                                numberOfDocuments:rawFolder[@"size"]
+                                                 parentIdentifier:rawFolder[@"parent"]]];
+                }
+
+                for (MDLFolder *folder in folders) {
+                    if (folder.parentIdentifier) {
+                        for (MDLFolder *aFolder in folders) {
+                            if ([aFolder.identifier isEqualToString:folder.parentIdentifier]){
                                 folder.parent = aFolder;
                                 folder.parent.subfolders = [folder.parent.subfolders arrayByAddingObject:folder];
                                 break;
                             }
-                if (success)
-                    success([folders filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"parent = nil"]]);
+                        }
+                    }
+                }
+
+                if (success) {
+                    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"parent = nil"];
+                    success([folders filteredArrayUsingPredicate:predicate]);
+                }
             } failure:failure];
 }
 

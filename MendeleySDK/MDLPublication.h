@@ -41,7 +41,7 @@
  
  @return  The newly-initialized publication.
  */
-+ (MDLPublication *)publicationWithName:(NSString *)name;
++ (instancetype)publicationWithName:(NSString *)name;
 
 /**
  Sends a top publication API request using the shared client and fetches the response as an array of `MDLPublication`.
