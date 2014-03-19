@@ -98,29 +98,6 @@ requiresAuthentication:YES
                           failure:failure];
 }
 
-+ (void)fetchContactsSuccess:(void (^)(NSArray *))success
-                     failure:(void (^)(NSError *))failure
-{
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-
-    [client getPath:@"/oapi/profiles/contacts/"
-requiresAuthentication:YES
-         parameters:nil
-            success:^(AFHTTPRequestOperation *operation, NSArray *responseArray) {
-                NSMutableArray *contacts = [NSMutableArray array];
-
-                for (NSDictionary *rawContact in responseArray) {
-                    MDLUser *user = [MDLUser userWithIdentifier:rawContact[@"profile_id"]
-                                                           name:rawContact[@"name"]];
-                    [contacts addObject:user];
-                }
-
-                if (success) {
-                    success(contacts);
-                }
-            } failure:failure];
-}
-
 - (void)fetchProfileSuccess:(void (^)(MDLUser *))success
                     failure:(void (^)(NSError *))failure
 {
@@ -128,24 +105,6 @@ requiresAuthentication:YES
                       withIdentifier:self.identifier
                              success:success
                              failure:failure];
-}
-
-- (void)sendContactRequestSuccess:(void (^)())success
-                          failure:(void (^)(NSError *))failure
-{
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    NSString *path = [NSString stringWithFormat:@"/oapi/profiles/contacts/%@/",
-                      self.identifier];
-
-    [client postPath:path
-             bodyKey:nil
-         bodyContent:nil
-             success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                 if (success) {
-                     success();
-                 }
-             }
-             failure:failure];
 }
 
 @end
