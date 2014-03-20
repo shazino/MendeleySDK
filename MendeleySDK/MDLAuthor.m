@@ -106,8 +106,8 @@ requiresAuthentication:requiresAuthentication
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"Name: %@; Forename: %@; Surname: %@;",
-            self.name, self.forename, self.surname];
+    return [NSString stringWithFormat: @"%@ (forename: %@; surename: %@)",
+            [super description], self.forename, self.surname];
 }
 
 @end

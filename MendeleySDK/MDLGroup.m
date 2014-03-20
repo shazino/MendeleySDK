@@ -122,7 +122,7 @@
         parameters[@"cat"] = categoryIdentifier;
     }
 
-    parameters[@"page"] = @(pageIndex);
+    parameters[@"page"]  = @(pageIndex);
     parameters[@"items"] = @(count);
 
     [client getPath:@"/oapi/documents/groups"
@@ -171,7 +171,7 @@ requiresAuthentication:YES
     NSNumberFormatter *formatter = [NSNumberFormatter new];
 
     self.identifier = rawGroup[@"id"];
-    self.name = rawGroup[@"name"];
+    self.name       = rawGroup[@"name"];
     if (!self.owner) {
         self.owner = [MDLUser new];
     }
@@ -266,7 +266,13 @@ requiresAuthentication:(self.type == MDLGroupTypePrivate)
                      failure:(void (^)(NSError *))failure
 {
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    NSString *path = [NSString stringWithFormat:(self.type == MDLGroupTypePrivate) ? @"/oapi/library/groups/%@/" : @"/oapi/documents/groups/%@/docs/", self.identifier];
+    NSString *path;
+    if (self.type == MDLGroupTypePrivate) {
+        path = [NSString stringWithFormat:@"/oapi/library/groups/%@/", self.identifier];
+    }
+    else {
+        path = [NSString stringWithFormat:@"/oapi/documents/groups/%@/docs/", self.identifier];
+    }
 
     [client getPath:path
 requiresAuthentication:(self.type == MDLGroupTypePrivate)
@@ -341,6 +347,12 @@ requiresAuthentication:(self.type == MDLGroupTypePrivate)
     [self deleteAtPath:path
                success:success
                failure:failure];
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat: @"%@ (identifier: %@; name: %@; type: %tu)",
+            [super description], self.identifier, self.name, self.type];
 }
 
 @end

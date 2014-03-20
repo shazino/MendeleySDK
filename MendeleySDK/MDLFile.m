@@ -82,4 +82,10 @@
                    failure:failure];
 }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat: @"%@ (hash: %@; extension: %@; size: %@)",
+            [super description], self.hash, self.extension, self.size];
+}
+
 @end

@@ -655,4 +655,10 @@ requiresAuthentication:NO
                failure:failure];
 }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat: @"%@ (identifier: %@; title: %@)",
+            [super description], self.identifier, self.title];
+}
+
 @end

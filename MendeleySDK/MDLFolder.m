@@ -216,4 +216,10 @@ requiresAuthentication:YES
                failure:failure];
 }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat: @"%@ (identifier: %@; name: %@; parent identifier: %@)",
+            [super description], self.identifier, self.name, self.parentIdentifier];
+}
+
 @end

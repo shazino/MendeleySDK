@@ -27,7 +27,10 @@
 
 @interface MDLUser ()
 
-+ (void)fetchUserProfileForUser:(MDLUser *)user withIdentifier:(NSString *)identifier success:(void (^)(MDLUser *))success failure:(void (^)(NSError *))failure;
++ (void)fetchUserProfileForUser:(MDLUser *)user
+                 withIdentifier:(NSString *)identifier
+                        success:(void (^)(MDLUser *))success
+                        failure:(void (^)(NSError *))failure;
 
 @end
 
@@ -63,8 +66,8 @@ requiresAuthentication:YES
                     user.academicStatusIdentifier = profileMain[@"academic_status_id"];
                     user.bio               = profileMain[@"bio"];
                     user.category          = [MDLCategory categoryWithIdentifier:profileMain[@"discipline_id"]
-                                                                        name:profileMain[@"discipline_name"]
-                                                                        slug:nil];
+                                                                            name:profileMain[@"discipline_name"]
+                                                                            slug:nil];
                     user.location          = profileMain[@"location"];
                     user.photoURL          = [NSURL URLWithString:profileMain[@"photo"]];
                     user.identifier        = profileMain[@"profile_id"];
@@ -105,6 +108,12 @@ requiresAuthentication:YES
                       withIdentifier:self.identifier
                              success:success
                              failure:failure];
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat: @"%@ (identifier: %@; name: %@)",
+            [super description], self.identifier, self.name];
 }
 
 @end
