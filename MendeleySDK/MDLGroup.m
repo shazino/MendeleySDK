@@ -278,16 +278,23 @@ requiresAuthentication:(self.type == MDLGroupTypePrivate)
 requiresAuthentication:(self.type == MDLGroupTypePrivate)
          parameters:nil
             success:^(AFHTTPRequestOperation *operation, NSDictionary *responseDictionary) {
-                NSArray *rawDocuments = responseDictionary[@"document_ids"];
+                NSArray *rawDocuments = responseDictionary[@"documents"];
                 NSMutableArray *documents = [NSMutableArray array];
-                for (NSString *documentIdentifier in rawDocuments) {
-                    MDLDocument * document = [MDLDocument new];
-                    document.identifier = documentIdentifier;
-                    document.group = self;
-                    [documents addObject:document];
+                for (NSDictionary *rawDocument in rawDocuments) {
+                    if ([rawDocument isKindOfClass:[NSDictionary class]]) {
+                        MDLDocument * document = [MDLDocument new];
+                        if ([rawDocument[@"id"] isKindOfClass:[NSString class]]) {
+                            document.identifier = rawDocument[@"id"];
+                        }
+                        if ([rawDocument[@"version"] isKindOfClass:[NSNumber class]]) {
+                            document.version = rawDocument[@"version"];
+                        }
+                        document.group      = self;
+                        [documents addObject:document];
+                    }
                 }
                 self.documents = documents;
-                self.numberOfDocuments = @([self.documents count]);
+                self.numberOfDocuments = @(self.documents.count);
 
                 if (success) {
                     success(self.documents,
