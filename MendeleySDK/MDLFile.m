@@ -25,6 +25,7 @@
 
 #import "MDLMendeleyAPIClient.h"
 #import "MDLDocument.h"
+#import "MDLGroup.h"
 
 @implementation MDLFile
 
@@ -62,6 +63,12 @@
     NSString *resourcePath;
     if (self.publicURL) {
         resourcePath = [self.publicURL absoluteString];
+    }
+    else if (self.document.group) {
+        resourcePath = [NSString stringWithFormat:@"/oapi/library/documents/%@/file/%@/%@/",
+                        self.document.identifier,
+                        self.hash,
+                        self.document.group.identifier];
     }
     else {
         resourcePath = [NSString stringWithFormat:@"/oapi/library/documents/%@/file/%@//",
