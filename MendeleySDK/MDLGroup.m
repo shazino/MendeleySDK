@@ -274,9 +274,12 @@ requiresAuthentication:(self.type == MDLGroupTypePrivate)
         path = [NSString stringWithFormat:@"/oapi/documents/groups/%@/docs/", self.identifier];
     }
 
+    NSDictionary *parameters = @{@"page":  @(pageIndex),
+                                 @"items": @(count)};
+
     [client getPath:path
 requiresAuthentication:(self.type == MDLGroupTypePrivate)
-         parameters:nil
+         parameters:parameters
             success:^(AFHTTPRequestOperation *operation, NSDictionary *responseDictionary) {
                 NSArray *rawDocuments = responseDictionary[@"documents"];
                 NSMutableArray *documents = [NSMutableArray array];
