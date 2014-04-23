@@ -99,6 +99,11 @@
                                  failure:(void (^)(NSError *))failure;
 
 /**
+ Transform the folders from a raw server response into `MDLFolder` instances, then ‘treefy’ them.
+ **/
++ (NSArray *)treefiedFoldersFromResponseObject:(id)responseObject;
+
+/**
  Sends a folders documents API request for the current document using the shared client.
  
  @param pageIndex The page index. `O` is first page.

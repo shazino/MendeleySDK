@@ -205,6 +205,18 @@ typedef NS_ENUM(NSUInteger, MDLGroupType)
                      failure:(void (^)(NSError *))failure;
 
 /**
+ Sends a folder API request using the shared client.
+ 
+ @param success A block object to be executed when the request operation finishes successfully.
+ This block has no return value and takes one argument: an array of `MDLFolder` objects.
+ @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data.
+ This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
+
+ */
+- (void)fetchFoldersSuccess:(void (^)(NSArray *))success
+                    failure:(void (^)(NSError *))failure;
+
+/**
  Sends a delete group API request using the shared client (you need to be a owner of the group).
  
  @param success A block object to be executed when the request operation finishes successfully. 

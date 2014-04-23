@@ -98,33 +98,44 @@
     [client getPath:@"/oapi/library/folders/"
 requiresAuthentication:YES
          parameters:nil
-            success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
-                NSMutableArray *folders = [NSMutableArray array];
-
-                for (NSDictionary *rawFolder in responseObject) {
-                    [folders addObject:[self folderWithIdentifier:rawFolder[@"id"]
-                                                             name:rawFolder[@"name"]
-                                                numberOfDocuments:rawFolder[@"size"]
-                                                 parentIdentifier:rawFolder[@"parent"]]];
-                }
-
-                for (MDLFolder *folder in folders) {
-                    if (folder.parentIdentifier) {
-                        for (MDLFolder *aFolder in folders) {
-                            if ([aFolder.identifier isEqualToString:folder.parentIdentifier]){
-                                folder.parent = aFolder;
-                                folder.parent.subfolders = [folder.parent.subfolders arrayByAddingObject:folder];
-                                break;
-                            }
-                        }
-                    }
-                }
-
+            success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 if (success) {
-                    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"parent = nil"];
-                    success([folders filteredArrayUsingPredicate:predicate]);
+                    NSArray *folders = [self treefiedFoldersFromResponseObject:responseObject];
+                    success(folders);
                 }
             } failure:failure];
+}
+
++ (NSArray *)treefiedFoldersFromResponseObject:(id)responseObject
+{
+    if (![responseObject isKindOfClass:[NSArray class]]) {
+        return nil;
+    }
+
+    NSArray *responseArray = responseObject;
+    NSMutableArray *folders = [NSMutableArray array];
+
+    for (NSDictionary *rawFolder in responseArray) {
+        [folders addObject:[self folderWithIdentifier:rawFolder[@"id"]
+                                                 name:rawFolder[@"name"]
+                                    numberOfDocuments:rawFolder[@"size"]
+                                     parentIdentifier:rawFolder[@"parent"]]];
+    }
+
+    for (MDLFolder *folder in folders) {
+        if (folder.parentIdentifier) {
+            for (MDLFolder *aFolder in folders) {
+                if ([aFolder.identifier isEqualToString:folder.parentIdentifier]){
+                    folder.parent = aFolder;
+                    folder.parent.subfolders = [folder.parent.subfolders arrayByAddingObject:folder];
+                    break;
+                }
+            }
+        }
+    }
+
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"parent = nil"];
+    return [folders filteredArrayUsingPredicate:predicate];
 }
 
 - (void)fetchDocumentsAtPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure

@@ -25,6 +25,7 @@
 #import "MDLCategory.h"
 #import "MDLUser.h"
 #import "MDLDocument.h"
+#import "MDLFolder.h"
 #import "MDLMendeleyAPIClient.h"
 
 @interface MDLGroup ()
@@ -305,6 +306,24 @@ requiresAuthentication:(self.type == MDLGroupTypePrivate)
                             [responseDictionary responseTotalPages],
                             [responseDictionary responsePageIndex],
                             [responseDictionary responseItemsPerPage]);
+                }
+            } failure:failure];
+}
+
+- (void)fetchFoldersSuccess:(void (^)(NSArray *))success
+                    failure:(void (^)(NSError *))failure
+{
+    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
+    NSString *path = [NSString stringWithFormat:@"/oapi/library/groups/%@/folders/",
+                      self.identifier];
+
+    [client getPath:path
+requiresAuthentication:YES
+         parameters:nil
+            success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                if (success) {
+                    NSArray *folders = [MDLFolder treefiedFoldersFromResponseObject:responseObject];
+                    success(folders);
                 }
             } failure:failure];
 }
