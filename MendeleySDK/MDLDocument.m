@@ -386,7 +386,15 @@ requiresAuthentication:NO
     }
 
     MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    NSString *path = [NSString stringWithFormat:@"/oapi/library/documents/%@/", self.identifier];
+    NSString *path;
+    if (self.group) {
+        path = [NSString stringWithFormat:@"/oapi/documents/group/%@/%@/",
+                self.group.identifier, self.identifier];
+    }
+    else {
+        path = [NSString stringWithFormat:@"/oapi/library/documents/%@/",
+                self.identifier];
+    }
 
     return [client putPath:path
                  fileAtURL:fileURL
