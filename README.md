@@ -20,7 +20,7 @@ Here’s an example podfile that installs MendeleySDK and its dependency, AFOAut
 ```ruby
 platform :ios, '5.0'
 
-pod 'MendeleySDK', '1.4'
+pod 'MendeleySDK', '1.5'
 ```
 
 ### App credentials
