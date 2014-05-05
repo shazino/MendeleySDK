@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>67ADE998-0561-43A4-9B03-F9461DE8C628</string>
+	<string>DA2F32BD-123F-4134-BA9E-3DB40C2B7DC7</string>
 	<key>IDESourceControlProjectName</key>
 	<string>MendeleySDKDemoOSX</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>0134FB2E-703D-496F-9AE4-220AC0A98551</key>
+		<key>A81925F2-FC62-42F2-B453-3AB5287B921D</key>
 		<string>ssh://github.com/shazino/MendeleySDK.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Examples/MendeleySDKDemoOSX/MendeleySDKDemoOSX.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>0134FB2E-703D-496F-9AE4-220AC0A98551</key>
+		<key>A81925F2-FC62-42F2-B453-3AB5287B921D</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,16 +25,16 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>0134FB2E-703D-496F-9AE4-220AC0A98551</string>
+	<string>A81925F2-FC62-42F2-B453-3AB5287B921D</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>0134FB2E-703D-496F-9AE4-220AC0A98551</string>
+			<string>A81925F2-FC62-42F2-B453-3AB5287B921D</string>
 			<key>IDESourceControlWCCName</key>
-			<string>MendeleySDK</string>
+			<string>MendeleySDKOAuth2</string>
 		</dict>
 	</array>
 </dict>

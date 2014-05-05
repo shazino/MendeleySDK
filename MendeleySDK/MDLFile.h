@@ -1,7 +1,7 @@
 //
 // MDLFile.h
 //
-// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2014 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -72,11 +72,11 @@
  
  @return  The newly-initialized file.
  */
-+ (MDLFile *)fileWithDateAdded:(NSDate *)dateAdded
-                     extension:(NSString *)extension
-                          hash:(NSString *)hash
-                          size:(NSNumber *)size
-                      document:(MDLDocument *)document;
++ (instancetype)fileWithDateAdded:(NSDate *)dateAdded
+                        extension:(NSString *)extension
+                             hash:(NSString *)hash
+                             size:(NSNumber *)size
+                         document:(MDLDocument *)document;
 
 /**
  Creates a `MDLFile` and initializes its public URL property.
@@ -86,7 +86,8 @@
  
  @return  The newly-initialized file.
  */
-+ (MDLFile *)fileWithPublicURL:(NSURL *)publicURL document:(MDLDocument *)document;
++ (instancetype)fileWithPublicURL:(NSURL *)publicURL
+                         document:(MDLDocument *)document;
 
 /**
  Sends a download file API request using the shared client.

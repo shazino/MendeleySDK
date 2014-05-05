@@ -1,7 +1,7 @@
 //
 // MDLAuthor.m
 //
-// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2014 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -43,7 +43,8 @@
     return author;
 }
 
-+ (MDLAuthor *)authorWithForename:(NSString *)forename surname:(NSString *)surname
++ (MDLAuthor *)authorWithForename:(NSString *)forename
+                          surname:(NSString *)surname
 {
     MDLAuthor *author = [MDLAuthor new];
     author.forename = forename;
@@ -61,16 +62,21 @@
                    success:(void (^)(NSArray *))success
                    failure:(void (^)(NSError *))failure
 {
-    [[MDLMendeleyAPIClient sharedClient] getPath:path
-                          requiresAuthentication:requiresAuthentication
-                                      parameters:parameters
-                                         success:^(AFHTTPRequestOperation *operation, NSArray *responseArray) {
-                                             NSMutableArray *authors = [NSMutableArray array];
-                                             for (NSDictionary *rawAuthor in responseArray)
-                                                 [authors addObject:[MDLAuthor authorWithName:rawAuthor[@"name"]]];
-                                             if (success)
-                                                 success(authors);
-                                         } failure:failure];
+    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
+
+    [client getPath:path
+requiresAuthentication:requiresAuthentication
+         parameters:parameters
+            success:^(AFHTTPRequestOperation *operation, NSArray *responseArray) {
+                NSMutableArray *authors = [NSMutableArray array];
+                for (NSDictionary *rawAuthor in responseArray) {
+                    [authors addObject:[MDLAuthor authorWithName:rawAuthor[@"name"]]];
+                }
+
+                if (success) {
+                    success(authors);
+                }
+            } failure:failure];
 }
 
 + (void)fetchTopAuthorsInPublicLibraryForCategory:(NSString *)categoryIdentifier
@@ -78,10 +84,12 @@
                                           success:(void (^)(NSArray *))success
                                           failure:(void (^)(NSError *))failure
 {
+    NSDictionary *parameters = [NSDictionary parametersForCategory:categoryIdentifier
+                                                       upAndComing:upAndComing];
+
     [self fetchAuthorsAtPath:@"/oapi/stats/authors/"
       requiresAuthentication:NO
-                  parameters:[NSDictionary parametersForCategory:categoryIdentifier
-                                                     upAndComing:upAndComing]
+                  parameters:parameters
                      success:success
                      failure:failure];
 }
@@ -98,8 +106,8 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"Name: %@; Forename: %@; Surname: %@;",
-            self.name, self.forename, self.surname];
+    return [NSString stringWithFormat: @"%@ (forename: %@; surename: %@)",
+            [super description], self.forename, self.surname];
 }
 
 @end

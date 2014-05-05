@@ -1,7 +1,7 @@
 //
 // MDLPublication.h
 //
-// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2014 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -41,7 +41,7 @@
  
  @return  The newly-initialized publication.
  */
-+ (MDLPublication *)publicationWithName:(NSString *)name;
++ (instancetype)publicationWithName:(NSString *)name;
 
 /**
  Sends a top publication API request using the shared client and fetches the response as an array of `MDLPublication`.

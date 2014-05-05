@@ -24,7 +24,7 @@
 #ifndef _MENDELEY_SDK_
     #define _MENDELEY_SDK_
 
-    #import <AFOAuth1Client.h>
+    #import <AFOAuth2Client.h>
     #import <AFNetworking.h>
 
     #import "MDLMendeleyAPIClient.h"

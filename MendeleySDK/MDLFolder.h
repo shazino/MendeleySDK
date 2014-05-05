@@ -1,7 +1,7 @@
 //
 // MDLFolder.h
 //
-// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2014 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -80,10 +80,10 @@
  
  @see [API documentation: Create Folder](http://apidocs.mendeley.com/user-library-create-folder)
  */
-+ (MDLFolder *)createFolderWithName:(NSString *)name
-                             parent:(MDLFolder *)parent
-                            success:(void (^)(MDLFolder *))success
-                            failure:(void (^)(NSError *))failure;
++ (instancetype)createFolderWithName:(NSString *)name
+                              parent:(MDLFolder *)parent
+                             success:(void (^)(MDLFolder *))success
+                             failure:(void (^)(NSError *))failure;
 
 /**
  Sends a folder API request using the shared client.
@@ -97,6 +97,11 @@
  */
 + (void)fetchFoldersInUserLibrarySuccess:(void (^)(NSArray *))success
                                  failure:(void (^)(NSError *))failure;
+
+/**
+ Transform the folders from a raw server response into `MDLFolder` instances, then ‘treefy’ them.
+ **/
++ (NSArray *)treefiedFoldersFromResponseObject:(id)responseObject;
 
 /**
  Sends a folders documents API request for the current document using the shared client.

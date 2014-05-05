@@ -1,7 +1,7 @@
 //
 // MDLFile.m
 //
-// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2014 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -25,25 +25,31 @@
 
 #import "MDLMendeleyAPIClient.h"
 #import "MDLDocument.h"
+#import "MDLGroup.h"
 
 @implementation MDLFile
 
-+ (MDLFile *)fileWithDateAdded:(NSDate *)dateAdded extension:(NSString *)extension hash:(NSString *)hash size:(NSNumber *)size document:(MDLDocument *)document
++ (instancetype)fileWithDateAdded:(NSDate *)dateAdded
+                        extension:(NSString *)extension
+                             hash:(NSString *)hash
+                             size:(NSNumber *)size
+                         document:(MDLDocument *)document
 {
     MDLFile *file = [MDLFile new];
     file.dateAdded = dateAdded;
     file.extension = extension;
-    file.hash = hash;
-    file.size = size;
-    file.document = document;
+    file.hash      = hash;
+    file.size      = size;
+    file.document  = document;
     return file;
 }
 
-+ (MDLFile *)fileWithPublicURL:(NSURL *)publicURL document:(MDLDocument *)document
++ (instancetype)fileWithPublicURL:(NSURL *)publicURL
+                         document:(MDLDocument *)document
 {
     MDLFile *file = [MDLFile new];
     file.publicURL = publicURL;
-    file.document = document;
+    file.document  = document;
     return file;
 }
 
@@ -52,14 +58,41 @@
                                          success:(void (^)())success
                                          failure:(void (^)(NSError *))failure
 {
-    NSString *resourcePath = (self.publicURL) ? [self.publicURL absoluteString] : [NSString stringWithFormat:@"/oapi/library/documents/%@/file/%@//", self.document.identifier, self.hash];
-    return [[MDLMendeleyAPIClient sharedClient] getPath:resourcePath
-                                 requiresAuthentication:self.document.isInUserLibrary
-                                             parameters:nil
-                               outputStreamToFileAtPath:path
-                                               progress:progress
-                                                success:^(AFHTTPRequestOperation *requestOperation, id responseObject) { if (success) success(); }
-                                                failure:failure];
+    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
+
+    NSString *resourcePath;
+    if (self.publicURL) {
+        resourcePath = [self.publicURL absoluteString];
+    }
+    else if (self.document.group) {
+        resourcePath = [NSString stringWithFormat:@"/oapi/library/documents/%@/file/%@/%@/",
+                        self.document.identifier,
+                        self.hash,
+                        self.document.group.identifier];
+    }
+    else {
+        resourcePath = [NSString stringWithFormat:@"/oapi/library/documents/%@/file/%@//",
+                        self.document.identifier,
+                        self.hash];
+    }
+
+    return [client getPath:resourcePath
+    requiresAuthentication:self.document.isInUserLibrary
+                parameters:nil
+  outputStreamToFileAtPath:path
+                  progress:progress
+                   success:^(AFHTTPRequestOperation *requestOperation, id responseObject) {
+                       if (success) {
+                           success();
+                       }
+                   }
+                   failure:failure];
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat: @"%@ (hash: %@; extension: %@; size: %@)",
+            [super description], self.hash, self.extension, self.size];
 }
 
 @end

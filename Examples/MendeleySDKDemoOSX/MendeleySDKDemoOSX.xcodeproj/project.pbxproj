@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		204D0B1D2B1C40C7A308F902 /* libPods-MendeleySDKDemoOSXTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC2038C0F7C24796B6B9AA18 /* libPods-MendeleySDKDemoOSXTests.a */; };
 		67B79EBD17A6A65B00A4CEB5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B79EBC17A6A65B00A4CEB5 /* Cocoa.framework */; };
 		67B79EC717A6A65B00A4CEB5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 67B79EC517A6A65B00A4CEB5 /* InfoPlist.strings */; };
 		67B79EC917A6A65B00A4CEB5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 67B79EC817A6A65B00A4CEB5 /* main.m */; };
@@ -56,6 +57,8 @@
 		67B79EE517A6A65B00A4CEB5 /* MendeleySDKDemoOSXTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MendeleySDKDemoOSXTests.h; sourceTree = "<group>"; };
 		67B79EE617A6A65B00A4CEB5 /* MendeleySDKDemoOSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MendeleySDKDemoOSXTests.m; sourceTree = "<group>"; };
 		67B79EF117A6A86700A4CEB5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		AC2038C0F7C24796B6B9AA18 /* libPods-MendeleySDKDemoOSXTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MendeleySDKDemoOSXTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCFFD23395B9443A9A25F7B6 /* Pods-MendeleySDKDemoOSXTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MendeleySDKDemoOSXTests.xcconfig"; path = "Pods/Pods-MendeleySDKDemoOSXTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +80,7 @@
 			files = (
 				67B79EDB17A6A65B00A4CEB5 /* SenTestingKit.framework in Frameworks */,
 				67B79EDC17A6A65B00A4CEB5 /* Cocoa.framework in Frameworks */,
+				204D0B1D2B1C40C7A308F902 /* libPods-MendeleySDKDemoOSXTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +95,7 @@
 				67B79EBB17A6A65B00A4CEB5 /* Frameworks */,
 				67B79EBA17A6A65B00A4CEB5 /* Products */,
 				5F7114ED43114F459956162E /* Pods.xcconfig */,
+				BCFFD23395B9443A9A25F7B6 /* Pods-MendeleySDKDemoOSXTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,6 +116,7 @@
 				67B79EDA17A6A65B00A4CEB5 /* SenTestingKit.framework */,
 				67B79EBE17A6A65B00A4CEB5 /* Other Frameworks */,
 				42299A085C75453F8B314CC4 /* libPods.a */,
+				AC2038C0F7C24796B6B9AA18 /* libPods-MendeleySDKDemoOSXTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -193,9 +199,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 67B79EED17A6A65B00A4CEB5 /* Build configuration list for PBXNativeTarget "MendeleySDKDemoOSXTests" */;
 			buildPhases = (
+				F2A9B5D03B50462C87DAD92F /* Check Pods Manifest.lock */,
 				67B79ED417A6A65B00A4CEB5 /* Sources */,
 				67B79ED517A6A65B00A4CEB5 /* Frameworks */,
 				67B79ED617A6A65B00A4CEB5 /* Resources */,
+				EF8EAC15F0D047EF87A8C7B0 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -285,6 +293,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EF8EAC15F0D047EF87A8C7B0 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-MendeleySDKDemoOSXTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F2A9B5D03B50462C87DAD92F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -440,7 +478,7 @@
 		};
 		67B79EEE17A6A65B00A4CEB5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F7114ED43114F459956162E /* Pods.xcconfig */;
+			baseConfigurationReference = BCFFD23395B9443A9A25F7B6 /* Pods-MendeleySDKDemoOSXTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MendeleySDKDemoOSX.app/Contents/MacOS/MendeleySDKDemoOSX";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -456,7 +494,7 @@
 		};
 		67B79EEF17A6A65B00A4CEB5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F7114ED43114F459956162E /* Pods.xcconfig */;
+			baseConfigurationReference = BCFFD23395B9443A9A25F7B6 /* Pods-MendeleySDKDemoOSXTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MendeleySDKDemoOSX.app/Contents/MacOS/MendeleySDKDemoOSX";
 				COMBINE_HIDPI_IMAGES = YES;

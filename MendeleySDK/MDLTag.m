@@ -1,7 +1,7 @@
 //
 // MDLTag.m
 //
-// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2014 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,48 +26,85 @@
 
 @interface MDLTag ()
 
-+ (void)getTagsAtPath:(NSString *)path requiresAuthentication:(BOOL)requiresAuthentication success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure;
++ (void)getTagsAtPath:(NSString *)path
+requiresAuthentication:(BOOL)requiresAuthentication
+              success:(void (^)(NSArray *))success
+              failure:(void (^)(NSError *))failure;
 
 @end
 
 @implementation MDLTag
 
-+ (MDLTag *)tagWithName:(NSString *)name count:(NSNumber *)count
++ (instancetype)tagWithName:(NSString *)name
+                      count:(NSNumber *)count
 {
     MDLTag *tag = [MDLTag new];
-    tag.name = name;
+    tag.name  = name;
     tag.count = count;
     return tag;
 }
 
-+ (void)getTagsAtPath:(NSString *)path requiresAuthentication:(BOOL)requiresAuthentication success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)getTagsAtPath:(NSString *)path
+requiresAuthentication:(BOOL)requiresAuthentication
+              success:(void (^)(NSArray *))success
+              failure:(void (^)(NSError *))failure
 {
-    [[MDLMendeleyAPIClient sharedClient] getPath:path
-                          requiresAuthentication:requiresAuthentication
-                                      parameters:nil
-                                         success:^(AFHTTPRequestOperation *operation, NSArray *responseArray) {
-                                             NSMutableArray *tags = [NSMutableArray array];
-                                             for (NSDictionary *rawTagOrGroupOfTag in responseArray)
-                                             {
-                                                 if (rawTagOrGroupOfTag[@"name"] && rawTagOrGroupOfTag[@"count"])
-                                                     [tags addObject:[MDLTag tagWithName:rawTagOrGroupOfTag[@"name"] count:rawTagOrGroupOfTag[@"count"]]];
-                                                 else if ([rawTagOrGroupOfTag[@"tags"] isKindOfClass:[NSArray class]])
-                                                     for (NSDictionary *rawTag in rawTagOrGroupOfTag[@"tags"])
-                                                         [tags addObject:[MDLTag tagWithName:rawTag[@"name"] count:rawTag[@"count"]]];
-                                             }
-                                             if (success)
-                                                 success(tags);
-                                         } failure:failure];
+    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
+
+    [client getPath:path
+requiresAuthentication:requiresAuthentication
+         parameters:nil
+            success:^(AFHTTPRequestOperation *operation, NSArray *responseArray) {
+                NSMutableArray *tags = [NSMutableArray array];
+
+                for (NSDictionary *rawTagOrGroupOfTag in responseArray) {
+                    if (rawTagOrGroupOfTag[@"name"] && rawTagOrGroupOfTag[@"count"]) {
+                        MDLTag *tag = [MDLTag tagWithName:rawTagOrGroupOfTag[@"name"]
+                                                    count:rawTagOrGroupOfTag[@"count"]];
+                        [tags addObject:tag];
+                    }
+                    else if ([rawTagOrGroupOfTag[@"tags"] isKindOfClass:[NSArray class]]) {
+                        for (NSDictionary *rawTag in rawTagOrGroupOfTag[@"tags"]) {
+                            MDLTag *tag = [MDLTag tagWithName:rawTag[@"name"]
+                                                        count:rawTag[@"count"]];
+                            [tags addObject:tag];
+                        }
+                    }
+                }
+
+                if (success) {
+                    success(tags);
+                }
+            }
+            failure:failure];
 }
 
-+ (void)fetchLastTagsInPublicLibraryForCategory:(NSString *)categoryIdentifier success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)fetchLastTagsInPublicLibraryForCategory:(NSString *)categoryIdentifier
+                                        success:(void (^)(NSArray *))success
+                                        failure:(void (^)(NSError *))failure
 {
-    [self getTagsAtPath:[NSString stringWithFormat:@"/oapi/stats/tags/%@/", categoryIdentifier] requiresAuthentication:NO success:success failure:failure];
+    NSString *path = [NSString stringWithFormat:@"/oapi/stats/tags/%@/",
+                      categoryIdentifier];
+
+    [self getTagsAtPath:path
+ requiresAuthentication:NO
+                success:success
+                failure:failure];
 }
 
-+ (void)fetchLastTagsInUserLibrarySuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
++ (void)fetchLastTagsInUserLibrarySuccess:(void (^)(NSArray *))success
+                                  failure:(void (^)(NSError *))failure
 {
-    [self getTagsAtPath:@"/oapi/library/tags/" requiresAuthentication:YES success:success failure:failure];
+    [self getTagsAtPath:@"/oapi/library/tags/"
+ requiresAuthentication:YES
+                success:success
+                failure:failure];
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat: @"%@ (name: %@)",
+            [super description], self.name];
 }
 
 @end

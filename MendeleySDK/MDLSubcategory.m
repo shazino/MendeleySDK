@@ -1,7 +1,7 @@
 //
 // MDLSubcategory.m
 //
-// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2014 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -25,13 +25,21 @@
 
 @implementation MDLSubcategory
 
-+ (MDLSubcategory *)subcategoryWithIdentifier:(NSString *)identifier name:(NSString *)name slug:(NSString *)slug
++ (instancetype)subcategoryWithIdentifier:(NSString *)identifier
+                                     name:(NSString *)name
+                                     slug:(NSString *)slug
 {
-    MDLSubcategory *subcategory = [MDLSubcategory new];
+    MDLSubcategory *subcategory = [self new];
     subcategory.identifier = identifier;
-    subcategory.name = name;
-    subcategory.slug = slug;
+    subcategory.name       = name;
+    subcategory.slug       = slug;
     return subcategory;
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat: @"%@ (identifier: %@; name: %@; slug: %@)",
+            [super description], self.identifier, self.name, self.slug];
 }
 
 @end

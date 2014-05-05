@@ -2,3 +2,6 @@ platform :osx, '10.7'
 
 pod 'MendeleySDK', :path => '../../'
 
+target :MendeleySDKDemoOSXTests do
+  pod 'MendeleySDK', :path => '../../'
+end

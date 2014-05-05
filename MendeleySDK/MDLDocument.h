@@ -1,7 +1,7 @@
 //
 // MDLDocument.h
 //
-// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2014 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -256,10 +256,10 @@ extern NSString * const MDLDocumentTypeJournalArticle;
  
  @see [API documentation: User Library Create Document](http://apidocs.mendeley.com/home/user-specific-methods/user-library-create-document)
  */
-+ (MDLDocument *)createDocumentWithTitle:(NSString *)title
-                              parameters:(NSDictionary *)parameters
-                                 success:(void (^)(MDLDocument *))success
-                                 failure:(void (^)(NSError *))failure;
++ (instancetype)createDocumentWithTitle:(NSString *)title
+                             parameters:(NSDictionary *)parameters
+                                success:(void (^)(MDLDocument *))success
+                                failure:(void (^)(NSError *))failure;
 
 /**
  Creates a `MDLDocument` and sends an API creation request using the shared client.
@@ -274,9 +274,9 @@ extern NSString * const MDLDocumentTypeJournalArticle;
  
  @see [API documentation: User Library Create Document](http://apidocs.mendeley.com/home/user-specific-methods/user-library-create-document)
  */
-+ (MDLDocument *)createDocument:(MDLDocument *)document
-                        success:(void (^)(MDLDocument *))success
-                        failure:(void (^)(NSError *))failure;
++ (instancetype)createDocument:(MDLDocument *)document
+                       success:(void (^)(MDLDocument *))success
+                       failure:(void (^)(NSError *))failure;
 
 /**
  Sends an API search request with generic terms using the shared client.

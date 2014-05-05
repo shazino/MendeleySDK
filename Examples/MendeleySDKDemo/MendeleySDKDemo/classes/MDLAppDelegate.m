@@ -22,8 +22,10 @@
 // THE SOFTWARE.
 
 #import "MDLAppDelegate.h"
+
 #import <MendeleySDK.h>
-#import "AFNetworkActivityIndicatorManager.h"
+#import <MDLMendeleyAPIClient.h>
+#import <AFNetworkActivityIndicatorManager.h>
 
 NSString * const MDLConsumerKey    = @"##consumer_key##";
 NSString * const MDLConsumerSecret = @"##consumer_secret##";
@@ -33,32 +35,23 @@ NSString * const MDLURLScheme      = @"mdl-mendeleysdkdemo";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    if ([self.window.rootViewController isKindOfClass:UINavigationController.class]) {
-        UINavigationBar *navigationBar = ((UINavigationController *)self.window.rootViewController).navigationBar;
-        
-        if ([navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
-            [navigationBar setTranslucent:NO];
-            [UINavigationBar.appearance setBarStyle:UIBarStyleBlackOpaque];
-            [UINavigationBar.appearance setTintColor:[UIColor whiteColor]];
-            [UINavigationBar.appearance setBarTintColor:[UIColor colorWithRed:0.7 green:0 blue:0 alpha:1]];
-        }
-        else {
-            [UINavigationBar.appearance setTintColor:[UIColor colorWithRed:0.7 green:0 blue:0 alpha:1]];
-        }
-    }
-    
-    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
-    return YES;
-}
+    [MDLMendeleyAPIClient configureSharedClientWithClientID:MDLConsumerKey
+                                                     secret:MDLConsumerSecret
+                                                redirectURI:MDLURLScheme];
 
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-{   
-    if ([[url scheme] isEqualToString:MDLURLScheme])
-    {
-        NSNotification *notification = [NSNotification notificationWithName:kAFApplicationLaunchedWithURLNotification object:nil userInfo:[NSDictionary dictionaryWithObject:url forKey:kAFApplicationLaunchOptionsURLKey]];
-        [[NSNotificationCenter defaultCenter] postNotification:notification];
+    UIColor *tintColor = [UIColor colorWithRed:0.7 green:0 blue:0 alpha:1];
+    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+    if ([navigationController.navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
+        [[UINavigationBar appearance] setBarTintColor:tintColor];
+        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+        [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
     }
-    
+    else {
+        [[UINavigationBar appearance] setTintColor:tintColor];
+    }
+
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+
     return YES;
 }
 
