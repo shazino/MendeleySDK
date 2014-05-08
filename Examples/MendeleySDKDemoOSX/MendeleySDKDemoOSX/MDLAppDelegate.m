@@ -9,16 +9,16 @@
 #import "MDLAppDelegate.h"
 #import <MendeleySDK.h>
 
-NSString * const MDLConsumerKey    = @"##consumer_key##";
-NSString * const MDLConsumerSecret = @"##consumer_secret##";
+NSString * const MDLClientID       = @"##client_id##";
+NSString * const MDLSecret         = @"##secret##";
 NSString * const MDLURLScheme      = @"mdl-mendeleysdkdemo";
 
 @implementation MDLAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
-    [MDLMendeleyAPIClient configureSharedClientWithClientID:MDLConsumerKey
-                                                     secret:MDLConsumerSecret
+    [MDLMendeleyAPIClient configureSharedClientWithClientID:MDLClientID
+                                                     secret:MDLSecret
                                                 redirectURI:MDLURLScheme];
 }
 
