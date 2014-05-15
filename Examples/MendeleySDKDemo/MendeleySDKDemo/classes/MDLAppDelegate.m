@@ -27,16 +27,16 @@
 #import <MDLMendeleyAPIClient.h>
 #import <AFNetworkActivityIndicatorManager.h>
 
-NSString * const MDLClientID       = @"##client_id##";
-NSString * const MDLSecret         = @"##secret##";
-NSString * const MDLURLScheme      = @"mdl-mendeleysdkdemo";
+NSString * const MDLClientID     = @"##client_id##";
+NSString * const MDLClientSecret = @"##secret##";
+NSString * const MDLURLScheme    = @"mdl-mendeleysdkdemo";
 
 @implementation MDLAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [MDLMendeleyAPIClient configureSharedClientWithClientID:MDLClientID
-                                                     secret:MDLSecret
+                                                     secret:MDLClientSecret
                                                 redirectURI:MDLURLScheme];
 
     UIColor *tintColor = [UIColor colorWithRed:0.7 green:0 blue:0 alpha:1];
