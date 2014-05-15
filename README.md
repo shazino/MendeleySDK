@@ -25,11 +25,11 @@ pod 'MendeleySDK', '1.5'
 
 ### App credentials
 
-Configure the shared API client by calling `configureSharedClientWithClientID:secret:redirectURI:` with your application consumer key, secret, and redirect URI (in your `application:didFinishLaunchingWithOptions:`, for instance):
+Configure the shared API client by calling `configureSharedClientWithClientID:secret:redirectURI:` with your application client ID, client secret, and redirect URI (in your `application:didFinishLaunchingWithOptions:`, for instance):
 
 ```objective-c
-[MDLMendeleyAPIClient configureSharedClientWithClientID:@"###my_consumer_key###"
-                                                 secret:@"###my_consumer_secret###"
+[MDLMendeleyAPIClient configureSharedClientWithClientID:@"###my_client_ID###"
+                                                 secret:@"###my_client_secret###"
                                             redirectURI:@"###mdl-custom-scheme://oauth?###"];
 ```
 
