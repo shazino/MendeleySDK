@@ -1,7 +1,7 @@
 //
 // MDLAppDelegate.m
 //
-// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2014 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,16 +27,16 @@
 #import <MDLMendeleyAPIClient.h>
 #import <AFNetworkActivityIndicatorManager.h>
 
-NSString * const MDLConsumerKey    = @"##consumer_key##";
-NSString * const MDLConsumerSecret = @"##consumer_secret##";
+NSString * const MDLClientID       = @"##client_id##";
+NSString * const MDLSecret         = @"##secret##";
 NSString * const MDLURLScheme      = @"mdl-mendeleysdkdemo";
 
 @implementation MDLAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [MDLMendeleyAPIClient configureSharedClientWithClientID:MDLConsumerKey
-                                                     secret:MDLConsumerSecret
+    [MDLMendeleyAPIClient configureSharedClientWithClientID:MDLClientID
+                                                     secret:MDLSecret
                                                 redirectURI:MDLURLScheme];
 
     UIColor *tintColor = [UIColor colorWithRed:0.7 green:0 blue:0 alpha:1];
