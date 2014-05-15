@@ -28,7 +28,7 @@
 #import <AFNetworkActivityIndicatorManager.h>
 
 NSString * const MDLClientID     = @"##client_id##";
-NSString * const MDLClientSecret = @"##secret##";
+NSString * const MDLClientSecret = @"##client_secret##";
 NSString * const MDLURLScheme    = @"mdl-mendeleysdkdemo";
 
 @implementation MDLAppDelegate
