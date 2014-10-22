@@ -43,6 +43,9 @@
 
 /**
  The file hash.
+
+ Caution: starting with iOS 8.0 SDK, `hash` is now a read-only property on the
+ `NSObject` protocol. We will probably have to rename this in the future.
  */
 @property (copy, nonatomic) NSString *hash;
 

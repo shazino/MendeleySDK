@@ -29,6 +29,8 @@
 
 @implementation MDLFile
 
+@synthesize hash;
+
 + (instancetype)fileWithDateAdded:(NSDate *)dateAdded
                         extension:(NSString *)extension
                              hash:(NSString *)hash
