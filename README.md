@@ -1,6 +1,9 @@
 # MendeleySDK
-**Objective-C client for the Mendeley Open API.**
+**Objective-C client for the Mendeley Open API (deprecated).**
 [![Build Status](https://travis-ci.org/shazino/MendeleySDK.png?branch=master)](https://travis-ci.org/shazino/MendeleySDK)
+
+**:warning: IMPORTANT: MendeleySDK was designed for the original Mendeley “Open API”. It has now been deprecated, and developers should migrate to the new Mendeley API. This MendeleySDK will _NOT_ be updated, so you should switch to the new official Objective-C kit: [MendeleyKit](https://github.com/Mendeley/mendeleykit).**
+
 
 MendeleySDK is a [Mendeley API](http://apidocs.mendeley.com) client for iOS and OS X,
  built on top of [AFNetworking](http://www.github.com/AFNetworking/AFNetworking)
