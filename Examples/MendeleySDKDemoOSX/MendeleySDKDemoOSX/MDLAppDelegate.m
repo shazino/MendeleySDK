@@ -7,6 +7,7 @@
 //
 
 #import "MDLAppDelegate.h"
+
 #import <MendeleySDK.h>
 
 NSString * const MDLClientID     = @"##client_id##";

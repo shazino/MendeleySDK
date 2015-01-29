@@ -1,0 +1,5 @@
+#include "Pods-AFOAuth2Client.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Build" "${PODS_ROOT}/Headers/Build/AFOAuth2Client" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/AFOAuth2Client" "${PODS_ROOT}/Headers/Public/MendeleySDK"
+OTHER_LDFLAGS = -ObjC
+PODS_ROOT = ${SRCROOT}

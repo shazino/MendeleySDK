@@ -7,813 +7,683 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		031F18B6A49F466C956F99B0 /* AFOAuth2Client.h in Headers */ = {isa = PBXBuildFile; fileRef = EF90D92DD30348248E98FCD3 /* AFOAuth2Client.h */; };
-		05795CC5ECEB4D7797884DC6 /* MDLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 308B25BEF033486396CD472C /* MDLUser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		0C14CB31A65A414F9495FBC0 /* AFOAuth2Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 7459F054BA08455F9F78E8DF /* AFOAuth2Client.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		0FEB86B97B0149D4A8CB8637 /* AFXMLRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 53356CB676904203A4135E85 /* AFXMLRequestOperation.h */; };
-		1071E165370643C190EC07AF /* MDLCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BADD46C28340458AA465AC /* MDLCategory.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		107C80AFD2154DF19DE86E11 /* Pods-MendeleySDKDemoOSXTests-AFNetworking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A8956739A0FC47289D87D6D7 /* Pods-MendeleySDKDemoOSXTests-AFNetworking-dummy.m */; };
-		10EEF353442A400EA9D90CC1 /* MDLMendeleyAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B2859F104D654743B4877551 /* MDLMendeleyAPIClient.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		1167E91905014773AC12F65F /* MDLGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 938A20F9AB8A47C0BD7CA3A7 /* MDLGroup.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		13181782F2714CC4A378BB68 /* MendeleySDK.h in Headers */ = {isa = PBXBuildFile; fileRef = D4A128FCAD54415FBB232EBE /* MendeleySDK.h */; };
-		1369506010AD45ADBE2D3AF5 /* MDLDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F585591C8EB47C9A6137B06 /* MDLDocument.h */; };
-		139D3FC122884D118180DB2E /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = B1916C9E1100402A9E6A0244 /* UIImageView+AFNetworking.h */; };
-		13AA13BAD0F74D53AF7D3F77 /* MDLTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 462AFE9AF9CC4DF7901B3BFB /* MDLTag.h */; };
-		1C39445460E646F7A2E2DDD6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDA2FE3FE344333AD976963 /* Cocoa.framework */; };
-		1C47E0E0D6354AE0AA6E4BC9 /* Pods-MendeleySDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 621550B0C9A24B5F87576CA7 /* Pods-MendeleySDK-dummy.m */; };
-		20E73106AFDC41198571D90B /* AFOAuth2Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 7459F054BA08455F9F78E8DF /* AFOAuth2Client.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		21265D55E0014FC9A8265D0E /* AFPropertyListRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 30F8B2A02EDE47368E67976E /* AFPropertyListRequestOperation.h */; };
-		23EA8E503C2A46A58AF26FAE /* MDLUser.h in Headers */ = {isa = PBXBuildFile; fileRef = AD5D039228CD4215A65BBF0F /* MDLUser.h */; };
-		251012751E1D413CB27E4E98 /* AFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DD4D2404C6D4589B02BB808 /* AFURLConnectionOperation.h */; };
-		291E0DC31FBA4BA6AFD1454F /* MDLFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CC0220FA9CE4E96ACCE36F3 /* MDLFile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		2F25FB025B534135ADFBA78E /* MDLSubcategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABBD273C444238C6CBB01 /* MDLSubcategory.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		311EC6C034C746B6BAD694FF /* MDLDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F585591C8EB47C9A6137B06 /* MDLDocument.h */; };
-		315BBFBD5CE943DFBAC2855A /* MDLCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 2825084D4D874E95840F8044 /* MDLCategory.h */; };
-		31CC2CA7842142DDB7539C91 /* AFHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = EABBD5728F214BE688C6F235 /* AFHTTPClient.h */; };
-		32553EEFE5ED4DFCB2653A8C /* AFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FE9D9906F9948F09EA4EE04 /* AFHTTPRequestOperation.h */; };
-		33364C0188A84D76990E48D5 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B325F09B4E7A4F40911EBF94 /* CoreServices.framework */; };
-		3905DBB69E0344DF87E686D2 /* MDLAuthor.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C3905F51F1A475190E383EB /* MDLAuthor.h */; };
-		3BE6BD0413D54A6786734CF4 /* AFImageRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = B0F575238E914090945B9F80 /* AFImageRequestOperation.h */; };
-		3BFD1B3FD4B54AEB96F4E867 /* libPods-MendeleySDKDemoOSXTests-AFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C40DDE305AD4222BFD279F5 /* libPods-MendeleySDKDemoOSXTests-AFNetworking.a */; };
-		3E131DAAAC5F45A6BB380B58 /* MDLMendeleyAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B2859F104D654743B4877551 /* MDLMendeleyAPIClient.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		3E40A5C38EC64312A5685814 /* MDLSubcategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 09B7CDAE31FB448B92091935 /* MDLSubcategory.h */; };
-		4242DB289531418DADB6D2E3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDA2FE3FE344333AD976963 /* Cocoa.framework */; };
-		428A87D885B8479BAE4916D9 /* AFXMLRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 53356CB676904203A4135E85 /* AFXMLRequestOperation.h */; };
-		47028C2244774790A2C2F97F /* MDLPublication.m in Sources */ = {isa = PBXBuildFile; fileRef = A42E9726F80A4EF4B92F0890 /* MDLPublication.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		4762B43FDEB84175AEDBF2E5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BF84D202D994102B4876E6D /* Security.framework */; };
-		482B3AC591994C2EB868C822 /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B610B3E2EF44C02BF70C2DD /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-dummy.m */; };
-		4E6748CC7DB34C61956CB901 /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A43700844875495D9236D4FD /* AFNetworkActivityIndicatorManager.h */; };
-		57463A8BF6EF4303A1EE28E4 /* AFJSONRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FACBFE1624348819B0B2FE5 /* AFJSONRequestOperation.h */; };
-		58905CB9E06C44E78292BBA6 /* Pods-MendeleySDKDemoOSXTests-MendeleySDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A085A9F80328460483316B03 /* Pods-MendeleySDKDemoOSXTests-MendeleySDK-dummy.m */; };
-		5A345D0BE7714C758E49C8D4 /* MDLFolder.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A81FCAC1C9048CEACBD8217 /* MDLFolder.h */; };
-		5A4A90D7B86547819AF546A6 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C5FD4F309C4F11BBE456E7 /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		5A60D67730044C078EDD96D5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FFBDE5919B443093CEE235 /* SystemConfiguration.framework */; };
-		5B121BB8F0B842C6AEBBD71B /* AFImageRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = B0F575238E914090945B9F80 /* AFImageRequestOperation.h */; };
-		5D777177E84C4171BF6F2807 /* libPods-MendeleySDKDemoOSXTests-AFOAuth2Client.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 61546E47E60448958C61004C /* libPods-MendeleySDKDemoOSXTests-AFOAuth2Client.a */; };
-		5DCFBD79474A4B2BBA23B840 /* AFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DD4D2404C6D4589B02BB808 /* AFURLConnectionOperation.h */; };
-		5DF8304C98D542A3B41391C3 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE2912EF74341509F87F0E1 /* AFNetworkActivityIndicatorManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		5F66186046174D018544F0A1 /* MDLTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 462AFE9AF9CC4DF7901B3BFB /* MDLTag.h */; };
-		6010052A7F7B4B93B4BA6741 /* Pods-MendeleySDKDemoOSXTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E913847D2404F4AA676B605 /* Pods-MendeleySDKDemoOSXTests-dummy.m */; };
-		60FEA049E0EC434F905DBBD6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDA2FE3FE344333AD976963 /* Cocoa.framework */; };
-		6123292538204A1FBE7A6533 /* MDLFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F58C4912ECA4EC49F18DBF9 /* MDLFile.h */; };
-		63256FC42EFB4E018FD058C3 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EEC2217EED4BFFBF14ADF0 /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		632F32B3DCB54A1D9E1BAF85 /* MDLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 308B25BEF033486396CD472C /* MDLUser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		676E2A87E34746FBBC7CC632 /* Pods-AFOAuth2Client-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F064BDBED5408ABB624463 /* Pods-AFOAuth2Client-dummy.m */; };
-		680A608978AF4C3F91FA7B88 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3F015309D45C2A9DA338F /* AFJSONRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		68FEFBEDE3304B239F8C95C2 /* MDLPublication.h in Headers */ = {isa = PBXBuildFile; fileRef = ED7A379DD7C7480FB54C2564 /* MDLPublication.h */; };
-		69FBAD2D0DD24AEFA3CC7640 /* MDLTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 969C6FFC345F42AFA2495CD9 /* MDLTag.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		6DC9A039C62C416E839FA242 /* MDLGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 938A20F9AB8A47C0BD7CA3A7 /* MDLGroup.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		7043A34F81A242929107CC12 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FFBDE5919B443093CEE235 /* SystemConfiguration.framework */; };
-		720175D53F26455DAE9C02A3 /* AFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FE9D9906F9948F09EA4EE04 /* AFHTTPRequestOperation.h */; };
-		73FC073AC9BA4E9988FAC806 /* MDLFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F58C4912ECA4EC49F18DBF9 /* MDLFile.h */; };
-		75B77F39AD3649DC85FE5505 /* MDLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 9015DC52354C451BBC5C6BD9 /* MDLDocument.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		771CA6C4A553477698B4718C /* AFPropertyListRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 30F8B2A02EDE47368E67976E /* AFPropertyListRequestOperation.h */; };
-		779C57A88D8340E0B1514480 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDA2FE3FE344333AD976963 /* Cocoa.framework */; };
-		7A0971C027E44A3BB365783C /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4B7BFA6A5641E69E8B2798 /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		80DD5D1B4A0C4CEDB1ACE450 /* libPods-AFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ADE48ACC09A4557B3922905 /* libPods-AFNetworking.a */; };
-		8177A30C8D4A43B7AA17CA29 /* MDLMendeleyAPIClient.h in Headers */ = {isa = PBXBuildFile; fileRef = C2302DCF9A43432C86EE9640 /* MDLMendeleyAPIClient.h */; };
-		81F5F89275FE4A538C8A3E45 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 19BE8B1A977145469803EDD1 /* AFPropertyListRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		85C0765EB2B94885A85AB9DE /* MDLPublication.h in Headers */ = {isa = PBXBuildFile; fileRef = ED7A379DD7C7480FB54C2564 /* MDLPublication.h */; };
-		8656762C83F943078671D656 /* MDLSubcategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABBD273C444238C6CBB01 /* MDLSubcategory.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		8693637BEAC9441E9D7AE081 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE2912EF74341509F87F0E1 /* AFNetworkActivityIndicatorManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		87F0251777314B72953B86F4 /* AFOAuth2Client.h in Headers */ = {isa = PBXBuildFile; fileRef = EF90D92DD30348248E98FCD3 /* AFOAuth2Client.h */; };
-		88700D73E72544BDB8FA6C0E /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F3F015309D45C2A9DA338F /* AFJSONRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		8A3CA4737BE748218E5B5828 /* MDLTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 969C6FFC345F42AFA2495CD9 /* MDLTag.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		8D3CB08D090342F894CBC6F5 /* MDLFolder.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A81FCAC1C9048CEACBD8217 /* MDLFolder.h */; };
-		8E6BC89B6B73409E88487E63 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 19BE8B1A977145469803EDD1 /* AFPropertyListRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		8E7FEED6A57742F099032C8C /* Pods-AFNetworking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C4289005FD684CA2B94016F6 /* Pods-AFNetworking-dummy.m */; };
-		91D540E929B940679566A9C9 /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 927CD04BBA624B10A585D29B /* AFNetworking.h */; };
-		961F41144CEE4491A4CB71BC /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E300F767AD4CCB99DD9408 /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		9A080E109C4041509B8705FC /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4B7BFA6A5641E69E8B2798 /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		9A8AB5E721134CBF81ADFD20 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B27627AD3F4B22B2653358 /* Pods-dummy.m */; };
-		9B6A17B93BCE4B7FA17BAAE6 /* MendeleySDK.h in Headers */ = {isa = PBXBuildFile; fileRef = D4A128FCAD54415FBB232EBE /* MendeleySDK.h */; };
-		A0F0CB9B4207406B894F6BAA /* AFJSONRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FACBFE1624348819B0B2FE5 /* AFJSONRequestOperation.h */; };
-		AB3A845C5BC14353BE0BD846 /* libPods-AFOAuth2Client.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA16410BD25145D08E38588E /* libPods-AFOAuth2Client.a */; };
-		B0E9130F79A045DEB27B5027 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDA2FE3FE344333AD976963 /* Cocoa.framework */; };
-		B18A26F4C5724E67BCBDF2BE /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EEC2217EED4BFFBF14ADF0 /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		B22681DD00E742E3AFACC17C /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = B1916C9E1100402A9E6A0244 /* UIImageView+AFNetworking.h */; };
-		B5754059C8C44DDA990E157D /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 927CD04BBA624B10A585D29B /* AFNetworking.h */; };
-		B60900A4B3B3445EA5A1B639 /* MDLCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BADD46C28340458AA465AC /* MDLCategory.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		BD7EE82D743F47C38B87421D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BF84D202D994102B4876E6D /* Security.framework */; };
-		BF40FBE4D887499B808C0CF8 /* MDLAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAFB535B473432791772CD5 /* MDLAuthor.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		C09CCE10A6E34414AC3CEECC /* AFHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = EABBD5728F214BE688C6F235 /* AFHTTPClient.h */; };
-		C16AA9E04D214C3A87E7CE85 /* MDLFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CC0220FA9CE4E96ACCE36F3 /* MDLFile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		C3FBD996C44348A2A1A35195 /* MDLAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EAFB535B473432791772CD5 /* MDLAuthor.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		C7BD9DDFB2DB4342AA05047F /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B325F09B4E7A4F40911EBF94 /* CoreServices.framework */; };
-		C8399F724FAE4B8C830F8A26 /* MDLPublication.m in Sources */ = {isa = PBXBuildFile; fileRef = A42E9726F80A4EF4B92F0890 /* MDLPublication.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		C9060A8924F74E97A214A6F0 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C7D701E1E94A5BA6AB8A8A /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		C9899862381B4B02A344747D /* MDLCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 2825084D4D874E95840F8044 /* MDLCategory.h */; };
-		CAD0CB605DBE409A95F0DB3A /* MDLUser.h in Headers */ = {isa = PBXBuildFile; fileRef = AD5D039228CD4215A65BBF0F /* MDLUser.h */; };
-		CCC4A58E15DF487081D14AA4 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C5FD4F309C4F11BBE456E7 /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		CE6619D10009461DB477613E /* MDLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 9015DC52354C451BBC5C6BD9 /* MDLDocument.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		CEC78EC5BAFE4F1CBD287585 /* libPods-MendeleySDKDemoOSXTests-MendeleySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F323DB5123924A2097C7393D /* libPods-MendeleySDKDemoOSXTests-MendeleySDK.a */; };
-		D37A401122BF44DBBF57B568 /* MDLGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 8071FA580C5D45DDA904A3AF /* MDLGroup.h */; };
-		D676FD36279A45F3AEFEBBFA /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AD17C3981D4C5EAD16E305 /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		D74BEE2B178442D38649C1B2 /* MDLGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 8071FA580C5D45DDA904A3AF /* MDLGroup.h */; };
-		E1C0721B85684436A9C1B797 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDA2FE3FE344333AD976963 /* Cocoa.framework */; };
-		E1C79F20C3C5410EADB618D4 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E300F767AD4CCB99DD9408 /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		E40001FE7C2B425196BB233C /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A43700844875495D9236D4FD /* AFNetworkActivityIndicatorManager.h */; };
-		E6A93EA46C7B4B1FBBFDC544 /* libPods-MendeleySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A716E38BD2048B7A63FD1CC /* libPods-MendeleySDK.a */; };
-		E91DE661CC3A4A21B722FE99 /* MDLAuthor.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C3905F51F1A475190E383EB /* MDLAuthor.h */; };
-		E94CE31AE2FD49F8ADC8B8CB /* MDLSubcategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 09B7CDAE31FB448B92091935 /* MDLSubcategory.h */; };
-		E97694DC7502479BAD129D1B /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C7D701E1E94A5BA6AB8A8A /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		EC588C90FAD942DD87A85F2A /* MDLFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAE0328909241D5B362D223 /* MDLFolder.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		EE48FEF843DD464899E5A887 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDA2FE3FE344333AD976963 /* Cocoa.framework */; };
-		F2AF9C0930D9420D8BB74E20 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDA2FE3FE344333AD976963 /* Cocoa.framework */; };
-		FB09780A8E4A4E1283E074D7 /* MDLFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = EDAE0328909241D5B362D223 /* MDLFolder.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		FCE51516E44547B5B2227AC6 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AD17C3981D4C5EAD16E305 /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		FE08E99610814447B4AF879C /* MDLMendeleyAPIClient.h in Headers */ = {isa = PBXBuildFile; fileRef = C2302DCF9A43432C86EE9640 /* MDLMendeleyAPIClient.h */; };
+		011E80EDC82EC74A47291048 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D18EBA795EBFB885D29031FE /* SystemConfiguration.framework */; };
+		0344033CD3D68A931F19F71D /* AFOAuth2Client.h in Headers */ = {isa = PBXBuildFile; fileRef = 2174D11D33FA54246D12F817 /* AFOAuth2Client.h */; };
+		03DADF73C93368EC7E14F5D5 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B8CB24F8BFBE101F706F4 /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		07EDFA9D1879AFC15D7F439A /* MDLAuthor.h in Headers */ = {isa = PBXBuildFile; fileRef = 984C43FFF1E3802E79B37DE8 /* MDLAuthor.h */; };
+		0FC27E42D0CA806BF6FCD60E /* MendeleySDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 43AABA76BF18CE97472A45A5 /* MendeleySDK.h */; };
+		11E8E7542BBC0B3F9B6513E5 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C386338410F482B2A57F24E /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		182CF50FF2499E38AA119465 /* MDLMendeleyAPIClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 45451C41B727DD7957AD4136 /* MDLMendeleyAPIClient.h */; };
+		19E26D80EEA0C4AB47B0FFA4 /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A4BAE284FEAAB24348E8B80 /* AFNetworkActivityIndicatorManager.h */; };
+		1BF743EE51BF0152B3BD0961 /* Pods-AFOAuth2Client-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 652E98C357DD8D65664C7E57 /* Pods-AFOAuth2Client-dummy.m */; };
+		1D5A691984110C41EAFF0F6F /* Pods-MendeleySDKDemoOSXTests-MendeleySDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7F4D4CD0683770FF697E81 /* Pods-MendeleySDKDemoOSXTests-MendeleySDK-dummy.m */; };
+		235A1B262BBE29C69A0CA67C /* MDLMendeleyAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FA022B7925F98CA5402E0668 /* MDLMendeleyAPIClient.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		24AF8A0701570F1EB7085E50 /* MendeleySDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 43AABA76BF18CE97472A45A5 /* MendeleySDK.h */; };
+		24CC210C63B27B31EB10C58C /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 410DE79265A53629DFD78720 /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		27699EBD059BB45F26862810 /* MDLFolder.h in Headers */ = {isa = PBXBuildFile; fileRef = C4ABD4DF76D9141115896137 /* MDLFolder.h */; };
+		2A8F3C5B6DE9B0A2FFC69E5C /* MDLCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C96CE35B9D139E40A8BE5E5 /* MDLCategory.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		3448AF886CAEEABE2CA70115 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B8CB24F8BFBE101F706F4 /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		355E630E2B03A7FEE395F439 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 252F985E281B7771D9899714 /* AFJSONRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		3696E1F4B0A4CD406C548600 /* AFHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC0823F2242A2100FC5499B /* AFHTTPClient.h */; };
+		3BD493E0362D7931A303D652 /* MDLFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B11439E17D83C635501F8BC /* MDLFile.h */; };
+		3E926290BCB69D0C4E9797E3 /* MDLMendeleyAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FA022B7925F98CA5402E0668 /* MDLMendeleyAPIClient.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		43A1BC9456BD43344255D42D /* MDLFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = BD11DE7BBED07B62C7A01FAF /* MDLFolder.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		461AA9292B0330B54C734CCF /* Pods-MendeleySDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BE89B8B4F2D191318A43A4 /* Pods-MendeleySDK-dummy.m */; };
+		47BFEE57AC7694EF32D89BA4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC3821DBA5D13C83F4787B9E /* Cocoa.framework */; };
+		48142D9A7F1609AE62CA5C2F /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1C758E8C37F66399E265F4 /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		4CF464A411DD5790A808D550 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C386338410F482B2A57F24E /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		576C12AAC06E939087879824 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC3821DBA5D13C83F4787B9E /* Cocoa.framework */; };
+		5821CE39AD13A629C844B45F /* MDLAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = A148B58296FF94285B617479 /* MDLAuthor.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		5B1241FDC262CD9DC53C8225 /* MDLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA2695D7357613AB10FA70B /* MDLDocument.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		5BB559E29DAD9254C409E7AC /* MDLPublication.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CA12CEEF21DC853F5EC5D3D /* MDLPublication.h */; };
+		611C17DBB17141646FB6D032 /* MDLGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = F34F131AB85853534F67E202 /* MDLGroup.h */; };
+		62E3FCF1737B1FC10DE80690 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9EFE86BBF884F06B754A3E /* AFNetworkActivityIndicatorManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		6505E1AC2B21893ED998E675 /* MDLCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 61EBF698B7717D549FEC74CB /* MDLCategory.h */; };
+		6616AA7C9C85659218C75B16 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC3821DBA5D13C83F4787B9E /* Cocoa.framework */; };
+		66D37A59E56042C57D2DD0C7 /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CC3CF946D488910AAEE0D78 /* AFNetworking.h */; };
+		67C862066271CBD422C3C9B3 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 410DE79265A53629DFD78720 /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		67E26B943502222144DF2184 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 252F985E281B7771D9899714 /* AFJSONRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		6895713C024A8AEF372B9DDE /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E1F4E18E39872AB189C4B0 /* CoreServices.framework */; };
+		69C60C3308DD47C3D34261E3 /* MDLUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B5204A1C364F7A96080C696 /* MDLUser.h */; };
+		6B12012D295E01DE008FE5DA /* Pods-AFNetworking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 75D0172EE1513E179B115D36 /* Pods-AFNetworking-dummy.m */; };
+		6B56B22C1986046F7730D1F9 /* AFImageRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 921DDAA1F0FC2F0446696B46 /* AFImageRequestOperation.h */; };
+		6BA9B45F92513C21CFFB6D9E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 618AAFFD710963103149DD5F /* Security.framework */; };
+		6C07F4E09C0F9D3230115C59 /* MDLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9043F08BE97D98E830317120 /* MDLUser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		6C47A3DA71F61C31A3B4F683 /* MDLTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 644E3EB3197AD55FF524C757 /* MDLTag.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		6E87F1DBFD1C6389651B047E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 618AAFFD710963103149DD5F /* Security.framework */; };
+		6EFBDF5792ED06197F407604 /* AFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 477D2F8C55FEF55C699C9E0B /* AFHTTPRequestOperation.h */; };
+		7111000BB7B1136C21462332 /* AFOAuth2Client.m in Sources */ = {isa = PBXBuildFile; fileRef = DE211E970F77486D4958DFD5 /* AFOAuth2Client.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		733585642CC7BF824A5F8BF9 /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = C9900B9B70C2D83CCEBC12E2 /* UIImageView+AFNetworking.h */; };
+		739FA497DB03CEAE536B1707 /* MDLDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 71F6E8DA3F40621314280E9E /* MDLDocument.h */; };
+		750F345E5102ECB9683AD2F6 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA68C93344F052932FE9927 /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		7B80B0D21FBD074C9787D4F0 /* AFImageRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 921DDAA1F0FC2F0446696B46 /* AFImageRequestOperation.h */; };
+		7CDEFFF59F18B46059807162 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC3821DBA5D13C83F4787B9E /* Cocoa.framework */; };
+		7DD24270D26C495AC421E08C /* AFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 477D2F8C55FEF55C699C9E0B /* AFHTTPRequestOperation.h */; };
+		8318FD4AE5967008209C4A9F /* MDLSubcategory.h in Headers */ = {isa = PBXBuildFile; fileRef = C1519E6BDD1F56A8D5BA63A2 /* MDLSubcategory.h */; };
+		83453573BAECBD122895521B /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B002B614B9B8385DCAD880 /* Pods-dummy.m */; };
+		8431D026FE4DFE3E66633664 /* AFHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC0823F2242A2100FC5499B /* AFHTTPClient.h */; };
+		88A75A916DFC34CEEFABACA4 /* MDLPublication.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CA12CEEF21DC853F5EC5D3D /* MDLPublication.h */; };
+		8912EAA96B5A407EC5B37C42 /* MDLCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C96CE35B9D139E40A8BE5E5 /* MDLCategory.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		8FA5C4115ADD8CC8E9385C06 /* MDLFile.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B29DEF84CF233F8E4BE1AD /* MDLFile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		94EF58D1B5F6EAE3C307E9A1 /* AFJSONRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 60DAFDB887B06C63F075FF68 /* AFJSONRequestOperation.h */; };
+		95909A592E3A83C1D4EF9A7A /* AFJSONRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 60DAFDB887B06C63F075FF68 /* AFJSONRequestOperation.h */; };
+		9910E7D7EB35EBF5DB23B093 /* MDLSubcategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8049C76916C29F4727E2508B /* MDLSubcategory.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		994EF1857194B00BB4CAB530 /* AFPropertyListRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = FD3223F5A10081E7A4AB135B /* AFPropertyListRequestOperation.h */; };
+		9A119C431ACAC38377106D81 /* AFPropertyListRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = FD3223F5A10081E7A4AB135B /* AFPropertyListRequestOperation.h */; };
+		9A7606D85AFDDBE67CB17DD4 /* MDLFile.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B29DEF84CF233F8E4BE1AD /* MDLFile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		9B4BBC0E4F73351F76F81000 /* AFOAuth2Client.h in Headers */ = {isa = PBXBuildFile; fileRef = 2174D11D33FA54246D12F817 /* AFOAuth2Client.h */; };
+		9BE43C87B8F4EA2D3675CFCD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D18EBA795EBFB885D29031FE /* SystemConfiguration.framework */; };
+		9C7BF517592FDE2DB450D0E3 /* MDLPublication.m in Sources */ = {isa = PBXBuildFile; fileRef = 15129710FF371B26B7283E4C /* MDLPublication.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		9D57B6857E1A6A05EB69BF7D /* MDLUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B5204A1C364F7A96080C696 /* MDLUser.h */; };
+		9F5C54F88EBBAE6E5E0769F2 /* Pods-MendeleySDKDemoOSXTests-AFNetworking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D05FCED3D237C76E7183E61 /* Pods-MendeleySDKDemoOSXTests-AFNetworking-dummy.m */; };
+		A0150B3D1A64429421580A9A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC3821DBA5D13C83F4787B9E /* Cocoa.framework */; };
+		A25BB7474637E493AF34D1B9 /* MDLFolder.h in Headers */ = {isa = PBXBuildFile; fileRef = C4ABD4DF76D9141115896137 /* MDLFolder.h */; };
+		A41AF14116A6ECEE60B569DF /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA68C93344F052932FE9927 /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		A4CE65CCC9D456AE0C2A1B5E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC3821DBA5D13C83F4787B9E /* Cocoa.framework */; };
+		A805871B2E6DBC6A75E54C0C /* MDLAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = A148B58296FF94285B617479 /* MDLAuthor.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		ACAFE90BAEAF922B5021772D /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1C758E8C37F66399E265F4 /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		AF42C0B4EEAD4D90313B3ECF /* MDLFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B11439E17D83C635501F8BC /* MDLFile.h */; };
+		B193587B8E894B95B6F640A5 /* MDLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9043F08BE97D98E830317120 /* MDLUser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		B91256C1AE390323A6A9F146 /* AFXMLRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E80C0904DF71383649C6D12 /* AFXMLRequestOperation.h */; };
+		BBB9B0976F5C753C1DD4733A /* AFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D43797CEEF060C220976136 /* AFURLConnectionOperation.h */; };
+		BC09AD887ECA3A63551A7A89 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37E1F4E18E39872AB189C4B0 /* CoreServices.framework */; };
+		BEA71814174E599762CD2BCE /* AFOAuth2Client.m in Sources */ = {isa = PBXBuildFile; fileRef = DE211E970F77486D4958DFD5 /* AFOAuth2Client.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		C19470E74385EC580367CAD3 /* MDLSubcategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8049C76916C29F4727E2508B /* MDLSubcategory.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		C393F7942D9B75F2FE3D2C1C /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9EFE86BBF884F06B754A3E /* AFNetworkActivityIndicatorManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		C397586C8DA3EDBC1D9871A9 /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C083F495D32DF4DA4C90ED /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-dummy.m */; };
+		C44F30045BABAFCC54F539A1 /* MDLTag.h in Headers */ = {isa = PBXBuildFile; fileRef = DC600DE3154DA6662314CFB5 /* MDLTag.h */; };
+		C7593F8777E3EF12268FFDFC /* AFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D43797CEEF060C220976136 /* AFURLConnectionOperation.h */; };
+		CB81C6AF9E4EAFD657A02818 /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CC3CF946D488910AAEE0D78 /* AFNetworking.h */; };
+		CD22C1B0F16DD9D843A95839 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CAEEAB2AB175D22D96AD0286 /* AFPropertyListRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		CD4075CB4D2F80EC91134409 /* MDLGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B941FA4847FD5C1D16056C2 /* MDLGroup.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		D282899EBCAC67C6C30A146F /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CAEEAB2AB175D22D96AD0286 /* AFPropertyListRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		D6130E5540597E48A3058E63 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AC593B4354C7E4DB75E4C45C /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		D7B8DC7E18EAAA639B0DF61D /* Pods-MendeleySDKDemoOSXTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3204921AEEFC3198982723 /* Pods-MendeleySDKDemoOSXTests-dummy.m */; };
+		D7E23BDD65AE50097B758D73 /* MDLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA2695D7357613AB10FA70B /* MDLDocument.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		D94CB25E2BAF2BFC322DE8DD /* MDLSubcategory.h in Headers */ = {isa = PBXBuildFile; fileRef = C1519E6BDD1F56A8D5BA63A2 /* MDLSubcategory.h */; };
+		DA86503527EE06494C8DBAF5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC3821DBA5D13C83F4787B9E /* Cocoa.framework */; };
+		E0806496B70D3F0DA6BEBDB0 /* MDLCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 61EBF698B7717D549FEC74CB /* MDLCategory.h */; };
+		E2FCAF2ACAC6BA3B65E0AC4A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC3821DBA5D13C83F4787B9E /* Cocoa.framework */; };
+		E72B33D496DBF0DE69B66105 /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A4BAE284FEAAB24348E8B80 /* AFNetworkActivityIndicatorManager.h */; };
+		E76AE362108271900C700E3A /* MDLAuthor.h in Headers */ = {isa = PBXBuildFile; fileRef = 984C43FFF1E3802E79B37DE8 /* MDLAuthor.h */; };
+		E9F3832A58258C4ACC42674D /* MDLTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 644E3EB3197AD55FF524C757 /* MDLTag.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		EE70F67EE5DD56A8D01C67E4 /* MDLGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = F34F131AB85853534F67E202 /* MDLGroup.h */; };
+		F15881C38CBFF5B890673776 /* AFXMLRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E80C0904DF71383649C6D12 /* AFXMLRequestOperation.h */; };
+		F3B450C994527F8D8F104037 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AC593B4354C7E4DB75E4C45C /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		F6B102B432D8E4D86CBF21CA /* MDLFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = BD11DE7BBED07B62C7A01FAF /* MDLFolder.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		F7B6BB189E273CB113CC0EC3 /* MDLTag.h in Headers */ = {isa = PBXBuildFile; fileRef = DC600DE3154DA6662314CFB5 /* MDLTag.h */; };
+		F825D0FCC4FE6D21D2BA6F8F /* MDLPublication.m in Sources */ = {isa = PBXBuildFile; fileRef = 15129710FF371B26B7283E4C /* MDLPublication.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		FC2DAC408E60DFC51C75311F /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = C9900B9B70C2D83CCEBC12E2 /* UIImageView+AFNetworking.h */; };
+		FCFD38428B84B69134DAE542 /* MDLMendeleyAPIClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 45451C41B727DD7957AD4136 /* MDLMendeleyAPIClient.h */; };
+		FD36963A9771417C5CF07641 /* MDLGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B941FA4847FD5C1D16056C2 /* MDLGroup.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		FDD9E4E1753D551E3A4E7037 /* MDLDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 71F6E8DA3F40621314280E9E /* MDLDocument.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		18BA24562C8446278B590EA3 /* PBXContainerItemProxy */ = {
+		008622F2D25B57CE2B6F5438 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = B57E417C4BE74CEA81E1E0AE /* Project object */;
+			containerPortal = D0D78CEE365BA9DD9080A9B3 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 5219FA368F3041A5813724CE;
-			remoteInfo = "Pods-AFOAuth2Client";
-		};
-		6A1CCC2E2A624E07BCF8EF6D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B57E417C4BE74CEA81E1E0AE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 46C3C0AFDF5A4764AE413952;
-			remoteInfo = "Pods-MendeleySDKDemoOSXTests-AFOAuth2Client";
-		};
-		6F7A30B1431E46638C23D50F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B57E417C4BE74CEA81E1E0AE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 46C3C0AFDF5A4764AE413952;
-			remoteInfo = "Pods-MendeleySDKDemoOSXTests-AFOAuth2Client";
-		};
-		753F1DEF262F41F58B6D812A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B57E417C4BE74CEA81E1E0AE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6727EEE17A814055B58307CF;
+			remoteGlobalIDString = C2AB1F34E4DC7CA8348DD699;
 			remoteInfo = "Pods-MendeleySDKDemoOSXTests-MendeleySDK";
 		};
-		7E861695AAE342A3B489C6DB /* PBXContainerItemProxy */ = {
+		0FBE7C9C4D6012C45EAF04CD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = B57E417C4BE74CEA81E1E0AE /* Project object */;
+			containerPortal = D0D78CEE365BA9DD9080A9B3 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = DDC1A5483C0C447889A74A7A;
+			remoteGlobalIDString = 36B481849679F04C2724B1AF;
 			remoteInfo = "Pods-MendeleySDKDemoOSXTests-AFNetworking";
 		};
-		80ECF1E439E246CFA541D1FF /* PBXContainerItemProxy */ = {
+		3034B1AFDA34CE98C801A056 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = B57E417C4BE74CEA81E1E0AE /* Project object */;
+			containerPortal = D0D78CEE365BA9DD9080A9B3 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D2D5EAD9C77C4EC0AD886D06;
-			remoteInfo = "Pods-AFNetworking";
+			remoteGlobalIDString = 939CB4B3D4DC328B639C9C7F;
+			remoteInfo = "Pods-MendeleySDKDemoOSXTests-AFOAuth2Client";
 		};
-		81C9E6BA97DC402D8F58DFA5 /* PBXContainerItemProxy */ = {
+		336C9A478EC6116652900A4C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = B57E417C4BE74CEA81E1E0AE /* Project object */;
+			containerPortal = D0D78CEE365BA9DD9080A9B3 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = DDC1A5483C0C447889A74A7A;
-			remoteInfo = "Pods-MendeleySDKDemoOSXTests-AFNetworking";
-		};
-		DA5489B684584F10A6ABBDE1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B57E417C4BE74CEA81E1E0AE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D2D5EAD9C77C4EC0AD886D06;
-			remoteInfo = "Pods-AFNetworking";
-		};
-		EC8DD6967D284B578AA18A7A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B57E417C4BE74CEA81E1E0AE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5219FA368F3041A5813724CE;
+			remoteGlobalIDString = 4142F059626DA3B4202DDDCA;
 			remoteInfo = "Pods-AFOAuth2Client";
 		};
-		F970E18B566D4C11BAEA9121 /* PBXContainerItemProxy */ = {
+		784743412605E699A855396D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = B57E417C4BE74CEA81E1E0AE /* Project object */;
+			containerPortal = D0D78CEE365BA9DD9080A9B3 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8B9FBBA0CCE34774AEDC9FA8;
+			remoteGlobalIDString = 4142F059626DA3B4202DDDCA;
+			remoteInfo = "Pods-AFOAuth2Client";
+		};
+		8ED9BC0AC852BE611E4F13AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0D78CEE365BA9DD9080A9B3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3E9D5E1AD5A51A8138E0351D;
+			remoteInfo = "Pods-AFNetworking";
+		};
+		B8280876DAF2AF4D585D217F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0D78CEE365BA9DD9080A9B3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 36B481849679F04C2724B1AF;
+			remoteInfo = "Pods-MendeleySDKDemoOSXTests-AFNetworking";
+		};
+		D1B95AEBD5D53A71604D8C2E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0D78CEE365BA9DD9080A9B3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3E9D5E1AD5A51A8138E0351D;
+			remoteInfo = "Pods-AFNetworking";
+		};
+		E505CA8033E35F708C00186D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0D78CEE365BA9DD9080A9B3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 821E9730762F8FE268CDA43C;
 			remoteInfo = "Pods-MendeleySDK";
+		};
+		E7F17E54A20EE8053883AAB3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0D78CEE365BA9DD9080A9B3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 939CB4B3D4DC328B639C9C7F;
+			remoteInfo = "Pods-MendeleySDKDemoOSXTests-AFOAuth2Client";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00E300F767AD4CCB99DD9408 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
-		035A078089824649B06C5110 /* Pods-MendeleySDKDemoOSXTests-AFNetworking-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MendeleySDKDemoOSXTests-AFNetworking-prefix.pch"; sourceTree = "<group>"; };
-		06AD17C3981D4C5EAD16E305 /* AFHTTPClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPClient.m; path = AFNetworking/AFHTTPClient.m; sourceTree = "<group>"; };
-		09B7CDAE31FB448B92091935 /* MDLSubcategory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDLSubcategory.h; path = MendeleySDK/MDLSubcategory.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		0A716E38BD2048B7A63FD1CC /* libPods-MendeleySDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MendeleySDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0B610B3E2EF44C02BF70C2DD /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-dummy.m"; sourceTree = "<group>"; };
-		0B93E8CC61F94654A599F9E2 /* Pods-AFOAuth2Client-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AFOAuth2Client-prefix.pch"; sourceTree = "<group>"; };
-		0C76B9D5868D4FFB85281BA5 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.xcconfig; sourceTree = "<group>"; };
-		0CF643DC9E67400B9878D554 /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
-		0E913847D2404F4AA676B605 /* Pods-MendeleySDKDemoOSXTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MendeleySDKDemoOSXTests-dummy.m"; sourceTree = "<group>"; };
-		0FACBFE1624348819B0B2FE5 /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFJSONRequestOperation.h; path = AFNetworking/AFJSONRequestOperation.h; sourceTree = "<group>"; };
-		14C7D701E1E94A5BA6AB8A8A /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLConnectionOperation.m; path = AFNetworking/AFURLConnectionOperation.m; sourceTree = "<group>"; };
-		19BE8B1A977145469803EDD1 /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFPropertyListRequestOperation.m; path = AFNetworking/AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
-		1A45459B418C4D7FA7216F23 /* Pods-MendeleySDKDemoOSXTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MendeleySDKDemoOSXTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		1ADE48ACC09A4557B3922905 /* libPods-AFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AFNetworking.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1C40DDE305AD4222BFD279F5 /* libPods-MendeleySDKDemoOSXTests-AFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MendeleySDKDemoOSXTests-AFNetworking.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1CB62ECA651041A0BA2ACA83 /* Pods-MendeleySDKDemoOSXTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MendeleySDKDemoOSXTests.xcconfig"; sourceTree = "<group>"; };
-		1DD4D2404C6D4589B02BB808 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLConnectionOperation.h; path = AFNetworking/AFURLConnectionOperation.h; sourceTree = "<group>"; };
-		23F3F015309D45C2A9DA338F /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFJSONRequestOperation.m; path = AFNetworking/AFJSONRequestOperation.m; sourceTree = "<group>"; };
-		2825084D4D874E95840F8044 /* MDLCategory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDLCategory.h; path = MendeleySDK/MDLCategory.h; sourceTree = "<group>"; };
-		2D55FC8BCBF043FAB5991565 /* Pods-MendeleySDKDemoOSXTests-AFNetworking-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MendeleySDKDemoOSXTests-AFNetworking-Private.xcconfig"; sourceTree = "<group>"; };
-		308B25BEF033486396CD472C /* MDLUser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDLUser.m; path = MendeleySDK/MDLUser.m; sourceTree = "<group>"; };
-		30F8B2A02EDE47368E67976E /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFPropertyListRequestOperation.h; path = AFNetworking/AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
-		3807FCF54360486F8268B82C /* Pods-MendeleySDK.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MendeleySDK.xcconfig"; sourceTree = "<group>"; };
-		3C3905F51F1A475190E383EB /* MDLAuthor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDLAuthor.h; path = MendeleySDK/MDLAuthor.h; sourceTree = "<group>"; };
-		44D6D46CD33347359444DFBE /* Pods-AFNetworking-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AFNetworking-Private.xcconfig"; sourceTree = "<group>"; };
-		462AFE9AF9CC4DF7901B3BFB /* MDLTag.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDLTag.h; path = MendeleySDK/MDLTag.h; sourceTree = "<group>"; };
-		4BF84D202D994102B4876E6D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
-		4C239A7323DE4B96ADFCE81E /* Pods-MendeleySDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MendeleySDK-prefix.pch"; sourceTree = "<group>"; };
-		4F4B7BFA6A5641E69E8B2798 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFXMLRequestOperation.m; path = AFNetworking/AFXMLRequestOperation.m; sourceTree = "<group>"; };
-		53356CB676904203A4135E85 /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFXMLRequestOperation.h; path = AFNetworking/AFXMLRequestOperation.h; sourceTree = "<group>"; };
-		57D9BFD3770544DBAADC1CCC /* Pods-AFNetworking.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AFNetworking.xcconfig"; sourceTree = "<group>"; };
-		5BDE63396EA3427E94AC6693 /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-Private.xcconfig"; sourceTree = "<group>"; };
-		5DBF119A89154291A38411B2 /* Pods-MendeleySDKDemoOSXTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MendeleySDKDemoOSXTests-resources.sh"; sourceTree = "<group>"; };
-		61546E47E60448958C61004C /* libPods-MendeleySDKDemoOSXTests-AFOAuth2Client.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MendeleySDKDemoOSXTests-AFOAuth2Client.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		621550B0C9A24B5F87576CA7 /* Pods-MendeleySDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MendeleySDK-dummy.m"; sourceTree = "<group>"; };
-		686ABBD273C444238C6CBB01 /* MDLSubcategory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDLSubcategory.m; path = MendeleySDK/MDLSubcategory.m; sourceTree = "<group>"; };
-		6A81FCAC1C9048CEACBD8217 /* MDLFolder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDLFolder.h; path = MendeleySDK/MDLFolder.h; sourceTree = "<group>"; };
-		6CC0220FA9CE4E96ACCE36F3 /* MDLFile.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDLFile.m; path = MendeleySDK/MDLFile.m; sourceTree = "<group>"; };
-		6EE2912EF74341509F87F0E1 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = AFNetworking/AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
-		6FE9D9906F9948F09EA4EE04 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = AFNetworking/AFHTTPRequestOperation.h; sourceTree = "<group>"; };
-		72F6C434DB0D4C1BB21C0905 /* libPods-MendeleySDKDemoOSXTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MendeleySDKDemoOSXTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7459F054BA08455F9F78E8DF /* AFOAuth2Client.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFOAuth2Client.m; path = AFOAuth2Client/AFOAuth2Client.m; sourceTree = "<group>"; };
-		7A08C7C107EE4163ACA4B019 /* Pods-MendeleySDKDemoOSXTests-MendeleySDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MendeleySDKDemoOSXTests-MendeleySDK-prefix.pch"; sourceTree = "<group>"; };
-		7F585591C8EB47C9A6137B06 /* MDLDocument.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDLDocument.h; path = MendeleySDK/MDLDocument.h; sourceTree = "<group>"; };
-		8071FA580C5D45DDA904A3AF /* MDLGroup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDLGroup.h; path = MendeleySDK/MDLGroup.h; sourceTree = "<group>"; };
-		81F064BDBED5408ABB624463 /* Pods-AFOAuth2Client-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AFOAuth2Client-dummy.m"; sourceTree = "<group>"; };
-		8224D5363FC4451E9BBB3A75 /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MendeleySDKDemoOSXTests-AFOAuth2Client.xcconfig"; sourceTree = "<group>"; };
-		83C5FD4F309C4F11BBE456E7 /* AFImageRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFImageRequestOperation.m; path = AFNetworking/AFImageRequestOperation.m; sourceTree = "<group>"; };
-		9015DC52354C451BBC5C6BD9 /* MDLDocument.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDLDocument.m; path = MendeleySDK/MDLDocument.m; sourceTree = "<group>"; };
-		927CD04BBA624B10A585D29B /* AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = AFNetworking/AFNetworking.h; sourceTree = "<group>"; };
-		9289190E004340CB8E648A6D /* Pods-MendeleySDKDemoOSXTests-MendeleySDK.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MendeleySDKDemoOSXTests-MendeleySDK.xcconfig"; sourceTree = "<group>"; };
-		938A20F9AB8A47C0BD7CA3A7 /* MDLGroup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDLGroup.m; path = MendeleySDK/MDLGroup.m; sourceTree = "<group>"; };
-		93EEC2217EED4BFFBF14ADF0 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = AFNetworking/AFHTTPRequestOperation.m; sourceTree = "<group>"; };
-		969C6FFC345F42AFA2495CD9 /* MDLTag.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDLTag.m; path = MendeleySDK/MDLTag.m; sourceTree = "<group>"; };
-		9EAFB535B473432791772CD5 /* MDLAuthor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDLAuthor.m; path = MendeleySDK/MDLAuthor.m; sourceTree = "<group>"; };
-		9F58C4912ECA4EC49F18DBF9 /* MDLFile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDLFile.h; path = MendeleySDK/MDLFile.h; sourceTree = "<group>"; };
-		A085A9F80328460483316B03 /* Pods-MendeleySDKDemoOSXTests-MendeleySDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MendeleySDKDemoOSXTests-MendeleySDK-dummy.m"; sourceTree = "<group>"; };
-		A31C7B33E31B4C73AADD899D /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A417E67A9829482F88872969 /* Pods-AFOAuth2Client.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AFOAuth2Client.xcconfig"; sourceTree = "<group>"; };
-		A42E9726F80A4EF4B92F0890 /* MDLPublication.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDLPublication.m; path = MendeleySDK/MDLPublication.m; sourceTree = "<group>"; };
-		A43700844875495D9236D4FD /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkActivityIndicatorManager.h; path = AFNetworking/AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
-		A8956739A0FC47289D87D6D7 /* Pods-MendeleySDKDemoOSXTests-AFNetworking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MendeleySDKDemoOSXTests-AFNetworking-dummy.m"; sourceTree = "<group>"; };
-		A9B9E1B317AD4D198480304F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA3C2D5EE8B94CDF9BD606B1 /* Pods-MendeleySDKDemoOSXTests-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MendeleySDKDemoOSXTests-environment.h"; sourceTree = "<group>"; };
-		AD5D039228CD4215A65BBF0F /* MDLUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDLUser.h; path = MendeleySDK/MDLUser.h; sourceTree = "<group>"; };
-		ADAE61E4F2764A9F815FB1FF /* Pods-AFOAuth2Client-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AFOAuth2Client-Private.xcconfig"; sourceTree = "<group>"; };
-		B0F575238E914090945B9F80 /* AFImageRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFImageRequestOperation.h; path = AFNetworking/AFImageRequestOperation.h; sourceTree = "<group>"; };
-		B1916C9E1100402A9E6A0244 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
-		B2859F104D654743B4877551 /* MDLMendeleyAPIClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDLMendeleyAPIClient.m; path = MendeleySDK/MDLMendeleyAPIClient.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		B2BADD46C28340458AA465AC /* MDLCategory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDLCategory.m; path = MendeleySDK/MDLCategory.m; sourceTree = "<group>"; };
-		B325F09B4E7A4F40911EBF94 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
-		B59ABC4A07C74D3695551F31 /* Pods-MendeleySDKDemoOSXTests-AFNetworking.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MendeleySDKDemoOSXTests-AFNetworking.xcconfig"; sourceTree = "<group>"; };
-		B7FFBDE5919B443093CEE235 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
-		BB1C45C5C23D4862B22AE8DB /* Pods-AFNetworking-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AFNetworking-prefix.pch"; sourceTree = "<group>"; };
-		BBDA2FE3FE344333AD976963 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
-		BE1180DEED7347A7A775B790 /* Pods-MendeleySDKDemoOSXTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MendeleySDKDemoOSXTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		C098333FA1F44DA3AEA0706E /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
-		C1F24C16202345528A4218F1 /* Pods-MendeleySDKDemoOSXTests-MendeleySDK-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MendeleySDKDemoOSXTests-MendeleySDK-Private.xcconfig"; sourceTree = "<group>"; };
-		C2302DCF9A43432C86EE9640 /* MDLMendeleyAPIClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDLMendeleyAPIClient.h; path = MendeleySDK/MDLMendeleyAPIClient.h; sourceTree = "<group>"; };
-		C4289005FD684CA2B94016F6 /* Pods-AFNetworking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AFNetworking-dummy.m"; sourceTree = "<group>"; };
-		C7B27627AD3F4B22B2653358 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
-		CA4B1C35C4244B6A876EE7E0 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
-		D4A128FCAD54415FBB232EBE /* MendeleySDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MendeleySDK.h; path = MendeleySDK/MendeleySDK.h; sourceTree = "<group>"; };
-		DA16410BD25145D08E38588E /* libPods-AFOAuth2Client.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AFOAuth2Client.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E5EAF7F2AC8C49F8A5571055 /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-prefix.pch"; sourceTree = "<group>"; };
-		EABBD5728F214BE688C6F235 /* AFHTTPClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPClient.h; path = AFNetworking/AFHTTPClient.h; sourceTree = "<group>"; };
-		ED0C6E6B23E74BF6B556BC1C /* Pods-MendeleySDK-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MendeleySDK-Private.xcconfig"; sourceTree = "<group>"; };
-		ED7A379DD7C7480FB54C2564 /* MDLPublication.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDLPublication.h; path = MendeleySDK/MDLPublication.h; sourceTree = "<group>"; };
-		EDAE0328909241D5B362D223 /* MDLFolder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDLFolder.m; path = MendeleySDK/MDLFolder.m; sourceTree = "<group>"; };
-		EF90D92DD30348248E98FCD3 /* AFOAuth2Client.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFOAuth2Client.h; path = AFOAuth2Client/AFOAuth2Client.h; sourceTree = "<group>"; };
-		F323DB5123924A2097C7393D /* libPods-MendeleySDKDemoOSXTests-MendeleySDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MendeleySDKDemoOSXTests-MendeleySDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F4EABACB66174F19A89085BE /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
+		07CB8470F12EDD1F669B06D8 /* libPods-MendeleySDKDemoOSXTests-AFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MendeleySDKDemoOSXTests-AFNetworking.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A4BAE284FEAAB24348E8B80 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkActivityIndicatorManager.h; path = AFNetworking/AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		0B7F4D4CD0683770FF697E81 /* Pods-MendeleySDKDemoOSXTests-MendeleySDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Pods-MendeleySDKDemoOSXTests-MendeleySDK-dummy.m"; path = "../Pods-MendeleySDKDemoOSXTests-MendeleySDK/Pods-MendeleySDKDemoOSXTests-MendeleySDK-dummy.m"; sourceTree = "<group>"; };
+		1441283FAC4416B398229CAE /* Pods-AFNetworking-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AFNetworking-prefix.pch"; sourceTree = "<group>"; };
+		15129710FF371B26B7283E4C /* MDLPublication.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDLPublication.m; path = MendeleySDK/MDLPublication.m; sourceTree = "<group>"; };
+		181567D6E55F66F19217E614 /* Pods-MendeleySDKDemoOSXTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MendeleySDKDemoOSXTests.release.xcconfig"; sourceTree = "<group>"; };
+		1E80C0904DF71383649C6D12 /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFXMLRequestOperation.h; path = AFNetworking/AFXMLRequestOperation.h; sourceTree = "<group>"; };
+		2174D11D33FA54246D12F817 /* AFOAuth2Client.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFOAuth2Client.h; path = AFOAuth2Client/AFOAuth2Client.h; sourceTree = "<group>"; };
+		252F985E281B7771D9899714 /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFJSONRequestOperation.m; path = AFNetworking/AFJSONRequestOperation.m; sourceTree = "<group>"; };
+		254863BB3E4FF6DE39391322 /* Pods-MendeleySDKDemoOSXTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MendeleySDKDemoOSXTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		2A9083B2129A1896CF11DD7C /* libPods-MendeleySDKDemoOSXTests-AFOAuth2Client.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MendeleySDKDemoOSXTests-AFOAuth2Client.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B11439E17D83C635501F8BC /* MDLFile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDLFile.h; path = MendeleySDK/MDLFile.h; sourceTree = "<group>"; };
+		2C0BD07591B627C10FA7D7F4 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
+		2D43797CEEF060C220976136 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLConnectionOperation.h; path = AFNetworking/AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		2D9AD6378932C40538C24072 /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
+		2DA2695D7357613AB10FA70B /* MDLDocument.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDLDocument.m; path = MendeleySDK/MDLDocument.m; sourceTree = "<group>"; };
+		370B8CB24F8BFBE101F706F4 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFXMLRequestOperation.m; path = AFNetworking/AFXMLRequestOperation.m; sourceTree = "<group>"; };
+		37E1F4E18E39872AB189C4B0 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		3C96CE35B9D139E40A8BE5E5 /* MDLCategory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDLCategory.m; path = MendeleySDK/MDLCategory.m; sourceTree = "<group>"; };
+		410DE79265A53629DFD78720 /* AFImageRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFImageRequestOperation.m; path = AFNetworking/AFImageRequestOperation.m; sourceTree = "<group>"; };
+		43AABA76BF18CE97472A45A5 /* MendeleySDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MendeleySDK.h; path = MendeleySDK/MendeleySDK.h; sourceTree = "<group>"; };
+		45451C41B727DD7957AD4136 /* MDLMendeleyAPIClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDLMendeleyAPIClient.h; path = MendeleySDK/MDLMendeleyAPIClient.h; sourceTree = "<group>"; };
+		477D2F8C55FEF55C699C9E0B /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = AFNetworking/AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		47C72427DE18823A849F4D76 /* Pods-MendeleySDKDemoOSXTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MendeleySDKDemoOSXTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		4B3204921AEEFC3198982723 /* Pods-MendeleySDKDemoOSXTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MendeleySDKDemoOSXTests-dummy.m"; sourceTree = "<group>"; };
+		5159EE35390FDA0C1C48D26E /* libPods-MendeleySDKDemoOSXTests-MendeleySDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MendeleySDKDemoOSXTests-MendeleySDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		52B002B614B9B8385DCAD880 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
+		52D64156EC67A844FD11CEBC /* Pods-AFNetworking.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AFNetworking.xcconfig"; sourceTree = "<group>"; };
+		54BE89B8B4F2D191318A43A4 /* Pods-MendeleySDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MendeleySDK-dummy.m"; sourceTree = "<group>"; };
+		5B1CA687C09FD96BB2D0E5D1 /* Pods-MendeleySDKDemoOSXTests-MendeleySDK-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MendeleySDKDemoOSXTests-MendeleySDK-Private.xcconfig"; path = "../Pods-MendeleySDKDemoOSXTests-MendeleySDK/Pods-MendeleySDKDemoOSXTests-MendeleySDK-Private.xcconfig"; sourceTree = "<group>"; };
+		5C1C758E8C37F66399E265F4 /* AFHTTPClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPClient.m; path = AFNetworking/AFHTTPClient.m; sourceTree = "<group>"; };
+		5CC3CF946D488910AAEE0D78 /* AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = AFNetworking/AFNetworking.h; sourceTree = "<group>"; };
+		60DAFDB887B06C63F075FF68 /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFJSONRequestOperation.h; path = AFNetworking/AFJSONRequestOperation.h; sourceTree = "<group>"; };
+		618AAFFD710963103149DD5F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		61EBF698B7717D549FEC74CB /* MDLCategory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDLCategory.h; path = MendeleySDK/MDLCategory.h; sourceTree = "<group>"; };
+		63BBC42CEC205C78D7BBC76D /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
+		643AAC708D32C6B90AC83834 /* Pods-MendeleySDKDemoOSXTests-MendeleySDK.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MendeleySDKDemoOSXTests-MendeleySDK.xcconfig"; path = "../Pods-MendeleySDKDemoOSXTests-MendeleySDK/Pods-MendeleySDKDemoOSXTests-MendeleySDK.xcconfig"; sourceTree = "<group>"; };
+		644E3EB3197AD55FF524C757 /* MDLTag.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDLTag.m; path = MendeleySDK/MDLTag.m; sourceTree = "<group>"; };
+		652E98C357DD8D65664C7E57 /* Pods-AFOAuth2Client-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AFOAuth2Client-dummy.m"; sourceTree = "<group>"; };
+		6B941FA4847FD5C1D16056C2 /* MDLGroup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDLGroup.m; path = MendeleySDK/MDLGroup.m; sourceTree = "<group>"; };
+		6E833D2BF4147530F1FE20B0 /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
+		71F6E8DA3F40621314280E9E /* MDLDocument.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDLDocument.h; path = MendeleySDK/MDLDocument.h; sourceTree = "<group>"; };
+		75D0172EE1513E179B115D36 /* Pods-AFNetworking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AFNetworking-dummy.m"; sourceTree = "<group>"; };
+		7A2BDB2E108AD429787D6BA3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8049C76916C29F4727E2508B /* MDLSubcategory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDLSubcategory.m; path = MendeleySDK/MDLSubcategory.m; sourceTree = "<group>"; };
+		8C386338410F482B2A57F24E /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		8D05FCED3D237C76E7183E61 /* Pods-MendeleySDKDemoOSXTests-AFNetworking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Pods-MendeleySDKDemoOSXTests-AFNetworking-dummy.m"; path = "../Pods-MendeleySDKDemoOSXTests-AFNetworking/Pods-MendeleySDKDemoOSXTests-AFNetworking-dummy.m"; sourceTree = "<group>"; };
+		9043F08BE97D98E830317120 /* MDLUser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDLUser.m; path = MendeleySDK/MDLUser.m; sourceTree = "<group>"; };
+		921DDAA1F0FC2F0446696B46 /* AFImageRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFImageRequestOperation.h; path = AFNetworking/AFImageRequestOperation.h; sourceTree = "<group>"; };
+		95F34A83FC013FDE7B16975C /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-Private.xcconfig"; path = "../Pods-MendeleySDKDemoOSXTests-AFOAuth2Client/Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-Private.xcconfig"; sourceTree = "<group>"; };
+		97E6CE77E3E521476425BA72 /* Pods-MendeleySDKDemoOSXTests-AFNetworking-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Pods-MendeleySDKDemoOSXTests-AFNetworking-prefix.pch"; path = "../Pods-MendeleySDKDemoOSXTests-AFNetworking/Pods-MendeleySDKDemoOSXTests-AFNetworking-prefix.pch"; sourceTree = "<group>"; };
+		984C43FFF1E3802E79B37DE8 /* MDLAuthor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDLAuthor.h; path = MendeleySDK/MDLAuthor.h; sourceTree = "<group>"; };
+		9946E160577D9576DD676973 /* Pods-MendeleySDKDemoOSXTests-AFNetworking-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MendeleySDKDemoOSXTests-AFNetworking-Private.xcconfig"; path = "../Pods-MendeleySDKDemoOSXTests-AFNetworking/Pods-MendeleySDKDemoOSXTests-AFNetworking-Private.xcconfig"; sourceTree = "<group>"; };
+		9AC0823F2242A2100FC5499B /* AFHTTPClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPClient.h; path = AFNetworking/AFHTTPClient.h; sourceTree = "<group>"; };
+		9B5204A1C364F7A96080C696 /* MDLUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDLUser.h; path = MendeleySDK/MDLUser.h; sourceTree = "<group>"; };
+		9CA12CEEF21DC853F5EC5D3D /* MDLPublication.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDLPublication.h; path = MendeleySDK/MDLPublication.h; sourceTree = "<group>"; };
+		9F01A1FC3FE455744474FDEF /* Pods-AFOAuth2Client-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AFOAuth2Client-prefix.pch"; sourceTree = "<group>"; };
+		9F47D4C8283EDA5909DE51B1 /* libPods-MendeleySDKDemoOSXTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MendeleySDKDemoOSXTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A148B58296FF94285B617479 /* MDLAuthor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDLAuthor.m; path = MendeleySDK/MDLAuthor.m; sourceTree = "<group>"; };
+		A16A51556CE8B5057C90ED7F /* Pods-MendeleySDKDemoOSXTests-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MendeleySDKDemoOSXTests-environment.h"; sourceTree = "<group>"; };
+		AC593B4354C7E4DB75E4C45C /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLConnectionOperation.m; path = AFNetworking/AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		AC8EEDA3F27511992E3C7FB6 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		AF2140245B9AD8775DC33F70 /* Pods-MendeleySDK-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MendeleySDK-Private.xcconfig"; sourceTree = "<group>"; };
+		B11B2AE668B52B52CDBCD2FF /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MendeleySDKDemoOSXTests-AFOAuth2Client.xcconfig"; path = "../Pods-MendeleySDKDemoOSXTests-AFOAuth2Client/Pods-MendeleySDKDemoOSXTests-AFOAuth2Client.xcconfig"; sourceTree = "<group>"; };
+		B5212F3F77B217AB7EF439FD /* Pods-MendeleySDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MendeleySDK-prefix.pch"; sourceTree = "<group>"; };
+		B96EEF593A08B9599E484286 /* Pods-AFOAuth2Client.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AFOAuth2Client.xcconfig"; sourceTree = "<group>"; };
+		BD11DE7BBED07B62C7A01FAF /* MDLFolder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDLFolder.m; path = MendeleySDK/MDLFolder.m; sourceTree = "<group>"; };
+		BDA68C93344F052932FE9927 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = AFNetworking/AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		C1519E6BDD1F56A8D5BA63A2 /* MDLSubcategory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDLSubcategory.h; path = MendeleySDK/MDLSubcategory.h; sourceTree = "<group>"; };
+		C4ABD4DF76D9141115896137 /* MDLFolder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDLFolder.h; path = MendeleySDK/MDLFolder.h; sourceTree = "<group>"; };
+		C9900B9B70C2D83CCEBC12E2 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		CA8C1B75142D7974A1DDA2D5 /* Pods-MendeleySDKDemoOSXTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MendeleySDKDemoOSXTests-resources.sh"; sourceTree = "<group>"; };
+		CAEEAB2AB175D22D96AD0286 /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFPropertyListRequestOperation.m; path = AFNetworking/AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
+		CC3821DBA5D13C83F4787B9E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		CD2F6A5122F89C4308047F98 /* Pods-MendeleySDKDemoOSXTests-AFNetworking.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MendeleySDKDemoOSXTests-AFNetworking.xcconfig"; path = "../Pods-MendeleySDKDemoOSXTests-AFNetworking/Pods-MendeleySDKDemoOSXTests-AFNetworking.xcconfig"; sourceTree = "<group>"; };
+		D0AA106191CDF0CDE569EC08 /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-prefix.pch"; path = "../Pods-MendeleySDKDemoOSXTests-AFOAuth2Client/Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-prefix.pch"; sourceTree = "<group>"; };
+		D0C083F495D32DF4DA4C90ED /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-dummy.m"; path = "../Pods-MendeleySDKDemoOSXTests-AFOAuth2Client/Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-dummy.m"; sourceTree = "<group>"; };
+		D18EBA795EBFB885D29031FE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		D514E7B0FB3FFF9114A0E176 /* libPods-AFOAuth2Client.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AFOAuth2Client.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5BBFB84A058A211C4734432 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
+		D98FCF20C778B944498B1A35 /* Pods-AFOAuth2Client-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AFOAuth2Client-Private.xcconfig"; sourceTree = "<group>"; };
+		DA92FEE08D4D4BE5E66D773C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
+		DC600DE3154DA6662314CFB5 /* MDLTag.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDLTag.h; path = MendeleySDK/MDLTag.h; sourceTree = "<group>"; };
+		DDC219722121C865D7FE2F37 /* Pods-AFNetworking-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AFNetworking-Private.xcconfig"; sourceTree = "<group>"; };
+		DDCE7C4AABA811E1EEBE2B40 /* libPods-MendeleySDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MendeleySDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE211E970F77486D4958DFD5 /* AFOAuth2Client.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFOAuth2Client.m; path = AFOAuth2Client/AFOAuth2Client.m; sourceTree = "<group>"; };
+		EA9EFE86BBF884F06B754A3E /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = AFNetworking/AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		EC2AF6D6A64BF9672C2655B4 /* libPods-AFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AFNetworking.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC96BFB73F3FAB1A76D2981A /* Pods-MendeleySDK.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MendeleySDK.xcconfig"; sourceTree = "<group>"; };
+		F04D480CA6D40E5C509BF927 /* Pods-MendeleySDKDemoOSXTests-MendeleySDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Pods-MendeleySDKDemoOSXTests-MendeleySDK-prefix.pch"; path = "../Pods-MendeleySDKDemoOSXTests-MendeleySDK/Pods-MendeleySDKDemoOSXTests-MendeleySDK-prefix.pch"; sourceTree = "<group>"; };
+		F34F131AB85853534F67E202 /* MDLGroup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDLGroup.h; path = MendeleySDK/MDLGroup.h; sourceTree = "<group>"; };
+		F8B29DEF84CF233F8E4BE1AD /* MDLFile.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDLFile.m; path = MendeleySDK/MDLFile.m; sourceTree = "<group>"; };
+		FA022B7925F98CA5402E0668 /* MDLMendeleyAPIClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDLMendeleyAPIClient.m; path = MendeleySDK/MDLMendeleyAPIClient.m; sourceTree = "<group>"; };
+		FBE231880D1C08A222CAFAEC /* Pods-MendeleySDKDemoOSXTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MendeleySDKDemoOSXTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FD3223F5A10081E7A4AB135B /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFPropertyListRequestOperation.h; path = AFNetworking/AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4600B1AC998C49AE997974E0 /* Frameworks */ = {
+		06D8751699C0C1D5D69FC23D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2AF9C0930D9420D8BB74E20 /* Cocoa.framework in Frameworks */,
+				7CDEFFF59F18B46059807162 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4EABD2D3B493469B938BB06C /* Frameworks */ = {
+		3338DC62349A434E98217944 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60FEA049E0EC434F905DBBD6 /* Cocoa.framework in Frameworks */,
-				3BFD1B3FD4B54AEB96F4E867 /* libPods-MendeleySDKDemoOSXTests-AFNetworking.a in Frameworks */,
-				5D777177E84C4171BF6F2807 /* libPods-MendeleySDKDemoOSXTests-AFOAuth2Client.a in Frameworks */,
-				CEC78EC5BAFE4F1CBD287585 /* libPods-MendeleySDKDemoOSXTests-MendeleySDK.a in Frameworks */,
+				47BFEE57AC7694EF32D89BA4 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		589C2A460B344A3BBF7F5DC1 /* Frameworks */ = {
+		6199CCBEE7DB82CBD8A2D3EA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0E9130F79A045DEB27B5027 /* Cocoa.framework in Frameworks */,
+				A4CE65CCC9D456AE0C2A1B5E /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		698EDD982CE9424B81B07DA2 /* Frameworks */ = {
+		9206280F39DCB4BFD91850BA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C39445460E646F7A2E2DDD6 /* Cocoa.framework in Frameworks */,
-				33364C0188A84D76990E48D5 /* CoreServices.framework in Frameworks */,
-				4762B43FDEB84175AEDBF2E5 /* Security.framework in Frameworks */,
-				7043A34F81A242929107CC12 /* SystemConfiguration.framework in Frameworks */,
+				576C12AAC06E939087879824 /* Cocoa.framework in Frameworks */,
+				6895713C024A8AEF372B9DDE /* CoreServices.framework in Frameworks */,
+				6E87F1DBFD1C6389651B047E /* Security.framework in Frameworks */,
+				011E80EDC82EC74A47291048 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		72260629063E46EB983F2B34 /* Frameworks */ = {
+		9831160300D1FE5F6D1294C8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				779C57A88D8340E0B1514480 /* Cocoa.framework in Frameworks */,
-				C7BD9DDFB2DB4342AA05047F /* CoreServices.framework in Frameworks */,
-				BD7EE82D743F47C38B87421D /* Security.framework in Frameworks */,
-				5A60D67730044C078EDD96D5 /* SystemConfiguration.framework in Frameworks */,
+				A0150B3D1A64429421580A9A /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7F8BDF51A07E419E9D60E6DE /* Frameworks */ = {
+		A87079B2955743D98C4890C6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4242DB289531418DADB6D2E3 /* Cocoa.framework in Frameworks */,
+				6616AA7C9C85659218C75B16 /* Cocoa.framework in Frameworks */,
+				BC09AD887ECA3A63551A7A89 /* CoreServices.framework in Frameworks */,
+				6BA9B45F92513C21CFFB6D9E /* Security.framework in Frameworks */,
+				9BE43C87B8F4EA2D3675CFCD /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EEF53673153F4A9790073899 /* Frameworks */ = {
+		C8CC16F1EEB6BCE4B751E649 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1C0721B85684436A9C1B797 /* Cocoa.framework in Frameworks */,
-				80DD5D1B4A0C4CEDB1ACE450 /* libPods-AFNetworking.a in Frameworks */,
-				AB3A845C5BC14353BE0BD846 /* libPods-AFOAuth2Client.a in Frameworks */,
-				E6A93EA46C7B4B1FBBFDC544 /* libPods-MendeleySDK.a in Frameworks */,
+				DA86503527EE06494C8DBAF5 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F513C63E7F614FA8961F94A6 /* Frameworks */ = {
+		DE26D444F34E2FAF40196A77 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE48FEF843DD464899E5A887 /* Cocoa.framework in Frameworks */,
+				E2FCAF2ACAC6BA3B65E0AC4A /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		35410402C4614290A21C94FB /* AFNetworking */ = {
+		0D548C8FA802AE183B05C15E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				EABBD5728F214BE688C6F235 /* AFHTTPClient.h */,
-				06AD17C3981D4C5EAD16E305 /* AFHTTPClient.m */,
-				6FE9D9906F9948F09EA4EE04 /* AFHTTPRequestOperation.h */,
-				93EEC2217EED4BFFBF14ADF0 /* AFHTTPRequestOperation.m */,
-				B0F575238E914090945B9F80 /* AFImageRequestOperation.h */,
-				83C5FD4F309C4F11BBE456E7 /* AFImageRequestOperation.m */,
-				0FACBFE1624348819B0B2FE5 /* AFJSONRequestOperation.h */,
-				23F3F015309D45C2A9DA338F /* AFJSONRequestOperation.m */,
-				A43700844875495D9236D4FD /* AFNetworkActivityIndicatorManager.h */,
-				6EE2912EF74341509F87F0E1 /* AFNetworkActivityIndicatorManager.m */,
-				927CD04BBA624B10A585D29B /* AFNetworking.h */,
-				30F8B2A02EDE47368E67976E /* AFPropertyListRequestOperation.h */,
-				19BE8B1A977145469803EDD1 /* AFPropertyListRequestOperation.m */,
-				1DD4D2404C6D4589B02BB808 /* AFURLConnectionOperation.h */,
-				14C7D701E1E94A5BA6AB8A8A /* AFURLConnectionOperation.m */,
-				53356CB676904203A4135E85 /* AFXMLRequestOperation.h */,
-				4F4B7BFA6A5641E69E8B2798 /* AFXMLRequestOperation.m */,
-				B1916C9E1100402A9E6A0244 /* UIImageView+AFNetworking.h */,
-				00E300F767AD4CCB99DD9408 /* UIImageView+AFNetworking.m */,
-				7691A75BB8A84AD791626A35 /* Support Files */,
-			);
-			path = AFNetworking;
-			sourceTree = "<group>";
-		};
-		46794CDCFAD647B19060B38C /* AFOAuth2Client */ = {
-			isa = PBXGroup;
-			children = (
-				EF90D92DD30348248E98FCD3 /* AFOAuth2Client.h */,
-				7459F054BA08455F9F78E8DF /* AFOAuth2Client.m */,
-				7C216A1798A24BC8BE9DD88E /* Support Files */,
-			);
-			path = AFOAuth2Client;
-			sourceTree = "<group>";
-		};
-		7691A75BB8A84AD791626A35 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				57D9BFD3770544DBAADC1CCC /* Pods-AFNetworking.xcconfig */,
-				44D6D46CD33347359444DFBE /* Pods-AFNetworking-Private.xcconfig */,
-				C4289005FD684CA2B94016F6 /* Pods-AFNetworking-dummy.m */,
-				BB1C45C5C23D4862B22AE8DB /* Pods-AFNetworking-prefix.pch */,
-				B59ABC4A07C74D3695551F31 /* Pods-MendeleySDKDemoOSXTests-AFNetworking.xcconfig */,
-				2D55FC8BCBF043FAB5991565 /* Pods-MendeleySDKDemoOSXTests-AFNetworking-Private.xcconfig */,
-				A8956739A0FC47289D87D6D7 /* Pods-MendeleySDKDemoOSXTests-AFNetworking-dummy.m */,
-				035A078089824649B06C5110 /* Pods-MendeleySDKDemoOSXTests-AFNetworking-prefix.pch */,
-			);
-			name = "Support Files";
-			sourceTree = SOURCE_ROOT;
-		};
-		78FC6BA38AAC4AAB8658E22C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				0C76B9D5868D4FFB85281BA5 /* Pods.xcconfig */,
-				0CF643DC9E67400B9878D554 /* Pods-acknowledgements.markdown */,
-				CA4B1C35C4244B6A876EE7E0 /* Pods-acknowledgements.plist */,
-				C7B27627AD3F4B22B2653358 /* Pods-dummy.m */,
-				C098333FA1F44DA3AEA0706E /* Pods-environment.h */,
-				F4EABACB66174F19A89085BE /* Pods-resources.sh */,
+				F1DF74E24056C92F806016FA /* AFNetworking */,
+				C7B65E55322E7F2E18D2D783 /* AFOAuth2Client */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		7BEA8535C4514077A164B023 /* OS X */ = {
+		1FE95D8D888E51DB07A8DE05 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BBDA2FE3FE344333AD976963 /* Cocoa.framework */,
-				B325F09B4E7A4F40911EBF94 /* CoreServices.framework */,
-				4BF84D202D994102B4876E6D /* Security.framework */,
-				B7FFBDE5919B443093CEE235 /* SystemConfiguration.framework */,
+				7A2BDB2E108AD429787D6BA3 /* libPods.a */,
+				EC2AF6D6A64BF9672C2655B4 /* libPods-AFNetworking.a */,
+				D514E7B0FB3FFF9114A0E176 /* libPods-AFOAuth2Client.a */,
+				DDCE7C4AABA811E1EEBE2B40 /* libPods-MendeleySDK.a */,
+				9F47D4C8283EDA5909DE51B1 /* libPods-MendeleySDKDemoOSXTests.a */,
+				07CB8470F12EDD1F669B06D8 /* libPods-MendeleySDKDemoOSXTests-AFNetworking.a */,
+				2A9083B2129A1896CF11DD7C /* libPods-MendeleySDKDemoOSXTests-AFOAuth2Client.a */,
+				5159EE35390FDA0C1C48D26E /* libPods-MendeleySDKDemoOSXTests-MendeleySDK.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2397103B7D8F21BB483329DD /* OS X */ = {
+			isa = PBXGroup;
+			children = (
+				CC3821DBA5D13C83F4787B9E /* Cocoa.framework */,
+				37E1F4E18E39872AB189C4B0 /* CoreServices.framework */,
+				618AAFFD710963103149DD5F /* Security.framework */,
+				D18EBA795EBFB885D29031FE /* SystemConfiguration.framework */,
 			);
 			name = "OS X";
 			sourceTree = "<group>";
 		};
-		7C216A1798A24BC8BE9DD88E /* Support Files */ = {
+		23A22F29F7A16E8B13045F4C /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				A417E67A9829482F88872969 /* Pods-AFOAuth2Client.xcconfig */,
-				ADAE61E4F2764A9F815FB1FF /* Pods-AFOAuth2Client-Private.xcconfig */,
-				81F064BDBED5408ABB624463 /* Pods-AFOAuth2Client-dummy.m */,
-				0B93E8CC61F94654A599F9E2 /* Pods-AFOAuth2Client-prefix.pch */,
-				8224D5363FC4451E9BBB3A75 /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client.xcconfig */,
-				5BDE63396EA3427E94AC6693 /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-Private.xcconfig */,
-				0B610B3E2EF44C02BF70C2DD /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-dummy.m */,
-				E5EAF7F2AC8C49F8A5571055 /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-prefix.pch */,
+				C6B481E2D566B3E583C18600 /* Pods */,
+				DBDBA397ED01B609B346495E /* Pods-MendeleySDKDemoOSXTests */,
 			);
-			name = "Support Files";
-			sourceTree = SOURCE_ROOT;
-		};
-		93281EBC1CDC4E2D83D6A23A /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				3807FCF54360486F8268B82C /* Pods-MendeleySDK.xcconfig */,
-				ED0C6E6B23E74BF6B556BC1C /* Pods-MendeleySDK-Private.xcconfig */,
-				621550B0C9A24B5F87576CA7 /* Pods-MendeleySDK-dummy.m */,
-				4C239A7323DE4B96ADFCE81E /* Pods-MendeleySDK-prefix.pch */,
-				9289190E004340CB8E648A6D /* Pods-MendeleySDKDemoOSXTests-MendeleySDK.xcconfig */,
-				C1F24C16202345528A4218F1 /* Pods-MendeleySDKDemoOSXTests-MendeleySDK-Private.xcconfig */,
-				A085A9F80328460483316B03 /* Pods-MendeleySDKDemoOSXTests-MendeleySDK-dummy.m */,
-				7A08C7C107EE4163ACA4B019 /* Pods-MendeleySDKDemoOSXTests-MendeleySDK-prefix.pch */,
-			);
-			name = "Support Files";
-			sourceTree = SOURCE_ROOT;
-		};
-		9ECE98FAF77C4C6ABCE3DE67 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				35410402C4614290A21C94FB /* AFNetworking */,
-				46794CDCFAD647B19060B38C /* AFOAuth2Client */,
-			);
-			name = Pods;
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		ABAF734633344154A588212C /* MendeleySDK */ = {
+		3DCA76B22EE910EBF672D33A = {
 			isa = PBXGroup;
 			children = (
-				3C3905F51F1A475190E383EB /* MDLAuthor.h */,
-				9EAFB535B473432791772CD5 /* MDLAuthor.m */,
-				2825084D4D874E95840F8044 /* MDLCategory.h */,
-				B2BADD46C28340458AA465AC /* MDLCategory.m */,
-				7F585591C8EB47C9A6137B06 /* MDLDocument.h */,
-				9015DC52354C451BBC5C6BD9 /* MDLDocument.m */,
-				9F58C4912ECA4EC49F18DBF9 /* MDLFile.h */,
-				6CC0220FA9CE4E96ACCE36F3 /* MDLFile.m */,
-				6A81FCAC1C9048CEACBD8217 /* MDLFolder.h */,
-				EDAE0328909241D5B362D223 /* MDLFolder.m */,
-				8071FA580C5D45DDA904A3AF /* MDLGroup.h */,
-				938A20F9AB8A47C0BD7CA3A7 /* MDLGroup.m */,
-				C2302DCF9A43432C86EE9640 /* MDLMendeleyAPIClient.h */,
-				B2859F104D654743B4877551 /* MDLMendeleyAPIClient.m */,
-				ED7A379DD7C7480FB54C2564 /* MDLPublication.h */,
-				A42E9726F80A4EF4B92F0890 /* MDLPublication.m */,
-				09B7CDAE31FB448B92091935 /* MDLSubcategory.h */,
-				686ABBD273C444238C6CBB01 /* MDLSubcategory.m */,
-				462AFE9AF9CC4DF7901B3BFB /* MDLTag.h */,
-				969C6FFC345F42AFA2495CD9 /* MDLTag.m */,
-				AD5D039228CD4215A65BBF0F /* MDLUser.h */,
-				308B25BEF033486396CD472C /* MDLUser.m */,
-				D4A128FCAD54415FBB232EBE /* MendeleySDK.h */,
-				93281EBC1CDC4E2D83D6A23A /* Support Files */,
+				AC8EEDA3F27511992E3C7FB6 /* Podfile */,
+				72191FABDF9B8E81D84506A4 /* Development Pods */,
+				C677EE6D3205F90402CF203A /* Frameworks */,
+				0D548C8FA802AE183B05C15E /* Pods */,
+				1FE95D8D888E51DB07A8DE05 /* Products */,
+				23A22F29F7A16E8B13045F4C /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		72191FABDF9B8E81D84506A4 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C55DBE17452667F5AD7F150A /* MendeleySDK */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		8186884DDCBEBF766CADA23F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				EC96BFB73F3FAB1A76D2981A /* Pods-MendeleySDK.xcconfig */,
+				AF2140245B9AD8775DC33F70 /* Pods-MendeleySDK-Private.xcconfig */,
+				54BE89B8B4F2D191318A43A4 /* Pods-MendeleySDK-dummy.m */,
+				B5212F3F77B217AB7EF439FD /* Pods-MendeleySDK-prefix.pch */,
+				643AAC708D32C6B90AC83834 /* Pods-MendeleySDKDemoOSXTests-MendeleySDK.xcconfig */,
+				5B1CA687C09FD96BB2D0E5D1 /* Pods-MendeleySDKDemoOSXTests-MendeleySDK-Private.xcconfig */,
+				0B7F4D4CD0683770FF697E81 /* Pods-MendeleySDKDemoOSXTests-MendeleySDK-dummy.m */,
+				F04D480CA6D40E5C509BF927 /* Pods-MendeleySDKDemoOSXTests-MendeleySDK-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "Examples/MendeleySDKDemoOSX/Pods/Target Support Files/Pods-MendeleySDK";
+			sourceTree = "<group>";
+		};
+		C55DBE17452667F5AD7F150A /* MendeleySDK */ = {
+			isa = PBXGroup;
+			children = (
+				984C43FFF1E3802E79B37DE8 /* MDLAuthor.h */,
+				A148B58296FF94285B617479 /* MDLAuthor.m */,
+				61EBF698B7717D549FEC74CB /* MDLCategory.h */,
+				3C96CE35B9D139E40A8BE5E5 /* MDLCategory.m */,
+				71F6E8DA3F40621314280E9E /* MDLDocument.h */,
+				2DA2695D7357613AB10FA70B /* MDLDocument.m */,
+				2B11439E17D83C635501F8BC /* MDLFile.h */,
+				F8B29DEF84CF233F8E4BE1AD /* MDLFile.m */,
+				C4ABD4DF76D9141115896137 /* MDLFolder.h */,
+				BD11DE7BBED07B62C7A01FAF /* MDLFolder.m */,
+				F34F131AB85853534F67E202 /* MDLGroup.h */,
+				6B941FA4847FD5C1D16056C2 /* MDLGroup.m */,
+				45451C41B727DD7957AD4136 /* MDLMendeleyAPIClient.h */,
+				FA022B7925F98CA5402E0668 /* MDLMendeleyAPIClient.m */,
+				9CA12CEEF21DC853F5EC5D3D /* MDLPublication.h */,
+				15129710FF371B26B7283E4C /* MDLPublication.m */,
+				C1519E6BDD1F56A8D5BA63A2 /* MDLSubcategory.h */,
+				8049C76916C29F4727E2508B /* MDLSubcategory.m */,
+				DC600DE3154DA6662314CFB5 /* MDLTag.h */,
+				644E3EB3197AD55FF524C757 /* MDLTag.m */,
+				9B5204A1C364F7A96080C696 /* MDLUser.h */,
+				9043F08BE97D98E830317120 /* MDLUser.m */,
+				43AABA76BF18CE97472A45A5 /* MendeleySDK.h */,
+				8186884DDCBEBF766CADA23F /* Support Files */,
 			);
 			name = MendeleySDK;
 			path = ../../..;
 			sourceTree = "<group>";
 		};
-		B80C6365C887417491B3DD2B /* Development Pods */ = {
+		C677EE6D3205F90402CF203A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				ABAF734633344154A588212C /* MendeleySDK */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		C92523CA05AB44B585D3ECF6 /* Pods-MendeleySDKDemoOSXTests */ = {
-			isa = PBXGroup;
-			children = (
-				1CB62ECA651041A0BA2ACA83 /* Pods-MendeleySDKDemoOSXTests.xcconfig */,
-				1A45459B418C4D7FA7216F23 /* Pods-MendeleySDKDemoOSXTests-acknowledgements.markdown */,
-				BE1180DEED7347A7A775B790 /* Pods-MendeleySDKDemoOSXTests-acknowledgements.plist */,
-				0E913847D2404F4AA676B605 /* Pods-MendeleySDKDemoOSXTests-dummy.m */,
-				AA3C2D5EE8B94CDF9BD606B1 /* Pods-MendeleySDKDemoOSXTests-environment.h */,
-				5DBF119A89154291A38411B2 /* Pods-MendeleySDKDemoOSXTests-resources.sh */,
-			);
-			name = "Pods-MendeleySDKDemoOSXTests";
-			sourceTree = "<group>";
-		};
-		D9839A9E3D9B4B7A8BF2CCA6 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				78FC6BA38AAC4AAB8658E22C /* Pods */,
-				C92523CA05AB44B585D3ECF6 /* Pods-MendeleySDKDemoOSXTests */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		E2864B6990304A70B58BCDC9 = {
-			isa = PBXGroup;
-			children = (
-				A31C7B33E31B4C73AADD899D /* Podfile */,
-				B80C6365C887417491B3DD2B /* Development Pods */,
-				EA00FD3597444250A576AA4F /* Frameworks */,
-				9ECE98FAF77C4C6ABCE3DE67 /* Pods */,
-				E5E6F2BCF89446E79E7CE06E /* Products */,
-				D9839A9E3D9B4B7A8BF2CCA6 /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		E5E6F2BCF89446E79E7CE06E /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A9B9E1B317AD4D198480304F /* libPods.a */,
-				1ADE48ACC09A4557B3922905 /* libPods-AFNetworking.a */,
-				DA16410BD25145D08E38588E /* libPods-AFOAuth2Client.a */,
-				0A716E38BD2048B7A63FD1CC /* libPods-MendeleySDK.a */,
-				72F6C434DB0D4C1BB21C0905 /* libPods-MendeleySDKDemoOSXTests.a */,
-				1C40DDE305AD4222BFD279F5 /* libPods-MendeleySDKDemoOSXTests-AFNetworking.a */,
-				61546E47E60448958C61004C /* libPods-MendeleySDKDemoOSXTests-AFOAuth2Client.a */,
-				F323DB5123924A2097C7393D /* libPods-MendeleySDKDemoOSXTests-MendeleySDK.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		EA00FD3597444250A576AA4F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7BEA8535C4514077A164B023 /* OS X */,
+				2397103B7D8F21BB483329DD /* OS X */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C6B481E2D566B3E583C18600 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2D9AD6378932C40538C24072 /* Pods-acknowledgements.markdown */,
+				63BBC42CEC205C78D7BBC76D /* Pods-acknowledgements.plist */,
+				52B002B614B9B8385DCAD880 /* Pods-dummy.m */,
+				6E833D2BF4147530F1FE20B0 /* Pods-environment.h */,
+				2C0BD07591B627C10FA7D7F4 /* Pods-resources.sh */,
+				DA92FEE08D4D4BE5E66D773C /* Pods.debug.xcconfig */,
+				D5BBFB84A058A211C4734432 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			path = "Target Support Files/Pods";
+			sourceTree = "<group>";
+		};
+		C7B65E55322E7F2E18D2D783 /* AFOAuth2Client */ = {
+			isa = PBXGroup;
+			children = (
+				2174D11D33FA54246D12F817 /* AFOAuth2Client.h */,
+				DE211E970F77486D4958DFD5 /* AFOAuth2Client.m */,
+				C90A13C013699DA2DC5AA50F /* Support Files */,
+			);
+			path = AFOAuth2Client;
+			sourceTree = "<group>";
+		};
+		C90A13C013699DA2DC5AA50F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B96EEF593A08B9599E484286 /* Pods-AFOAuth2Client.xcconfig */,
+				D98FCF20C778B944498B1A35 /* Pods-AFOAuth2Client-Private.xcconfig */,
+				652E98C357DD8D65664C7E57 /* Pods-AFOAuth2Client-dummy.m */,
+				9F01A1FC3FE455744474FDEF /* Pods-AFOAuth2Client-prefix.pch */,
+				B11B2AE668B52B52CDBCD2FF /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client.xcconfig */,
+				95F34A83FC013FDE7B16975C /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-Private.xcconfig */,
+				D0C083F495D32DF4DA4C90ED /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-dummy.m */,
+				D0AA106191CDF0CDE569EC08 /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-AFOAuth2Client";
+			sourceTree = "<group>";
+		};
+		DBDBA397ED01B609B346495E /* Pods-MendeleySDKDemoOSXTests */ = {
+			isa = PBXGroup;
+			children = (
+				47C72427DE18823A849F4D76 /* Pods-MendeleySDKDemoOSXTests-acknowledgements.markdown */,
+				254863BB3E4FF6DE39391322 /* Pods-MendeleySDKDemoOSXTests-acknowledgements.plist */,
+				4B3204921AEEFC3198982723 /* Pods-MendeleySDKDemoOSXTests-dummy.m */,
+				A16A51556CE8B5057C90ED7F /* Pods-MendeleySDKDemoOSXTests-environment.h */,
+				CA8C1B75142D7974A1DDA2D5 /* Pods-MendeleySDKDemoOSXTests-resources.sh */,
+				FBE231880D1C08A222CAFAEC /* Pods-MendeleySDKDemoOSXTests.debug.xcconfig */,
+				181567D6E55F66F19217E614 /* Pods-MendeleySDKDemoOSXTests.release.xcconfig */,
+			);
+			name = "Pods-MendeleySDKDemoOSXTests";
+			path = "Target Support Files/Pods-MendeleySDKDemoOSXTests";
+			sourceTree = "<group>";
+		};
+		E56DB3A54AB62882F5CC6B8A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				52D64156EC67A844FD11CEBC /* Pods-AFNetworking.xcconfig */,
+				DDC219722121C865D7FE2F37 /* Pods-AFNetworking-Private.xcconfig */,
+				75D0172EE1513E179B115D36 /* Pods-AFNetworking-dummy.m */,
+				1441283FAC4416B398229CAE /* Pods-AFNetworking-prefix.pch */,
+				CD2F6A5122F89C4308047F98 /* Pods-MendeleySDKDemoOSXTests-AFNetworking.xcconfig */,
+				9946E160577D9576DD676973 /* Pods-MendeleySDKDemoOSXTests-AFNetworking-Private.xcconfig */,
+				8D05FCED3D237C76E7183E61 /* Pods-MendeleySDKDemoOSXTests-AFNetworking-dummy.m */,
+				97E6CE77E3E521476425BA72 /* Pods-MendeleySDKDemoOSXTests-AFNetworking-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-AFNetworking";
+			sourceTree = "<group>";
+		};
+		F1DF74E24056C92F806016FA /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				9AC0823F2242A2100FC5499B /* AFHTTPClient.h */,
+				5C1C758E8C37F66399E265F4 /* AFHTTPClient.m */,
+				477D2F8C55FEF55C699C9E0B /* AFHTTPRequestOperation.h */,
+				BDA68C93344F052932FE9927 /* AFHTTPRequestOperation.m */,
+				921DDAA1F0FC2F0446696B46 /* AFImageRequestOperation.h */,
+				410DE79265A53629DFD78720 /* AFImageRequestOperation.m */,
+				60DAFDB887B06C63F075FF68 /* AFJSONRequestOperation.h */,
+				252F985E281B7771D9899714 /* AFJSONRequestOperation.m */,
+				0A4BAE284FEAAB24348E8B80 /* AFNetworkActivityIndicatorManager.h */,
+				EA9EFE86BBF884F06B754A3E /* AFNetworkActivityIndicatorManager.m */,
+				5CC3CF946D488910AAEE0D78 /* AFNetworking.h */,
+				FD3223F5A10081E7A4AB135B /* AFPropertyListRequestOperation.h */,
+				CAEEAB2AB175D22D96AD0286 /* AFPropertyListRequestOperation.m */,
+				2D43797CEEF060C220976136 /* AFURLConnectionOperation.h */,
+				AC593B4354C7E4DB75E4C45C /* AFURLConnectionOperation.m */,
+				1E80C0904DF71383649C6D12 /* AFXMLRequestOperation.h */,
+				370B8CB24F8BFBE101F706F4 /* AFXMLRequestOperation.m */,
+				C9900B9B70C2D83CCEBC12E2 /* UIImageView+AFNetworking.h */,
+				8C386338410F482B2A57F24E /* UIImageView+AFNetworking.m */,
+				E56DB3A54AB62882F5CC6B8A /* Support Files */,
+			);
+			path = AFNetworking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		1064F6FE81714B34828F08B1 /* Headers */ = {
+		12DA9B05C5B2F99A4F25A3BD /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				031F18B6A49F466C956F99B0 /* AFOAuth2Client.h in Headers */,
+				9B4BBC0E4F73351F76F81000 /* AFOAuth2Client.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6678635B4B904EF0A75AFF88 /* Headers */ = {
+		1AC63761A95913C876F9DA6B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3905DBB69E0344DF87E686D2 /* MDLAuthor.h in Headers */,
-				C9899862381B4B02A344747D /* MDLCategory.h in Headers */,
-				1369506010AD45ADBE2D3AF5 /* MDLDocument.h in Headers */,
-				73FC073AC9BA4E9988FAC806 /* MDLFile.h in Headers */,
-				8D3CB08D090342F894CBC6F5 /* MDLFolder.h in Headers */,
-				D74BEE2B178442D38649C1B2 /* MDLGroup.h in Headers */,
-				8177A30C8D4A43B7AA17CA29 /* MDLMendeleyAPIClient.h in Headers */,
-				85C0765EB2B94885A85AB9DE /* MDLPublication.h in Headers */,
-				E94CE31AE2FD49F8ADC8B8CB /* MDLSubcategory.h in Headers */,
-				5F66186046174D018544F0A1 /* MDLTag.h in Headers */,
-				CAD0CB605DBE409A95F0DB3A /* MDLUser.h in Headers */,
-				9B6A17B93BCE4B7FA17BAAE6 /* MendeleySDK.h in Headers */,
+				0344033CD3D68A931F19F71D /* AFOAuth2Client.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6EA85B2C0C27444F8F4EB684 /* Headers */ = {
+		5C0B6EA12A578C2A2C0888CD /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E91DE661CC3A4A21B722FE99 /* MDLAuthor.h in Headers */,
-				315BBFBD5CE943DFBAC2855A /* MDLCategory.h in Headers */,
-				311EC6C034C746B6BAD694FF /* MDLDocument.h in Headers */,
-				6123292538204A1FBE7A6533 /* MDLFile.h in Headers */,
-				5A345D0BE7714C758E49C8D4 /* MDLFolder.h in Headers */,
-				D37A401122BF44DBBF57B568 /* MDLGroup.h in Headers */,
-				FE08E99610814447B4AF879C /* MDLMendeleyAPIClient.h in Headers */,
-				68FEFBEDE3304B239F8C95C2 /* MDLPublication.h in Headers */,
-				3E40A5C38EC64312A5685814 /* MDLSubcategory.h in Headers */,
-				13AA13BAD0F74D53AF7D3F77 /* MDLTag.h in Headers */,
-				23EA8E503C2A46A58AF26FAE /* MDLUser.h in Headers */,
-				13181782F2714CC4A378BB68 /* MendeleySDK.h in Headers */,
+				E76AE362108271900C700E3A /* MDLAuthor.h in Headers */,
+				6505E1AC2B21893ED998E675 /* MDLCategory.h in Headers */,
+				739FA497DB03CEAE536B1707 /* MDLDocument.h in Headers */,
+				3BD493E0362D7931A303D652 /* MDLFile.h in Headers */,
+				27699EBD059BB45F26862810 /* MDLFolder.h in Headers */,
+				EE70F67EE5DD56A8D01C67E4 /* MDLGroup.h in Headers */,
+				FCFD38428B84B69134DAE542 /* MDLMendeleyAPIClient.h in Headers */,
+				5BB559E29DAD9254C409E7AC /* MDLPublication.h in Headers */,
+				8318FD4AE5967008209C4A9F /* MDLSubcategory.h in Headers */,
+				F7B6BB189E273CB113CC0EC3 /* MDLTag.h in Headers */,
+				9D57B6857E1A6A05EB69BF7D /* MDLUser.h in Headers */,
+				24AF8A0701570F1EB7085E50 /* MendeleySDK.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7B1FCBD1F2E34443AD2B774C /* Headers */ = {
+		6D9204FC063EDCEDF63D49DD /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31CC2CA7842142DDB7539C91 /* AFHTTPClient.h in Headers */,
-				720175D53F26455DAE9C02A3 /* AFHTTPRequestOperation.h in Headers */,
-				5B121BB8F0B842C6AEBBD71B /* AFImageRequestOperation.h in Headers */,
-				A0F0CB9B4207406B894F6BAA /* AFJSONRequestOperation.h in Headers */,
-				4E6748CC7DB34C61956CB901 /* AFNetworkActivityIndicatorManager.h in Headers */,
-				91D540E929B940679566A9C9 /* AFNetworking.h in Headers */,
-				21265D55E0014FC9A8265D0E /* AFPropertyListRequestOperation.h in Headers */,
-				251012751E1D413CB27E4E98 /* AFURLConnectionOperation.h in Headers */,
-				428A87D885B8479BAE4916D9 /* AFXMLRequestOperation.h in Headers */,
-				B22681DD00E742E3AFACC17C /* UIImageView+AFNetworking.h in Headers */,
+				8431D026FE4DFE3E66633664 /* AFHTTPClient.h in Headers */,
+				6EFBDF5792ED06197F407604 /* AFHTTPRequestOperation.h in Headers */,
+				7B80B0D21FBD074C9787D4F0 /* AFImageRequestOperation.h in Headers */,
+				94EF58D1B5F6EAE3C307E9A1 /* AFJSONRequestOperation.h in Headers */,
+				19E26D80EEA0C4AB47B0FFA4 /* AFNetworkActivityIndicatorManager.h in Headers */,
+				CB81C6AF9E4EAFD657A02818 /* AFNetworking.h in Headers */,
+				9A119C431ACAC38377106D81 /* AFPropertyListRequestOperation.h in Headers */,
+				C7593F8777E3EF12268FFDFC /* AFURLConnectionOperation.h in Headers */,
+				B91256C1AE390323A6A9F146 /* AFXMLRequestOperation.h in Headers */,
+				733585642CC7BF824A5F8BF9 /* UIImageView+AFNetworking.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		84FED832E09A4DC09631FFA8 /* Headers */ = {
+		A53DD79A0A65F7BF88156D34 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87F0251777314B72953B86F4 /* AFOAuth2Client.h in Headers */,
+				07EDFA9D1879AFC15D7F439A /* MDLAuthor.h in Headers */,
+				E0806496B70D3F0DA6BEBDB0 /* MDLCategory.h in Headers */,
+				FDD9E4E1753D551E3A4E7037 /* MDLDocument.h in Headers */,
+				AF42C0B4EEAD4D90313B3ECF /* MDLFile.h in Headers */,
+				A25BB7474637E493AF34D1B9 /* MDLFolder.h in Headers */,
+				611C17DBB17141646FB6D032 /* MDLGroup.h in Headers */,
+				182CF50FF2499E38AA119465 /* MDLMendeleyAPIClient.h in Headers */,
+				88A75A916DFC34CEEFABACA4 /* MDLPublication.h in Headers */,
+				D94CB25E2BAF2BFC322DE8DD /* MDLSubcategory.h in Headers */,
+				C44F30045BABAFCC54F539A1 /* MDLTag.h in Headers */,
+				69C60C3308DD47C3D34261E3 /* MDLUser.h in Headers */,
+				0FC27E42D0CA806BF6FCD60E /* MendeleySDK.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FEC4C38D00EE4C1FB11F26CC /* Headers */ = {
+		DE0BCBC98EE7F47FCA51C7E3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C09CCE10A6E34414AC3CEECC /* AFHTTPClient.h in Headers */,
-				32553EEFE5ED4DFCB2653A8C /* AFHTTPRequestOperation.h in Headers */,
-				3BE6BD0413D54A6786734CF4 /* AFImageRequestOperation.h in Headers */,
-				57463A8BF6EF4303A1EE28E4 /* AFJSONRequestOperation.h in Headers */,
-				E40001FE7C2B425196BB233C /* AFNetworkActivityIndicatorManager.h in Headers */,
-				B5754059C8C44DDA990E157D /* AFNetworking.h in Headers */,
-				771CA6C4A553477698B4718C /* AFPropertyListRequestOperation.h in Headers */,
-				5DCFBD79474A4B2BBA23B840 /* AFURLConnectionOperation.h in Headers */,
-				0FEB86B97B0149D4A8CB8637 /* AFXMLRequestOperation.h in Headers */,
-				139D3FC122884D118180DB2E /* UIImageView+AFNetworking.h in Headers */,
+				3696E1F4B0A4CD406C548600 /* AFHTTPClient.h in Headers */,
+				7DD24270D26C495AC421E08C /* AFHTTPRequestOperation.h in Headers */,
+				6B56B22C1986046F7730D1F9 /* AFImageRequestOperation.h in Headers */,
+				95909A592E3A83C1D4EF9A7A /* AFJSONRequestOperation.h in Headers */,
+				E72B33D496DBF0DE69B66105 /* AFNetworkActivityIndicatorManager.h in Headers */,
+				66D37A59E56042C57D2DD0C7 /* AFNetworking.h in Headers */,
+				994EF1857194B00BB4CAB530 /* AFPropertyListRequestOperation.h in Headers */,
+				BBB9B0976F5C753C1DD4733A /* AFURLConnectionOperation.h in Headers */,
+				F15881C38CBFF5B890673776 /* AFXMLRequestOperation.h in Headers */,
+				FC2DAC408E60DFC51C75311F /* UIImageView+AFNetworking.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		29C1126DF37649CAB9D36B1B /* Pods-MendeleySDKDemoOSXTests */ = {
+		36B481849679F04C2724B1AF /* Pods-MendeleySDKDemoOSXTests-AFNetworking */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 004527BF4F9C4A61A24CA700 /* Build configuration list for PBXNativeTarget "Pods-MendeleySDKDemoOSXTests" */;
+			buildConfigurationList = 890DF1CCC30701BB0895A929 /* Build configuration list for PBXNativeTarget "Pods-MendeleySDKDemoOSXTests-AFNetworking" */;
 			buildPhases = (
-				16623724B79E48EFA76FFF8A /* Sources */,
-				4EABD2D3B493469B938BB06C /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				05CA1A8FA4914247B8F200EE /* PBXTargetDependency */,
-				97390640770D46889615F40C /* PBXTargetDependency */,
-				B1BB0594F78C45C8BFB326EE /* PBXTargetDependency */,
-			);
-			name = "Pods-MendeleySDKDemoOSXTests";
-			productName = "Pods-MendeleySDKDemoOSXTests";
-			productReference = 72F6C434DB0D4C1BB21C0905 /* libPods-MendeleySDKDemoOSXTests.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		46C3C0AFDF5A4764AE413952 /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 901B6F8B5D0047C792E07955 /* Build configuration list for PBXNativeTarget "Pods-MendeleySDKDemoOSXTests-AFOAuth2Client" */;
-			buildPhases = (
-				6FA4180A2B3E418E9CF6BCFA /* Sources */,
-				589C2A460B344A3BBF7F5DC1 /* Frameworks */,
-				1064F6FE81714B34828F08B1 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				19B283D3124441ECBB0761EC /* PBXTargetDependency */,
-			);
-			name = "Pods-MendeleySDKDemoOSXTests-AFOAuth2Client";
-			productName = "Pods-MendeleySDKDemoOSXTests-AFOAuth2Client";
-			productReference = 61546E47E60448958C61004C /* libPods-MendeleySDKDemoOSXTests-AFOAuth2Client.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		5219FA368F3041A5813724CE /* Pods-AFOAuth2Client */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E79F71F42A6C4A73B29B3CD0 /* Build configuration list for PBXNativeTarget "Pods-AFOAuth2Client" */;
-			buildPhases = (
-				FC9E6E859677439DACA9C843 /* Sources */,
-				F513C63E7F614FA8961F94A6 /* Frameworks */,
-				84FED832E09A4DC09631FFA8 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				92AF946A7E3940FBA57D0419 /* PBXTargetDependency */,
-			);
-			name = "Pods-AFOAuth2Client";
-			productName = "Pods-AFOAuth2Client";
-			productReference = DA16410BD25145D08E38588E /* libPods-AFOAuth2Client.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		6727EEE17A814055B58307CF /* Pods-MendeleySDKDemoOSXTests-MendeleySDK */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0637D2A3095E45208C9BD23C /* Build configuration list for PBXNativeTarget "Pods-MendeleySDKDemoOSXTests-MendeleySDK" */;
-			buildPhases = (
-				59A2D8B5A13C4ECD80793215 /* Sources */,
-				4600B1AC998C49AE997974E0 /* Frameworks */,
-				6678635B4B904EF0A75AFF88 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7D6398EC874649FDB84F3484 /* PBXTargetDependency */,
-			);
-			name = "Pods-MendeleySDKDemoOSXTests-MendeleySDK";
-			productName = "Pods-MendeleySDKDemoOSXTests-MendeleySDK";
-			productReference = F323DB5123924A2097C7393D /* libPods-MendeleySDKDemoOSXTests-MendeleySDK.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		72CCFD39CA18407CA962DA06 /* Pods */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4960BF904D884AF4A8C24DEA /* Build configuration list for PBXNativeTarget "Pods" */;
-			buildPhases = (
-				A4B74FF7F6A64969BD00810E /* Sources */,
-				EEF53673153F4A9790073899 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F9BD1B71BEF744E1B0E2C257 /* PBXTargetDependency */,
-				3D51F12E894D48E1828C976A /* PBXTargetDependency */,
-				31E4DC23F7B34F078FB07149 /* PBXTargetDependency */,
-			);
-			name = Pods;
-			productName = Pods;
-			productReference = A9B9E1B317AD4D198480304F /* libPods.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		8B9FBBA0CCE34774AEDC9FA8 /* Pods-MendeleySDK */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7F4772EE89D544639AD40757 /* Build configuration list for PBXNativeTarget "Pods-MendeleySDK" */;
-			buildPhases = (
-				4E4986760FB5496B9A96C29E /* Sources */,
-				7F8BDF51A07E419E9D60E6DE /* Frameworks */,
-				6EA85B2C0C27444F8F4EB684 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2703A45A98B848609E06C536 /* PBXTargetDependency */,
-			);
-			name = "Pods-MendeleySDK";
-			productName = "Pods-MendeleySDK";
-			productReference = 0A716E38BD2048B7A63FD1CC /* libPods-MendeleySDK.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		D2D5EAD9C77C4EC0AD886D06 /* Pods-AFNetworking */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C54D7EF207B1429482D65437 /* Build configuration list for PBXNativeTarget "Pods-AFNetworking" */;
-			buildPhases = (
-				2DD86927B13F4C7C99C9EE9E /* Sources */,
-				72260629063E46EB983F2B34 /* Frameworks */,
-				FEC4C38D00EE4C1FB11F26CC /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-AFNetworking";
-			productName = "Pods-AFNetworking";
-			productReference = 1ADE48ACC09A4557B3922905 /* libPods-AFNetworking.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		DDC1A5483C0C447889A74A7A /* Pods-MendeleySDKDemoOSXTests-AFNetworking */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7CD0EEE710D94373968C5165 /* Build configuration list for PBXNativeTarget "Pods-MendeleySDKDemoOSXTests-AFNetworking" */;
-			buildPhases = (
-				C5B7220759A3486F9657166B /* Sources */,
-				698EDD982CE9424B81B07DA2 /* Frameworks */,
-				7B1FCBD1F2E34443AD2B774C /* Headers */,
+				B6B9599D50EBC10CA9897AC8 /* Sources */,
+				A87079B2955743D98C4890C6 /* Frameworks */,
+				6D9204FC063EDCEDF63D49DD /* Headers */,
 			);
 			buildRules = (
 			);
@@ -821,393 +691,332 @@
 			);
 			name = "Pods-MendeleySDKDemoOSXTests-AFNetworking";
 			productName = "Pods-MendeleySDKDemoOSXTests-AFNetworking";
-			productReference = 1C40DDE305AD4222BFD279F5 /* libPods-MendeleySDKDemoOSXTests-AFNetworking.a */;
+			productReference = 07CB8470F12EDD1F669B06D8 /* libPods-MendeleySDKDemoOSXTests-AFNetworking.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		3E9D5E1AD5A51A8138E0351D /* Pods-AFNetworking */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7B46B5FB1A67CEDEE30FA070 /* Build configuration list for PBXNativeTarget "Pods-AFNetworking" */;
+			buildPhases = (
+				1DB3F191E42E7DCE202D6C41 /* Sources */,
+				9206280F39DCB4BFD91850BA /* Frameworks */,
+				DE0BCBC98EE7F47FCA51C7E3 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-AFNetworking";
+			productName = "Pods-AFNetworking";
+			productReference = EC2AF6D6A64BF9672C2655B4 /* libPods-AFNetworking.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		4142F059626DA3B4202DDDCA /* Pods-AFOAuth2Client */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A550235A635B53BC380A6140 /* Build configuration list for PBXNativeTarget "Pods-AFOAuth2Client" */;
+			buildPhases = (
+				42470B9F47C197310C939A58 /* Sources */,
+				06D8751699C0C1D5D69FC23D /* Frameworks */,
+				12DA9B05C5B2F99A4F25A3BD /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4C61BDA5D1109EE333A5187 /* PBXTargetDependency */,
+			);
+			name = "Pods-AFOAuth2Client";
+			productName = "Pods-AFOAuth2Client";
+			productReference = D514E7B0FB3FFF9114A0E176 /* libPods-AFOAuth2Client.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		821E9730762F8FE268CDA43C /* Pods-MendeleySDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D5806F4EF9255BE22DA7F8C6 /* Build configuration list for PBXNativeTarget "Pods-MendeleySDK" */;
+			buildPhases = (
+				7D68052B83DEC78719AC7954 /* Sources */,
+				C8CC16F1EEB6BCE4B751E649 /* Frameworks */,
+				5C0B6EA12A578C2A2C0888CD /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9FD63478F7DD0315D94A9DAD /* PBXTargetDependency */,
+			);
+			name = "Pods-MendeleySDK";
+			productName = "Pods-MendeleySDK";
+			productReference = DDCE7C4AABA811E1EEBE2B40 /* libPods-MendeleySDK.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		939CB4B3D4DC328B639C9C7F /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 31F942D2091A6ED6F62ED07C /* Build configuration list for PBXNativeTarget "Pods-MendeleySDKDemoOSXTests-AFOAuth2Client" */;
+			buildPhases = (
+				73DE7EE2E13CBA9FE9C9AFB6 /* Sources */,
+				9831160300D1FE5F6D1294C8 /* Frameworks */,
+				1AC63761A95913C876F9DA6B /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3933D05E5FF2332894733E16 /* PBXTargetDependency */,
+			);
+			name = "Pods-MendeleySDKDemoOSXTests-AFOAuth2Client";
+			productName = "Pods-MendeleySDKDemoOSXTests-AFOAuth2Client";
+			productReference = 2A9083B2129A1896CF11DD7C /* libPods-MendeleySDKDemoOSXTests-AFOAuth2Client.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		A7BF9645901F7663B042311E /* Pods-MendeleySDKDemoOSXTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E37F08E2AB3FD51B6B0E43CE /* Build configuration list for PBXNativeTarget "Pods-MendeleySDKDemoOSXTests" */;
+			buildPhases = (
+				C777A440004678A406831908 /* Sources */,
+				DE26D444F34E2FAF40196A77 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0BB862176525ECF6724CEA0D /* PBXTargetDependency */,
+				1D415989272D6F4ED08D06D7 /* PBXTargetDependency */,
+				8BF90F6F4B42BFE5D54E7960 /* PBXTargetDependency */,
+			);
+			name = "Pods-MendeleySDKDemoOSXTests";
+			productName = "Pods-MendeleySDKDemoOSXTests";
+			productReference = 9F47D4C8283EDA5909DE51B1 /* libPods-MendeleySDKDemoOSXTests.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		B8818891FD6E4C01BFBD5CA2 /* Pods */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE6ACCEEEB065420A349601F /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildPhases = (
+				A3A1D76DF4CA4B1C1A54FA0A /* Sources */,
+				6199CCBEE7DB82CBD8A2D3EA /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				562FABD9D6BBE217BAFDB5FE /* PBXTargetDependency */,
+				91A7C58B7DBD0B7EDB6071E1 /* PBXTargetDependency */,
+				FDB348A3FDDB836F037DF3FE /* PBXTargetDependency */,
+			);
+			name = Pods;
+			productName = Pods;
+			productReference = 7A2BDB2E108AD429787D6BA3 /* libPods.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		C2AB1F34E4DC7CA8348DD699 /* Pods-MendeleySDKDemoOSXTests-MendeleySDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 471D91A035E46E592B16CB4C /* Build configuration list for PBXNativeTarget "Pods-MendeleySDKDemoOSXTests-MendeleySDK" */;
+			buildPhases = (
+				39F25B1B006122836838ACAD /* Sources */,
+				3338DC62349A434E98217944 /* Frameworks */,
+				A53DD79A0A65F7BF88156D34 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DBD865127D0646112774BC21 /* PBXTargetDependency */,
+			);
+			name = "Pods-MendeleySDKDemoOSXTests-MendeleySDK";
+			productName = "Pods-MendeleySDKDemoOSXTests-MendeleySDK";
+			productReference = 5159EE35390FDA0C1C48D26E /* libPods-MendeleySDKDemoOSXTests-MendeleySDK.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		B57E417C4BE74CEA81E1E0AE /* Project object */ = {
+		D0D78CEE365BA9DD9080A9B3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0610;
 			};
-			buildConfigurationList = 19037FE4B2814C06B53DD4DD /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = 68171F15459420E101417100 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = E2864B6990304A70B58BCDC9;
-			productRefGroup = E5E6F2BCF89446E79E7CE06E /* Products */;
+			mainGroup = 3DCA76B22EE910EBF672D33A;
+			productRefGroup = 1FE95D8D888E51DB07A8DE05 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				72CCFD39CA18407CA962DA06 /* Pods */,
-				D2D5EAD9C77C4EC0AD886D06 /* Pods-AFNetworking */,
-				5219FA368F3041A5813724CE /* Pods-AFOAuth2Client */,
-				8B9FBBA0CCE34774AEDC9FA8 /* Pods-MendeleySDK */,
-				29C1126DF37649CAB9D36B1B /* Pods-MendeleySDKDemoOSXTests */,
-				DDC1A5483C0C447889A74A7A /* Pods-MendeleySDKDemoOSXTests-AFNetworking */,
-				46C3C0AFDF5A4764AE413952 /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client */,
-				6727EEE17A814055B58307CF /* Pods-MendeleySDKDemoOSXTests-MendeleySDK */,
+				B8818891FD6E4C01BFBD5CA2 /* Pods */,
+				3E9D5E1AD5A51A8138E0351D /* Pods-AFNetworking */,
+				4142F059626DA3B4202DDDCA /* Pods-AFOAuth2Client */,
+				821E9730762F8FE268CDA43C /* Pods-MendeleySDK */,
+				A7BF9645901F7663B042311E /* Pods-MendeleySDKDemoOSXTests */,
+				36B481849679F04C2724B1AF /* Pods-MendeleySDKDemoOSXTests-AFNetworking */,
+				939CB4B3D4DC328B639C9C7F /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client */,
+				C2AB1F34E4DC7CA8348DD699 /* Pods-MendeleySDKDemoOSXTests-MendeleySDK */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		16623724B79E48EFA76FFF8A /* Sources */ = {
+		1DB3F191E42E7DCE202D6C41 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6010052A7F7B4B93B4BA6741 /* Pods-MendeleySDKDemoOSXTests-dummy.m in Sources */,
+				48142D9A7F1609AE62CA5C2F /* AFHTTPClient.m in Sources */,
+				750F345E5102ECB9683AD2F6 /* AFHTTPRequestOperation.m in Sources */,
+				24CC210C63B27B31EB10C58C /* AFImageRequestOperation.m in Sources */,
+				67E26B943502222144DF2184 /* AFJSONRequestOperation.m in Sources */,
+				C393F7942D9B75F2FE3D2C1C /* AFNetworkActivityIndicatorManager.m in Sources */,
+				D282899EBCAC67C6C30A146F /* AFPropertyListRequestOperation.m in Sources */,
+				F3B450C994527F8D8F104037 /* AFURLConnectionOperation.m in Sources */,
+				3448AF886CAEEABE2CA70115 /* AFXMLRequestOperation.m in Sources */,
+				6B12012D295E01DE008FE5DA /* Pods-AFNetworking-dummy.m in Sources */,
+				11E8E7542BBC0B3F9B6513E5 /* UIImageView+AFNetworking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2DD86927B13F4C7C99C9EE9E /* Sources */ = {
+		39F25B1B006122836838ACAD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCE51516E44547B5B2227AC6 /* AFHTTPClient.m in Sources */,
-				63256FC42EFB4E018FD058C3 /* AFHTTPRequestOperation.m in Sources */,
-				CCC4A58E15DF487081D14AA4 /* AFImageRequestOperation.m in Sources */,
-				680A608978AF4C3F91FA7B88 /* AFJSONRequestOperation.m in Sources */,
-				8693637BEAC9441E9D7AE081 /* AFNetworkActivityIndicatorManager.m in Sources */,
-				81F5F89275FE4A538C8A3E45 /* AFPropertyListRequestOperation.m in Sources */,
-				C9060A8924F74E97A214A6F0 /* AFURLConnectionOperation.m in Sources */,
-				9A080E109C4041509B8705FC /* AFXMLRequestOperation.m in Sources */,
-				8E7FEED6A57742F099032C8C /* Pods-AFNetworking-dummy.m in Sources */,
-				E1C79F20C3C5410EADB618D4 /* UIImageView+AFNetworking.m in Sources */,
+				A805871B2E6DBC6A75E54C0C /* MDLAuthor.m in Sources */,
+				8912EAA96B5A407EC5B37C42 /* MDLCategory.m in Sources */,
+				D7E23BDD65AE50097B758D73 /* MDLDocument.m in Sources */,
+				9A7606D85AFDDBE67CB17DD4 /* MDLFile.m in Sources */,
+				F6B102B432D8E4D86CBF21CA /* MDLFolder.m in Sources */,
+				CD4075CB4D2F80EC91134409 /* MDLGroup.m in Sources */,
+				3E926290BCB69D0C4E9797E3 /* MDLMendeleyAPIClient.m in Sources */,
+				F825D0FCC4FE6D21D2BA6F8F /* MDLPublication.m in Sources */,
+				9910E7D7EB35EBF5DB23B093 /* MDLSubcategory.m in Sources */,
+				6C47A3DA71F61C31A3B4F683 /* MDLTag.m in Sources */,
+				B193587B8E894B95B6F640A5 /* MDLUser.m in Sources */,
+				1D5A691984110C41EAFF0F6F /* Pods-MendeleySDKDemoOSXTests-MendeleySDK-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4E4986760FB5496B9A96C29E /* Sources */ = {
+		42470B9F47C197310C939A58 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF40FBE4D887499B808C0CF8 /* MDLAuthor.m in Sources */,
-				1071E165370643C190EC07AF /* MDLCategory.m in Sources */,
-				75B77F39AD3649DC85FE5505 /* MDLDocument.m in Sources */,
-				291E0DC31FBA4BA6AFD1454F /* MDLFile.m in Sources */,
-				EC588C90FAD942DD87A85F2A /* MDLFolder.m in Sources */,
-				1167E91905014773AC12F65F /* MDLGroup.m in Sources */,
-				10EEF353442A400EA9D90CC1 /* MDLMendeleyAPIClient.m in Sources */,
-				C8399F724FAE4B8C830F8A26 /* MDLPublication.m in Sources */,
-				8656762C83F943078671D656 /* MDLSubcategory.m in Sources */,
-				69FBAD2D0DD24AEFA3CC7640 /* MDLTag.m in Sources */,
-				632F32B3DCB54A1D9E1BAF85 /* MDLUser.m in Sources */,
-				1C47E0E0D6354AE0AA6E4BC9 /* Pods-MendeleySDK-dummy.m in Sources */,
+				7111000BB7B1136C21462332 /* AFOAuth2Client.m in Sources */,
+				1BF743EE51BF0152B3BD0961 /* Pods-AFOAuth2Client-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		59A2D8B5A13C4ECD80793215 /* Sources */ = {
+		73DE7EE2E13CBA9FE9C9AFB6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3FBD996C44348A2A1A35195 /* MDLAuthor.m in Sources */,
-				B60900A4B3B3445EA5A1B639 /* MDLCategory.m in Sources */,
-				CE6619D10009461DB477613E /* MDLDocument.m in Sources */,
-				C16AA9E04D214C3A87E7CE85 /* MDLFile.m in Sources */,
-				FB09780A8E4A4E1283E074D7 /* MDLFolder.m in Sources */,
-				6DC9A039C62C416E839FA242 /* MDLGroup.m in Sources */,
-				3E131DAAAC5F45A6BB380B58 /* MDLMendeleyAPIClient.m in Sources */,
-				47028C2244774790A2C2F97F /* MDLPublication.m in Sources */,
-				2F25FB025B534135ADFBA78E /* MDLSubcategory.m in Sources */,
-				8A3CA4737BE748218E5B5828 /* MDLTag.m in Sources */,
-				05795CC5ECEB4D7797884DC6 /* MDLUser.m in Sources */,
-				58905CB9E06C44E78292BBA6 /* Pods-MendeleySDKDemoOSXTests-MendeleySDK-dummy.m in Sources */,
+				BEA71814174E599762CD2BCE /* AFOAuth2Client.m in Sources */,
+				C397586C8DA3EDBC1D9871A9 /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6FA4180A2B3E418E9CF6BCFA /* Sources */ = {
+		7D68052B83DEC78719AC7954 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C14CB31A65A414F9495FBC0 /* AFOAuth2Client.m in Sources */,
-				482B3AC591994C2EB868C822 /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-dummy.m in Sources */,
+				5821CE39AD13A629C844B45F /* MDLAuthor.m in Sources */,
+				2A8F3C5B6DE9B0A2FFC69E5C /* MDLCategory.m in Sources */,
+				5B1241FDC262CD9DC53C8225 /* MDLDocument.m in Sources */,
+				8FA5C4115ADD8CC8E9385C06 /* MDLFile.m in Sources */,
+				43A1BC9456BD43344255D42D /* MDLFolder.m in Sources */,
+				FD36963A9771417C5CF07641 /* MDLGroup.m in Sources */,
+				235A1B262BBE29C69A0CA67C /* MDLMendeleyAPIClient.m in Sources */,
+				9C7BF517592FDE2DB450D0E3 /* MDLPublication.m in Sources */,
+				C19470E74385EC580367CAD3 /* MDLSubcategory.m in Sources */,
+				E9F3832A58258C4ACC42674D /* MDLTag.m in Sources */,
+				6C07F4E09C0F9D3230115C59 /* MDLUser.m in Sources */,
+				461AA9292B0330B54C734CCF /* Pods-MendeleySDK-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A4B74FF7F6A64969BD00810E /* Sources */ = {
+		A3A1D76DF4CA4B1C1A54FA0A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A8AB5E721134CBF81ADFD20 /* Pods-dummy.m in Sources */,
+				83453573BAECBD122895521B /* Pods-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C5B7220759A3486F9657166B /* Sources */ = {
+		B6B9599D50EBC10CA9897AC8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D676FD36279A45F3AEFEBBFA /* AFHTTPClient.m in Sources */,
-				B18A26F4C5724E67BCBDF2BE /* AFHTTPRequestOperation.m in Sources */,
-				5A4A90D7B86547819AF546A6 /* AFImageRequestOperation.m in Sources */,
-				88700D73E72544BDB8FA6C0E /* AFJSONRequestOperation.m in Sources */,
-				5DF8304C98D542A3B41391C3 /* AFNetworkActivityIndicatorManager.m in Sources */,
-				8E6BC89B6B73409E88487E63 /* AFPropertyListRequestOperation.m in Sources */,
-				E97694DC7502479BAD129D1B /* AFURLConnectionOperation.m in Sources */,
-				7A0971C027E44A3BB365783C /* AFXMLRequestOperation.m in Sources */,
-				107C80AFD2154DF19DE86E11 /* Pods-MendeleySDKDemoOSXTests-AFNetworking-dummy.m in Sources */,
-				961F41144CEE4491A4CB71BC /* UIImageView+AFNetworking.m in Sources */,
+				ACAFE90BAEAF922B5021772D /* AFHTTPClient.m in Sources */,
+				A41AF14116A6ECEE60B569DF /* AFHTTPRequestOperation.m in Sources */,
+				67C862066271CBD422C3C9B3 /* AFImageRequestOperation.m in Sources */,
+				355E630E2B03A7FEE395F439 /* AFJSONRequestOperation.m in Sources */,
+				62E3FCF1737B1FC10DE80690 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				CD22C1B0F16DD9D843A95839 /* AFPropertyListRequestOperation.m in Sources */,
+				D6130E5540597E48A3058E63 /* AFURLConnectionOperation.m in Sources */,
+				03DADF73C93368EC7E14F5D5 /* AFXMLRequestOperation.m in Sources */,
+				9F5C54F88EBBAE6E5E0769F2 /* Pods-MendeleySDKDemoOSXTests-AFNetworking-dummy.m in Sources */,
+				4CF464A411DD5790A808D550 /* UIImageView+AFNetworking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FC9E6E859677439DACA9C843 /* Sources */ = {
+		C777A440004678A406831908 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20E73106AFDC41198571D90B /* AFOAuth2Client.m in Sources */,
-				676E2A87E34746FBBC7CC632 /* Pods-AFOAuth2Client-dummy.m in Sources */,
+				D7B8DC7E18EAAA639B0DF61D /* Pods-MendeleySDKDemoOSXTests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		05CA1A8FA4914247B8F200EE /* PBXTargetDependency */ = {
+		0BB862176525ECF6724CEA0D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = DDC1A5483C0C447889A74A7A /* Pods-MendeleySDKDemoOSXTests-AFNetworking */;
-			targetProxy = 81C9E6BA97DC402D8F58DFA5 /* PBXContainerItemProxy */;
+			target = 36B481849679F04C2724B1AF /* Pods-MendeleySDKDemoOSXTests-AFNetworking */;
+			targetProxy = 0FBE7C9C4D6012C45EAF04CD /* PBXContainerItemProxy */;
 		};
-		19B283D3124441ECBB0761EC /* PBXTargetDependency */ = {
+		1D415989272D6F4ED08D06D7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = DDC1A5483C0C447889A74A7A /* Pods-MendeleySDKDemoOSXTests-AFNetworking */;
-			targetProxy = 7E861695AAE342A3B489C6DB /* PBXContainerItemProxy */;
+			target = 939CB4B3D4DC328B639C9C7F /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client */;
+			targetProxy = 3034B1AFDA34CE98C801A056 /* PBXContainerItemProxy */;
 		};
-		2703A45A98B848609E06C536 /* PBXTargetDependency */ = {
+		3933D05E5FF2332894733E16 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5219FA368F3041A5813724CE /* Pods-AFOAuth2Client */;
-			targetProxy = 18BA24562C8446278B590EA3 /* PBXContainerItemProxy */;
+			target = 36B481849679F04C2724B1AF /* Pods-MendeleySDKDemoOSXTests-AFNetworking */;
+			targetProxy = B8280876DAF2AF4D585D217F /* PBXContainerItemProxy */;
 		};
-		31E4DC23F7B34F078FB07149 /* PBXTargetDependency */ = {
+		562FABD9D6BBE217BAFDB5FE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8B9FBBA0CCE34774AEDC9FA8 /* Pods-MendeleySDK */;
-			targetProxy = F970E18B566D4C11BAEA9121 /* PBXContainerItemProxy */;
+			target = 3E9D5E1AD5A51A8138E0351D /* Pods-AFNetworking */;
+			targetProxy = 8ED9BC0AC852BE611E4F13AC /* PBXContainerItemProxy */;
 		};
-		3D51F12E894D48E1828C976A /* PBXTargetDependency */ = {
+		8BF90F6F4B42BFE5D54E7960 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5219FA368F3041A5813724CE /* Pods-AFOAuth2Client */;
-			targetProxy = EC8DD6967D284B578AA18A7A /* PBXContainerItemProxy */;
+			target = C2AB1F34E4DC7CA8348DD699 /* Pods-MendeleySDKDemoOSXTests-MendeleySDK */;
+			targetProxy = 008622F2D25B57CE2B6F5438 /* PBXContainerItemProxy */;
 		};
-		7D6398EC874649FDB84F3484 /* PBXTargetDependency */ = {
+		91A7C58B7DBD0B7EDB6071E1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 46C3C0AFDF5A4764AE413952 /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client */;
-			targetProxy = 6A1CCC2E2A624E07BCF8EF6D /* PBXContainerItemProxy */;
+			target = 4142F059626DA3B4202DDDCA /* Pods-AFOAuth2Client */;
+			targetProxy = 336C9A478EC6116652900A4C /* PBXContainerItemProxy */;
 		};
-		92AF946A7E3940FBA57D0419 /* PBXTargetDependency */ = {
+		9FD63478F7DD0315D94A9DAD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D2D5EAD9C77C4EC0AD886D06 /* Pods-AFNetworking */;
-			targetProxy = 80ECF1E439E246CFA541D1FF /* PBXContainerItemProxy */;
+			target = 4142F059626DA3B4202DDDCA /* Pods-AFOAuth2Client */;
+			targetProxy = 784743412605E699A855396D /* PBXContainerItemProxy */;
 		};
-		97390640770D46889615F40C /* PBXTargetDependency */ = {
+		DBD865127D0646112774BC21 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 46C3C0AFDF5A4764AE413952 /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client */;
-			targetProxy = 6F7A30B1431E46638C23D50F /* PBXContainerItemProxy */;
+			target = 939CB4B3D4DC328B639C9C7F /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client */;
+			targetProxy = E7F17E54A20EE8053883AAB3 /* PBXContainerItemProxy */;
 		};
-		B1BB0594F78C45C8BFB326EE /* PBXTargetDependency */ = {
+		F4C61BDA5D1109EE333A5187 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6727EEE17A814055B58307CF /* Pods-MendeleySDKDemoOSXTests-MendeleySDK */;
-			targetProxy = 753F1DEF262F41F58B6D812A /* PBXContainerItemProxy */;
+			target = 3E9D5E1AD5A51A8138E0351D /* Pods-AFNetworking */;
+			targetProxy = D1B95AEBD5D53A71604D8C2E /* PBXContainerItemProxy */;
 		};
-		F9BD1B71BEF744E1B0E2C257 /* PBXTargetDependency */ = {
+		FDB348A3FDDB836F037DF3FE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D2D5EAD9C77C4EC0AD886D06 /* Pods-AFNetworking */;
-			targetProxy = DA5489B684584F10A6ABBDE1 /* PBXContainerItemProxy */;
+			target = 821E9730762F8FE268CDA43C /* Pods-MendeleySDK */;
+			targetProxy = E505CA8033E35F708C00186D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		13FFDDF3E03D4649A19BC811 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED0C6E6B23E74BF6B556BC1C /* Pods-MendeleySDK-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-MendeleySDK-prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_CFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		1F671BA3C5894D3F82350F8C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2D55FC8BCBF043FAB5991565 /* Pods-MendeleySDKDemoOSXTests-AFNetworking-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-MendeleySDKDemoOSXTests-AFNetworking-prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_CFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		26C7B92744664959BCF93CC7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 44D6D46CD33347359444DFBE /* Pods-AFNetworking-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-AFNetworking-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		27A1514940A9451686FA1CA5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C1F24C16202345528A4218F1 /* Pods-MendeleySDKDemoOSXTests-MendeleySDK-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-MendeleySDKDemoOSXTests-MendeleySDK-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		2AE347F064B44A2CA2FBE490 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 44D6D46CD33347359444DFBE /* Pods-AFNetworking-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-AFNetworking-prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_CFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		2E70896DCA4C460CA4493E33 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C1F24C16202345528A4218F1 /* Pods-MendeleySDKDemoOSXTests-MendeleySDK-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-MendeleySDKDemoOSXTests-MendeleySDK-prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_CFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		41D3641AE48F45E580BEE153 /* Debug */ = {
+		0570422606694E326199E0EF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1217,173 +1026,17 @@
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				COPY_PHASE_STRIP = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = YES;
-				STRIP_INSTALLED_PRODUCT = NO;
-			};
-			name = Debug;
-		};
-		6B4DA3C670D343FB94A21E2D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = ADAE61E4F2764A9F815FB1FF /* Pods-AFOAuth2Client-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-AFOAuth2Client-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		78F5B4635316472486FBB194 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5BDE63396EA3427E94AC6693 /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_CFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		80B47B6433F44DDE8F18D24B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5BDE63396EA3427E94AC6693 /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		870CDAD6014C41EC84BC6FA9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1CB62ECA651041A0BA2ACA83 /* Pods-MendeleySDKDemoOSXTests.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		8B1FC7C6879B4ED9A554B46B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = NO;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
 				COPY_PHASE_STRIP = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
@@ -1394,46 +1047,82 @@
 			};
 			name = Release;
 		};
-		8C17F812D74343AFA054775D /* Debug */ = {
+		18FA59F8308E392E83685A27 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0C76B9D5868D4FFB85281BA5 /* Pods.xcconfig */;
+			baseConfigurationReference = 9946E160577D9576DD676973 /* Pods-MendeleySDKDemoOSXTests-AFNetworking-Private.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-MendeleySDKDemoOSXTests-AFNetworking/Pods-MendeleySDKDemoOSXTests-AFNetworking-prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		197ACEFA2790999F354AD155 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
 			};
 			name = Debug;
 		};
-		956B6C1F458F4CB4AA9998D6 /* Release */ = {
+		1C167D00733A563F82BB4D23 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1CB62ECA651041A0BA2ACA83 /* Pods-MendeleySDKDemoOSXTests.xcconfig */;
+			baseConfigurationReference = 181567D6E55F66F19217E614 /* Pods-MendeleySDKDemoOSXTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1448,27 +1137,26 @@
 					"$(inherited)",
 				);
 				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
-		C4611240811242D5916D7240 /* Debug */ = {
+		2D8CBC97900D48606FE28B1C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2D55FC8BCBF043FAB5991565 /* Pods-MendeleySDKDemoOSXTests-AFNetworking-Private.xcconfig */;
+			baseConfigurationReference = DDC219722121C865D7FE2F37 /* Pods-AFNetworking-Private.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-MendeleySDKDemoOSXTests-AFNetworking-prefix.pch";
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-AFNetworking/Pods-AFNetworking-prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1478,23 +1166,289 @@
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
-		C468AA8B86F0468F82D6740C /* Release */ = {
+		3A554A5A3A0207CCF21C9B9D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0C76B9D5868D4FFB85281BA5 /* Pods.xcconfig */;
+			baseConfigurationReference = 5B1CA687C09FD96BB2D0E5D1 /* Pods-MendeleySDKDemoOSXTests-MendeleySDK-Private.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-MendeleySDKDemoOSXTests-MendeleySDK/Pods-MendeleySDKDemoOSXTests-MendeleySDK-prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		52AB9E551F0BA39F256B3EC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95F34A83FC013FDE7B16975C /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-MendeleySDKDemoOSXTests-AFOAuth2Client/Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		5D3008F9E6190D2BDC11D06E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D98FCF20C778B944498B1A35 /* Pods-AFOAuth2Client-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-AFOAuth2Client/Pods-AFOAuth2Client-prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		71B7DEAB513B2D55B005300E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA92FEE08D4D4BE5E66D773C /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		71E1812FC758807392FC362D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9946E160577D9576DD676973 /* Pods-MendeleySDKDemoOSXTests-AFNetworking-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-MendeleySDKDemoOSXTests-AFNetworking/Pods-MendeleySDKDemoOSXTests-AFNetworking-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		7F740DA3D08C5CAD73501B78 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FBE231880D1C08A222CAFAEC /* Pods-MendeleySDKDemoOSXTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		820F847C1C1A90EB786CF20D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95F34A83FC013FDE7B16975C /* Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-MendeleySDKDemoOSXTests-AFOAuth2Client/Pods-MendeleySDKDemoOSXTests-AFOAuth2Client-prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		90B73B740F73A6B7978E6203 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDC219722121C865D7FE2F37 /* Pods-AFNetworking-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-AFNetworking/Pods-AFNetworking-prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		973A575D5DC680E538F6AC77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF2140245B9AD8775DC33F70 /* Pods-MendeleySDK-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-MendeleySDK/Pods-MendeleySDK-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		CDFDF0D28DE8B17C8768542E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D5BBFB84A058A211C4734432 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DSTROOT = /tmp/xcodeproj.dst;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1509,26 +1463,83 @@
 					"$(inherited)",
 				);
 				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
-		E5E78A16DA414CD2AD4E4432 /* Release */ = {
+		D2716EF03233DD19C5E54757 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ADAE61E4F2764A9F815FB1FF /* Pods-AFOAuth2Client-Private.xcconfig */;
+			baseConfigurationReference = 5B1CA687C09FD96BB2D0E5D1 /* Pods-MendeleySDKDemoOSXTests-MendeleySDK-Private.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-MendeleySDKDemoOSXTests-MendeleySDK/Pods-MendeleySDKDemoOSXTests-MendeleySDK-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D6A5F7E3366E8CDB44F400B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D98FCF20C778B944498B1A35 /* Pods-AFOAuth2Client-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-AFOAuth2Client/Pods-AFOAuth2Client-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		F0C6E61627998BB90128F029 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF2140245B9AD8775DC33F70 /* Pods-MendeleySDK-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-AFOAuth2Client-prefix.pch";
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-MendeleySDK/Pods-MendeleySDK-prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
@@ -1541,127 +1552,98 @@
 					"$(inherited)",
 				);
 				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
-		};
-		FA2D92E6D1844DE6A380155A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED0C6E6B23E74BF6B556BC1C /* Pods-MendeleySDK-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-MendeleySDK-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		004527BF4F9C4A61A24CA700 /* Build configuration list for PBXNativeTarget "Pods-MendeleySDKDemoOSXTests" */ = {
+		31F942D2091A6ED6F62ED07C /* Build configuration list for PBXNativeTarget "Pods-MendeleySDKDemoOSXTests-AFOAuth2Client" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				870CDAD6014C41EC84BC6FA9 /* Debug */,
-				956B6C1F458F4CB4AA9998D6 /* Release */,
+				52AB9E551F0BA39F256B3EC7 /* Debug */,
+				820F847C1C1A90EB786CF20D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0637D2A3095E45208C9BD23C /* Build configuration list for PBXNativeTarget "Pods-MendeleySDKDemoOSXTests-MendeleySDK" */ = {
+		471D91A035E46E592B16CB4C /* Build configuration list for PBXNativeTarget "Pods-MendeleySDKDemoOSXTests-MendeleySDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				27A1514940A9451686FA1CA5 /* Debug */,
-				2E70896DCA4C460CA4493E33 /* Release */,
+				D2716EF03233DD19C5E54757 /* Debug */,
+				3A554A5A3A0207CCF21C9B9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		19037FE4B2814C06B53DD4DD /* Build configuration list for PBXProject "Pods" */ = {
+		68171F15459420E101417100 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				41D3641AE48F45E580BEE153 /* Debug */,
-				8B1FC7C6879B4ED9A554B46B /* Release */,
+				197ACEFA2790999F354AD155 /* Debug */,
+				0570422606694E326199E0EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4960BF904D884AF4A8C24DEA /* Build configuration list for PBXNativeTarget "Pods" */ = {
+		7B46B5FB1A67CEDEE30FA070 /* Build configuration list for PBXNativeTarget "Pods-AFNetworking" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8C17F812D74343AFA054775D /* Debug */,
-				C468AA8B86F0468F82D6740C /* Release */,
+				2D8CBC97900D48606FE28B1C /* Debug */,
+				90B73B740F73A6B7978E6203 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7CD0EEE710D94373968C5165 /* Build configuration list for PBXNativeTarget "Pods-MendeleySDKDemoOSXTests-AFNetworking" */ = {
+		890DF1CCC30701BB0895A929 /* Build configuration list for PBXNativeTarget "Pods-MendeleySDKDemoOSXTests-AFNetworking" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C4611240811242D5916D7240 /* Debug */,
-				1F671BA3C5894D3F82350F8C /* Release */,
+				71E1812FC758807392FC362D /* Debug */,
+				18FA59F8308E392E83685A27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7F4772EE89D544639AD40757 /* Build configuration list for PBXNativeTarget "Pods-MendeleySDK" */ = {
+		A550235A635B53BC380A6140 /* Build configuration list for PBXNativeTarget "Pods-AFOAuth2Client" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FA2D92E6D1844DE6A380155A /* Debug */,
-				13FFDDF3E03D4649A19BC811 /* Release */,
+				D6A5F7E3366E8CDB44F400B3 /* Debug */,
+				5D3008F9E6190D2BDC11D06E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		901B6F8B5D0047C792E07955 /* Build configuration list for PBXNativeTarget "Pods-MendeleySDKDemoOSXTests-AFOAuth2Client" */ = {
+		AE6ACCEEEB065420A349601F /* Build configuration list for PBXNativeTarget "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				80B47B6433F44DDE8F18D24B /* Debug */,
-				78F5B4635316472486FBB194 /* Release */,
+				71B7DEAB513B2D55B005300E /* Debug */,
+				CDFDF0D28DE8B17C8768542E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C54D7EF207B1429482D65437 /* Build configuration list for PBXNativeTarget "Pods-AFNetworking" */ = {
+		D5806F4EF9255BE22DA7F8C6 /* Build configuration list for PBXNativeTarget "Pods-MendeleySDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				26C7B92744664959BCF93CC7 /* Debug */,
-				2AE347F064B44A2CA2FBE490 /* Release */,
+				973A575D5DC680E538F6AC77 /* Debug */,
+				F0C6E61627998BB90128F029 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E79F71F42A6C4A73B29B3CD0 /* Build configuration list for PBXNativeTarget "Pods-AFOAuth2Client" */ = {
+		E37F08E2AB3FD51B6B0E43CE /* Build configuration list for PBXNativeTarget "Pods-MendeleySDKDemoOSXTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6B4DA3C670D343FB94A21E2D /* Debug */,
-				E5E78A16DA414CD2AD4E4432 /* Release */,
+				7F740DA3D08C5CAD73501B78 /* Debug */,
+				1C167D00733A563F82BB4D23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = B57E417C4BE74CEA81E1E0AE /* Project object */;
+	rootObject = D0D78CEE365BA9DD9080A9B3 /* Project object */;
 }
