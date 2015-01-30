@@ -21,11 +21,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
-@class MDLFolder;
+@class MDLMendeleyAPIClient, MDLFolder;
+
+
 @interface MDLNewFolderViewController : UIViewController
 
+@property (nonatomic, strong) MDLMendeleyAPIClient *APIClient;
 @property (nonatomic, weak) MDLFolder *parentFolder;
 @property (nonatomic, weak) IBOutlet UITextField *nameTextField;
 

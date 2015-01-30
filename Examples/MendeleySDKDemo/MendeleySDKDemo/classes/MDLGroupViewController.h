@@ -21,16 +21,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
-@class MDLGroup;
+@class MDLMendeleyAPIClient, MDLGroup;
+
 
 @interface MDLGroupViewController : UIViewController
 
+@property (nonatomic, strong) MDLMendeleyAPIClient *APIClient;
 @property (nonatomic, strong) MDLGroup *group;
 
 @property (nonatomic, weak) IBOutlet UILabel *nameLabel;
-@property (nonatomic, weak) IBOutlet UILabel *categoryLabel;
+@property (nonatomic, weak) IBOutlet UILabel *disciplineLabel;
+@property (nonatomic, weak) IBOutlet UILabel *descriptionLabel;
 @property (nonatomic, weak) IBOutlet UILabel *ownerLabel;
 @property (nonatomic, weak) IBOutlet UILabel *publicLabel;
 @property (nonatomic, weak) IBOutlet UILabel *numberOfDocumentsLabel;
@@ -39,9 +42,6 @@
 @property (nonatomic, weak) IBOutlet UILabel *numberOfFollowersLabel;
 
 - (IBAction)openWebGroupProfile:(id)sender;
-- (IBAction)deleteGroup:(id)sender;
-- (IBAction)leaveGroup:(id)sender;
-- (IBAction)unfollowGroup:(id)sender;
 - (IBAction)showActions:(id)sender;
 
 @end

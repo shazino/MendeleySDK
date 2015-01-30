@@ -23,14 +23,11 @@
 
 #import "MDLMenuViewController.h"
 
-#import "MDLTopViewController.h"
-#import "MDLDocumentSearchResultsViewController.h"
+#import "MDLDocumentsViewController.h"
 #import "MDLAuthenticationWebViewController.h"
 #import <MendeleySDK.h>
 
 @interface MDLMenuViewController () <MDLAuthenticationWebViewDelegate>
-
-@property (nonatomic, strong) MDLMendeleyAPIClient *APIClient;
 
 @end
 
@@ -39,13 +36,13 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    if (!self.APIClient) {
-        self.APIClient = [MDLMendeleyAPIClient sharedClient];
-        
+
+    static BOOL firstTime = YES;
+    if (firstTime) {
+        firstTime = NO;
+
         MDLAuthenticationWebViewController *viewController = [[MDLAuthenticationWebViewController alloc] init];
         viewController.authenticationWebURL = self.APIClient.authenticationWebURL;
         viewController.delegate             = self;
@@ -54,37 +51,13 @@
     }
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"MDLTopPublicationsSegue"]) {
-        ((MDLTopViewController *)segue.destinationViewController).entityClass = [MDLPublication class];
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.destinationViewController respondsToSelector:@selector(setAPIClient:)]) {
+        [segue.destinationViewController setAPIClient:self.APIClient];
     }
-    else if ([segue.identifier isEqualToString:@"MDLTopPublicationsUserLibrarySegue"]) {
-        ((MDLTopViewController *)segue.destinationViewController).entityClass   = [MDLPublication class];
-        ((MDLTopViewController *)segue.destinationViewController).inUserLibrary = YES;
-    }
-    else if ([segue.identifier isEqualToString:@"MDLTopAuthorsSegue"]) {
-        ((MDLTopViewController *)segue.destinationViewController).entityClass = [MDLAuthor class];
-    }
-    else if ([segue.identifier isEqualToString:@"MDLTopAuthorsUserLibrarySegue"]) {
-        ((MDLTopViewController *)segue.destinationViewController).entityClass   = [MDLAuthor class];
-        ((MDLTopViewController *)segue.destinationViewController).inUserLibrary = YES;
-    }
-    else if ([segue.identifier isEqualToString:@"MDLTopDocumentsSegue"]) {
-        ((MDLTopViewController *)segue.destinationViewController).entityClass = [MDLDocument class];
-    }
-    else if ([segue.identifier isEqualToString:@"MDLTopGroupsSegue"]) {
-        ((MDLTopViewController *)segue.destinationViewController).entityClass = [MDLGroup class];
-    }
-    else if ([segue.identifier isEqualToString:@"MDLLastTagsUserLibrarySegue"]) {
-        ((MDLTopViewController *)segue.destinationViewController).entityClass   = [MDLTag class];
-        ((MDLTopViewController *)segue.destinationViewController).inUserLibrary = YES;
-    }
-    else if ([segue.identifier isEqualToString:@"MDLDocumentsUserLibrarySegue"]) {
-        ((MDLDocumentSearchResultsViewController *)segue.destinationViewController).fetchUserLibrary = YES;
-    }
-    else if ([segue.identifier isEqualToString:@"MDLAuthoredUserLibrarySegue"]) {
-        ((MDLDocumentSearchResultsViewController *)segue.destinationViewController).fetchAuthoredDocuments = YES;
+
+    if ([segue.identifier isEqualToString:@"MDLDocumentsUserLibrarySegue"]) {
+        ((MDLDocumentsViewController *)segue.destinationViewController).fetchUserLibrary = YES;
     }
 }
 

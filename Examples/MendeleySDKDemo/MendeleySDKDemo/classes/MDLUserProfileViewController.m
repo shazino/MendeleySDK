@@ -23,10 +23,13 @@
 
 #import "MDLUserProfileViewController.h"
 
-#import <MDLMendeleyAPIClient.h>
-#import "MDLUser.h"
-#import "MDLCategory.h"
-#import "AFNetworking.h"
+#import <MendeleySDK/MDLMendeleyAPIClient.h>
+#import <MendeleySDK/MDLProfile.h>
+
+#import <AFNetworking.h>
+
+#import "UIViewController+MDLError.h"
+
 
 @interface MDLUserProfileViewController ()
 
@@ -40,44 +43,52 @@
 
 @end
 
+
 @implementation MDLUserProfileViewController
 
-- (void)setUser:(MDLUser *)user
-{
+- (void)setUser:(MDLProfile *)user {
     _user = user;
-    self.nameLabel.text      = user.name;
+    self.nameLabel.text      = user.displayName;
     self.locationLabel.text  = user.location;
-    self.categoryLabel.text  = user.category.name;
+    self.categoryLabel.text  = user.academicStatus;
     self.interestsLabel.text = user.researchInterests;
-    [self.profileImageView setImageWithURL:user.photoURL placeholderImage:nil];
+
+    [self.profileImageView setImageWithURL:user.photoOriginalURL
+                          placeholderImage:nil];
 }
+
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     if (self.user) {
-        [self.user fetchProfileSuccess:^(MDLUser *user) {
-            self.user = user;
-        } failure:^(NSError *error) {
-            [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        [self.user
+         fetchProfileWithClient:self.APIClient
+         success:^(MDLProfile *profile) {
+             self.user = profile;
+         }
+         failure:^(NSError *error) {
+             [self showAlertViewWithError:error];
         }];
     }
     else {
-        [MDLUser fetchMyUserProfileSuccess:^(MDLUser *user) {
-            self.user = user;
-        } failure:^(NSError *error) {
-            [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        [MDLProfile
+         fetchMyProfileWithClient:self.APIClient
+         success:^(MDLProfile *profile) {
+            self.user = profile;
+         }
+         failure:^(NSError *error) {
+             [self showAlertViewWithError:error];
         }];
     }
 }
 
+
 #pragma mark - Actions
 
-- (IBAction)openWebUserProfile:(id)sender
-{
+- (IBAction)openWebUserProfile:(id)sender {
     [[UIApplication sharedApplication] openURL:self.user.mendeleyURL];
 }
 

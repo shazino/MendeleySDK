@@ -21,12 +21,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
-@class MDLFolder;
+@class MDLMendeleyAPIClient, MDLFolder;
 
 @interface MDLFoldersViewController : UITableViewController
 
-@property (strong, nonatomic) MDLFolder *parentFolder;
+@property (nonatomic, strong) MDLMendeleyAPIClient *APIClient;
+@property (nonatomic, strong) MDLFolder *parentFolder;
 
 @end

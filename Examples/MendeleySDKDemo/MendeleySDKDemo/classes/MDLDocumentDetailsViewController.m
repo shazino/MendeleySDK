@@ -26,9 +26,11 @@
 #import "MDLDocument.h"
 #import "MDLAuthor.h"
 #import "MDLFile.h"
-#import "MDLPublication.h"
-#import "MDLDocumentSearchResultsViewController.h"
+#import "MDLDocumentsViewController.h"
 #import "MDLFilesViewController.h"
+
+#import "UIViewController+MDLError.h"
+
 
 @interface MDLDocumentDetailsViewController () <UIActionSheetDelegate>
 
@@ -36,99 +38,114 @@
 
 @end
 
+
 @implementation MDLDocumentDetailsViewController
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
+
     [self updateOutletsWithDocument:self.document];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
- 
+
     [self updateOutletsWithDocument:self.document];
-    
-    [self.document fetchDetailsSuccess:^(MDLDocument *document) {
-        [self updateOutletsWithDocument:document];
-    } failure:^(NSError *error) {
-        [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-    }];
+
+    [self.document
+     fetchDetailsWithClient:self.APIClient
+     view:nil
+     success:^(MDLDocument *document) {
+         [self updateOutletsWithDocument:document];
+     }
+     failure:^(NSError *error) {
+         [self showAlertViewWithError:error];
+     }];
 }
 
-- (void)updateOutletsWithDocument:(MDLDocument *)document
-{
-    if (!document)
+- (void)updateOutletsWithDocument:(MDLDocument *)document {
+    if (!document) {
         return;
-    
+    }
+
     self.titleLabel.text = document.title;
     self.typeLabel.text = document.type;
     self.abstractTextView.text = document.abstract;
-    
+
     NSMutableString *authors = [NSMutableString string];
     [document.authors enumerateObjectsUsingBlock:^(MDLAuthor *author, NSUInteger idx, BOOL *stop) {
-        if (idx == 0)
-            [authors appendString:@"By "];
-        [authors appendString:author.name];
-        if (idx < [document.authors count]-1)
-            [authors appendString:@", "];
+        if (idx == 0) {
+            [authors appendString:NSLocalizedString(@"By ", nil)];
+        }
+
+        [authors appendString:author.lastName];
+        if (idx < document.authors.count-1) {
+            [authors appendString:NSLocalizedString(@", ", nil)];
+        }
     }];
+
     self.authorsLabel.text = authors;
-    self.publicationLabel.text = (document.publicationOutlet || document.year) ? [NSString stringWithFormat:@"%@ (%@)", (document.publicationOutlet.name) ?: @"?", (document.year) ?: @"?"] : @"";
-    self.relatedDocumentsButton.enabled = !document.isInUserLibrary;
-    
-    self.filesButton.enabled = ([document.files count] > 0);
-    [self.filesButton setTitle:([document.files count] > 0) ? @"Files" : @"No Files" forState:UIControlStateNormal];
+    self.publicationLabel.text = (document.source || document.year) ? [NSString stringWithFormat:@"%@ (%@)", (document.source) ?: @"?", (document.year) ?: @"?"] : @"";
+
+//    self.filesButton.enabled = (document.files.count > 0);
+//    [self.filesButton setTitle:(document.files.count > 0) ? @"Files" : @"No Files" forState:UIControlStateNormal];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.destinationViewController isKindOfClass:[MDLDocumentSearchResultsViewController class]])
-    {
-        MDLDocumentSearchResultsViewController *resultsViewController = (MDLDocumentSearchResultsViewController *)segue.destinationViewController;
-        resultsViewController.relatedToDocument = self.document;
-    }
-    else if ([segue.destinationViewController isKindOfClass:[MDLFilesViewController class]])
-    {
-        MDLFilesViewController *filesViewController = (MDLFilesViewController *)segue.destinationViewController;
-        filesViewController.files = self.document.files;
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.destinationViewController isKindOfClass:[MDLFilesViewController class]]) {
+//        MDLFilesViewController *filesViewController = (MDLFilesViewController *)segue.destinationViewController;
+//        filesViewController.files = self.document.files;
     }
 }
 
 #pragma mark - Actions
 
-- (IBAction)presentActions:(id)sender
-{
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Open in Safari", @"Import to User Library", nil];
-    if ([sender isKindOfClass:[UIBarButtonItem class]])
+- (IBAction)presentActions:(id)sender {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                  initWithTitle:nil
+                                  delegate:self
+                                  cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                                  destructiveButtonTitle:nil
+                                  otherButtonTitles:
+                                  NSLocalizedString(@"Open in Safari", nil),
+                                  NSLocalizedString(@"Import to User Library", nil), nil];
+
+    if ([sender isKindOfClass:[UIBarButtonItem class]]) {
         [actionSheet showFromBarButtonItem:sender animated:YES];
+    }
 }
 
-- (IBAction)openMendeleyURL:(id)sender
-{
+- (IBAction)openMendeleyURL:(id)sender {
     [[UIApplication sharedApplication] openURL:self.document.mendeleyURL];
 }
 
-- (IBAction)importToUserLibrary:(id)sender
-{
-    [self.document importToUserLibrarySuccess:^(NSString *newDocumentIdentifier) {
-        [[[UIAlertView alloc] initWithTitle:@"File Imported" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-    } failure:^(NSError *error) {
-        [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-    }];
+- (IBAction)importToUserLibrary:(id)sender {
+//    [self.document
+//     importToUserLibraryWithClient:self.APIClient
+//     success:^(NSString *newDocumentIdentifier) {
+//         [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"File Imported", nil)
+//                                     message:nil
+//                                    delegate:nil
+//                           cancelButtonTitle:NSLocalizedString(@"OK", nil)
+//                           otherButtonTitles:nil] show];
+//     }
+//     failure:^(NSError *error) {
+//         [self showAlertViewWithError:error];
+//     }];
 }
+
 
 #pragma mark - Action sheet delegate
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
+- (void) actionSheet:(UIActionSheet *)actionSheet
+clickedButtonAtIndex:(NSInteger)buttonIndex {
     switch (buttonIndex) {
         case 0:
             [self openMendeleyURL:nil];
             break;
+
         case 1:
             [self importToUserLibrary:nil];
             break;

@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "67163A2017A69C07006455E0"
-               BuildableName = "MendeleySDKDemoTests.octest"
+               BuildableName = "MendeleySDKDemoTests.xctest"
                BlueprintName = "MendeleySDKDemoTests"
                ReferencedContainer = "container:MendeleySDKDemo.xcodeproj">
             </BuildableReference>

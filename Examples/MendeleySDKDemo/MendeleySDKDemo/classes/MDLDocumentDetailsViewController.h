@@ -21,19 +21,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
-@class MDLDocument;
+@class MDLMendeleyAPIClient, MDLDocument;
 
 @interface MDLDocumentDetailsViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *authorsLabel;
-@property (weak, nonatomic) IBOutlet UILabel *publicationLabel;
-@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
-@property (weak, nonatomic) IBOutlet UITextView *abstractTextView;
-@property (weak, nonatomic) IBOutlet UIButton *relatedDocumentsButton;
-@property (weak, nonatomic) IBOutlet UIButton *filesButton;
+@property (nonatomic, strong) MDLMendeleyAPIClient *APIClient;
+
+@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (nonatomic, weak) IBOutlet UILabel *authorsLabel;
+@property (nonatomic, weak) IBOutlet UILabel *publicationLabel;
+@property (nonatomic, weak) IBOutlet UILabel *typeLabel;
+@property (nonatomic, weak) IBOutlet UITextView *abstractTextView;
+@property (nonatomic, weak) IBOutlet UIButton *filesButton;
 
 @property (nonatomic, strong) MDLDocument *document;
 

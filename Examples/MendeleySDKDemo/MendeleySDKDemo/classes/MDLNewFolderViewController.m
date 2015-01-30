@@ -24,9 +24,13 @@
 #import "MDLNewFolderViewController.h"
 #import "MDLFolder.h"
 
+#import "UIViewController+MDLError.h"
+
+
 @interface MDLNewFolderViewController () <UITextFieldDelegate, UIAlertViewDelegate>
 
 @end
+
 
 @implementation MDLNewFolderViewController
 
@@ -40,44 +44,51 @@
 
 #pragma mark - Actions
 
-- (IBAction)cancel:(id)sender
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (IBAction)done:(id)sender
-{
-    if ([self.nameTextField.text length] > 0)
-    {
+- (IBAction)done:(id)sender {
+    if (self.nameTextField.text.length > 0) {
         self.nameTextField.enabled = NO;
         self.navigationItem.rightBarButtonItem.enabled = NO;
-        
-        [MDLFolder createFolderWithName:self.nameTextField.text parent:self.parentFolder success:^(MDLFolder *folder) {
-            [[[UIAlertView alloc] initWithTitle:@"Folder Created" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-        } failure:^(NSError *error) {
-            [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-            self.nameTextField.enabled = YES;
-            self.navigationItem.rightBarButtonItem.enabled = YES;
-        }];
+
+        [MDLFolder
+         createFolderWithClient:self.APIClient
+         name:self.nameTextField.text
+         parent:self.parentFolder
+         success:^(MDLFolder *folder) {
+             [[[UIAlertView alloc]
+               initWithTitle:NSLocalizedString(@"Folder Created", nil)
+               message:nil
+               delegate:self
+               cancelButtonTitle:NSLocalizedString(@"OK", nil)
+               otherButtonTitles:nil] show];
+        }
+         failure:^(NSError *error) {
+             [self showAlertViewWithError: error];
+             self.nameTextField.enabled = YES;
+             self.navigationItem.rightBarButtonItem.enabled = YES;
+         }];
     }
-    else
-    {
+    else {
         [self.nameTextField becomeFirstResponder];
     }
 }
 
+- (IBAction)cancel:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 #pragma mark - Text field delegate
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return NO;
 }
 
+
 #pragma mark - Alert view delegate
 
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
+- (void)        alertView:(UIAlertView *)alertView
+didDismissWithButtonIndex:(NSInteger)buttonIndex {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -21,14 +21,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+
+@class MDLMendeleyAPIClient;
+
 
 @interface MDLDocumentCreatorViewController : UIViewController <UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
-@property (weak, nonatomic) IBOutlet UITextView *contentTextView;
-@property (weak, nonatomic) IBOutlet UIButton *uploadButton;
-@property (weak, nonatomic) IBOutlet UILabel *activityStatusLabel;
+@property (nonatomic, strong) MDLMendeleyAPIClient *APIClient;
+
+@property (nonatomic, weak) IBOutlet UITextField *nameTextField;
+@property (nonatomic, weak) IBOutlet UITextView *contentTextView;
+@property (nonatomic, weak) IBOutlet UIButton *uploadButton;
+@property (nonatomic, weak) IBOutlet UILabel *activityStatusLabel;
 
 - (IBAction)upload:(id)sender;
 - (IBAction)cancel:(id)sender;

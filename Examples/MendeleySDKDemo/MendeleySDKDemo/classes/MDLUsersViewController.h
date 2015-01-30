@@ -21,10 +21,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+
+@class MDLMendeleyAPIClient;
+
 
 @interface MDLUsersViewController : UITableViewController
 
+@property (nonatomic, strong) MDLMendeleyAPIClient *APIClient;
 @property (nonatomic, strong) NSArray *users;
 
 @end

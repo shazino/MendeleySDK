@@ -21,12 +21,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
-@class MDLUser;
+@class MDLMendeleyAPIClient, MDLProfile;
 
 @interface MDLUserProfileViewController : UIViewController
 
-@property (nonatomic, strong) MDLUser *user;
+@property (nonatomic, strong) MDLMendeleyAPIClient *APIClient;
+@property (nonatomic, strong) MDLProfile *user;
 
 @end
