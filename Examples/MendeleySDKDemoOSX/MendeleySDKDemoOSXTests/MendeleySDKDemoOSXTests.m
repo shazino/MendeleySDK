@@ -12,12 +12,11 @@
 
 @implementation MendeleySDKDemoOSXTests
 
-- (void)testInit
-{
-    [MDLMendeleyAPIClient configureSharedClientWithClientID:@"testID"
-                                                     secret:@"testSecret"
-                                                redirectURI:@"testURI"];
-    XCTAssertNotNil([MDLMendeleyAPIClient sharedClient], @"The Mendeley SDK should be accessible");
+- (void)testInit {
+    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient clientWithClientID:@"testID"
+                                                                     secret:@"testSecret"
+                                                                redirectURI:@"testURI"];
+    XCTAssertNotNil(client, @"The Mendeley SDK client should be accessible");
 }
 
 @end
