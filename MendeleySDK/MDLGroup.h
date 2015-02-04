@@ -23,6 +23,8 @@
 
 @import Foundation;
 
+#import "MDLObject.h"
+
 typedef NS_ENUM(NSUInteger, MDLGroupAccessLevel) {
     MDLGroupAccessLevelPrivate,
     MDLGroupAccessLevelInvite,
@@ -36,12 +38,7 @@ typedef NS_ENUM(NSUInteger, MDLGroupAccessLevel) {
  `MDLGroup` represents a group, as described by Mendeley.
  */
 
-@interface MDLGroup : NSObject
-
-/**
- The group identifier.
- */
-@property (copy, nonatomic) NSString *identifier;
+@interface MDLGroup : MDLObject
 
 /**
  The group Mendeley URL.

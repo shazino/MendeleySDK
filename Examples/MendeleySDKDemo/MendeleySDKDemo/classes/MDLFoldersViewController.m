@@ -1,7 +1,7 @@
 //
 // MDLFoldersViewController.m
 //
-// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2015 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -68,10 +68,11 @@ typedef NS_ENUM(NSInteger, MDLFoldersViewSections) {
     }
     else {
         [MDLFolder
-         fetchFoldersInUserLibraryWithClient:self.APIClient
+         fetchWithClient:self.APIClient
          atPage:0
          numberOfItems:0
-         success:^(NSArray *folders) {
+         parameters:nil
+         success:^(MDLResponseInfo *info, NSArray *folders) {
              self.folders = folders;
              [self.tableView reloadData];
          }

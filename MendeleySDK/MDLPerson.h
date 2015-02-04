@@ -1,5 +1,5 @@
 //
-// MDLAuthor.m
+// MDLPerson.h
 //
 // Copyright (c) 2012-2015 shazino (shazino SAS), http://www.shazino.com/
 //
@@ -21,29 +21,38 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "MDLAuthor.h"
-#import "MDLMendeleyAPIClient.h"
+@import Foundation;
 
-@interface MDLAuthor ()
-@end
+/**
+ `MDLPerson` represents a person, as described by Mendeley.
+ */
 
-@implementation MDLAuthor
+@interface MDLPerson : NSObject
 
-+ (MDLAuthor *)authorWithFirstName:(NSString *)firstName
-                          lastName:(NSString *)lastName {
-    MDLAuthor *author = [MDLAuthor new];
-    author.firstName = firstName;
-    author.lastName  = lastName;
-//    author.name     = [NSString stringWithFormat:@"%@%@%@",
-//                       forename ?: @"",
-//                       (forename.length > 0 && surname.length > 0) ? @" " : @"",
-//                       surname];
-    return author;
-}
+/**
+ The author forename
+ */
+@property (nonatomic, copy) NSString *firstName;
 
-- (NSString *)description {
-    return [NSString stringWithFormat: @"%@ (first name: %@; last name: %@)",
-            [super description], self.firstName, self.lastName];
-}
+/**
+ The author surname
+ */
+@property (nonatomic, copy) NSString *lastName;
+
+
+/**
+ Creates a `MDLAuthor` and initializes its name, forename, and surname property.
+ 
+ @param forename The forename of the author.
+ @param surname The surname of the author.
+ 
+ @return  The newly-initialized author.
+ */
++ (instancetype)personWithFirstName:(NSString *)firstName
+                           lastName:(NSString *)lastName;
+
++ (NSArray *)personsFromServerResponseObject:(id)responseObject;
+
+- (NSDictionary *)requestObject;
 
 @end

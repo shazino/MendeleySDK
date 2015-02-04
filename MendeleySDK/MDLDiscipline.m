@@ -1,7 +1,7 @@
 //
-// MDLAuthor.h
+// MDLDiscipline.m
 //
-// Copyright (c) 2012-2015 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2015 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -21,34 +21,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-@import Foundation;
+#import "MDLDiscipline.h"
 
-/**
- `MDLAuthor` represents a document’s author, as described by Mendeley.
- */
+@implementation MDLDiscipline
 
-@interface MDLAuthor : NSObject
++ (instancetype)disciplineWithName:(NSString *)name {
+    MDLDiscipline *discipline = [self new];
+    discipline.name = name;
+    return discipline;
+}
 
-/**
- The author forename
- */
-@property (nonatomic, copy) NSString *firstName;
-
-/**
- The author surname
- */
-@property (nonatomic, copy) NSString *lastName;
-
-
-/**
- Creates a `MDLAuthor` and initializes its name, forename, and surname property.
- 
- @param forename The forename of the author.
- @param surname The surname of the author.
- 
- @return  The newly-initialized author.
- */
-+ (MDLAuthor *)authorWithFirstName:(NSString *)firstName
-                          lastName:(NSString *)lastName;
+- (NSString *)description {
+    return [NSString stringWithFormat: @"%@ (name: %@)",
+            [super description], self.name];
+}
 
 @end

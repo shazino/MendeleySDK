@@ -28,55 +28,63 @@
 
 @interface MDLFolder ()
 
-- (void)updateWithFolderAttributes:(NSDictionary *)attributes;
-
-+ (instancetype)folderWithIdentifier:(NSString *)identifier;
-
 @end
 
 
 @implementation MDLFolder
 
-- (void)updateWithFolderAttributes:(NSDictionary *)attributes {
-    self.identifier       = attributes[@"id"];
-    self.name             = attributes[@"name"];
-    self.parentIdentifier = attributes[@"parent_id"];
++ (NSString *)objectType {
+    return MDLMendeleyObjectTypeFolder;
 }
 
-+ (instancetype)folderWithIdentifier:(NSString *)identifier {
-    MDLFolder *folder = [MDLFolder new];
-    folder.identifier = identifier;
-    return folder;
++ (NSString *)path {
+    return @"/folders";
 }
+
+- (void)updateWithServerResponseObject:(id)responseObject {
+    [super updateWithServerResponseObject:responseObject];
+    
+    if (![responseObject isKindOfClass:NSDictionary.class]) {
+        return;
+    }
+
+    self.identifier       = responseObject[@"id"];
+    self.name             = responseObject[@"name"];
+    self.parentIdentifier = responseObject[@"parent_id"];
+
+    self.creationDateString = responseObject[@"created"];
+    self.modificationDateString = responseObject[@"last_modified"];
+}
+
+- (NSDictionary *)serverRepresentation {
+    NSMutableDictionary *representation = [NSMutableDictionary dictionary];
+
+    if (self.name) {
+        representation[@"name"] = self.name;
+    }
+
+    if (self.parentIdentifier) {
+        representation[@"parent_id"] = self.parentIdentifier;
+    }
+
+    return representation;
+}
+
+
+#pragma mark -
 
 + (instancetype)createFolderWithClient:(MDLMendeleyAPIClient *)client
                                   name:(NSString *)name
                                 parent:(MDLFolder *)parent
-                               success:(void (^)(MDLFolder *))success
+                               success:(void (^)(MDLObject *))success
                                failure:(void (^)(NSError *))failure {
-
     MDLFolder *folder = [MDLFolder new];
     folder.name = name;
+    folder.parentIdentifier = parent.identifier;
 
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    parameters[@"name"] = folder.name;
-
-    if (parent) {
-        parameters[@"parent_id"] = parent.identifier;
-    }
-
-    [client
-     postPath:@"/folders"
-     objectType:MDLMendeleyObjectTypeFolder
-     parameters:parameters
-     success:^(AFHTTPRequestOperation *operation, id responseDictionary) {
-         folder.identifier = responseDictionary[@"folder_id"];
-
-         if (success) {
-             success(folder);
-         }
-     }
-     failure:failure];
+    [folder createWithClient:client
+                     success:success
+                     failure:failure];
 
     return folder;
 }
@@ -84,25 +92,14 @@
 + (void)fetchFoldersInUserLibraryWithClient:(MDLMendeleyAPIClient *)client
                                      atPage:(NSString *)pagePath
                               numberOfItems:(NSUInteger)numberOfItems
-                                    success:(void (^)(NSArray *))success
+                                    success:(void (^)(MDLResponseInfo *info, NSArray *folders))success
                                     failure:(void (^)(NSError *))failure {
-    [client getPath:@"/folders"
-         objectType:MDLMendeleyObjectTypeFolder
-             atPage:pagePath
-      numberOfItems:numberOfItems
-         parameters:nil
-            success:^(MDLResponseInfo *info, NSArray *responseArray) {
-                NSMutableArray *folders = [NSMutableArray array];
-                for (NSDictionary *folderAttribute in responseArray) {
-                    MDLFolder *folder = [MDLFolder new];
-                    [folder updateWithFolderAttributes:folderAttribute];
-                    [folders addObject:folder];
-                }
-
-                if (success) {
-                    success(folders);
-                }
-            } failure:failure];
+    [self fetchWithClient:client
+                   atPage:pagePath
+            numberOfItems:numberOfItems
+               parameters:nil
+                  success:success
+                  failure:failure];
 }
 
 - (void)fetchDocumentsWithClient:(MDLMendeleyAPIClient *)client
@@ -151,20 +148,6 @@
                  }
              }
              failure:failure];
-}
-
-- (void)deleteWithClient:(MDLMendeleyAPIClient *)client
-                 success:(void (^)())success
-                 failure:(void (^)(NSError *))failure {
-    NSString *path = [@"/folders" stringByAppendingPathComponent:self.identifier];
-
-    [client deletePath:path
-               success:^(AFHTTPRequestOperation *requestOperation, id responseObject) {
-                   if (success) {
-                       success();
-                   }
-               }
-               failure:failure];
 }
 
 - (void)removeDocument:(MDLDocument *)document

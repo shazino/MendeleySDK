@@ -23,18 +23,15 @@
 
 @import Foundation;
 
-@class MDLMendeleyAPIClient;
+#import "MDLObject.h"
+
+@class MDLMendeleyAPIClient, MDLDiscipline;
 
 /**
  `MDLProfile` represents a user profile, as described by Mendeley.
  */
 
-@interface MDLProfile : NSObject
-
-/**
- The profile identifier.
- */
-@property (copy, nonatomic) NSString *identifier;
+@interface MDLProfile : MDLObject
 
 /**
  The profile name.
@@ -77,6 +74,11 @@
 @property (strong, nonatomic) NSURL *mendeleyURL;
 
 /**
+ The current research discipline.
+ */
+@property (strong, nonatomic) MDLDiscipline *discipline;
+
+/**
  The profile original photo URL.
  */
 @property (strong, nonatomic) NSURL *photoOriginalURL;
@@ -101,20 +103,8 @@
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
 + (void)fetchMyProfileWithClient:(MDLMendeleyAPIClient *)client
-                         success:(void (^)(MDLProfile *))success
+                         success:(void (^)(MDLObject *))success
                          failure:(void (^)(NSError *))failure;
 
-/**
- Fetches the complete profile for the receiver.
- 
- @param client The API client performing the request.
- @param success A block object to be executed when the request operation finishes successfully.
-  This block has no return value and takes one argument: a `MDLProfile` object.
- @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
-  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
- */
-- (void)fetchProfileWithClient:(MDLMendeleyAPIClient *)client
-                       success:(void (^)(MDLProfile *))success
-                       failure:(void (^)(NSError *))failure;
 
 @end

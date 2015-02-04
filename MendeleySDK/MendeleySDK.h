@@ -30,12 +30,16 @@
 #import <AFNetworking.h>
 
 #import "MDLMendeleyAPIClient.h"
+#import "MDLResponseInfo.h"
 
-#import "MDLAuthor.h"
+#import "MDLObject.h"
+#import "MDLAnnotation.h"
+#import "MDLPerson.h"
 #import "MDLDocument.h"
 #import "MDLFile.h"
 #import "MDLFolder.h"
 #import "MDLGroup.h"
 #import "MDLProfile.h"
+#import "MDLDiscipline.h"
 
 #endif

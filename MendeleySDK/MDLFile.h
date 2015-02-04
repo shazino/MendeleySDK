@@ -23,38 +23,41 @@
 
 @import Foundation;
 
+#import "MDLObject.h"
+
 @class MDLMendeleyAPIClient, MDLDocument, AFHTTPRequestOperation;
 
 /**
  `MDLFile` represents a document’s file, as described by Mendeley.
  */
 
-@interface MDLFile : NSObject
+@interface MDLFile : MDLObject
 
 /**
- The file identifier.
- */
-@property (nonatomic, copy) NSString *identifier;
-
-/**
- The file name.
+ The name of the file. This is currently a generated name from the metadata of the document that the file is attached to. 
+ However, we will support original file names from the upload soon.
  */
 @property (nonatomic, copy) NSString *fileName;
 
 /**
- The file MIME type.
+ The MIME type of the file. This is used to work out the extension of the file.
  */
 @property (nonatomic, copy) NSString *MIMEType;
 
 /**
- The file hash.
+ SHA1 hash of the file. This can be used to check the integrity of the file.
  */
 @property (nonatomic, copy) NSString *fileHash;
 
 /**
- The file size (in bytes).
+ The size of the file, in bytes.
  */
 @property (nonatomic, copy) NSNumber *sizeInBytes;
+
+/**
+ The id of the document the file is attached to.
+ */
+@property (nonatomic, copy) NSString *documentIdentifier;
 
 
 /**

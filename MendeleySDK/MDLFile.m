@@ -29,14 +29,34 @@
 
 @implementation MDLFile
 
++ (NSString *)objectType {
+    return MDLMendeleyObjectTypeFile;
+}
+
++ (NSString *)path {
+    return @"/files";
+}
+
+- (void)updateWithServerResponseObject:(id)responseObject {
+    [super updateWithServerResponseObject:responseObject];
+
+    if (![responseObject isKindOfClass:NSDictionary.class]) {
+        return;
+    }
+
+    self.fileName           = responseObject[@"file_name"];
+    self.MIMEType           = responseObject[@"mime_type"];
+    self.fileHash           = responseObject[@"filehash"];
+    self.sizeInBytes        = responseObject[@"size"];
+    self.documentIdentifier = responseObject[@"document_id"];
+}
+
 - (AFHTTPRequestOperation *)downloadWithClient:(MDLMendeleyAPIClient *)client
                                   toFileAtPath:(NSString *)path
                                       progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress
                                        success:(void (^)())success
                                        failure:(void (^)(NSError *))failure {
-    NSString *resourcePath = [@"/files" stringByAppendingPathComponent:self.identifier];
-
-    return [client getPath:resourcePath
+    return [client getPath:self.objectPath
                 parameters:nil
   outputStreamToFileAtPath:path
                   progress:progress

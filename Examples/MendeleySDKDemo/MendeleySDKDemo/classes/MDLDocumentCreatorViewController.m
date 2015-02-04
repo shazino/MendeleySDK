@@ -1,7 +1,7 @@
 //
 // MDLDocumentCreatorViewController.m
 //
-// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2015 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -79,11 +79,10 @@
         document.type = MDLDocumentTypeGeneric;
         document.title = documentTitle;
         document.year = @2015;
-    
-        [MDLDocument
-         createDocument:document
-         withClient:self.APIClient
-         success:^(MDLDocument *document) {
+
+        [document
+         createWithClient:self.APIClient
+         success:^(MDLObject *newDocument) {
              self.activityStatusLabel.text = [NSString stringWithFormat:@"Document created\nTitle: %@\nType: %@\nId: %@", document.title, document.type, document.identifier];
              [document
               uploadFileWithClient:self.APIClient

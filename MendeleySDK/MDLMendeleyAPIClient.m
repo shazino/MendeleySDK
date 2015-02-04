@@ -280,6 +280,7 @@ NSString * const  MDLMendeleyObjectTypeProfiles          = @"application/vnd.men
                               failure:(void (^)(NSError *))failure {
     NSMutableURLRequest *request = [self requestWithMethod:@"PATCH" path:path parameters:parameters];
     if (objectType) {
+        [request setValue:objectType forHTTPHeaderField:@"Accept"];
         [request setValue:objectType forHTTPHeaderField:@"Content-Type"];
     }
 

@@ -1,7 +1,7 @@
 //
 // MDLDocumentSearchResultsViewController.m
 //
-// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2015 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -67,26 +67,13 @@
     }
     else if (self.group) {
         [MDLDocument
-         fetchDocumentsInGroup:self.group
-         withClient:self.APIClient
-         view:nil
+         fetchWithClient:self.APIClient
          atPage:nil
          numberOfItems:0
+         parameters:@{@"group_id": self.group.identifier}
          success:^(MDLResponseInfo *info, NSArray *documents) {
              self.searchResults = documents;
              [self.tableView reloadData];
-
-             for (MDLDocument *document in self.searchResults) {
-                 [document
-                  fetchDetailsWithClient:self.APIClient
-                  view:nil
-                  success:^(MDLDocument *document) {
-                      NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.searchResults indexOfObject:document] inSection:0];
-                      [self.tableView reloadRowsAtIndexPaths:@[indexPath]
-                                            withRowAnimation:UITableViewRowAnimationAutomatic];
-                  }
-                  failure:errorHandler];
-             }
          }
          failure:errorHandler];
     }
@@ -203,10 +190,10 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 
 - (void)reloadUserLibrary {
     [MDLDocument
-     fetchDocumentsInUserLibraryWithClient:self.APIClient
-     view:nil
+     fetchWithClient:self.APIClient
      atPage:nil
      numberOfItems:0
+     parameters:nil
      success:^(MDLResponseInfo *info, NSArray *documents) {
          self.searchResults = documents;
          [self.tableView reloadData];

@@ -1,7 +1,7 @@
 //
 // MDLNewFolderViewController.m
 //
-// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2015 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -53,7 +53,7 @@
          createFolderWithClient:self.APIClient
          name:self.nameTextField.text
          parent:self.parentFolder
-         success:^(MDLFolder *folder) {
+         success:^(MDLObject *folder) {
              [[[UIAlertView alloc]
                initWithTitle:NSLocalizedString(@"Folder Created", nil)
                message:nil

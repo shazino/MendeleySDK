@@ -44,6 +44,10 @@
 
 @implementation MDLGroup
 
++ (NSString *)path {
+    return @"/groups";
+}
+
 + (NSString *)stringValueForAccessLevel:(MDLGroupAccessLevel)accessLevel {
     switch (accessLevel) {
         case MDLGroupAccessLevelPrivate:

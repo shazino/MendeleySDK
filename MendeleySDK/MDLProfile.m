@@ -25,40 +25,47 @@
 
 #import "MDLMendeleyAPIClient.h"
 
-@interface MDLProfile ()
-
-- (void)updateWithProfileAttributes:(NSDictionary *)attributes;
-+ (void)fetchUserProfileWithClient:(MDLMendeleyAPIClient *)client
-                           forUser:(MDLProfile *)user
-                    withIdentifier:(NSString *)identifier
-                           success:(void (^)(MDLProfile *))success
-                           failure:(void (^)(NSError *))failure;
-
-@end
 
 @implementation MDLProfile
 
-- (void)updateWithProfileAttributes:(NSDictionary *)attributes {
-    self.identifier = attributes[@"id"];
-    self.firstName  = attributes[@"first_name"];
-    self.lastName   = attributes[@"last_name"];
++ (NSString *)objectType {
+    return MDLMendeleyObjectTypeProfiles;
+}
 
-    NSDictionary *location = attributes[@"location"];
++ (NSString *)path {
+    return @"/profiles";
+}
+
+- (void)updateWithServerResponseObject:(id)responseObject {
+    [super updateWithServerResponseObject:responseObject];
+    
+    if (![responseObject isKindOfClass:NSDictionary.class]) {
+        return;
+    }
+
+    self.identifier = responseObject[@"id"];
+    self.firstName  = responseObject[@"first_name"];
+    self.lastName   = responseObject[@"last_name"];
+
+    NSDictionary *location = responseObject[@"location"];
     if ([location isKindOfClass:NSDictionary.class]) {
         self.location = location[@"name"];
     }
 
-    self.displayName = attributes[@"display_name"];
-    self.email = attributes[@"email"];
-    self.researchInterests = attributes[@"research_interests"];
-    self.academicStatus = attributes[@"academic_status"];
-    self.mendeleyURL = [NSURL URLWithString:attributes[@"link"]];
+    self.displayName       = responseObject[@"display_name"];
+    self.email             = responseObject[@"email"];
+    self.researchInterests = responseObject[@"research_interests"];
+    self.academicStatus    = responseObject[@"academic_status"];
+    self.mendeleyURL       = [NSURL URLWithString:responseObject[@"link"]];
 
-    NSDictionary *photos = attributes[@"photo"];
+    NSDictionary *photos = responseObject[@"photo"];
     if ([photos isKindOfClass:NSDictionary.class]) {
         self.photoOriginalURL = [NSURL URLWithString:photos[@"original"]];
     }
 }
+
+
+#pragma mark -
 
 + (instancetype)profileWithIdentifier:(NSString *)identifier {
     MDLProfile *profile = [MDLProfile new];
@@ -66,42 +73,15 @@
     return profile;
 }
 
-+ (void)fetchUserProfileWithClient:(MDLMendeleyAPIClient *)client
-                           forUser:(MDLProfile *)user
-                    withIdentifier:(NSString *)identifier
-                           success:(void (^)(MDLProfile *))success
-                           failure:(void (^)(NSError *))failure {
-    [client getPath:[@"/profiles" stringByAppendingPathComponent:identifier]
-         objectType:MDLMendeleyObjectTypeProfiles
-             atPage:nil
-      numberOfItems:0
-         parameters:nil
-            success:^(MDLResponseInfo *info, NSDictionary *responseDictionary) {
-                [user updateWithProfileAttributes:responseDictionary];
-                if (success) {
-                    success(user);
-                }
-            } failure:failure];
-}
-
 + (void)fetchMyProfileWithClient:(MDLMendeleyAPIClient *)client
-                         success:(void (^)(MDLProfile *))success
+                         success:(void (^)(MDLObject *))success
                          failure:(void (^)(NSError *))failure {
-    [self fetchUserProfileWithClient:client
-                             forUser:[MDLProfile new]
-                      withIdentifier:@"me"
-                             success:success
-                             failure:failure];
-}
+    MDLProfile *me = [MDLProfile new];
+    me.identifier = @"me";
 
-- (void)fetchProfileWithClient:(MDLMendeleyAPIClient *)client
-                       success:(void (^)(MDLProfile *))success
-                       failure:(void (^)(NSError *))failure {
-    [MDLProfile fetchUserProfileWithClient:client
-                                   forUser:self
-                            withIdentifier:self.identifier
-                                   success:success
-                                   failure:failure];
+    [me fetchWithClient:client
+                success:success
+                failure:failure];
 }
 
 - (NSString *)description {

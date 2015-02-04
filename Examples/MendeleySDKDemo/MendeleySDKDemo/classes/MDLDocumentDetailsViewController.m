@@ -1,7 +1,7 @@
 //
 // MDLDocumentDetailsViewController.m
 //
-// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2015 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,9 +23,10 @@
 
 #import "MDLDocumentDetailsViewController.h"
 
-#import "MDLDocument.h"
-#import "MDLAuthor.h"
-#import "MDLFile.h"
+#import <MendeleySDK/MDLDocument.h>
+#import <MendeleySDK/MDLPerson.h>
+#import <MendeleySDK/MDLFile.h>
+
 #import "MDLDocumentsViewController.h"
 #import "MDLFilesViewController.h"
 
@@ -55,10 +56,9 @@
     [self updateOutletsWithDocument:self.document];
 
     [self.document
-     fetchDetailsWithClient:self.APIClient
-     view:nil
-     success:^(MDLDocument *document) {
-         [self updateOutletsWithDocument:document];
+     fetchWithClient:self.APIClient
+     success:^(MDLObject *document) {
+         [self updateOutletsWithDocument:(MDLDocument *)document];
      }
      failure:^(NSError *error) {
          [self showAlertViewWithError:error];
@@ -75,7 +75,7 @@
     self.abstractTextView.text = document.abstract;
 
     NSMutableString *authors = [NSMutableString string];
-    [document.authors enumerateObjectsUsingBlock:^(MDLAuthor *author, NSUInteger idx, BOOL *stop) {
+    [document.authors enumerateObjectsUsingBlock:^(MDLPerson *author, NSUInteger idx, BOOL *stop) {
         if (idx == 0) {
             [authors appendString:NSLocalizedString(@"By ", nil)];
         }
@@ -88,15 +88,21 @@
 
     self.authorsLabel.text = authors;
     self.publicationLabel.text = (document.source || document.year) ? [NSString stringWithFormat:@"%@ (%@)", (document.source) ?: @"?", (document.year) ?: @"?"] : @"";
-
-//    self.filesButton.enabled = (document.files.count > 0);
-//    [self.filesButton setTitle:(document.files.count > 0) ? @"Files" : @"No Files" forState:UIControlStateNormal];
+    self.filesButton.enabled = document.fileAttached.boolValue;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.destinationViewController isKindOfClass:[MDLFilesViewController class]]) {
-//        MDLFilesViewController *filesViewController = (MDLFilesViewController *)segue.destinationViewController;
-//        filesViewController.files = self.document.files;
+        MDLFilesViewController *filesViewController = (MDLFilesViewController *)segue.destinationViewController;
+        filesViewController.APIClient = self.APIClient;
+        [MDLFile fetchWithClient:self.APIClient
+                          atPage:nil
+                   numberOfItems:0
+                      parameters:@{@"document_id": self.document.identifier}
+                         success:^(MDLResponseInfo *info, NSArray *objects) {
+                             filesViewController.files = objects;
+                             [filesViewController.tableView reloadData];
+                         } failure:nil];
     }
 }
 
@@ -122,18 +128,6 @@
 }
 
 - (IBAction)importToUserLibrary:(id)sender {
-//    [self.document
-//     importToUserLibraryWithClient:self.APIClient
-//     success:^(NSString *newDocumentIdentifier) {
-//         [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"File Imported", nil)
-//                                     message:nil
-//                                    delegate:nil
-//                           cancelButtonTitle:NSLocalizedString(@"OK", nil)
-//                           otherButtonTitles:nil] show];
-//     }
-//     failure:^(NSError *error) {
-//         [self showAlertViewWithError:error];
-//     }];
 }
 
 
