@@ -242,12 +242,22 @@ NSString * const MDLDocumentViewPatent = @"patent";
            numberOfItems:(NSUInteger)numberOfItems
                  success:(void (^)(MDLResponseInfo *info, NSArray *documents))success
                  failure:(void (^)(NSError *))failure {
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+
+    if (view) {
+        parameters[@"view"] = view;
+    }
+
+    if (terms) {
+        parameters[@"query"] = terms;
+    }
+
     [client
      getPath:@"/search/catalog"
      objectType:MDLMendeleyObjectTypeDocument
      atPage:pagePath
      numberOfItems:numberOfItems
-     parameters:@{@"query": terms ?: @""}
+     parameters:parameters
      success:^(MDLResponseInfo *responseInfo, id responseObject) {
          NSMutableArray *objects = [NSMutableArray array];
          for (NSDictionary *rawObject in responseObject) {
@@ -285,6 +295,10 @@ NSString * const MDLDocumentViewPatent = @"patent";
     if (year) {
         parameters[@"min_year"] = year;
         parameters[@"max_year"] = year;
+    }
+
+    if (view) {
+        parameters[@"view"] = view;
     }
 
     [client
@@ -326,7 +340,7 @@ NSString * const MDLDocumentViewPatent = @"patent";
             fileName:fileName
             link:[NSString stringWithFormat:@"<https://api.mendeley.com/documents/%@>; rel=\"document\"", self.identifier]
             success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                MDLFile *file = [MDLFile new];
+                MDLFile *file = [MDLFile objectWithServerResponseObject:responseObject];
 
                 if (success) {
                     success(file);

@@ -76,6 +76,15 @@
     if (self.documentIdentifier) {
         attributes[@"document_id"] = self.documentIdentifier;
     }
+    if (self.fileHash) {
+        attributes[@"filehash"] = self.fileHash;
+    }
+    if (self.colorRGB) {
+        attributes[@"color"] = self.colorRGB;
+    }
+    if (self.positions) {
+        attributes[@"positions"] = self.positions;
+    }
 
     return attributes;
 }
