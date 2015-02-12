@@ -54,10 +54,10 @@
             return @"private";
 
         case MDLGroupAccessLevelInvite:
-            return @"invite";
+            return @"invite_only";
 
         case MDLGroupAccessLevelOpen:
-            return @"open";
+            return @"public";
     }
 }
 
