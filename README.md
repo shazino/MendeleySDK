@@ -1,16 +1,13 @@
 # MendeleySDK
-**Objective-C client for the Mendeley Open API (deprecated).**
+**Objective-C client for the Mendeley Open API.**
 [![Build Status](https://travis-ci.org/shazino/MendeleySDK.png?branch=master)](https://travis-ci.org/shazino/MendeleySDK)
-
-**:warning: IMPORTANT: MendeleySDK was designed for the original Mendeley “Open API”. It has now been deprecated, and developers should migrate to the new Mendeley API. This MendeleySDK will _NOT_ be updated, so you should switch to the new official Objective-C kit: [MendeleyKit](https://github.com/Mendeley/mendeleykit).**
-
 
 MendeleySDK is a [Mendeley API](http://apidocs.mendeley.com) client for iOS and OS X,
  built on top of [AFNetworking](http://www.github.com/AFNetworking/AFNetworking)
  and [AFOAuth2Client](http://www.github.com/AFNetworking/AFOAuth2Client).
 
 ![Demo app screenshot paper](https://github.com/shazino/MendeleySDK/wiki/images/demo-app-screenshot-paper.png) 
-![Demo app screenshot publication](https://github.com/shazino/MendeleySDK/wiki/images/demo-app-screenshot-pub.png)
+
 
 ## Getting Started
 
@@ -23,22 +20,21 @@ Here’s an example podfile that installs MendeleySDK and its dependency, AFOAut
 ```ruby
 platform :ios, '5.0'
 
-pod 'MendeleySDK', '1.5.1'
+pod 'MendeleySDK', '2.0'
 ```
 
 ### App credentials
 
-Configure the shared API client by calling `configureSharedClientWithClientID:secret:redirectURI:` with your application client ID, client secret, and redirect URI (in your `application:didFinishLaunchingWithOptions:`, for instance):
+Configure your API client by calling `clientWithClientID:secret:redirectURI:` with your application client ID, client secret, and redirect URI (in your `application:didFinishLaunchingWithOptions:`, for instance):
 
 ```objective-c
-[MDLMendeleyAPIClient configureSharedClientWithClientID:@"###my_client_ID###"
-                                                 secret:@"###my_client_secret###"
-                                            redirectURI:@"###mdl-custom-scheme://oauth?###"];
+MDLMendeleyAPIClient *APIClient = [MDLMendeleyAPIClient clientWithClientID:@"###my_client_ID###"
+                                                                    secret:@"###my_client_secret###"
+                                                               redirectURI:@"###mdl-custom-scheme://oauth?###"];
 ```
 
-If you don’t have a consumer key and secret, go to the [Mendeley Developers Portal](https://sites.google.com/site/mendeleyapi/home/authentication) and register your application first.
+If you don’t have a consumer key and secret, go to the [Mendeley Developers Portal](http://dev.mendeley.com) and register your application first.
 
-**Note: if you already had an application for OAuth 1.0, you’ll need to register a new application for OAuth 2.0.**
 
 ### OAuth authorization flow
 
@@ -50,12 +46,15 @@ As of today, MendeleySDK doesn’t support the client credentials flow for publi
 
 Okay, you should be ready to go now! You can also take a look at the demo apps and see how things work.
 
+
 ## Examples
 
 ### How to create a new document
 
 ```objective-c
-[MDLDocument createNewDocumentWithTitle:@"title" success:^(MDLDocument *document) {
+MDLDocument *document = [[MDLDocument alloc] init];
+document.title = @"My Title";
+[document createWithClient:self.APIClient success:^(MDLObject *document) {
      /* ... */
 } failure:^(NSError *error) {
     /* ... */
@@ -66,18 +65,25 @@ Okay, you should be ready to go now! You can also take a look at the demo apps a
 
 ```objective-c
 MDLDocument *document;
-[document uploadFileAtURL:localFileURL success:^() {
-    /* ... */
-} failure:^(NSError *error) {
-    /* ... */
-}];
+[document uploadFileWithClient:self.APIClient 
+                         atURL:localFileURL
+                   contentType:@"application/pdf"
+                      fileName:@"file.pdf"
+                       success:^(MDLFile *newFile) {
+                       /* ... */
+                   } 
+                   failure:^(NSError *error) {
+                   /* ... */
+               }];
 ```
+
 
 ## References
 
-- [Documentation](http://shazino.github.com/MendeleySDK/)
+- [Documentation (CocoaDocs)](http://cocoadocs.org/docsets/MendeleySDK)
 - [Changelog](https://github.com/shazino/MendeleySDK/wiki/Changelog)
 - [Contribute](https://github.com/shazino/MendeleySDK/wiki/Contribute)
+
 
 ## Requirements
 
@@ -87,9 +93,11 @@ MendeleySDK requires Xcode 4.4 with either the
  ([64-bit with modern Cocoa runtime](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtVersionsPlatforms.html)) SDK,
  as well as [AFOAuth2Client](https://github.com/AFNetworking/AFOAuth2Client).
 
+
 ## Credits
 
 MendeleySDK is developed by [shazino](http://www.shazino.com).
+
 
 ## License
 
