@@ -185,7 +185,7 @@ NSString * const  MDLMendeleyObjectTypeProfiles          = @"application/vnd.men
                             success:(void (^)(MDLResponseInfo *responseInfo, id responseObject))success
                             failure:(void (^)(NSError *))failure {
     if (numberOfItems > 0 && !pagePath) {
-        NSMutableDictionary *mutableParameters = [parameters mutableCopy];
+        NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
         mutableParameters[@"limit"] = @(numberOfItems);
         parameters = [mutableParameters copy];
     }
