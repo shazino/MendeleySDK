@@ -121,6 +121,7 @@
     self.webPage          = [NSURL URLWithString:attributes[@"webpage"]];
     self.disciplines      = attributes[@"disciplines"];
     self.tags             = attributes[@"tags"];
+    self.role             = attributes[@"role"];
 }
 
 - (void)fetchDetailsWithClient:(MDLMendeleyAPIClient *)client

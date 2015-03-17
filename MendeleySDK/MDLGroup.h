@@ -100,6 +100,22 @@ typedef NS_ENUM(NSUInteger, MDLGroupAccessLevel) {
  */
 @property (strong, nonatomic) NSArray *followers;
 
+/**
+ Role of the authenticated user in the group.
+ - `owner`: the creator of the group.
+ - `admin`: administrator of the group.
+    Only owners and admins can make other members administrators.
+ - `normal`: normal member of the group.
+    Users can add new references, add files and start discussions in the newsfeed of the group.
+ - `follower`: followers of the group.
+    Only public groups can have followers.
+    Followers cannot interact with other members, i.e. post in newsfeed and participate in discussions, nor add references to the group.
+    This is a read-only access membership.
+ - `invited`: person who has been invited to the group, but not accepted the invitation.
+    This is a read-only access membership.
+ */
+@property (copy, nonatomic) NSString *role;
+
 
 /**
  Fetches the groups the current user belongs to.
