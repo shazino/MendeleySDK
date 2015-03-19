@@ -181,6 +181,10 @@ NSString * const MDLDocumentViewPatent = @"patent";
         attributes[@"authors"] = authors;
     }
 
+    if (self.group.identifier) {
+        attributes[@"group_id"] = self.group.identifier;
+    }
+
     [self setIfNotNilValue:self.identifiers forKey:@"identifiers" inDictionary:attributes];
     [self setIfNotNilValue:self.keywords    forKey:@"keywords"    inDictionary:attributes];
 
