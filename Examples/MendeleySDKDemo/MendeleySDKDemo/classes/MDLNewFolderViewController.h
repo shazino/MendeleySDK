@@ -1,7 +1,7 @@
 //
 // MDLNewFolderViewController.h
 //
-// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2015 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -21,11 +21,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
-@class MDLFolder;
+@class MDLMendeleyAPIClient, MDLFolder;
+
+
 @interface MDLNewFolderViewController : UIViewController
 
+@property (nonatomic, strong) MDLMendeleyAPIClient *APIClient;
 @property (nonatomic, weak) MDLFolder *parentFolder;
 @property (nonatomic, weak) IBOutlet UITextField *nameTextField;
 

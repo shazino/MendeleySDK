@@ -1,7 +1,7 @@
 //
 // MDLFile.m
 //
-// Copyright (c) 2012-2014 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2015 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -29,57 +29,34 @@
 
 @implementation MDLFile
 
-@synthesize hash;
-
-+ (instancetype)fileWithDateAdded:(NSDate *)dateAdded
-                        extension:(NSString *)extension
-                             hash:(NSString *)hash
-                             size:(NSNumber *)size
-                         document:(MDLDocument *)document
-{
-    MDLFile *file = [MDLFile new];
-    file.dateAdded = dateAdded;
-    file.extension = extension;
-    file.hash      = hash;
-    file.size      = size;
-    file.document  = document;
-    return file;
++ (NSString *)objectType {
+    return MDLMendeleyObjectTypeFile;
 }
 
-+ (instancetype)fileWithPublicURL:(NSURL *)publicURL
-                         document:(MDLDocument *)document
-{
-    MDLFile *file = [MDLFile new];
-    file.publicURL = publicURL;
-    file.document  = document;
-    return file;
++ (NSString *)path {
+    return @"/files";
 }
 
-- (AFHTTPRequestOperation *)downloadToFileAtPath:(NSString *)path
-                                        progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress
-                                         success:(void (^)())success
-                                         failure:(void (^)(NSError *))failure
-{
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
+- (void)updateWithServerResponseObject:(id)responseObject {
+    [super updateWithServerResponseObject:responseObject];
 
-    NSString *resourcePath;
-    if (self.publicURL) {
-        resourcePath = [self.publicURL absoluteString];
-    }
-    else if (self.document.group) {
-        resourcePath = [NSString stringWithFormat:@"/oapi/library/documents/%@/file/%@/%@/",
-                        self.document.identifier,
-                        self.hash,
-                        self.document.group.identifier];
-    }
-    else {
-        resourcePath = [NSString stringWithFormat:@"/oapi/library/documents/%@/file/%@//",
-                        self.document.identifier,
-                        self.hash];
+    if (![responseObject isKindOfClass:NSDictionary.class]) {
+        return;
     }
 
-    return [client getPath:resourcePath
-    requiresAuthentication:self.document.isInUserLibrary
+    self.fileName           = responseObject[@"file_name"];
+    self.MIMEType           = responseObject[@"mime_type"];
+    self.fileHash           = responseObject[@"filehash"];
+    self.sizeInBytes        = responseObject[@"size"];
+    self.documentIdentifier = responseObject[@"document_id"];
+}
+
+- (AFHTTPRequestOperation *)downloadWithClient:(MDLMendeleyAPIClient *)client
+                                  toFileAtPath:(NSString *)path
+                                      progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress
+                                       success:(void (^)())success
+                                       failure:(void (^)(NSError *))failure {
+    return [client getPath:self.objectPath
                 parameters:nil
   outputStreamToFileAtPath:path
                   progress:progress
@@ -91,10 +68,9 @@
                    failure:failure];
 }
 
-- (NSString *)description
-{
-    return [NSString stringWithFormat: @"%@ (hash: %@; extension: %@; size: %@)",
-            [super description], self.hash, self.extension, self.size];
+- (NSString *)description {
+    return [NSString stringWithFormat: @"%@ (hash: %@; MIME type: %@; size: %@)",
+            [super description], self.fileHash, self.MIMEType, self.sizeInBytes];
 }
 
 @end

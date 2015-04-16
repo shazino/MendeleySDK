@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 shazino. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+@import XCTest;
 
-@interface MendeleySDKDemoOSXTests : SenTestCase
+@interface MendeleySDKDemoOSXTests : XCTestCase
 
 @end

@@ -1,7 +1,7 @@
 //
 // MDLUsersViewController.m
 //
-// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2015 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -22,39 +22,39 @@
 // THE SOFTWARE.
 
 #import "MDLUsersViewController.h"
-#import "MDLUser.h"
+
+#import "MDLMendeleyAPIClient.h"
+#import "MDLProfile.h"
 #import "MDLUserProfileViewController.h"
 
 @implementation MDLUsersViewController
 
-- (void)setUsers:(NSArray *)users
-{
+- (void)setUsers:(NSArray *)users {
     _users = users;
     [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [self.users count];
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section {
+    return self.users.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MDLUserCell" forIndexPath:indexPath];
-    MDLUser *user = self.users[indexPath.row];
-    cell.textLabel.text = user.name;
+    MDLProfile *user = self.users[indexPath.row];
+    cell.textLabel.text = user.displayName ?: user.identifier;
     return cell;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.destinationViewController isKindOfClass:[MDLUserProfileViewController class]])
-    {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.destinationViewController isKindOfClass:[MDLUserProfileViewController class]]) {
         MDLUserProfileViewController *userViewController = (MDLUserProfileViewController *)segue.destinationViewController;
-        MDLUser *user = self.users[self.tableView.indexPathForSelectedRow.row];
+        MDLProfile *user = self.users[self.tableView.indexPathForSelectedRow.row];
         userViewController.user = user;
+        userViewController.APIClient = self.APIClient;
     }
 }
 

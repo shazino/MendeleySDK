@@ -27,17 +27,18 @@
 #import <MDLMendeleyAPIClient.h>
 #import <AFNetworkActivityIndicatorManager.h>
 
+#import "MDLMenuViewController.h"
+
 NSString * const MDLClientID     = @"##client_id##";
 NSString * const MDLClientSecret = @"##client_secret##";
 NSString * const MDLURLScheme    = @"mdl-mendeleysdkdemo";
 
 @implementation MDLAppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    [MDLMendeleyAPIClient configureSharedClientWithClientID:MDLClientID
-                                                     secret:MDLClientSecret
-                                                redirectURI:MDLURLScheme];
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    MDLMendeleyAPIClient *APIClient = [MDLMendeleyAPIClient clientWithClientID:MDLClientID
+                                                                        secret:MDLClientSecret
+                                                                   redirectURI:MDLURLScheme];
 
     UIColor *tintColor = [UIColor colorWithRed:0.7 green:0 blue:0 alpha:1];
     UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
@@ -51,6 +52,9 @@ NSString * const MDLURLScheme    = @"mdl-mendeleysdkdemo";
     }
 
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+
+    MDLMenuViewController *menuViewController = navigationController.viewControllers.firstObject;
+    menuViewController.APIClient = APIClient;
 
     return YES;
 }

@@ -1,7 +1,7 @@
 //
 // MDLDocumentCreatorViewController.m
 //
-// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2015 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -25,86 +25,102 @@
 
 #import "MDLDocument.h"
 
+
 @interface MDLDocumentCreatorViewController ()
 
-- (void)generatePDFAtURL:(NSURL *)fileURL content:(NSString *)fileContent;
+- (void)generatePDFAtURL:(NSURL *)fileURL
+                 content:(NSString *)fileContent;
 
 @end
+
 
 @implementation MDLDocumentCreatorViewController
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
+
     self.activityStatusLabel.text = @"";
 }
 
+
 #pragma mark - Actions
 
-- (IBAction)cancel:(id)sender
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)generatePDFAtURL:(NSURL *)fileURL content:(NSString *)fileContent
-{
+- (void)generatePDFAtURL:(NSURL *)fileURL
+                 content:(NSString *)fileContent {
     NSMutableData *PDFData = [NSMutableData data];
     UIGraphicsBeginPDFContextToData(PDFData, CGRectZero, nil);
     UIGraphicsBeginPDFPage();
-    [fileContent drawAtPoint:CGPointMake(100, 100) withFont:[UIFont systemFontOfSize:16]];
+    [fileContent drawAtPoint:CGPointMake(100, 100)
+              withAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:16]}];
     UIGraphicsEndPDFContext();
-    
+
     [PDFData writeToURL:fileURL atomically:YES];
 }
 
-- (IBAction)upload:(id)sender
-{
+- (IBAction)upload:(id)sender {
     [self.nameTextField resignFirstResponder];
     [self.contentTextView resignFirstResponder];
-    
+
     NSString *documentTitle = self.nameTextField.text;
     NSString *documentContent = self.contentTextView.text;
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+
+    NSArray  *paths     = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *cachePath = paths[0];
-    NSString *filePath = [[cachePath stringByAppendingPathComponent:documentTitle] stringByAppendingPathExtension:@"pdf"];
-    NSURL *fileURL = [NSURL fileURLWithPath:filePath];
+    NSString *filePath  = [[cachePath stringByAppendingPathComponent:documentTitle] stringByAppendingPathExtension:@"pdf"];
+    NSURL    *fileURL   = [NSURL fileURLWithPath:filePath];
+
     [self generatePDFAtURL:fileURL content:documentContent];
-    
-    if ([documentTitle length] > 0)
-    {
+
+    if (documentTitle.length > 0) {
         self.activityStatusLabel.text = @"Creating document...";
-        [MDLDocument createDocumentWithTitle:documentTitle parameters:@{@"year" : @"2012", @"authors" : @[@"Me"]} success:^(MDLDocument *document) {
-            self.activityStatusLabel.text = [NSString stringWithFormat:@"Document created\nTitle: %@\nType: %@\nId: %@", document.title, document.type, document.identifier];
-            [document uploadFileAtURL:fileURL success:^(MDLFile *newFile) {
-                self.activityStatusLabel.text = [NSString stringWithFormat:@"Document created and uploaded\nTitle: %@\nType: %@\nId: %@", document.title, document.type, document.identifier];
-            } failure:^(NSError *error) {
-                self.activityStatusLabel.text = [NSString stringWithFormat:@"Document created, but cannot upload file\n(Error: %@)", [error localizedDescription]];
-            }];
-        } failure:^(NSError *error) {
-            self.activityStatusLabel.text = [NSString stringWithFormat:@"Cannot create new document\n(Error: %@)", [error localizedDescription]];
-        }];
+        MDLDocument *document = [MDLDocument new];
+        document.type = MDLDocumentTypeGeneric;
+        document.title = documentTitle;
+        document.year = @2015;
+
+        [document
+         createWithClient:self.APIClient
+         success:^(MDLObject *newDocument) {
+             self.activityStatusLabel.text = [NSString stringWithFormat:@"Document created\nTitle: %@\nType: %@\nId: %@", document.title, document.type, document.identifier];
+             [document
+              uploadFileWithClient:self.APIClient
+              atURL:fileURL
+              contentType:@"application/pdf"
+              fileName:@"document.pdf"
+              success:^(MDLFile *newFile) {
+                  self.activityStatusLabel.text = [NSString stringWithFormat:@"Document created and uploaded\nTitle: %@\nType: %@\nId: %@", document.title, document.type, document.identifier];
+              }
+              failure:^(NSError *error) {
+                  self.activityStatusLabel.text = [NSString stringWithFormat:@"Document created, but cannot upload file\n(Error: %@)", [error localizedDescription]];
+              }];
+         }
+         failure:^(NSError *error) {
+             self.activityStatusLabel.text = [NSString stringWithFormat:@"Cannot create new document\n(Error: %@)", [error localizedDescription]];
+         }];
     }
-    else
-    {
+    else {
         [self.nameTextField becomeFirstResponder];
     }
 }
 
+- (IBAction)cancel:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - Text field delegate
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    if (textField == self.nameTextField)
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.nameTextField) {
         [self.contentTextView becomeFirstResponder];
+    }
+
     return NO;
 }
 
-- (IBAction)textFieldEditingChanged:(id)sender
-{
-    self.uploadButton.enabled = ([self.nameTextField.text length] > 0);
+- (IBAction)textFieldEditingChanged:(id)sender {
+    self.uploadButton.enabled = (self.nameTextField.text.length > 0);
 }
 
 @end

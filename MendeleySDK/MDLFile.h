@@ -1,7 +1,7 @@
 //
 // MDLFile.h
 //
-// Copyright (c) 2012-2014 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2015 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -21,80 +21,49 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
-@class MDLDocument, AFHTTPRequestOperation;
+#import "MDLObject.h"
+
+@class MDLMendeleyAPIClient, MDLDocument, AFHTTPRequestOperation;
 
 /**
  `MDLFile` represents a document’s file, as described by Mendeley.
  */
 
-@interface MDLFile : NSObject
+@interface MDLFile : MDLObject
 
 /**
- The file added date.
+ The name of the file. This is currently a generated name from the metadata of the document that the file is attached to. 
+ However, we will support original file names from the upload soon.
  */
-@property (strong, nonatomic) NSDate *dateAdded;
+@property (nonatomic, copy) NSString *fileName;
 
 /**
- The file extension.
+ The MIME type of the file. This is used to work out the extension of the file.
  */
-@property (copy, nonatomic) NSString *extension;
+@property (nonatomic, copy) NSString *MIMEType;
 
 /**
- The file hash.
-
- Caution: starting with iOS 8.0 SDK, `hash` is now a read-only property on the
- `NSObject` protocol. We will probably have to rename this in the future.
+ SHA1 hash of the file. This can be used to check the integrity of the file.
  */
-@property (copy, nonatomic) NSString *hash;
+@property (nonatomic, copy) NSString *fileHash;
 
 /**
- The file size.
+ The size of the file, in bytes.
  */
-@property (strong, nonatomic) NSNumber *size;
+@property (nonatomic, copy) NSNumber *sizeInBytes;
 
 /**
- The file public URL.
+ The id of the document the file is attached to.
  */
-@property (strong, nonatomic) NSURL *publicURL;
+@property (nonatomic, copy) NSString *documentIdentifier;
+
 
 /**
- The file document.
- */
-@property (weak, nonatomic) MDLDocument *document;
+ Downloads the file to a local destination.
 
-/**
- Creates a `MDLFile` and initializes its date added, extension, hash, and size properties.
- 
- @param dateAdded The date added of the file.
- @param extension The extension of the file.
- @param hash The hash of the file.
- @param size The size of the file.
- @param document The document of the file.
- 
- @return  The newly-initialized file.
- */
-+ (instancetype)fileWithDateAdded:(NSDate *)dateAdded
-                        extension:(NSString *)extension
-                             hash:(NSString *)hash
-                             size:(NSNumber *)size
-                         document:(MDLDocument *)document;
-
-/**
- Creates a `MDLFile` and initializes its public URL property.
- 
- @param publicURL The document public URL.
- @param document The document of the file.
- 
- @return  The newly-initialized file.
- */
-+ (instancetype)fileWithPublicURL:(NSURL *)publicURL
-                         document:(MDLDocument *)document;
-
-/**
- Sends a download file API request using the shared client.
- 
+ @param client The API client performing the request.
  @param path The path to the file to download to.
  @param progress A block object to be called when an undetermined number of bytes have been downloaded from the server. 
   This block has no return value and takes three arguments: the number of bytes read since the last time the download progress block was called, the total bytes read, and the total bytes expected to be read during the request, as initially determined by the expected content size of the `NSHTTPURLResponse` object. 
@@ -105,12 +74,11 @@
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  
  @return A new HTTP request operation
- 
- @see [API documentation: Download file](http://apidocs.mendeley.com/home/user-specific-methods/download-file)
  */
-- (AFHTTPRequestOperation *)downloadToFileAtPath:(NSString *)path
-                                        progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress
-                                         success:(void (^)())success
-                                         failure:(void (^)(NSError *))failure;
+- (AFHTTPRequestOperation *)downloadWithClient:(MDLMendeleyAPIClient *)client
+                                  toFileAtPath:(NSString *)path
+                                      progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress
+                                       success:(void (^)())success
+                                       failure:(void (^)(NSError *))failure;
 
 @end

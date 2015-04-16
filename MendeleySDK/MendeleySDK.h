@@ -1,7 +1,7 @@
 //
 // MendeleySDK.h
 //
-// Copyright (c) 2013 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2013-2015 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -21,22 +21,25 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+
 #ifndef _MENDELEY_SDK_
-    #define _MENDELEY_SDK_
 
-    #import <AFOAuth2Client.h>
-    #import <AFNetworking.h>
+#define _MENDELEY_SDK_
 
-    #import "MDLMendeleyAPIClient.h"
+#import <AFOAuth2Client.h>
+#import <AFNetworking.h>
 
-    #import "MDLAuthor.h"
-    #import "MDLCategory.h"
-    #import "MDLDocument.h"
-    #import "MDLFile.h"
-    #import "MDLFolder.h"
-    #import "MDLGroup.h"
-    #import "MDLPublication.h"
-    #import "MDLSubcategory.h"
-    #import "MDLTag.h"
-    #import "MDLUser.h"
+#import "MDLMendeleyAPIClient.h"
+#import "MDLResponseInfo.h"
+
+#import "MDLObject.h"
+#import "MDLAnnotation.h"
+#import "MDLPerson.h"
+#import "MDLDocument.h"
+#import "MDLFile.h"
+#import "MDLFolder.h"
+#import "MDLGroup.h"
+#import "MDLProfile.h"
+#import "MDLDiscipline.h"
+
 #endif

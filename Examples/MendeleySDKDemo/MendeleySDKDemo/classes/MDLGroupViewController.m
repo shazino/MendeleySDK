@@ -1,7 +1,7 @@
 //
 // MDLGroupViewController.m
 //
-// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2015 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,140 +24,123 @@
 #import "MDLGroupViewController.h"
 
 #import "MDLGroup.h"
-#import "MDLUser.h"
-#import "MDLCategory.h"
-#import "MDLDocumentSearchResultsViewController.h"
+#import "MDLProfile.h"
+#import "MDLDocumentsViewController.h"
 #import "MDLUsersViewController.h"
 
-@interface MDLGroupViewController () <UIActionSheetDelegate>
+#import "UIViewController+MDLError.h"
 
-- (void)showAlertViewWithError:(NSError *)error;
+@interface MDLGroupViewController () <UIActionSheetDelegate>
 
 @end
 
 
 @implementation MDLGroupViewController
 
-- (void)setGroup:(MDLGroup *)group
-{
+- (void)setGroup:(MDLGroup *)group {
     _group = group;
-    
-    self.nameLabel.text = self.group.name;
-    self.categoryLabel.text = self.group.category.name;
-    self.ownerLabel.text = self.group.owner.name;
-    switch (self.group.type)
-    {
-        case MDLGroupTypePrivate:
+
+    self.nameLabel.text        = self.group.name;
+    self.ownerLabel.text       = self.group.owner.displayName;
+    self.disciplineLabel.text  = [self.group.disciplines componentsJoinedByString:@", "];
+    self.descriptionLabel.text = self.group.groupDescription;
+
+    switch (self.group.accessLevel) {
+        case MDLGroupAccessLevelPrivate:
             self.publicLabel.text = @"Private";
             break;
-        case MDLGroupTypeInvite:
+
+        case MDLGroupAccessLevelInvite:
             self.publicLabel.text = @"Invite";
             break;
-        case MDLGroupTypeOpen:
+
+        case MDLGroupAccessLevelOpen:
             self.publicLabel.text = @"Open";
             break;
     }
-    self.numberOfDocumentsLabel.text = [self.group.numberOfDocuments stringValue];
-    self.numberOfAdminsLabel.text = [self.group.numberOfAdmins stringValue];
-    self.numberOfMembersLabel.text = [self.group.numberOfMembers stringValue];
-    self.numberOfFollowersLabel.text = [self.group.numberOfFollowers stringValue];
+
+    self.numberOfDocumentsLabel.text = [@(self.group.documents.count) stringValue];
+    self.numberOfAdminsLabel.text    = [@(self.group.admins.count)    stringValue];
+    self.numberOfMembersLabel.text   = [@(self.group.members.count)   stringValue];
+    self.numberOfFollowersLabel.text = [@(self.group.followers.count) stringValue];
 }
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.group = self.group;
-    
-    [self.group fetchDetailsSuccess:^(MDLGroup *group) {
-        self.group = group;
-        
-        [self.group fetchPeopleSuccess:^(MDLGroup *group) {
-            self.group = group;
-        } failure:^(NSError *error) {
-            [self showAlertViewWithError:error];
-        }];
-    } failure:^(NSError *error) {
-        [self showAlertViewWithError:error];
-    }];
+
+    [self.group
+     fetchDetailsWithClient:self.APIClient
+     success:^(MDLGroup *group) {
+         self.group = group;
+
+         [self.group
+          fetchPeopleWithClient:self.APIClient
+          atPage:nil
+          numberOfItems:0
+          success:^(MDLResponseInfo *info, MDLGroup *group) {
+              self.group = group;
+          }
+          failure:^(NSError *error) {
+              [self showAlertViewWithError:error];
+          }];
+     }
+     failure:^(NSError *error) {
+         [self showAlertViewWithError:error];
+     }];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.destinationViewController isKindOfClass:[MDLUsersViewController class]])
-    {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.destinationViewController respondsToSelector:@selector(setAPIClient:)]) {
+        [segue.destinationViewController setAPIClient:self.APIClient];
+    }
+
+    if ([segue.destinationViewController isKindOfClass:[MDLUsersViewController class]]) {
         MDLUsersViewController *usersViewController = (MDLUsersViewController *)segue.destinationViewController;
         NSArray *users;
-        if ([segue.identifier isEqualToString:@"MDLPushAdminsSegue"])
+        if ([segue.identifier isEqualToString:@"MDLPushAdminsSegue"]) {
             users = self.group.admins;
-        else if ([segue.identifier isEqualToString:@"MDLPushMembersSegue"])
+        }
+        else if ([segue.identifier isEqualToString:@"MDLPushMembersSegue"]) {
             users = self.group.members;
-        else if ([segue.identifier isEqualToString:@"MDLPushFollowersSegue"])
+        }
+        else if ([segue.identifier isEqualToString:@"MDLPushFollowersSegue"]) {
             users = self.group.followers;
+        }
         usersViewController.users = users;
     }
-    else if ([segue.destinationViewController isKindOfClass:[MDLDocumentSearchResultsViewController class]])
-    {
-        ((MDLDocumentSearchResultsViewController *)segue.destinationViewController).group = self.group;
+    else if ([segue.destinationViewController isKindOfClass:[MDLDocumentsViewController class]]) {
+        ((MDLDocumentsViewController *)segue.destinationViewController).group = self.group;
     }
 }
 
-- (void)showAlertViewWithError:(NSError *)error
-{
-    [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-}
 
 #pragma mark - Actions
 
-- (IBAction)showActions:(id)sender
-{
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles:@"Leave", @"Unfollow", @"Open on Mendeley.com", nil];
+- (IBAction)showActions:(id)sender {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                  initWithTitle:nil
+                                  delegate:self
+                                  cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                                  destructiveButtonTitle:nil
+                                  otherButtonTitles:NSLocalizedString(@"Open on Mendeley.com", nil), nil];
     [actionSheet showFromBarButtonItem:sender animated:YES];
 }
 
-- (IBAction)openWebGroupProfile:(id)sender
-{
+- (IBAction)openWebGroupProfile:(id)sender {
     [[UIApplication sharedApplication] openURL:self.group.mendeleyURL];
 }
 
-- (IBAction)deleteGroup:(id)sender
-{
-    [self.group deleteSuccess:^{ [self.navigationController popViewControllerAnimated:YES]; }
-                      failure:^(NSError *error) { [self showAlertViewWithError:error]; }];
-}
-
-- (IBAction)leaveGroup:(id)sender
-{
-    [self.group leaveSuccess:^{ [[[UIAlertView alloc] initWithTitle:@"Group Left" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show]; }
-                      failure:^(NSError *error) { [self showAlertViewWithError:error]; }];
-}
-
-- (IBAction)unfollowGroup:(id)sender
-{
-    [self.group unfollowSuccess:^{ [[[UIAlertView alloc] initWithTitle:@"Group Unfollowed" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show]; }
-                        failure:^(NSError *error) { [self showAlertViewWithError:error]; }];
-}
 
 #pragma mark - Action sheet delegate
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    switch (buttonIndex)
-    {
-        case 0:
-            [self deleteGroup:nil];
-            break;
-        case 1:
-            [self leaveGroup:nil];
-            break;
-        case 2:
-            [self unfollowGroup:nil];
-            break;
-        case 3:
-            [self openWebGroupProfile:nil];
-            break;
+- (void) actionSheet:(UIActionSheet *)actionSheet
+clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex != actionSheet.cancelButtonIndex) {
+        [self openWebGroupProfile:nil];
     }
 }
 

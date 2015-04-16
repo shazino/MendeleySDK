@@ -1,7 +1,7 @@
 //
 // MDLFilesViewController.m
 //
-// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2015 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -22,97 +22,88 @@
 // THE SOFTWARE.
 
 #import "MDLFilesViewController.h"
+
 #import "MDLFile.h"
 #import <AFNetworking.h>
+
+#import "UIViewController+MDLError.h"
+
 
 @interface MDLFilesViewController () <UIDocumentInteractionControllerDelegate>
 
 @property (strong, nonatomic) AFHTTPRequestOperation *operation;
 
-- (void)showAlertViewWithError:(NSError *)error;
-
 @end
+
 
 @implementation MDLFilesViewController
 
 #pragma mark - View lifecycle
 
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    
+
     [self.navigationController setToolbarHidden:YES animated:animated];
     [self.operation cancel];
 }
 
-- (void)showAlertViewWithError:(NSError *)error
-{
-    [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-}
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section {
+    return self.files.count;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [self.files count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MDLFileCell" forIndexPath:indexPath];
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.timeStyle = NSDateFormatterShortStyle;
-    dateFormatter.dateStyle = NSDateFormatterLongStyle;
-    dateFormatter.doesRelativeDateFormatting = YES;
-    
+
     MDLFile *file = self.files[indexPath.row];
-    cell.textLabel.text       = (file.extension) ? [NSString stringWithFormat:@"%@ file", [file.extension uppercaseString]] : @"File";
-    cell.detailTextLabel.text = (file.dateAdded) ? [NSString stringWithFormat:@"%@ (%d Kb)", [dateFormatter stringFromDate:file.dateAdded], [file.size intValue]/1000] : [file.publicURL absoluteString];
-    
+    cell.textLabel.text       = (file.MIMEType) ? [NSString stringWithFormat:@"%@ file", file.MIMEType] : @"File";
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d Kb)", [file.sizeInBytes intValue]/1000];
+
     return cell;
 }
 
+
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UIProgressView *progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleBar];
     progressView.frame = CGRectMake(0, 0, self.view.frame.size.width - 30, 20);
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:progressView];
     self.toolbarItems = @[barButtonItem];
     self.navigationController.toolbar.tintColor = self.navigationController.navigationBar.tintColor;
     [self.navigationController setToolbarHidden:NO animated:YES];
-    
+
     [self.operation cancel];
-    
+
     MDLFile *file = self.files[indexPath.row];
-    NSString *path = [[NSTemporaryDirectory() stringByAppendingPathComponent:@"file"] stringByAppendingPathExtension:file.extension ?: @"pdf"];
-    self.operation = [file downloadToFileAtPath:path progress:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
-        progressView.progress = (float)totalBytesRead/totalBytesExpectedToRead;
-    } success:^{
-        [self.navigationController setToolbarHidden:YES animated:YES];
-        UIDocumentInteractionController *interactionController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:path]];
-        interactionController.delegate = self;
-        [interactionController presentPreviewAnimated:YES];
-    } failure:^(NSError *error) {
-        if (error.code != NSURLErrorCancelled)
-        {
-            [self.navigationController setToolbarHidden:YES animated:YES];
-            [self showAlertViewWithError:error];
-        }
-    }];
+    NSString *path = [NSTemporaryDirectory() stringByAppendingPathComponent:file.fileName];
+    self.operation = [file
+                      downloadWithClient:self.APIClient
+                      toFileAtPath:path
+                      progress:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
+                          progressView.progress = (float)totalBytesRead/totalBytesExpectedToRead;
+                      }
+                      success:^{
+                          [self.navigationController setToolbarHidden:YES animated:YES];
+                          UIDocumentInteractionController *interactionController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:path]];
+                          interactionController.delegate = self;
+                          [interactionController presentPreviewAnimated:YES];
+                      }
+                      failure:^(NSError *error) {
+                          if (error.code != NSURLErrorCancelled) {
+                              [self.navigationController setToolbarHidden:YES animated:YES];
+                              [self showAlertViewWithError:error];
+                          }
+                      }];
 }
 
 #pragma mark - Document interaction controller delegate
 
-- (UIViewController *)documentInteractionControllerViewControllerForPreview:(UIDocumentInteractionController *)controller
-{
+- (UIViewController *)documentInteractionControllerViewControllerForPreview:(UIDocumentInteractionController *)controller {
     return self.navigationController;
 }
 

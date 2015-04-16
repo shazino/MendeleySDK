@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0460"
+   LastUpgradeVersion = "0610"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -29,7 +29,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "67B79ED817A6A65B00A4CEB5"
-               BuildableName = "MendeleySDKDemoOSXTests.octest"
+               BuildableName = "MendeleySDKDemoOSXTests.xctest"
                BlueprintName = "MendeleySDKDemoOSXTests"
                ReferencedContainer = "container:MendeleySDKDemoOSX.xcodeproj">
             </BuildableReference>
@@ -47,7 +47,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "67B79ED817A6A65B00A4CEB5"
-               BuildableName = "MendeleySDKDemoOSXTests.octest"
+               BuildableName = "MendeleySDKDemoOSXTests.xctest"
                BlueprintName = "MendeleySDKDemoOSXTests"
                ReferencedContainer = "container:MendeleySDKDemoOSX.xcodeproj">
             </BuildableReference>

@@ -1,7 +1,7 @@
 //
 // MDLGroupsViewController.m
 //
-// Copyright (c) 2012-2013 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2015 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -22,64 +22,69 @@
 // THE SOFTWARE.
 
 #import "MDLGroupsViewController.h"
+
+#import <MendeleySDK/MDLGroup.h>
+#import <MendeleySDK/MDLResponseInfo.h>
+
 #import "MDLGroupViewController.h"
-#import "MDLGroup.h"
+
+#import "UIViewController+MDLError.h"
+
 
 @interface MDLGroupsViewController ()
 
 @property (nonatomic, strong) NSArray *groups;
 
-- (void)showAlertViewWithError:(NSError *)error;
-
 @end
+
 
 @implementation MDLGroupsViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    self.inUserLibrary = YES;
+- (void)fetchGroupAtPage:(NSString *)page {
+    [MDLGroup
+     fetchGroupsForCurrentUserWithClient:self.APIClient
+     atPage:page
+     numberOfItems:1
+     success:^(MDLResponseInfo *info, NSArray *groups) {
+         self.groups = [self.groups arrayByAddingObjectsFromArray:groups];
+         if (info.nextPagePath) {
+             [self fetchGroupAtPage:info.nextPagePath];
+         }
+         else {
+             [self.tableView reloadData];
+         }
+     }
+     failure:^(NSError *error) {
+         [self showAlertViewWithError:error];
+     }];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    [MDLGroup fetchGroupsInUserLibrarySuccess:^(NSArray *groups) {
-        self.groups = groups;
-        [self.tableView reloadData];
-    } failure:^(NSError *error) {
-        [self showAlertViewWithError:error];
-    }];
+
+    self.groups = @[];
+
+    [self fetchGroupAtPage:nil];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.destinationViewController isKindOfClass:[MDLGroupViewController class]])
-    {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.destinationViewController respondsToSelector:@selector(setAPIClient:)]) {
+        [segue.destinationViewController setAPIClient:self.APIClient];
+    }
+
+    if ([segue.destinationViewController isKindOfClass:[MDLGroupViewController class]]) {
         ((MDLGroupViewController *)segue.destinationViewController).group = self.groups[self.tableView.indexPathForSelectedRow.row];
     }
 }
 
-- (void)showAlertViewWithError:(NSError *)error
-{
-    [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-}
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.groups.count;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [self.groups count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MDLGroupCell" forIndexPath:indexPath];
     MDLGroup *group = self.groups[indexPath.row];
     cell.textLabel.text = group.name;

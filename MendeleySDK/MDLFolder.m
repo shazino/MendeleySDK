@@ -1,7 +1,7 @@
 //
 // MDLFolder.h
 //
-// Copyright (c) 2012-2014 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2015 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,157 +28,120 @@
 
 @interface MDLFolder ()
 
-+ (instancetype)folderWithIdentifier:(NSString *)identifier
-                                name:(NSString *)name
-                   numberOfDocuments:(NSNumber *)numberOfDocuments
-                    parentIdentifier:(NSString *)parentIdentifier;
-
 @end
 
 
 @implementation MDLFolder
 
-+ (instancetype)folderWithIdentifier:(NSString *)identifier
-                                name:(NSString *)name
-                   numberOfDocuments:(NSNumber *)numberOfDocuments
-                    parentIdentifier:(NSString *)parentIdentifier
-{
++ (NSString *)objectType {
+    return MDLMendeleyObjectTypeFolder;
+}
+
++ (NSString *)path {
+    return @"/folders";
+}
+
+- (void)updateWithServerResponseObject:(id)responseObject {
+    [super updateWithServerResponseObject:responseObject];
+    
+    if (![responseObject isKindOfClass:NSDictionary.class]) {
+        return;
+    }
+
+    self.identifier       = responseObject[@"id"];
+    self.name             = responseObject[@"name"];
+    self.parentIdentifier = responseObject[@"parent_id"];
+
+    self.creationDateString = responseObject[@"created"];
+    self.modificationDateString = responseObject[@"last_modified"];
+}
+
+- (NSDictionary *)serverRepresentation {
+    NSMutableDictionary *representation = [NSMutableDictionary dictionary];
+
+    if (self.name) {
+        representation[@"name"] = self.name;
+    }
+
+    if (self.parentIdentifier) {
+        representation[@"parent_id"] = self.parentIdentifier;
+    }
+
+    return representation;
+}
+
+
+#pragma mark -
+
++ (instancetype)createFolderWithClient:(MDLMendeleyAPIClient *)client
+                                  name:(NSString *)name
+                                parent:(MDLFolder *)parent
+                               success:(void (^)(MDLObject *))success
+                               failure:(void (^)(NSError *))failure {
     MDLFolder *folder = [MDLFolder new];
-    folder.identifier = identifier;
     folder.name = name;
-    folder.numberOfDocuments = [NSNumber numberOrNumberFromString:numberOfDocuments];
-    if (! ([parentIdentifier isKindOfClass:[NSNumber class]] && [parentIdentifier isEqual:@(-1)])) {
-        folder.parentIdentifier = parentIdentifier;
-    }
-    folder.subfolders = @[];
-    return folder;
-}
+    folder.parentIdentifier = parent.identifier;
 
-+ (instancetype)createFolderWithName:(NSString *)name
-                              parent:(MDLFolder *)parent
-                             success:(void (^)(MDLFolder *))success
-                             failure:(void (^)(NSError *))failure
-{
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-
-    MDLFolder *folder = [MDLFolder new];
-    folder.name       = name;
-    folder.subfolders = @[];
-
-    NSDictionary *bodyContent;
-    if (parent) {
-        bodyContent = @{@"name" : folder.name,
-                        @"parent": parent.identifier};
-    }
-    else {
-        bodyContent = @{@"name" : folder.name};
-    }
-
-    [client postPath:@"/oapi/library/folders/"
-             bodyKey:@"folder"
-         bodyContent:bodyContent
-             success:^(AFHTTPRequestOperation *operation, id responseDictionary) {
-                 folder.parent     = parent;
-                 parent.subfolders = [parent.subfolders arrayByAddingObject:folder];
-                 folder.identifier = responseDictionary[@"folder_id"];
-
-                 if (success) {
-                     success(folder);
-                 }
-             }
-             failure:failure];
+    [folder createWithClient:client
+                     success:success
+                     failure:failure];
 
     return folder;
 }
 
-+ (void)fetchFoldersInUserLibrarySuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
-{
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-
-    [client getPath:@"/oapi/library/folders/"
-requiresAuthentication:YES
-         parameters:nil
-            success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                if (success) {
-                    NSArray *folders = [self treefiedFoldersFromResponseObject:responseObject];
-                    success(folders);
-                }
-            } failure:failure];
++ (void)fetchFoldersInUserLibraryWithClient:(MDLMendeleyAPIClient *)client
+                                     atPage:(NSString *)pagePath
+                              numberOfItems:(NSUInteger)numberOfItems
+                                    success:(void (^)(MDLResponseInfo *info, NSArray *folders))success
+                                    failure:(void (^)(NSError *))failure {
+    [self fetchWithClient:client
+                   atPage:pagePath
+            numberOfItems:numberOfItems
+               parameters:nil
+                  success:success
+                  failure:failure];
 }
 
-+ (NSArray *)treefiedFoldersFromResponseObject:(id)responseObject
-{
-    if (![responseObject isKindOfClass:[NSArray class]]) {
-        return nil;
-    }
-
-    NSArray *responseArray = responseObject;
-    NSMutableArray *folders = [NSMutableArray array];
-
-    for (NSDictionary *rawFolder in responseArray) {
-        [folders addObject:[self folderWithIdentifier:rawFolder[@"id"]
-                                                 name:rawFolder[@"name"]
-                                    numberOfDocuments:rawFolder[@"size"]
-                                     parentIdentifier:rawFolder[@"parent"]]];
-    }
-
-    for (MDLFolder *folder in folders) {
-        if (folder.parentIdentifier) {
-            for (MDLFolder *aFolder in folders) {
-                if ([aFolder.identifier isEqualToString:folder.parentIdentifier]){
-                    folder.parent = aFolder;
-                    folder.parent.subfolders = [folder.parent.subfolders arrayByAddingObject:folder];
-                    break;
-                }
-            }
-        }
-    }
-
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"parent = nil"];
-    return [folders filteredArrayUsingPredicate:predicate];
-}
-
-- (void)fetchDocumentsAtPage:(NSUInteger)pageIndex count:(NSUInteger)count success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success failure:(void (^)(NSError *))failure
-{
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    NSString *path = [NSString stringWithFormat:@"/oapi/library/folders/%@/",
+- (void)fetchDocumentsWithClient:(MDLMendeleyAPIClient *)client
+                          atPage:(NSString *)pagePath
+                   numberOfItems:(NSUInteger)numberOfItems
+                         success:(void (^)(MDLResponseInfo *info, NSArray *documents))success
+                         failure:(void (^)(NSError *))failure {
+    NSString *path = [NSString stringWithFormat:@"/folders/%@/documents",
                       self.identifier];
 
     [client getPath:path
-requiresAuthentication:YES
+         objectType:MDLMendeleyObjectTypeDocument
+             atPage:pagePath
+      numberOfItems:numberOfItems
          parameters:nil
-            success:^(AFHTTPRequestOperation *operation, NSDictionary *responseDictionary) {
-                NSArray *rawDocuments = responseDictionary[@"document_ids"];
+            success:^(MDLResponseInfo *info, NSArray *responseArray) {
                 NSMutableArray *documents = [NSMutableArray array];
 
-                for (NSString *documentIdentifier in rawDocuments) {
-                    MDLDocument * document = [MDLDocument new];
+                for (NSDictionary *responseDocument in responseArray) {
+                    NSString *documentIdentifier = responseDocument[@"id"];
+                    MDLDocument *document = [MDLDocument new];
                     document.identifier = documentIdentifier;
                     [documents addObject:document];
                 }
 
-                self.documents = documents;
-
                 if (success) {
-                    success(self.documents,
-                            [responseDictionary responseTotalResults],
-                            [responseDictionary responseTotalPages],
-                            [responseDictionary responsePageIndex],
-                            [responseDictionary responseItemsPerPage]);
+                    success(info, documents);
                 }
             } failure:failure];
 }
 
-- (void)addDocument:(MDLDocument *)document success:(void (^)())success failure:(void (^)(NSError *))failure
-{
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    NSString *path = [NSString stringWithFormat:@"/oapi/library/folders/%@/%@/",
-                      self.identifier,
-                      document.identifier];
+- (void)addDocument:(MDLDocument *)document
+         withClient:(MDLMendeleyAPIClient *)client
+            success:(void (^)())success
+            failure:(void (^)(NSError *))failure {
+    NSString *path = [[@"/folders"
+                       stringByAppendingPathComponent:self.identifier]
+                      stringByAppendingPathComponent:@"documents"];
 
     [client postPath:path
-             bodyKey:nil
-         bodyContent:nil
+          objectType:MDLMendeleyObjectTypeDocument
+          parameters:@{@"id": document.identifier ?: @""}
              success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
                  if (success) {
                      success();
@@ -187,21 +150,17 @@ requiresAuthentication:YES
              failure:failure];
 }
 
-- (void)deleteSuccess:(void (^)())success failure:(void (^)(NSError *))failure
-{
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    NSString *path = [NSString stringWithFormat:@"/oapi/library/folders/%@/",
-                      self.identifier];
+- (void)removeDocument:(MDLDocument *)document
+               withClient:(MDLMendeleyAPIClient *)client
+               success:(void (^)())success
+               failure:(void (^)(NSError *))failure {
+
+    NSString *path = [NSString stringWithFormat:@"/folders/%@/documents/%@",
+                      self.identifier,
+                      document.identifier];
 
     [client deletePath:path
-            parameters:nil
                success:^(AFHTTPRequestOperation *requestOperation, id responseObject) {
-                   if (self.parent) {
-                       NSMutableArray *siblings = [NSMutableArray arrayWithArray:self.parent.subfolders];
-                       [siblings removeObject:self];
-                       self.parent.subfolders = siblings;
-                   }
-
                    if (success) {
                        success();
                    }
@@ -209,26 +168,7 @@ requiresAuthentication:YES
                failure:failure];
 }
 
-- (void)removeDocument:(MDLDocument *)document success:(void (^)())success failure:(void (^)(NSError *))failure
-{
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-
-    [client deletePath:[NSString stringWithFormat:@"/oapi/library/folders/%@/%@/", self.identifier, document.identifier]
-            parameters:nil
-               success:^(AFHTTPRequestOperation *requestOperation, id responseObject) {
-                   NSMutableArray *newDocuments = [NSMutableArray arrayWithArray:self.documents];
-                   [newDocuments removeObject:document];
-                   self.documents = newDocuments;
-
-                   if (success) {
-                       success();
-                   }
-               }
-               failure:failure];
-}
-
-- (NSString *)description
-{
+- (NSString *)description {
     return [NSString stringWithFormat: @"%@ (identifier: %@; name: %@; parent identifier: %@)",
             [super description], self.identifier, self.name, self.parentIdentifier];
 }

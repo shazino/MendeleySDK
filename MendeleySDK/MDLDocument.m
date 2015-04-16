@@ -1,7 +1,7 @@
 //
 // MDLDocument.m
 //
-// Copyright (c) 2012-2014 shazino (shazino SAS), http://www.shazino.com/
+// Copyright (c) 2012-2015 shazino (shazino SAS), http://www.shazino.com/
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,507 +24,356 @@
 #import "MDLDocument.h"
 
 #import "MDLMendeleyAPIClient.h"
-#import "MDLAuthor.h"
-#import "MDLPublication.h"
-#import "MDLCategory.h"
-#import "MDLSubcategory.h"
+#import "MDLResponseInfo.h"
+#import "MDLPerson.h"
 #import "MDLGroup.h"
 #import "MDLFile.h"
+#import "MDLProfile.h"
 #import "AFNetworking.h"
 
-NSString * const MDLDocumentTypeGeneric        = @"Generic";
-NSString * const MDLDocumentTypeJournalArticle = @"Journal Article";
+NSString * const MDLDocumentTypeGeneric = @"generic";
+NSString * const MDLDocumentTypeJournal = @"journal";
+
+NSString * const MDLDocumentViewAll    = @"all";
+NSString * const MDLDocumentViewBIB    = @"bib";
+NSString * const MDLDocumentViewClient = @"client";
+NSString * const MDLDocumentViewTags   = @"tags";
+NSString * const MDLDocumentViewPatent = @"patent";
 
 @interface MDLDocument ()
 
 + (instancetype)documentWithRawDocument:(NSDictionary *)rawDocument;
-+ (NSDictionary *)detailsContentForDocument:(MDLDocument *)document;
-+ (void)fetchDocumentsWithPath:(NSString *)path
-                        public:(BOOL)public
-                    parameters:(NSDictionary *)parameters
-                        atPage:(NSUInteger)pageIndex
-                         count:(NSUInteger)count
-                       success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success
-                       failure:(void (^)(NSError *))failure;
 
 @end
 
+
 @implementation MDLDocument
 
-+ (instancetype)createDocumentWithTitle:(NSString *)title
-                             parameters:(NSDictionary *)parameters
-                                success:(void (^)(MDLDocument *))success
-                                failure:(void (^)(NSError *))failure
-{
-    MDLDocument *newDocument = [MDLDocument new];
-    newDocument.title = title ?: @"";
-    newDocument.type  = parameters[@"type"] ?: MDLDocumentTypeGeneric;
-
-    NSMutableDictionary *bodyContent = [parameters mutableCopy];
-    bodyContent[@"type"]  = newDocument.type;
-    bodyContent[@"title"] = newDocument.title;
-
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-
-    [client postPath:@"/oapi/library/documents/"
-             bodyKey:@"document"
-         bodyContent:bodyContent
-             success:^(AFHTTPRequestOperation *operation, id responseDictionary) {
-                 newDocument.identifier = responseDictionary[@"document_id"];
-                 if (success) {
-                     success(newDocument);
-                 }
-             } failure:failure];
-
-    return newDocument;
++ (NSString *)objectType {
+    return MDLMendeleyObjectTypeDocument;
 }
 
-+ (instancetype)createDocument:(MDLDocument *)document
-                       success:(void (^)(MDLDocument *))success
-                       failure:(void (^)(NSError *))failure
-{
-    NSDictionary *bodyContent = [MDLDocument detailsContentForDocument:document];
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-
-    [client postPath:@"/oapi/library/documents/"
-             bodyKey:@"document"
-         bodyContent:bodyContent
-             success:^(AFHTTPRequestOperation *operation, id responseDictionary) {
-                 MDLDocument *newDocument = [MDLDocument new];
-                 newDocument.identifier = responseDictionary[@"document_id"];
-
-                 if (success) {
-                     success(newDocument);
-                 }
-             } failure:failure];
-    return document;
++ (NSString *)path {
+    return @"/documents";
 }
 
-+ (instancetype)documentWithRawDocument:(NSDictionary *)rawDocument
-{
-    MDLDocument *document = [MDLDocument new];
-
-    if (![rawDocument isKindOfClass:[NSDictionary class]]) {
-        return document;
+- (void)updateWithServerResponseObject:(id)responseObject {
+    [super updateWithServerResponseObject:responseObject];
+    
+    if (![responseObject isKindOfClass:NSDictionary.class]) {
+        return;
     }
 
-    document.identifier = (rawDocument[@"id"]) ? rawDocument[@"id"] : rawDocument[@"uuid"];
-    document.title      = rawDocument[@"title"];
-    document.type       = rawDocument[@"type"];
-    document.DOI        = rawDocument[@"doi"];
-    document.version    = [NSNumber numberOrNumberFromString:rawDocument[@"version"]];
-    return document;
-}
+    self.title      = responseObject[@"title"];
+    self.type       = responseObject[@"type"];
 
-+ (NSDictionary *)detailsContentForDocument:(MDLDocument *)document
-{
-    NSMutableDictionary *bodyContent = [NSMutableDictionary dictionary];
-    bodyContent[@"abstract"]     = document.abstract ?: @"";
-    bodyContent[@"issue"]        = document.issue ?: @"";
-    bodyContent[@"citation_key"] = document.citationKey ?: @"";
-    bodyContent[@"pages"]        = document.pages ?: @"";
-    bodyContent[@"title"]        = document.title ?: @"";
-    bodyContent[@"volume"]       = document.volume ?: @"";
-    bodyContent[@"year"]         = document.year ?: @"";
-    bodyContent[@"publisher"]    = document.publisher ?: @"";
-    bodyContent[@"published_in"] = document.publication.name ?: @"";
-    bodyContent[@"keywords"]     = document.keywords ?: @"";
-    bodyContent[@"tags"]         = document.tags ?: @"";
-    bodyContent[@"notes"]        = document.notes ?: @"";
-    bodyContent[@"doi"]          = document.DOI ?: @"";
-    bodyContent[@"pmid"]         = document.PubMedIdentifier ?: @"";
-    bodyContent[@"type"]         = document.type ?: MDLDocumentTypeGeneric;
-
-    if (document.starred) {
-        bodyContent[@"isStarred"] = document.starred.boolValue ? @"1" : @"0";
+    NSString *profileIdentifier = responseObject[@"profile_id"];
+    if (profileIdentifier) {
+        self.user = [MDLProfile profileWithIdentifier:profileIdentifier];
     }
 
-    if (document.read) {
-        bodyContent[@"isRead"] = document.read.boolValue ? @"1" : @"0";
+    NSString *groupIdentifier = responseObject[@"group_id"];
+    if (groupIdentifier) {
+        self.group = [MDLGroup new];
+        self.group.identifier = groupIdentifier;
     }
 
-    if (document.identifiers.count > 0) {
-        bodyContent[@"identifiers"] = document.identifiers;
+    self.abstract = responseObject[@"abstract"];
+    self.source   = responseObject[@"source"];
+    self.year     = [NSNumber numberOrNumberFromString:responseObject[@"year"]];
+
+    self.creationDateString = responseObject[@"created"];
+    self.modificationDateString = responseObject[@"last_modified"];
+
+    self.authors = [MDLPerson personsFromServerResponseObject:responseObject[@"authors"]];
+
+    NSDictionary *identifiers = responseObject[@"identifiers"];
+    if ([identifiers isKindOfClass:NSDictionary.class]) {
+        self.identifiers = identifiers;
+    }
+    
+    NSArray *keywords = responseObject[@"keywords"];
+    if ([keywords isKindOfClass:NSArray.class]) {
+        self.keywords = keywords;
     }
 
-    NSMutableArray *URLsStrings = [NSMutableArray array];
-    for (NSURL *URL in document.URLs) {
-        [URLsStrings addObject:[URL absoluteString]];
-    }
-    bodyContent[@"url"] = [URLsStrings componentsJoinedByString:@"\n"];
+    self.month = [NSNumber numberOrNumberFromString:responseObject[@"month"]];
+    self.day   = [NSNumber numberOrNumberFromString:responseObject[@"day"]];
 
-    NSMutableArray *authors = [NSMutableArray array];
-    for (MDLAuthor *author in document.authors) {
-        if (author.forename.length > 0 || author.surname.length > 0) {
-            [authors addObject:@{
-             @"forename": author.forename ?: @"",
-             @"surname": author.surname ?: @""}];
-        }
-        else if (author.name) {
-            [authors addObject:author.name];
-        }
-    }
+    self.revision = responseObject[@"revision"];
+    self.pages    = responseObject[@"pages"];
+    self.volume   = responseObject[@"volume"];
+    self.issue    = responseObject[@"issue"];
 
-    bodyContent[@"authors"] = authors;
-
-    return bodyContent;
-}
-
-+ (void)fetchDocumentsWithPath:(NSString *)path
-                        public:(BOOL)public
-                    parameters:(NSDictionary *)parameters
-                        atPage:(NSUInteger)pageIndex
-                         count:(NSUInteger)count
-                       success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success
-                       failure:(void (^)(NSError *))failure
-{
-    NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
-    mutableParameters[@"page"]  = @(pageIndex);
-    mutableParameters[@"items"] = @(count);
-
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-
-    [client getPath:path
-requiresAuthentication:!public
-         parameters:mutableParameters
-            success:^(AFHTTPRequestOperation *operation, NSDictionary *responseDictionary) {
-                NSArray *rawDocuments = responseDictionary[@"documents"];
-                NSMutableArray *documents = [NSMutableArray array];
-
-                for (NSDictionary *rawDocument in rawDocuments) {
-                    MDLDocument *document = [MDLDocument documentWithRawDocument:rawDocument];
-                    document.inUserLibrary = @(!public);
-                    if (document) {
-                        [documents addObject:document];
-                    }
-                }
-
-                if (success) {
-                    success(documents,
-                            [responseDictionary responseTotalResults],
-                            [responseDictionary responseTotalPages],
-                            [responseDictionary responsePageIndex],
-                            [responseDictionary responseItemsPerPage]);
-                }
+    NSArray *attributesWebsites = responseObject[@"websites"];
+    if ([attributesWebsites isKindOfClass:NSArray.class]) {
+        NSMutableArray *URLs = [NSMutableArray array];
+        for (NSString *attributeURL in attributesWebsites) {
+            NSURL *URL = [NSURL URLWithString:attributeURL];
+            if (URL) {
+                [URLs addObject:URL];
             }
-            failure:failure];
-}
-
-+ (void)searchWithTerms:(NSString *)terms
-                 atPage:(NSUInteger)pageIndex
-                  count:(NSUInteger)count
-                success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success
-                failure:(void (^)(NSError *))failure
-{
-    NSString *encodedTerms = [terms stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
-    encodedTerms = [encodedTerms stringByReplacingOccurrencesOfString:@":" withString:@"%3A"];
-    NSString *path = [NSString stringWithFormat:@"/oapi/documents/search/%@/", encodedTerms];
-
-    [self fetchDocumentsWithPath:path
-                          public:YES
-                      parameters:nil
-                          atPage:pageIndex
-                           count:count
-                         success:success
-                         failure:failure];
-}
-
-+ (void)searchWithGenericTerms:(NSString *)genericTerms
-                       authors:(NSString *)authors
-                         title:(NSString *)title
-                          year:(NSNumber *)year
-                          tags:(NSString *)tags
-                        atPage:(NSUInteger)pageIndex
-                         count:(NSUInteger)count
-                       success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success
-                       failure:(void (^)(NSError *))failure
-{
-    NSMutableArray *terms = [NSMutableArray array];
-
-    if (genericTerms.length > 0) {
-        [terms addObject:genericTerms];
+        }
+        self.websitesURLs = URLs;
     }
+    else {
+        self.websitesURLs = nil;
+    }
+
+    self.publisher   = responseObject[@"publisher"];
+    self.city        = responseObject[@"city"];
+    self.edition     = responseObject[@"edition"];
+    self.institution = responseObject[@"institution"];
+    self.series      = responseObject[@"series"];
+    self.chapter     = responseObject[@"chapter"];
+    self.editors     = [MDLPerson personsFromServerResponseObject:responseObject[@"editors"]];
+    self.tags        = responseObject[@"tags"];
+
+    self.read         = [NSNumber boolNumberFromNumberOrString:responseObject[@"read"]];
+    self.starred      = [NSNumber boolNumberFromNumberOrString:responseObject[@"starred"]];
+    self.authored     = [NSNumber boolNumberFromNumberOrString:responseObject[@"authored"]];
+    self.confirmed    = [NSNumber boolNumberFromNumberOrString:responseObject[@"confirmed"]];
+    self.hidden       = [NSNumber boolNumberFromNumberOrString:responseObject[@"hidden"]];
+    self.fileAttached = [NSNumber boolNumberFromNumberOrString:responseObject[@"file_attached"]];
+
+    self.citationKey    = responseObject[@"citation_key"];
+    self.sourceType     = responseObject[@"source_type"];
+    self.language       = responseObject[@"language"];
+    self.shortTitle     = responseObject[@"short_title"];
+    self.reprintEdition = responseObject[@"reprint_edition"];
+    self.genre          = responseObject[@"genre"];
+    self.country        = responseObject[@"country"];
+    self.translators    = [MDLPerson personsFromServerResponseObject:responseObject[@"translators"]];
+    self.seriesEditor   = responseObject[@"series_editor"];
+    self.code           = responseObject[@"code"];
+    self.medium         = responseObject[@"medium"];
+    self.userContext    = responseObject[@"user_context"];
+    self.department     = responseObject[@"departement"];
+    self.patentOwner             = responseObject[@"patent_owner"];
+    self.patentApplicationNumber = responseObject[@"patent_application_number"];
+    self.patentLegalStatus       = responseObject[@"patent_legal_status"];
+}
+
+- (void)setIfNotNilValue:(id)value forKey:(NSString *)key inDictionary:(NSMutableDictionary *)dictionary {
+    if (value) {
+        dictionary[key] = value;
+    }
+}
+
+- (NSDictionary *)serverRepresentation {
+    NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
+
+    [self setIfNotNilValue:self.title    forKey:@"title"    inDictionary:attributes];
+    [self setIfNotNilValue:self.type     forKey:@"type"     inDictionary:attributes];
+    [self setIfNotNilValue:self.abstract forKey:@"abstract" inDictionary:attributes];
+    [self setIfNotNilValue:self.source   forKey:@"source"   inDictionary:attributes];
+    [self setIfNotNilValue:self.year     forKey:@"year"     inDictionary:attributes];
+
+    if (self.authors) {
+        NSMutableArray *authors = [NSMutableArray arrayWithCapacity:self.authors.count];
+        for (MDLPerson *author in self.authors) {
+            NSDictionary *requestObject = author.requestObject;
+            if (requestObject) {
+                [authors addObject:requestObject];
+            }
+        }
+
+        attributes[@"authors"] = authors;
+    }
+
+    if (self.group.identifier) {
+        attributes[@"group_id"] = self.group.identifier;
+    }
+
+    [self setIfNotNilValue:self.identifiers forKey:@"identifiers" inDictionary:attributes];
+    [self setIfNotNilValue:self.keywords    forKey:@"keywords"    inDictionary:attributes];
+
+    // ---------------------
+    // Additional attributes
+    // ---------------------
+
+    [self setIfNotNilValue:self.month    forKey:@"month" inDictionary:attributes];
+    [self setIfNotNilValue:self.day      forKey:@"day" inDictionary:attributes];
+    [self setIfNotNilValue:self.revision forKey:@"revision" inDictionary:attributes];
+    [self setIfNotNilValue:self.pages    forKey:@"pages" inDictionary:attributes];
+    [self setIfNotNilValue:self.volume   forKey:@"volume" inDictionary:attributes];
+    [self setIfNotNilValue:self.issue    forKey:@"issue" inDictionary:attributes];
+//    [self setIfNotNilValue:self.websitesURLs forKey:@"" inDictionary:attributes];
+    [self setIfNotNilValue:self.publisher   forKey:@"publisher" inDictionary:attributes];
+    [self setIfNotNilValue:self.city        forKey:@"city" inDictionary:attributes];
+    [self setIfNotNilValue:self.edition     forKey:@"edition" inDictionary:attributes];
+    [self setIfNotNilValue:self.institution forKey:@"institution" inDictionary:attributes];
+    [self setIfNotNilValue:self.series      forKey:@"series" inDictionary:attributes];
+    [self setIfNotNilValue:self.chapter     forKey:@"chapter" inDictionary:attributes];
+//    [self setIfNotNilValue:self.editors forKey:@"" inDictionary:attributes];
+    [self setIfNotNilValue:self.tags           forKey:@"tags" inDictionary:attributes];
+    [self setIfNotNilValue:self.read           forKey:@"read" inDictionary:attributes];
+    [self setIfNotNilValue:self.starred        forKey:@"starred" inDictionary:attributes];
+    [self setIfNotNilValue:self.authored       forKey:@"authored" inDictionary:attributes];
+    [self setIfNotNilValue:self.confirmed      forKey:@"confirmed" inDictionary:attributes];
+    [self setIfNotNilValue:self.hidden         forKey:@"hidden" inDictionary:attributes];
+    [self setIfNotNilValue:self.fileAttached   forKey:@"file_attached" inDictionary:attributes];
+    [self setIfNotNilValue:self.citationKey    forKey:@"citationKey" inDictionary:attributes];
+    [self setIfNotNilValue:self.sourceType     forKey:@"source_type" inDictionary:attributes];
+    [self setIfNotNilValue:self.language       forKey:@"language" inDictionary:attributes];
+    [self setIfNotNilValue:self.shortTitle     forKey:@"short_title" inDictionary:attributes];
+    [self setIfNotNilValue:self.reprintEdition forKey:@"reprint_edition" inDictionary:attributes];
+    [self setIfNotNilValue:self.genre          forKey:@"genre" inDictionary:attributes];
+    [self setIfNotNilValue:self.country        forKey:@"country" inDictionary:attributes];
+//    [self setIfNotNilValue:self.translators forKey:@"" inDictionary:attributes];
+    [self setIfNotNilValue:self.seriesEditor forKey:@"series_editor" inDictionary:attributes];
+    [self setIfNotNilValue:self.code         forKey:@"code" inDictionary:attributes];
+    [self setIfNotNilValue:self.medium       forKey:@"medium" inDictionary:attributes];
+    [self setIfNotNilValue:self.userContext  forKey:@"user_context" inDictionary:attributes];
+    [self setIfNotNilValue:self.department   forKey:@"department" inDictionary:attributes];
+    [self setIfNotNilValue:self.patentOwner             forKey:@"patent_owner"              inDictionary:attributes];
+    [self setIfNotNilValue:self.patentApplicationNumber forKey:@"patent_application_number" inDictionary:attributes];
+    [self setIfNotNilValue:self.patentLegalStatus       forKey:@"patentLegal_status"        inDictionary:attributes];
+
+    return attributes;
+}
+
++ (instancetype)documentWithRawDocument:(NSDictionary *)rawDocument {
+    MDLDocument *document = [MDLDocument new];
+    [document updateWithServerResponseObject:rawDocument];
+    return document;
+}
+
++ (void)searchWithClient:(MDLMendeleyAPIClient *)client
+                   terms:(NSString *)terms
+                    view:(NSString *)view
+                  atPage:(NSString *)pagePath
+           numberOfItems:(NSUInteger)numberOfItems
+                 success:(void (^)(MDLResponseInfo *info, NSArray *documents))success
+                 failure:(void (^)(NSError *))failure {
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+
+    if (view) {
+        parameters[@"view"] = view;
+    }
+
+    if (terms) {
+        parameters[@"query"] = terms;
+    }
+
+    [client
+     getPath:@"/search/catalog"
+     objectType:MDLMendeleyObjectTypeDocument
+     atPage:pagePath
+     numberOfItems:numberOfItems
+     parameters:parameters
+     success:^(MDLResponseInfo *responseInfo, id responseObject) {
+         NSMutableArray *objects = [NSMutableArray array];
+         for (NSDictionary *rawObject in responseObject) {
+             MDLObject *object = [self objectWithServerResponseObject:rawObject];
+             if (object) {
+                 [objects addObject:object];
+             }
+         }
+
+         if (success) {
+             success(responseInfo, objects);
+         }
+     } failure:failure];
+}
+
++ (void)searchWithClient:(MDLMendeleyAPIClient *)client
+                 authors:(NSString *)authors
+                   title:(NSString *)title
+                    year:(NSNumber *)year
+                    view:(NSString *)view
+                  atPage:(NSString *)pagePath
+           numberOfItems:(NSUInteger)numberOfItems
+                 success:(void (^)(MDLResponseInfo *info, NSArray *documents))success
+                 failure:(void (^)(NSError *))failure {
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
 
     if (authors.length > 0) {
-        [terms addObject:[NSString stringWithFormat:@"author:%@",
-                          authors]];
+        parameters[@"author"] = authors;
     }
 
     if (title.length > 0) {
-        [terms addObject:[NSString stringWithFormat:@"title:%@",
-                          title]];
+        parameters[@"title"] = title;
     }
 
     if (year) {
-        [terms addObject:[NSString stringWithFormat:@"year:%@",
-                          year.stringValue]];
+        parameters[@"min_year"] = year;
+        parameters[@"max_year"] = year;
     }
 
-    if (tags.length > 0) {
-        [terms addObject:[NSString stringWithFormat:@"tags:%@",
-                          tags]];
+    if (view) {
+        parameters[@"view"] = view;
     }
 
-    [self searchWithTerms:[terms componentsJoinedByString:@" "]
-                   atPage:pageIndex
-                    count:count
-                  success:success
-                  failure:failure];
+    [client
+     getPath:@"/search/catalog"
+     objectType:MDLMendeleyObjectTypeDocument
+     atPage:pagePath
+     numberOfItems:numberOfItems
+     parameters:parameters
+     success:^(MDLResponseInfo *responseInfo, id responseObject) {
+         NSMutableArray *objects = [NSMutableArray array];
+         for (NSDictionary *rawObject in responseObject) {
+             MDLObject *object = [self objectWithServerResponseObject:rawObject];
+             if (object) {
+                 [objects addObject:object];
+             }
+         }
+
+         if (success) {
+             success(responseInfo, objects);
+         }
+     } failure:failure];
 }
 
-+ (void)searchTagged:(NSString *)tag
-            category:(MDLCategory *)category
-         subcategory:(MDLSubcategory *)subcategory
-              atPage:(NSUInteger)pageIndex
-               count:(NSUInteger)count
-             success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success
-             failure:(void (^)(NSError *))failure
-{
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-
-    if (category) {
-        parameters[@"cat"] = category.identifier;
-    }
-
-    if (subcategory) {
-        parameters[@"subcat"] = subcategory.identifier;
-    }
-
-    NSString *path = [NSString stringWithFormat:@"/oapi/documents/tagged/%@/", tag];
-
-    [self fetchDocumentsWithPath:path
-                          public:YES
-                      parameters:parameters
-                          atPage:pageIndex
-                           count:count
-                         success:success
-                         failure:failure];
-}
-
-+ (void)searchAuthoredWithName:(NSString *)name
-                          year:(NSNumber *)year
-                        atPage:(NSUInteger)pageIndex
-                         count:(NSUInteger)count
-                       success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success
-                       failure:(void (^)(NSError *))failure
-{
-    NSString *path = [NSString stringWithFormat:@"/oapi/documents/authored/%@/", name];
-
-    [self fetchDocumentsWithPath:path
-                          public:YES
-                      parameters:(year) ? @{@"year" : year} : nil
-                          atPage:pageIndex
-                           count:count
-                         success:success
-                         failure:failure];
-}
-
-+ (void)fetchTopDocumentsInPublicLibraryForCategory:(NSString *)categoryIdentifier
-                                        upAndComing:(BOOL)upAndComing
-                                            success:(void (^)(NSArray *))success
-                                            failure:(void (^)(NSError *))failure
-{
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-
-    [client getPath:@"/oapi/stats/papers/"
-requiresAuthentication:NO
-         parameters:[NSDictionary parametersForCategory:categoryIdentifier
-                                            upAndComing:upAndComing]
-            success:^(AFHTTPRequestOperation *operation, NSArray *responseArray) {
-                NSMutableArray *documents = [NSMutableArray array];
-
-                for (NSDictionary *rawDocument in responseArray) {
-                    [documents addObject:[MDLDocument documentWithRawDocument:rawDocument]];
-                }
-
-                if (success) {
-                    success(documents);
-                }
-            } failure:failure];
-}
-
-+ (void)fetchDocumentsInUserLibraryAtPage:(NSUInteger)pageIndex
-                                    count:(NSUInteger)count
-                                  success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success
-                                  failure:(void (^)(NSError *))failure
-{
-    [self fetchDocumentsWithPath:@"/oapi/library/"
-                          public:NO
-                      parameters:nil
-                          atPage:pageIndex
-                           count:count
-                         success:success
-                         failure:failure];
-}
-
-+ (void)fetchAuthoredDocumentsInUserLibraryAtPage:(NSUInteger)pageIndex
-                                            count:(NSUInteger)count
-                                          success:(void (^)(NSArray *, NSUInteger, NSUInteger, NSUInteger, NSUInteger))success
-                                          failure:(void (^)(NSError *))failure
-{
-    [self fetchDocumentsWithPath:@"/oapi/library/documents/authored/"
-                          public:NO
-                      parameters:nil
-                          atPage:pageIndex
-                           count:count
-                         success:success
-                         failure:failure];
-}
-
-- (BOOL)isInUserLibrary
-{
-    return [self.inUserLibrary boolValue];
-}
-
-- (AFHTTPRequestOperation *)uploadFileAtURL:(NSURL *)fileURL
-                                    success:(void (^)(MDLFile *newFile))success
-                                    failure:(void (^)(NSError *))failure
-{
+- (AFHTTPRequestOperation *)uploadFileWithClient:(MDLMendeleyAPIClient *)client
+                                           atURL:(NSURL *)fileURL
+                                     contentType:(NSString *)contentType
+                                        fileName:(NSString *)fileName
+                                         success:(void (^)(MDLFile *newFile))success
+                                         failure:(void (^)(NSError *))failure {
     if (!self.identifier) {
         failure([NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorCancelled userInfo:nil]);
         return nil;
     }
 
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    NSString *path;
-    if (self.group) {
-        path = [NSString stringWithFormat:@"/oapi/documents/group/%@/%@/",
-                self.group.identifier, self.identifier];
-    }
-    else {
-        path = [NSString stringWithFormat:@"/oapi/library/documents/%@/",
-                self.identifier];
-    }
+    return [client
+            postPath:@"/files"
+            fileAtURL:fileURL
+            contentType:contentType
+            fileName:fileName
+            link:[NSString stringWithFormat:@"<https://api.mendeley.com/documents/%@>; rel=\"document\"", self.identifier]
+            success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                MDLFile *file = [MDLFile objectWithServerResponseObject:responseObject];
 
-    return [client putPath:path
-                 fileAtURL:fileURL
-                   success:^(AFHTTPRequestOperation *operation, NSString *fileHash, id responseObject) {
-                       MDLFile *file = [MDLFile fileWithDateAdded:nil
-                                                        extension:fileURL.pathExtension
-                                                             hash:fileHash
-                                                             size:nil
-                                                         document:nil];
-                       if (success) {
-                           success(file);
-                       }
-                   }
-                   failure:failure];
+                if (success) {
+                    success(file);
+                }
+            }
+            failure:failure];
 }
 
-- (void)fetchDetailsSuccess:(void (^)(MDLDocument *))success
-                    failure:(void (^)(NSError *))failure
-{
-    NSString *path;
-    if (self.group) {
-        path = [NSString stringWithFormat:@"/oapi/library/groups/%@/%@/",
-                self.group.identifier,
-                self.identifier];
-    }
-    else {
-        path = [NSString stringWithFormat:(self.isInUserLibrary) ? @"/oapi/library/documents/%@/" : @"/oapi/documents/details/%@/",
-                self.identifier];
+- (void)fetchWithClient:(MDLMendeleyAPIClient *)client
+                   view:(NSString *)view
+                success:(void (^)(MDLDocument *))success
+                failure:(void (^)(NSError *))failure {
+    NSString *path = [@"/documents" stringByAppendingPathComponent:self.identifier];
+    if (self.isCatalogDocument) {
+        path = [@"/catalog" stringByAppendingPathComponent:self.identifier];
     }
 
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
+    NSDictionary *parameters;
+    if (view) {
+        parameters = @{@"view": view};
+    }
 
     [client getPath:path
-requiresAuthentication:self.isInUserLibrary || (self.group.type == MDLGroupTypePrivate)
-         parameters:nil
-            success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
-
-                if (![responseObject isKindOfClass:[NSDictionary class]]) {
-                    if (failure) {
-                        failure(nil);
-                    }
-                    return;
-                }
-
-                self.abstract          = responseObject[@"abstract"];
-                self.addedDate         = [NSDate dateWithTimeIntervalSince1970:[[NSNumber numberOrNumberFromString:responseObject[@"added"]] doubleValue]];
-                self.canonicalIdentifier = responseObject[@"canonical_id"];
-                self.cast              = responseObject[@"cast"];
-                self.citationKey       = responseObject[@"citation_key"];
-                self.deletionPending   = [NSNumber boolNumberFromNumberOrString:responseObject[@"deletionPending"]];
-                self.discipline        = responseObject[@"discipline"];
-                self.DOI               = responseObject[@"doi"];
-                self.editors           = responseObject[@"editors"];
-                if ([responseObject[@"folders_ids"] isKindOfClass:[NSArray class]]) {
-                    self.foldersIdentifiers = responseObject[@"folders_ids"];
-                }
-                self.identifier        = (responseObject[@"id"]) ?: (responseObject[@"uuid"]) ?: nil ;
-                self.identifiers       = ([responseObject[@"identifiers"] isKindOfClass:[NSDictionary class]]) ? responseObject[@"identifiers"] : nil;
-                self.institution       = responseObject[@"institution"];
-                self.authored          = [NSNumber boolNumberFromNumberOrString:responseObject[@"isAuthor"]];
-                self.read              = [NSNumber boolNumberFromNumberOrString:responseObject[@"isRead"]];
-                self.starred           = [NSNumber boolNumberFromNumberOrString:responseObject[@"isStarred"]];
-                self.issue             = responseObject[@"issue"];
-                self.keywords          = responseObject[@"keywords"];
-                self.mendeleyURL       = [NSURL URLWithString:responseObject[@"mendeley_url"]];
-                self.modifiedDate      = [NSDate dateWithTimeIntervalSince1970:[[NSNumber numberOrNumberFromString:responseObject[@"modified"]] doubleValue]];
-                self.notes             = responseObject[@"notes"];
-                self.openAccess        = [NSNumber boolNumberFromNumberOrString:responseObject[@"oa_journal"]];
-                self.pages             = responseObject[@"pages"];
-                self.PubMedIdentifier  = responseObject[@"pmid"];
-                self.producers         = responseObject[@"producers"];
-                if (responseObject[@"publication_outlet"]) {
-                    self.publicationOutlet = [MDLPublication publicationWithName:responseObject[@"publication_outlet"]];
-                }
-                else if (responseObject[@"published_in"]) {
-                    self.publication = [MDLPublication publicationWithName:responseObject[@"published_in"]];
-                }
-                self.publisher         = responseObject[@"publisher"];
-                self.subdiscipline     = responseObject[@"subdiscipline"];
-                self.tags              = responseObject[@"tags"];
-                self.title             = responseObject[@"title"];
-                self.translators       = responseObject[@"translators"];
-                self.type              = responseObject[@"type"];
-                self.version           = [NSNumber numberOrNumberFromString:responseObject[@"version"]];
-                self.volume            = responseObject[@"volume"];
-                self.year              = [NSNumber numberOrNumberFromString:responseObject[@"year"]];
-
-                if (!self.DOI && self.identifiers[@"doi"]) {
-                    self.DOI = self.identifiers[@"doi"];
-                }
-
-                NSMutableArray *URLs = [NSMutableArray array];
-                for (NSString *URLString in [responseObject[@"url"] componentsSeparatedByString:@"\n"]) {
-                    NSURL *URL = [NSURL URLWithString:URLString];
-                    if (URL) {
-                        [URLs addObject:URL];
-                    }
-                }
-                self.URLs = URLs;
-
-                NSMutableArray *authors = [NSMutableArray array];
-                for (NSDictionary *authorDictionary in responseObject[@"authors"]) {
-                    MDLAuthor *author = [MDLAuthor authorWithForename:authorDictionary[@"forename"]
-                                                              surname:authorDictionary[@"surname"]];
-                    if (author) {
-                        [authors addObject:author];
-                    }
-                }
-                self.authors = authors;
-
-                if (responseObject[@"files"]) {
-                    NSMutableArray *files = [NSMutableArray array];
-                    NSDateFormatter *fileDateFormatter = [[NSDateFormatter alloc] init];
-                    fileDateFormatter.dateFormat = @"y-M-d H:m:s";
-                    for (NSDictionary *fileDictionary in responseObject[@"files"]) {
-                        MDLFile *file = [MDLFile fileWithDateAdded:[fileDateFormatter dateFromString:fileDictionary[@"date_added"]]
-                                                         extension:fileDictionary[@"file_extension"]
-                                                              hash:fileDictionary[@"file_hash"]
-                                                              size:[NSNumber numberOrNumberFromString:fileDictionary[@"file_size"]]
-                                                          document:self];
-                        if (file) {
-                            [files addObject:file];
-                        }
-                    }
-                    self.files = files;
-                }
-                else if (responseObject[@"file_url"]) {
-                    self.files = @[[MDLFile fileWithPublicURL:[NSURL URLWithString:responseObject[@"file_url"]] document:self]];
-                }
-
+         objectType:MDLMendeleyObjectTypeDocument
+             atPage:nil
+      numberOfItems:0
+         parameters:parameters
+            success:^(MDLResponseInfo *info, NSDictionary *responseObject) {
+                [self updateWithServerResponseObject:responseObject];
                 if (success) {
                     success(self);
                 }
@@ -532,56 +381,33 @@ requiresAuthentication:self.isInUserLibrary || (self.group.type == MDLGroupTypeP
             failure:failure];
 }
 
-- (void)updateDetailsSuccess:(void (^)(MDLDocument *))success
-                     failure:(void (^)(NSError *))failure
-{
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    NSString *path = [NSString stringWithFormat:@"/oapi/library/documents/%@/",
-                      self.identifier];
-    NSDictionary *bodyContent = [MDLDocument detailsContentForDocument:self];
-
-    [client postPath:path
-             bodyKey:@"document"
-         bodyContent:bodyContent
-             success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                 if (success) {
-                     success(self);
-                 }
-             }
-             failure:failure];
-}
-
 - (void)markAsRead:(BOOL)read
+        withClient:(MDLMendeleyAPIClient *)client
            success:(void (^)(MDLDocument *))success
-           failure:(void (^)(NSError *))failure
-{
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    NSString *path = [NSString stringWithFormat:@"/oapi/library/documents/%@/",
-                      self.identifier];
+           failure:(void (^)(NSError *))failure {
+    NSString *path = [@"/documents" stringByAppendingPathComponent:self.identifier];
 
-    [client postPath:path
-             bodyKey:@"document"
-         bodyContent:@{@"isRead": read ? @"1" : @"0"}
-             success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                 self.read = @(read);
-                 if (success) {
-                     success(self);
-                 }
-             } failure:failure];
+    [client patchPath:path
+           objectType:MDLMendeleyObjectTypeDocument
+           parameters:@{@"read": @(read)}
+              success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                  self.read = @(read);
+                  if (success) {
+                      success(self);
+                  }
+              } failure:failure];
 }
 
 - (void)markAsStarred:(BOOL)starred
+           withClient:(MDLMendeleyAPIClient *)client
               success:(void (^)(MDLDocument *))success
-              failure:(void (^)(NSError *))failure
-{
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    NSString *path = [NSString stringWithFormat:@"/oapi/library/documents/%@/",
-                      self.identifier];
+              failure:(void (^)(NSError *))failure {
+    NSString *path = [@"/documents" stringByAppendingPathComponent:self.identifier];
 
-    [client postPath:path
-             bodyKey:@"document"
-         bodyContent:@{@"isStarred": starred ? @"1" : @"0"}
-             success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [client patchPath:path
+           objectType:MDLMendeleyObjectTypeDocument
+           parameters:@{@"starred": @(starred)}
+              success:^(AFHTTPRequestOperation *operation, id responseObject) {
                  self.starred = @(starred);
                  if (success) {
                      success(self);
@@ -589,82 +415,25 @@ requiresAuthentication:self.isInUserLibrary || (self.group.type == MDLGroupTypeP
              } failure:failure];
 }
 
-- (void)moveToTrashSuccess:(void (^)(MDLDocument *))success
-                   failure:(void (^)(NSError *))failure
-{
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    NSString *path = [NSString stringWithFormat:@"/oapi/library/documents/%@/",
+- (void)moveToTrashWithClient:(MDLMendeleyAPIClient *)client
+                      success:(void (^)(MDLDocument *))success
+                      failure:(void (^)(NSError *))failure {
+    NSString *path = [NSString stringWithFormat:@"/documents/%@/trash",
                       self.identifier];
 
     [client postPath:path
-             bodyKey:@"document"
-         bodyContent:@{@"deletionPending": @"1"}
+          objectType:nil
+          parameters:nil
              success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                 self.deletionPending = @(YES);
                  if (success) {
                      success(self);
                  }
              } failure:failure];
 }
 
-- (void)fetchRelatedDocumentsAtPage:(NSUInteger)pageIndex
-                              count:(NSUInteger)count
-                            success:(void (^)(NSArray *))success
-                            failure:(void (^)(NSError *))failure
-{
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    NSString *path = [NSString stringWithFormat:@"/oapi/documents/related/%@/",
-                      self.identifier];
+#pragma mark - 
 
-    [client getPath:path
-requiresAuthentication:NO
-         parameters:@{@"page" : @(pageIndex), @"items" : @(count)}
-            success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
-                NSMutableArray *documents = [NSMutableArray array];
-                for (NSDictionary *rawDocument in responseObject[@"documents"]) {
-                    [documents addObject:[MDLDocument documentWithRawDocument:rawDocument]];
-                }
-                if (success) {
-                    success(documents);
-                }
-            }
-            failure:failure];
-}
-
-- (void)importToUserLibrarySuccess:(void (^)(NSString *newDocumentIdentifier))success
-                           failure:(void (^)(NSError *))failure
-{
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-
-    [client postPath:@"/oapi/library/documents/"
-             bodyKey:@"canonical_id"
-         bodyContent:self.identifier
-             success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                 if (success) {
-                     success(responseObject[@"document_id"]);
-                 }
-             } failure:failure];
-}
-
-- (void)deleteSuccess:(void (^)())success
-              failure:(void (^)(NSError *))failure
-{
-    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient sharedClient];
-    NSString *path = [NSString stringWithFormat:@"/oapi/library/documents/%@/",
-                      self.identifier];
-
-    [client deletePath:path
-            parameters:nil
-               success:^(AFHTTPRequestOperation *requestOperation, id responseObject) {
-                   if (success) {
-                       success();
-                   }
-               }
-               failure:failure];
-}
-
-- (NSString *)description
-{
+- (NSString *)description {
     return [NSString stringWithFormat: @"%@ (identifier: %@; title: %@)",
             [super description], self.identifier, self.title];
 }

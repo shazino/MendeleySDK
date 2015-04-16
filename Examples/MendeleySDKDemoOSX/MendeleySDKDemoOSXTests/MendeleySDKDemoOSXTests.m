@@ -7,31 +7,16 @@
 //
 
 #import "MendeleySDKDemoOSXTests.h"
+
 #import <MendeleySDK.h>
 
 @implementation MendeleySDKDemoOSXTests
 
-- (void)setUp
-{
-    [super setUp];
-    
-    // Set-up code here.
+- (void)testInit {
+    MDLMendeleyAPIClient *client = [MDLMendeleyAPIClient clientWithClientID:@"testID"
+                                                                     secret:@"testSecret"
+                                                                redirectURI:@"testURI"];
+    XCTAssertNotNil(client, @"The Mendeley SDK client should be accessible");
 }
-
-- (void)tearDown
-{
-    // Tear-down code here.
-    
-    [super tearDown];
-}
-
-- (void)testInit
-{
-    [MDLMendeleyAPIClient configureSharedClientWithClientID:@"testID"
-                                                     secret:@"testSecret"
-                                                redirectURI:@"testURI"];
-    STAssertNotNil([MDLMendeleyAPIClient sharedClient], @"The Mendeley SDK should be accessible");
-}
-
 
 @end
