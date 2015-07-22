@@ -1,5 +1,5 @@
 # MendeleySDK
-**Objective-C client for the Mendeley Open API.**
+**Objective-C client for the Mendeley API.**
 [![Build Status](https://travis-ci.org/shazino/MendeleySDK.png?branch=master)](https://travis-ci.org/shazino/MendeleySDK)
 
 MendeleySDK is a [Mendeley API](http://apidocs.mendeley.com) client for iOS and OS X,
