@@ -81,8 +81,6 @@ MDLDocument *document;
 ## References
 
 - [Documentation (CocoaDocs)](http://cocoadocs.org/docsets/MendeleySDK)
-- [Changelog](https://github.com/shazino/MendeleySDK/wiki/Changelog)
-- [Contribute](https://github.com/shazino/MendeleySDK/wiki/Contribute)
 
 
 ## Requirements
