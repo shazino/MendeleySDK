@@ -1,8 +1,9 @@
 # MendeleySDK Changelog
 
+
 ## v2.0
 
-_Work in progress_
+_Released April 16, 2015_
 
 **Major release, incompatible with previous versions**
 
