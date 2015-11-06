@@ -193,6 +193,7 @@
 				67B79EB617A6A65B00A4CEB5 /* Frameworks */,
 				67B79EB717A6A65B00A4CEB5 /* Resources */,
 				4000D47C95C542AA83E8934B /* Copy Pods Resources */,
+				053ADEFD8E5036BF60965547 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -212,6 +213,7 @@
 				67B79ED517A6A65B00A4CEB5 /* Frameworks */,
 				67B79ED617A6A65B00A4CEB5 /* Resources */,
 				EF8EAC15F0D047EF87A8C7B0 /* Copy Pods Resources */,
+				4C0FE3D0A51A076804E5B4FE /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -230,7 +232,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = MDL;
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = shazino;
 			};
 			buildConfigurationList = 67B79EB417A6A65B00A4CEB5 /* Build configuration list for PBXProject "MendeleySDKDemoOSX" */;
@@ -273,6 +275,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		053ADEFD8E5036BF60965547 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		238EB7A0CB164DD58A61B9C9 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -301,6 +318,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4C0FE3D0A51A076804E5B4FE /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MendeleySDKDemoOSXTests/Pods-MendeleySDKDemoOSXTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EF8EAC15F0D047EF87A8C7B0 /* Copy Pods Resources */ = {
@@ -412,6 +444,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -465,6 +498,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MendeleySDKDemoOSX/MendeleySDKDemoOSX-Prefix.pch";
 				INFOPLIST_FILE = "MendeleySDKDemoOSX/MendeleySDKDemoOSX-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shazino.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -479,6 +513,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MendeleySDKDemoOSX/MendeleySDKDemoOSX-Prefix.pch";
 				INFOPLIST_FILE = "MendeleySDKDemoOSX/MendeleySDKDemoOSX-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shazino.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -498,6 +533,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MendeleySDKDemoOSX/MendeleySDKDemoOSX-Prefix.pch";
 				INFOPLIST_FILE = "MendeleySDKDemoOSXTests/MendeleySDKDemoOSXTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shazino.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
@@ -517,6 +553,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MendeleySDKDemoOSX/MendeleySDKDemoOSX-Prefix.pch";
 				INFOPLIST_FILE = "MendeleySDKDemoOSXTests/MendeleySDKDemoOSXTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shazino.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};

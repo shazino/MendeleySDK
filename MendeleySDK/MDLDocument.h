@@ -23,7 +23,7 @@
 
 @import Foundation;
 
-#import "MDLObject.h"
+#import "MDLMendeleyAPIObject.h"
 
 extern NSString * const MDLDocumentTypeGeneric;
 extern NSString * const MDLDocumentTypeJournal;
@@ -42,7 +42,7 @@ extern NSString * const MDLDocumentViewPatent;
  `MDLDocument` represents a user’s document, as described by Mendeley.
  */
 
-@interface MDLDocument : MDLObject
+@interface MDLDocument : MDLMendeleyAPIObject
 
 //*************************
 // Core Document Attributes

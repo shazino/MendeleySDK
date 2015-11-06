@@ -32,7 +32,7 @@
 #import "MDLMendeleyAPIClient.h"
 #import "MDLResponseInfo.h"
 
-#import "MDLObject.h"
+#import "MDLMendeleyAPIObject.h"
 #import "MDLAnnotation.h"
 #import "MDLPerson.h"
 #import "MDLDocument.h"

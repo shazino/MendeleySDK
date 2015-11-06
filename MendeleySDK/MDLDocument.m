@@ -265,7 +265,7 @@ NSString * const MDLDocumentViewPatent = @"patent";
      success:^(MDLResponseInfo *responseInfo, id responseObject) {
          NSMutableArray *objects = [NSMutableArray array];
          for (NSDictionary *rawObject in responseObject) {
-             MDLObject *object = [self objectWithServerResponseObject:rawObject];
+             MDLMendeleyAPIObject *object = [self objectWithServerResponseObject:rawObject];
              if (object) {
                  [objects addObject:object];
              }
@@ -314,7 +314,7 @@ NSString * const MDLDocumentViewPatent = @"patent";
      success:^(MDLResponseInfo *responseInfo, id responseObject) {
          NSMutableArray *objects = [NSMutableArray array];
          for (NSDictionary *rawObject in responseObject) {
-             MDLObject *object = [self objectWithServerResponseObject:rawObject];
+             MDLMendeleyAPIObject *object = [self objectWithServerResponseObject:rawObject];
              if (object) {
                  [objects addObject:object];
              }

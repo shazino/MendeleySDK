@@ -23,7 +23,7 @@
 
 @import Foundation;
 
-#import "MDLObject.h"
+#import "MDLMendeleyAPIObject.h"
 
 @class MDLMendeleyAPIClient, MDLDocument, AFHTTPRequestOperation;
 
@@ -31,7 +31,7 @@
  `MDLFile` represents a document’s file, as described by Mendeley.
  */
 
-@interface MDLFile : MDLObject
+@interface MDLFile : MDLMendeleyAPIObject
 
 /**
  The name of the file. This is currently a generated name from the metadata of the document that the file is attached to. 

@@ -23,7 +23,7 @@
 
 @import Foundation;
 
-#import "MDLObject.h"
+#import "MDLMendeleyAPIObject.h"
 
 @class MDLMendeleyAPIClient, MDLResponseInfo, MDLDocument;
 
@@ -31,7 +31,7 @@
  `MDLFolder` represents a folder, as described by Mendeley.
  */
 
-@interface MDLFolder : MDLObject
+@interface MDLFolder : MDLMendeleyAPIObject
 
 /**
  The folder name.
@@ -63,7 +63,7 @@
 + (instancetype)createFolderWithClient:(MDLMendeleyAPIClient *)client
                                   name:(NSString *)name
                                 parent:(MDLFolder *)parent
-                               success:(void (^)(MDLObject *))success
+                               success:(void (^)(MDLMendeleyAPIObject *))success
                                failure:(void (^)(NSError *))failure;
 
 /**

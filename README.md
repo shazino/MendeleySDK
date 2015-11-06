@@ -2,7 +2,7 @@
 **Objective-C client for the Mendeley API.**
 [![Build Status](https://travis-ci.org/shazino/MendeleySDK.png?branch=master)](https://travis-ci.org/shazino/MendeleySDK)
 
-MendeleySDK is a [Mendeley API](http://apidocs.mendeley.com) client for iOS and OS X,
+MendeleySDK is a [Mendeley API](http://dev.mendeley.com) client for iOS and OS X,
  built on top of [AFNetworking](http://www.github.com/AFNetworking/AFNetworking)
  and [AFOAuth2Client](http://www.github.com/AFNetworking/AFOAuth2Client).
 
@@ -20,7 +20,7 @@ Here’s an example podfile that installs MendeleySDK and its dependency, AFOAut
 ```ruby
 platform :ios, '5.0'
 
-pod 'MendeleySDK', '2.0'
+pod 'MendeleySDK', '2.1'
 ```
 
 ### App credentials
