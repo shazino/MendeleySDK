@@ -1,5 +1,11 @@
 # MendeleySDK Changelog
 
+## v2.1
+
+_Work in progress_
+
+- _renamed_ `MDLObject` (now part of ModelIO) to `MDLMendeleyAPIObject`, fix (#21)
+
 
 ## v2.0
 
