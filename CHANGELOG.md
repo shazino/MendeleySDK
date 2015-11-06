@@ -2,7 +2,7 @@
 
 ## v2.1
 
-_Work in progress_
+_Released November 6, 2015_
 
 - _renamed_ `MDLObject` (now part of ModelIO) to `MDLMendeleyAPIObject`, fix #21
 
