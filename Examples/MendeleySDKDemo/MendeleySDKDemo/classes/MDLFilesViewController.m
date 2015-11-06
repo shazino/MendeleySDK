@@ -24,7 +24,7 @@
 #import "MDLFilesViewController.h"
 
 #import "MDLFile.h"
-#import <AFNetworking.h>
+#import <AFNetworking/AFNetworking.h>
 
 #import "UIViewController+MDLError.h"
 

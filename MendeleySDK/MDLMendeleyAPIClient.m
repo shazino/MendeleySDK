@@ -25,7 +25,7 @@
 
 #import "MDLResponseInfo.h"
 
-#import <AFNetworking.h>
+#import <AFNetworking/AFNetworking.h>
 
 NSString * const MDLMendeleyAPIBaseURLString = @"https://api.mendeley.com/";
 

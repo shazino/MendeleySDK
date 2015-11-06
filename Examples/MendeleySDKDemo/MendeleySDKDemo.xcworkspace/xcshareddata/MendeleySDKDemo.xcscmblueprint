@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "A9023A5A8E4E2A7528B2DD770D462120A948878B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "A9023A5A8E4E2A7528B2DD770D462120A948878B" : 0,
+    "A81925F2-FC62-42F2-B453-3AB5287B921D" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "122EFC76-200A-40BB-A997-FA4FFAC6F546",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "A9023A5A8E4E2A7528B2DD770D462120A948878B" : "MendeleySDKNew",
+    "A81925F2-FC62-42F2-B453-3AB5287B921D" : "MendeleySDKOAuth2"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MendeleySDKDemo",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Examples\/MendeleySDKDemo\/MendeleySDKDemo.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/github.com\/shazino\/MendeleySDK.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A81925F2-FC62-42F2-B453-3AB5287B921D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:shazino\/MendeleySDK.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A9023A5A8E4E2A7528B2DD770D462120A948878B"
+    }
+  ]
+}

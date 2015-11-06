@@ -26,8 +26,8 @@
 
 #define _MENDELEY_SDK_
 
-#import <AFOAuth2Client.h>
-#import <AFNetworking.h>
+#import <AFOAuth2Client/AFOAuth2Client.h>
+#import <AFNetworking/AFNetworking.h>
 
 #import "MDLMendeleyAPIClient.h"
 #import "MDLResponseInfo.h"

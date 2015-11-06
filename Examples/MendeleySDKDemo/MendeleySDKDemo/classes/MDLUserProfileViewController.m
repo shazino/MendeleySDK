@@ -26,7 +26,7 @@
 #import <MendeleySDK/MDLMendeleyAPIClient.h>
 #import <MendeleySDK/MDLProfile.h>
 
-#import <AFNetworking.h>
+#import <AFNetworking/AFNetworking.h>
 
 #import "UIViewController+MDLError.h"
 
