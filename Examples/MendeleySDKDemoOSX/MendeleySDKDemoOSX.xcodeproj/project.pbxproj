@@ -230,7 +230,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = MDL;
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = shazino;
 			};
 			buildConfigurationList = 67B79EB417A6A65B00A4CEB5 /* Build configuration list for PBXProject "MendeleySDKDemoOSX" */;
@@ -412,6 +412,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -465,6 +466,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MendeleySDKDemoOSX/MendeleySDKDemoOSX-Prefix.pch";
 				INFOPLIST_FILE = "MendeleySDKDemoOSX/MendeleySDKDemoOSX-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shazino.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -479,6 +481,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MendeleySDKDemoOSX/MendeleySDKDemoOSX-Prefix.pch";
 				INFOPLIST_FILE = "MendeleySDKDemoOSX/MendeleySDKDemoOSX-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shazino.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -498,6 +501,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MendeleySDKDemoOSX/MendeleySDKDemoOSX-Prefix.pch";
 				INFOPLIST_FILE = "MendeleySDKDemoOSXTests/MendeleySDKDemoOSXTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shazino.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
@@ -517,6 +521,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MendeleySDKDemoOSX/MendeleySDKDemoOSX-Prefix.pch";
 				INFOPLIST_FILE = "MendeleySDKDemoOSXTests/MendeleySDKDemoOSXTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shazino.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
