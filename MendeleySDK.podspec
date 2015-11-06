@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = 'MendeleySDK'
   s.version          = '2.0'
-  s.summary          = 'Objective-C client for the Mendeley Open API.'
+  s.summary          = 'Objective-C client for the Mendeley API.'
   s.homepage         = 'https://github.com/shazino/MendeleySDK'
   s.license          = 'MIT'
   s.author           = { 'shazino' => 'contact@shazino.com' }
