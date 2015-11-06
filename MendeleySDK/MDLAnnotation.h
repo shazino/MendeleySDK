@@ -23,7 +23,7 @@
 
 @import Foundation;
 
-#import "MDLObject.h"
+#import "MDLMendeleyAPIObject.h"
 
 @class MDLMendeleyAPIClient, MDLResponseInfo;
 @class MDLDocument, MDLGroup;
@@ -33,7 +33,7 @@
  `MDLAnnotation` represents an annotation, as described by Mendeley.
  */
 
-@interface MDLAnnotation : MDLObject
+@interface MDLAnnotation : MDLMendeleyAPIObject
 
 /**
  RGB values.

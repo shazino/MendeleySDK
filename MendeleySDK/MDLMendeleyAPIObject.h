@@ -1,5 +1,5 @@
 //
-// MDLObject.h
+// MDLMendeleyAPIObject.h
 //
 // Copyright (c) 2015 shazino (shazino SAS), http://www.shazino.com/
 //
@@ -27,10 +27,10 @@
 
 
 /**
- `MDLObject` represents an API object.
+ `MDLMendeleyAPIObject` represents an API object.
  */
 
-@interface MDLObject : NSObject
+@interface MDLMendeleyAPIObject : NSObject
 
 /**
  The identifier.
@@ -47,11 +47,11 @@
 - (NSDictionary *)serverRepresentation;
 
 - (void)createWithClient:(MDLMendeleyAPIClient *)client
-                 success:(void (^)(MDLObject *))success
+                 success:(void (^)(MDLMendeleyAPIObject *))success
                  failure:(void (^)(NSError *))failure;
 
 - (void)updateWithClient:(MDLMendeleyAPIClient *)client
-                 success:(void (^)(MDLObject *))success
+                 success:(void (^)(MDLMendeleyAPIObject *))success
                  failure:(void (^)(NSError *))failure;
 
 - (void)deleteWithClient:(MDLMendeleyAPIClient *)client
@@ -59,7 +59,7 @@
                  failure:(void (^)(NSError *))failure;
 
 - (void)fetchWithClient:(MDLMendeleyAPIClient *)client
-                success:(void (^)(MDLObject *object))success
+                success:(void (^)(MDLMendeleyAPIObject *object))success
                 failure:(void (^)(NSError *))failure;
 
 + (void)fetchWithClient:(MDLMendeleyAPIClient *)client

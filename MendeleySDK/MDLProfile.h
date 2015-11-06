@@ -23,7 +23,7 @@
 
 @import Foundation;
 
-#import "MDLObject.h"
+#import "MDLMendeleyAPIObject.h"
 
 @class MDLMendeleyAPIClient, MDLDiscipline;
 
@@ -31,7 +31,7 @@
  `MDLProfile` represents a user profile, as described by Mendeley.
  */
 
-@interface MDLProfile : MDLObject
+@interface MDLProfile : MDLMendeleyAPIObject
 
 /**
  The profile name.
@@ -103,7 +103,7 @@
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
 + (void)fetchMyProfileWithClient:(MDLMendeleyAPIClient *)client
-                         success:(void (^)(MDLObject *))success
+                         success:(void (^)(MDLMendeleyAPIObject *))success
                          failure:(void (^)(NSError *))failure;
 
 

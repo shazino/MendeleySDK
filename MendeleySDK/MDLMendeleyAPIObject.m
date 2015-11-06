@@ -1,5 +1,5 @@
 //
-// MDLObject.m
+// MDLMendeleyAPIObject.m
 //
 // Copyright (c) 2015 shazino (shazino SAS), http://www.shazino.com/
 //
@@ -21,17 +21,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "MDLObject.h"
+#import "MDLMendeleyAPIObject.h"
 
 #import "MDLMendeleyAPIClient.h"
 #import "MDLResponseInfo.h"
 
-@interface MDLObject ()
+@interface MDLMendeleyAPIObject ()
 
 @end
 
 
-@implementation MDLObject
+@implementation MDLMendeleyAPIObject
 
 + (NSString *)objectType {
     return nil;
@@ -46,7 +46,7 @@
 }
 
 + (instancetype)objectWithServerResponseObject:(id)responseObject {
-    MDLObject *object = [self new];
+    MDLMendeleyAPIObject *object = [self new];
     [object updateWithServerResponseObject:responseObject];
     return object;
 }
@@ -65,7 +65,7 @@
 
 
 - (void)createWithClient:(MDLMendeleyAPIClient *)client
-                 success:(void (^)(MDLObject *))success
+                 success:(void (^)(MDLMendeleyAPIObject *))success
                  failure:(void (^)(NSError *))failure {
     [client
      postPath:self.class.path
@@ -82,7 +82,7 @@
 }
 
 - (void)updateWithClient:(MDLMendeleyAPIClient *)client
-                 success:(void (^)(MDLObject *))success
+                 success:(void (^)(MDLMendeleyAPIObject *))success
                  failure:(void (^)(NSError *))failure {
     [client
      patchPath:self.objectPath
@@ -109,7 +109,7 @@
 }
 
 - (void)fetchWithClient:(MDLMendeleyAPIClient *)client
-                success:(void (^)(MDLObject *object))success
+                success:(void (^)(MDLMendeleyAPIObject *object))success
                 failure:(void (^)(NSError *))failure {
     [client getPath:self.objectPath
          objectType:self.class.objectType
@@ -139,7 +139,7 @@
             success:^(MDLResponseInfo *info, NSArray *responseArray) {
                 NSMutableArray *objects = [NSMutableArray array];
                 for (NSDictionary *rawObject in responseArray) {
-                    MDLObject *object = [self objectWithServerResponseObject:rawObject];
+                    MDLMendeleyAPIObject *object = [self objectWithServerResponseObject:rawObject];
                     if (object) {
                         [objects addObject:object];
                     }

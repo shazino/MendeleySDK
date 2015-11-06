@@ -76,7 +76,7 @@
 + (instancetype)createFolderWithClient:(MDLMendeleyAPIClient *)client
                                   name:(NSString *)name
                                 parent:(MDLFolder *)parent
-                               success:(void (^)(MDLObject *))success
+                               success:(void (^)(MDLMendeleyAPIObject *))success
                                failure:(void (^)(NSError *))failure {
     MDLFolder *folder = [MDLFolder new];
     folder.name = name;
