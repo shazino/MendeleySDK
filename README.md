@@ -83,10 +83,7 @@ MDLDocument *document;
 
 ## Requirements
 
-MendeleySDK requires Xcode 7.0 with either the
- [iOS 5.0](http://developer.apple.com/library/ios/#releasenotes/General/WhatsNewIniPhoneOS/Articles/iOS5.html)
- or [Mac OS 10.6](http://developer.apple.com/library/mac/#releasenotes/MacOSX/WhatsNewInOSX/Articles/MacOSX10_6.html#//apple_ref/doc/uid/TP40008898-SW7)
- ([64-bit with modern Cocoa runtime](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtVersionsPlatforms.html)) SDK,
+MendeleySDK requires Xcode 7.0 with either the iOS 5.0 or OS X 10.7 SDK,
  as well as [AFOAuth2Client](https://github.com/AFNetworking/AFOAuth2Client).
 
 
