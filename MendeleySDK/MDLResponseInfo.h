@@ -25,11 +25,11 @@
 
 @interface MDLResponseInfo : NSObject
 
-@property (nonatomic, copy) NSString *nextPagePath;
-@property (nonatomic, copy) NSString *previousPagePath;
-@property (nonatomic, copy) NSString *firstPagePath;
-@property (nonatomic, copy) NSString *lastPagePath;
+@property (nonatomic, copy, nullable) NSString *nextPagePath;
+@property (nonatomic, copy, nullable) NSString *previousPagePath;
+@property (nonatomic, copy, nullable) NSString *firstPagePath;
+@property (nonatomic, copy, nullable) NSString *lastPagePath;
 
-+ (instancetype)infoWithHTTPResponse:(NSHTTPURLResponse *)response;
++ (nonnull instancetype)infoWithHTTPResponse:(nonnull NSHTTPURLResponse *)response;
 
 @end

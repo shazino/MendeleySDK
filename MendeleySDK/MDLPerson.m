@@ -29,15 +29,15 @@
     return @"/profile";
 }
 
-+ (instancetype)personWithFirstName:(NSString *)firstName
-                           lastName:(NSString *)lastName {
++ (nonnull instancetype)personWithFirstName:(nonnull NSString *)firstName
+                                   lastName:(nonnull NSString *)lastName {
     MDLPerson *author = [MDLPerson new];
     author.firstName = firstName;
     author.lastName  = lastName;
     return author;
 }
 
-+ (NSArray <MDLPerson *> *)personsFromServerResponseObject:(id)responseObject {
++ (nullable NSArray <MDLPerson *> *)personsFromServerResponseObject:(nonnull id)responseObject {
     if (![responseObject isKindOfClass:NSArray.class]) {
         return nil;
     }
@@ -59,7 +59,7 @@
     return persons;
 }
 
-- (NSDictionary *)requestObject {
+- (nonnull NSDictionary <NSString *, __kindof NSObject *> *)requestObject {
     return @{@"first_name": self.firstName ?: @"",
              @"last_name":  self.lastName ?: @"" };
 }

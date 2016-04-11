@@ -73,11 +73,11 @@
 
 #pragma mark -
 
-+ (instancetype)createFolderWithClient:(MDLMendeleyAPIClient *)client
-                                  name:(NSString *)name
-                                parent:(MDLFolder *)parent
-                               success:(void (^)(MDLMendeleyAPIObject *))success
-                               failure:(void (^)(NSError *))failure {
++ (nonnull instancetype)createFolderWithClient:(nonnull MDLMendeleyAPIClient *)client
+                                          name:(nonnull NSString *)name
+                                        parent:(nullable MDLFolder *)parent
+                                       success:(nullable void (^)(MDLMendeleyAPIObject * __nonnull))success
+                                       failure:(nullable void (^)(NSError * __nullable))failure {
     MDLFolder *folder = [MDLFolder new];
     folder.name = name;
     folder.parentIdentifier = parent.identifier;
@@ -102,11 +102,11 @@
                   failure:failure];
 }
 
-- (void)fetchDocumentsWithClient:(MDLMendeleyAPIClient *)client
-                          atPage:(NSString *)pagePath
+- (void)fetchDocumentsWithClient:(nonnull MDLMendeleyAPIClient *)client
+                          atPage:(nullable NSString *)pagePath
                    numberOfItems:(NSUInteger)numberOfItems
-                         success:(void (^)(MDLResponseInfo *info, NSArray *documents))success
-                         failure:(void (^)(NSError *))failure {
+                         success:(nullable void (^)(MDLResponseInfo * __nonnull info, NSArray * __nonnull documents))success
+                         failure:(nullable void (^)(NSError * __nullable))failure {
     NSString *path = [NSString stringWithFormat:@"/folders/%@/documents",
                       self.identifier];
 
@@ -131,10 +131,10 @@
             } failure:failure];
 }
 
-- (void)addDocument:(MDLDocument *)document
-         withClient:(MDLMendeleyAPIClient *)client
-            success:(void (^)())success
-            failure:(void (^)(NSError *))failure {
+- (void)addDocument:(nonnull MDLDocument *)document
+         withClient:(nonnull MDLMendeleyAPIClient *)client
+            success:(nullable void (^)())success
+            failure:(nullable void (^)(NSError * __nullable))failure {
     NSString *path = [[@"/folders"
                        stringByAppendingPathComponent:self.identifier]
                       stringByAppendingPathComponent:@"documents"];
@@ -150,10 +150,10 @@
              failure:failure];
 }
 
-- (void)removeDocument:(MDLDocument *)document
-               withClient:(MDLMendeleyAPIClient *)client
-               success:(void (^)())success
-               failure:(void (^)(NSError *))failure {
+- (void)removeDocument:(nonnull MDLDocument *)document
+            withClient:(nonnull MDLMendeleyAPIClient *)client
+               success:(nullable void (^)())success
+               failure:(nullable void (^)(NSError * __nullable))failure {
 
     NSString *path = [NSString stringWithFormat:@"/folders/%@/documents/%@",
                       self.identifier,

@@ -55,15 +55,15 @@ extern NSString * const MDLMendeleyObjectTypeProfiles;
 
  @return The newly-initialized client
  */
-+ (instancetype)clientWithClientID:(NSString *)clientID
-                            secret:(NSString *)secret
-                       redirectURI:(NSString *)redirectURI;
++ (nonnull instancetype)clientWithClientID:(nonnull NSString *)clientID
+                                    secret:(nonnull NSString *)secret
+                               redirectURI:(nonnull NSString *)redirectURI;
 
 /**
  Construct the `NSURL` to authenticate the user.
  You can use this URL for an embedded `UIWebView`/`WebView`/`WKWebView`, or open it with Safari.
  */
-- (NSURL *)authenticationWebURL;
+- (nonnull NSURL *)authenticationWebURL;
 
 /**
  Creates and enqueues an `AFHTTPRequestOperation` to authenticate against the server with an authorization code.
@@ -74,9 +74,9 @@ extern NSString * const MDLMendeleyObjectTypeProfiles;
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data.
   This block has no return value and takes a single argument: the error returned from the server.
  */
-- (void)validateOAuthCode:(NSString *)code
-                  success:(void (^)(AFOAuthCredential *credential))success
-                  failure:(void (^)(NSError *error))failure;
+- (void)validateOAuthCode:(nonnull NSString *)code
+                  success:(nullable void (^)(AFOAuthCredential * __nonnull credential))success
+                  failure:(nullable void (^)(NSError * __nullable error))failure;
 
 /**
  Creates and enqueues an `AFHTTPRequestOperation` to authenticate against the server using the specified refresh token.
@@ -87,13 +87,13 @@ extern NSString * const MDLMendeleyObjectTypeProfiles;
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the response data.
   This block has no return value and takes a single argument: the error returned from the server.
  */
-- (void)refreshToken:(NSString *)refreshToken
-             success:(void (^)(AFOAuthCredential *credential))success
-             failure:(void (^)(NSError *error))failure;
+- (void)refreshToken:(nonnull NSString *)refreshToken
+             success:(nullable void (^)(AFOAuthCredential * __nonnull credential))success
+             failure:(nullable void (^)(NSError * __nullable error))failure;
 
 /**
  Creates an `AFHTTPRequestOperation` with a `GET` request, and enqueues it to the HTTP client’s operation queue.
- 
+
  @param path The path to be appended to the HTTP client’s base URL and used as the request URL.
  @param requiresAuthentication A boolean value that corresponds to whether the resource requires authentication
  @param parameters The parameters of the request.
@@ -104,13 +104,13 @@ extern NSString * const MDLMendeleyObjectTypeProfiles;
  
  @return A new HTTP request operation
  */
-- (AFHTTPRequestOperation *)getPath:(NSString *)path
-                         objectType:(NSString *)objectType
-                             atPage:(NSString *)pagePath
-                      numberOfItems:(NSUInteger)numberOfItems
-                         parameters:(NSDictionary *)parameters
-                            success:(void (^)(MDLResponseInfo *responseInfo, id responseObject))success
-                            failure:(void (^)(NSError *))failure;
+- (nullable AFHTTPRequestOperation *)getPath:(nonnull NSString *)path
+                                  objectType:(nonnull NSString *)objectType
+                                      atPage:(nullable NSString *)pagePath
+                               numberOfItems:(NSUInteger)numberOfItems
+                                  parameters:(nullable NSDictionary *)parameters
+                                     success:(nullable void (^)(MDLResponseInfo * __nonnull, id __nonnull))success
+                                     failure:(nullable void (^)(NSError * __nullable))failure;
 
 /**
  Creates an `AFHTTPRequestOperation` with a `GET` request, setup outstream to a file, and enqueues it to the HTTP client’s operation queue.
@@ -129,12 +129,12 @@ extern NSString * const MDLMendeleyObjectTypeProfiles;
  
  @return A new HTTP request operation
  */
-- (AFHTTPRequestOperation *)getPath:(NSString *)path
-                         parameters:(NSDictionary *)parameters
-           outputStreamToFileAtPath:(NSString *)filePath
-                           progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress
-                            success:(void (^)(AFHTTPRequestOperation *, id))success
-                            failure:(void (^)(NSError *))failure;
+- (nullable AFHTTPRequestOperation *)getPath:(nonnull NSString *)path
+                                  parameters:(nullable NSDictionary *)parameters
+                    outputStreamToFileAtPath:(nonnull NSString *)filePath
+                                    progress:(nullable void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress
+                                     success:(nullable void (^)(AFHTTPRequestOperation * __nonnull, id __nonnull))success
+                                     failure:(nullable void (^)(NSError * __nullable))failure;
 
 /**
  Creates an `AFHTTPRequestOperation` with a `POST` request, and enqueues it to the HTTP client’s operation queue.
@@ -149,11 +149,11 @@ extern NSString * const MDLMendeleyObjectTypeProfiles;
  
  @return A new HTTP request operation
  */
-- (AFHTTPRequestOperation *)postPath:(NSString *)path
-                          objectType:(NSString *)objectType
-                          parameters:(NSDictionary *)parameters
-                             success:(void (^)(AFHTTPRequestOperation *, id))success
-                             failure:(void (^)(NSError *))failure;
+- (nullable AFHTTPRequestOperation *)postPath:(nonnull NSString *)path
+                                   objectType:(nonnull NSString *)objectType
+                                   parameters:(nullable NSDictionary *)parameters
+                                      success:(nullable void (^)(AFHTTPRequestOperation * __nonnull, id __nonnull))success
+                                      failure:(nullable void (^)(NSError * __nullable))failure;
 /**
  Creates an `AFHTTPRequestOperation` with a `PUT` request, and enqueues it to the HTTP client’s operation queue.
  
@@ -166,19 +166,19 @@ extern NSString * const MDLMendeleyObjectTypeProfiles;
  
  @return A new HTTP request operation
  */
-- (AFHTTPRequestOperation *)postPath:(NSString *)path
-                           fileAtURL:(NSURL *)fileURL
-                         contentType:(NSString *)contentType
-                            fileName:(NSString *)fileName
-                                link:(NSString *)link
-                             success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                             failure:(void (^)(NSError *))failure;
+- (nullable AFHTTPRequestOperation *)postPath:(nonnull NSString *)path
+                                    fileAtURL:(nonnull NSURL *)fileURL
+                                  contentType:(nonnull NSString *)contentType
+                                     fileName:(nonnull NSString *)fileName
+                                         link:(nonnull NSString *)link
+                                      success:(nullable void (^)(AFHTTPRequestOperation * __nonnull, id __nonnull))success
+                                      failure:(nullable void (^)(NSError * __nullable))failure;
 
-- (AFHTTPRequestOperation *)patchPath:(NSString *)path
-                           objectType:(NSString *)objectType
-                           parameters:(NSDictionary *)parameters
-                              success:(void (^)(AFHTTPRequestOperation *, id))success
-                              failure:(void (^)(NSError *))failure;
+- (nullable AFHTTPRequestOperation *)patchPath:(nonnull NSString *)path
+                                    objectType:(nonnull NSString *)objectType
+                                    parameters:(nullable NSDictionary *)parameters
+                                       success:(nullable void (^)(AFHTTPRequestOperation * __nonnull, id __nonnull))success
+                                       failure:(nullable void (^)(NSError * __nullable))failure;
 
 /**
  Creates an `AFHTTPRequestOperation` with a `DELETE` request, and enqueues it to the HTTP client’s operation queue.
@@ -192,16 +192,16 @@ extern NSString * const MDLMendeleyObjectTypeProfiles;
  
  @return A new HTTP request operation
  */
-- (AFHTTPRequestOperation *)deletePath:(NSString *)path
-                               success:(void (^)(AFHTTPRequestOperation *, id))success
-                               failure:(void (^)(NSError *))failure;
+- (nullable AFHTTPRequestOperation *)deletePath:(nonnull NSString *)path
+                                        success:(nullable void (^)(AFHTTPRequestOperation * __nonnnull, id __nonnull))success
+                                        failure:(nullable void (^)(NSError * __nullable))failure;
 
 @end
 
 @interface NSNumber (NiceNumber)
 
-+ (NSNumber *)numberOrNumberFromString:(id)numberOrString;
-+ (NSNumber *)boolNumberFromNumberOrString:(id)numberOrString;
++ (nullable NSNumber *)numberOrNumberFromString:(nonnull id)numberOrString;
++ (nullable NSNumber *)boolNumberFromNumberOrString:(nonnull id)numberOrString;
 
 @end
 

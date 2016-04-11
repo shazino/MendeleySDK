@@ -32,12 +32,12 @@
 /**
  The author forename
  */
-@property (nonatomic, copy) NSString *firstName;
+@property (nonatomic, copy, nullable) NSString *firstName;
 
 /**
  The author surname
  */
-@property (nonatomic, copy) NSString *lastName;
+@property (nonatomic, copy, nullable) NSString *lastName;
 
 
 /**
@@ -48,11 +48,11 @@
  
  @return  The newly-initialized author.
  */
-+ (instancetype)personWithFirstName:(NSString *)firstName
-                           lastName:(NSString *)lastName;
++ (nonnull instancetype)personWithFirstName:(nonnull NSString *)firstName
+                                   lastName:(nonnull NSString *)lastName;
 
-+ (NSArray <MDLPerson *> *)personsFromServerResponseObject:(id)responseObject;
++ (nullable NSArray <MDLPerson *> *)personsFromServerResponseObject:(nonnull id)responseObject;
 
-- (NSDictionary *)requestObject;
+- (nonnull NSDictionary <NSString *, __kindof NSObject *> *)requestObject;
 
 @end

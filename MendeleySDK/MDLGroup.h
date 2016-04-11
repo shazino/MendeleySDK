@@ -43,12 +43,12 @@ typedef NS_ENUM(NSUInteger, MDLGroupAccessLevel) {
 /**
  The group Mendeley URL.
  */
-@property (strong, nonatomic) NSURL *mendeleyURL;
+@property (nonatomic, copy, nullable) NSURL *mendeleyURL;
 
 /**
  The group owner.
  */
-@property (strong, nonatomic) MDLProfile *owner;
+@property (nonatomic, strong, nullable) MDLProfile *owner;
 
 /**
  The group type (can be ‘private’, ‘invite’, or ‘open’)
@@ -58,47 +58,47 @@ typedef NS_ENUM(NSUInteger, MDLGroupAccessLevel) {
 /**
  The group name.
  */
-@property (copy, nonatomic) NSString *name;
+@property (nonatomic, copy, nullable) NSString *name;
 
 /**
  The group description.
  */
-@property (copy, nonatomic) NSString *groupDescription;
+@property (nonatomic, copy, nullable) NSString *groupDescription;
 
 /**
  The group URL.
  */
-@property (strong, nonatomic) NSURL *webPage;
+@property (nonatomic, copy, nullable) NSURL *webPage;
 
 /**
  The group disciplines.
  */
-@property (copy, nonatomic) NSArray <NSString *> *disciplines;
+@property (nonatomic, strong, nullable) NSArray <NSString *> *disciplines;
 
 /**
  The group tags.
  */
-@property (copy, nonatomic) NSArray <NSString *> *tags;
+@property (nonatomic, strong, nullable) NSArray <NSString *> *tags;
 
 /**
  The group documents.
  */
-@property (strong, nonatomic) NSArray <MDLDocument *> *documents;
+@property (nonatomic, strong, nullable) NSArray <MDLDocument *> *documents;
 
 /**
  The group admins.
  */
-@property (strong, nonatomic) NSArray <MDLProfile *> *admins;
+@property (nonatomic, strong, nullable) NSArray <MDLProfile *> *admins;
 
 /**
  The group members.
  */
-@property (strong, nonatomic) NSArray <MDLProfile *> *members;
+@property (nonatomic, strong, nullable) NSArray <MDLProfile *> *members;
 
 /**
  The group followers.
  */
-@property (strong, nonatomic) NSArray <MDLProfile *> *followers;
+@property (nonatomic, strong, nullable) NSArray <MDLProfile *> *followers;
 
 /**
  Role of the authenticated user in the group.
@@ -114,7 +114,7 @@ typedef NS_ENUM(NSUInteger, MDLGroupAccessLevel) {
  - `invited`: person who has been invited to the group, but not accepted the invitation.
     This is a read-only access membership.
  */
-@property (copy, nonatomic) NSString *role;
+@property (nonatomic, copy, nullable) NSString *role;
 
 
 /**
@@ -128,11 +128,11 @@ typedef NS_ENUM(NSUInteger, MDLGroupAccessLevel) {
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-+ (void)fetchGroupsForCurrentUserWithClient:(MDLMendeleyAPIClient *)client
-                                     atPage:(NSString *)pagePath
++ (void)fetchGroupsForCurrentUserWithClient:(nonnull MDLMendeleyAPIClient *)client
+                                     atPage:(nullable NSString *)pagePath
                               numberOfItems:(NSUInteger)numberOfItems
-                                    success:(void (^)(MDLResponseInfo *info, NSArray *))success
-                                    failure:(void (^)(NSError *))failure;
+                                    success:(nullable void (^)(MDLResponseInfo * __nonnull, NSArray * __nonnull))success
+                                    failure:(nullable void (^)(NSError * __nullable))failure;
 
 /**
  Fetches information for the receiver group.
@@ -143,9 +143,9 @@ typedef NS_ENUM(NSUInteger, MDLGroupAccessLevel) {
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)fetchDetailsWithClient:(MDLMendeleyAPIClient *)client
-                       success:(void (^)(MDLGroup *))success
-                       failure:(void (^)(NSError *))failure;
+- (void)fetchDetailsWithClient:(nonnull MDLMendeleyAPIClient *)client
+                       success:(nullable void (^)(MDLGroup * __nonnull))success
+                       failure:(nullable void (^)(NSError * __nullable))failure;
 
 /**
  Fetches the members for the receiver group.
@@ -158,10 +158,10 @@ typedef NS_ENUM(NSUInteger, MDLGroupAccessLevel) {
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)fetchPeopleWithClient:(MDLMendeleyAPIClient *)client
-                       atPage:(NSString *)pagePath
+- (void)fetchPeopleWithClient:(nonnull MDLMendeleyAPIClient *)client
+                       atPage:(nullable NSString *)pagePath
                 numberOfItems:(NSUInteger)numberOfItems
-                      success:(void (^)(MDLResponseInfo *info, MDLGroup *))success
-                      failure:(void (^)(NSError *))failure;
+                      success:(nullable void (^)(MDLResponseInfo * __nonnull, MDLGroup * __nonnull))success
+                      failure:(nullable void (^)(NSError * __nullable))failure;
 
 @end

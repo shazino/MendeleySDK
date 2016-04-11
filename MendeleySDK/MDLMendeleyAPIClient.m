@@ -53,9 +53,9 @@ NSString * const  MDLMendeleyObjectTypeProfiles          = @"application/vnd.men
 
 @implementation MDLMendeleyAPIClient
 
-+ (instancetype)clientWithClientID:(NSString *)clientID
-                            secret:(NSString *)secret
-                       redirectURI:(NSString *)redirectURI {
++ (nonnull instancetype)clientWithClientID:(nonnull NSString *)clientID
+                                    secret:(nonnull NSString *)secret
+                               redirectURI:(nonnull NSString *)redirectURI {
     NSURL *baseURL = [NSURL URLWithString:MDLMendeleyAPIBaseURLString];
     MDLMendeleyAPIClient *client = [[self alloc] initWithBaseURL:baseURL clientID:clientID secret:secret];
     client.redirectURI = redirectURI;
@@ -131,7 +131,7 @@ NSString * const  MDLMendeleyObjectTypeProfiles          = @"application/vnd.men
 
 #pragma mark - Authentication
 
-- (NSURL *)authenticationWebURL {
+- (nonnull NSURL *)authenticationWebURL {
     self.parameterEncoding = AFFormURLParameterEncoding;
 
     NSDictionary *parameters = @{@"client_id": self.clientID ?: @"",
@@ -146,9 +146,9 @@ NSString * const  MDLMendeleyObjectTypeProfiles          = @"application/vnd.men
     return request.URL;
 }
 
-- (void)validateOAuthCode:(NSString *)code
-                  success:(void (^)(AFOAuthCredential *credential))success
-                  failure:(void (^)(NSError *error))failure {
+- (void)validateOAuthCode:(nonnull NSString *)code
+                  success:(nullable void (^)(AFOAuthCredential * __nonnull credential))success
+                  failure:(nullable void (^)(NSError * __nullable error))failure {
     self.parameterEncoding = AFFormURLParameterEncoding;
 
     [self authenticateUsingOAuthWithPath:@"oauth/token"
@@ -160,9 +160,9 @@ NSString * const  MDLMendeleyObjectTypeProfiles          = @"application/vnd.men
     self.parameterEncoding = AFJSONParameterEncoding;
 }
 
-- (void)refreshToken:(NSString *)refreshToken
-             success:(void (^)(AFOAuthCredential *credential))success
-             failure:(void (^)(NSError *error))failure {
+- (void)refreshToken:(nonnull NSString *)refreshToken
+             success:(nullable void (^)(AFOAuthCredential * __nonnull credential))success
+             failure:(nullable void (^)(NSError * __nullable error))failure {
     self.parameterEncoding = AFFormURLParameterEncoding;
 
     [self setDefaultHeader:@"Authorization" value:nil];
@@ -177,13 +177,13 @@ NSString * const  MDLMendeleyObjectTypeProfiles          = @"application/vnd.men
 
 #pragma mark - Operations
 
-- (AFHTTPRequestOperation *)getPath:(NSString *)path
-                         objectType:(NSString *)objectType
-                             atPage:(NSString *)pagePath
-                      numberOfItems:(NSUInteger)numberOfItems
-                         parameters:(NSDictionary *)parameters
-                            success:(void (^)(MDLResponseInfo *responseInfo, id responseObject))success
-                            failure:(void (^)(NSError *))failure {
+- (nullable AFHTTPRequestOperation *)getPath:(nonnull NSString *)path
+                                  objectType:(nonnull NSString *)objectType
+                                      atPage:(nullable NSString *)pagePath
+                               numberOfItems:(NSUInteger)numberOfItems
+                                  parameters:(nullable NSDictionary *)parameters
+                                     success:(nullable void (^)(MDLResponseInfo * __nonnull, id __nonnull))success
+                                     failure:(nullable void (^)(NSError * __nullable))failure {
     if (numberOfItems > 0 && !pagePath) {
         NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
         mutableParameters[@"limit"] = @(numberOfItems);
@@ -217,12 +217,12 @@ NSString * const  MDLMendeleyObjectTypeProfiles          = @"application/vnd.men
     return operation;
 }
 
-- (AFHTTPRequestOperation *)getPath:(NSString *)path
-                         parameters:(NSDictionary *)parameters
-           outputStreamToFileAtPath:(NSString *)filePath
-                           progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress
-                            success:(void (^)(AFHTTPRequestOperation *, id))success
-                            failure:(void (^)(NSError *))failure {
+- (nullable AFHTTPRequestOperation *)getPath:(nonnull NSString *)path
+                                  parameters:(nullable NSDictionary *)parameters
+                    outputStreamToFileAtPath:(nonnull NSString *)filePath
+                                    progress:(nullable void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress
+                                     success:(nullable void (^)(AFHTTPRequestOperation * __nonnull, id __nonnull))success
+                                     failure:(nullable void (^)(NSError * __nullable))failure {
     NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:parameters];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     operation.outputStream = [NSOutputStream outputStreamToFileAtPath:filePath append:NO];
@@ -245,11 +245,11 @@ NSString * const  MDLMendeleyObjectTypeProfiles          = @"application/vnd.men
     return operation;
 }
 
-- (AFHTTPRequestOperation *)postPath:(NSString *)path
-                          objectType:(NSString *)objectType
-                          parameters:(NSDictionary *)parameters
-                             success:(void (^)(AFHTTPRequestOperation *, id))success
-                             failure:(void (^)(NSError *))failure {
+- (nullable AFHTTPRequestOperation *)postPath:(nonnull NSString *)path
+                                   objectType:(nonnull NSString *)objectType
+                                   parameters:(nullable NSDictionary *)parameters
+                                      success:(nullable void (^)(AFHTTPRequestOperation * __nonnull, id __nonnull))success
+                                      failure:(nullable void (^)(NSError * __nullable))failure {
     NSMutableURLRequest *request = [self requestWithMethod:@"POST" path:path parameters:parameters];
     if (objectType) {
         [request setValue:objectType forHTTPHeaderField:@"Accept"];
@@ -273,11 +273,11 @@ NSString * const  MDLMendeleyObjectTypeProfiles          = @"application/vnd.men
     return operation;
 }
 
-- (AFHTTPRequestOperation *)patchPath:(NSString *)path
-                           objectType:(NSString *)objectType
-                           parameters:(NSDictionary *)parameters
-                              success:(void (^)(AFHTTPRequestOperation *, id))success
-                              failure:(void (^)(NSError *))failure {
+- (nullable AFHTTPRequestOperation *)patchPath:(nonnull NSString *)path
+                                    objectType:(nonnull NSString *)objectType
+                                    parameters:(nullable NSDictionary *)parameters
+                                       success:(nullable void (^)(AFHTTPRequestOperation * __nonnull, id __nonnull))success
+                                       failure:(nullable void (^)(NSError * __nullable))failure {
     NSMutableURLRequest *request = [self requestWithMethod:@"PATCH" path:path parameters:parameters];
     if (objectType) {
         [request setValue:objectType forHTTPHeaderField:@"Accept"];
@@ -301,9 +301,9 @@ NSString * const  MDLMendeleyObjectTypeProfiles          = @"application/vnd.men
     return operation;
 }
 
-- (AFHTTPRequestOperation *)deletePath:(NSString *)path
-                               success:(void (^)(AFHTTPRequestOperation *, id))success
-                               failure:(void (^)(NSError *))failure {
+- (nullable AFHTTPRequestOperation *)deletePath:(nonnull NSString *)path
+                                        success:(nullable void (^)(AFHTTPRequestOperation * __nonnnull, id __nonnull))success
+                                        failure:(nullable void (^)(NSError * __nullable))failure {
     NSURLRequest *request = [self requestWithMethod:@"DELETE" path:path parameters:nil];
 	AFHTTPRequestOperation *operation;
     operation = [self
@@ -322,13 +322,13 @@ NSString * const  MDLMendeleyObjectTypeProfiles          = @"application/vnd.men
     return operation;
 }
 
-- (AFHTTPRequestOperation *)postPath:(NSString *)path
-                           fileAtURL:(NSURL *)fileURL
-                         contentType:(NSString *)contentType
-                            fileName:(NSString *)fileName
-                                link:(NSString *)link
-                             success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                             failure:(void (^)(NSError *))failure {
+- (nullable AFHTTPRequestOperation *)postPath:(nonnull NSString *)path
+                                    fileAtURL:(nonnull NSURL *)fileURL
+                                  contentType:(nonnull NSString *)contentType
+                                     fileName:(nonnull NSString *)fileName
+                                         link:(nonnull NSString *)link
+                                      success:(nullable void (^)(AFHTTPRequestOperation * __nonnull, id __nonnull))success
+                                      failure:(nullable void (^)(NSError * __nullable))failure {
     NSMutableURLRequest *request= [self requestWithMethod:@"POST"
                                                      path:path
                                                parameters:nil];
@@ -359,7 +359,7 @@ NSString * const  MDLMendeleyObjectTypeProfiles          = @"application/vnd.men
 
 @implementation NSNumber (NiceNumber)
 
-+ (NSNumber *)numberOrNumberFromString:(id)numberOrString {
++ (nullable NSNumber *)numberOrNumberFromString:(nonnull id)numberOrString {
     if ([numberOrString isKindOfClass:[NSString class]]) {
         return [[NSNumberFormatter new] numberFromString:numberOrString];
     }
@@ -367,7 +367,7 @@ NSString * const  MDLMendeleyObjectTypeProfiles          = @"application/vnd.men
     return numberOrString;
 }
 
-+ (NSNumber *)boolNumberFromNumberOrString:(id)numberOrString {
++ (nullable NSNumber *)boolNumberFromNumberOrString:(nonnull id)numberOrString {
     if ([numberOrString isKindOfClass:[NSString class]]) {
         if ([@"1" isEqualToString:numberOrString]) {
             return @YES;

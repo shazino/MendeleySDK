@@ -36,52 +36,52 @@
 /**
  The profile name.
  */
-@property (copy, nonatomic) NSString *firstName;
+@property (nonatomic, copy, nullable) NSString *firstName;
 
 /**
  The profile name.
  */
-@property (copy, nonatomic) NSString *lastName;
+@property (nonatomic, copy, nullable) NSString *lastName;
 
 /**
  The profile location.
  */
-@property (copy, nonatomic) NSString *location;
+@property (nonatomic, copy, nullable) NSString *location;
 
 /**
  The profile name.
  */
-@property (copy, nonatomic) NSString *displayName;
+@property (nonatomic, copy, nullable) NSString *displayName;
 
 /**
  The profile email
  */
-@property (copy, nonatomic) NSString *email;
+@property (nonatomic, copy, nullable) NSString *email;
 
 /**
  The profile research interests.
  */
-@property (copy, nonatomic) NSString *researchInterests;
+@property (nonatomic, copy, nullable) NSString *researchInterests;
 
 /**
  The profile academic status.
  */
-@property (copy, nonatomic) NSString *academicStatus;
+@property (nonatomic, copy, nullable) NSString *academicStatus;
 
 /**
  The profile Mendeley URL.
  */
-@property (strong, nonatomic) NSURL *mendeleyURL;
+@property (nonatomic, copy, nullable) NSURL *mendeleyURL;
 
 /**
  The current research discipline.
  */
-@property (strong, nonatomic) MDLDiscipline *discipline;
+@property (nonatomic, strong, nullable) MDLDiscipline *discipline;
 
 /**
  The profile original photo URL.
  */
-@property (strong, nonatomic) NSURL *photoOriginalURL;
+@property (nonatomic, copy, nullable) NSURL *photoOriginalURL;
 
 
 /**
@@ -91,7 +91,7 @@
 
  @return  The newly-initialized user.
  */
-+ (instancetype)profileWithIdentifier:(NSString *)identifier;
++ (nonnull instancetype)profileWithIdentifier:(nonnull NSString *)identifier;
 
 /**
  Fetches the complete profile for the currently logged in user (“my profile”).
@@ -102,9 +102,8 @@
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-+ (void)fetchMyProfileWithClient:(MDLMendeleyAPIClient *)client
-                         success:(void (^)(MDLMendeleyAPIObject *))success
-                         failure:(void (^)(NSError *))failure;
-
++ (void)fetchMyProfileWithClient:(nonnull MDLMendeleyAPIClient *)client
+                         success:(nullable void (^)(MDLMendeleyAPIObject * __nullable))success
+                         failure:(nullable void (^)(NSError * __nullable))failure;
 
 @end

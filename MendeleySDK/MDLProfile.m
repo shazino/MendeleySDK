@@ -73,9 +73,9 @@
     return profile;
 }
 
-+ (void)fetchMyProfileWithClient:(MDLMendeleyAPIClient *)client
-                         success:(void (^)(MDLMendeleyAPIObject *))success
-                         failure:(void (^)(NSError *))failure {
++ (void)fetchMyProfileWithClient:(nonnull MDLMendeleyAPIClient *)client
+                         success:(nullable void (^)(MDLMendeleyAPIObject * __nullable))success
+                         failure:(nullable void (^)(NSError * __nullable))failure {
     MDLProfile *me = [MDLProfile new];
     me.identifier = @"me";
 

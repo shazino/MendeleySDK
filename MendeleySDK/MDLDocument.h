@@ -51,56 +51,56 @@ extern NSString * const MDLDocumentViewPatent;
 /**
  The title of the document.
  */
-@property (copy, nonatomic) NSString *title;
+@property (nonatomic, copy, nullable) NSString *title;
 
 /**
  The type of the document. This is `@"generic"` by default.
  */
-@property (copy, nonatomic) NSString *type;
+@property (nonatomic, copy, nullable) NSString *type;
 
 /**
  The user that added the document to the system.
  */
-@property (strong, nonatomic) MDLProfile *user;
+@property (nonatomic, strong, nullable) MDLProfile *user;
 
 /**
  The group of the document, if it belongs to one.
  */
-@property (strong, nonatomic) MDLGroup *group;
+@property (nonatomic, strong, nullable) MDLGroup *group;
 
-@property (nonatomic, copy) NSString *creationDateString;
+@property (nonatomic, copy, nullable) NSString *creationDateString;
 
-@property (nonatomic, copy) NSString *modificationDateString;
+@property (nonatomic, copy, nullable) NSString *modificationDateString;
 
 /**
  The abstract of the document.
  */
-@property (copy, nonatomic) NSString *abstract;
+@property (nonatomic, copy, nullable) NSString *abstract;
 
 /**
  The publication outlet of the document.
  */
-@property (strong, nonatomic) NSString *source;
+@property (nonatomic, strong, nullable) NSString *source;
 
 /**
  The year of the document.
  */
-@property (strong, nonatomic) NSNumber *year;
+@property (nonatomic, strong, nullable) NSNumber *year;
 
 /**
  The authors of the document.
  */
-@property (strong, nonatomic) NSArray <MDLPerson *> *authors;
+@property (nonatomic, strong, nullable) NSArray <MDLPerson *> *authors;
 
 /**
  The document identifiers.
  */
-@property (strong, nonatomic) NSDictionary *identifiers;
+@property (nonatomic, strong, nullable) NSDictionary <NSString *, NSString *> *identifiers;
 
 /**
  The keywords of the document.
  */
-@property (strong, nonatomic) NSArray <NSString *> *keywords;
+@property (nonatomic, strong, nullable) NSArray <NSString *> *keywords;
 
 
 //***************************
@@ -120,194 +120,194 @@ extern NSString * const MDLDocumentViewPatent;
 /**
  The publication month of the document.
  */
-@property (copy, nonatomic) NSNumber *month;
+@property (nonatomic, copy, nullable) NSNumber *month;
 
 /**
  The publication day of the document.
  */
-@property (copy, nonatomic) NSNumber *day;
+@property (nonatomic, copy, nullable) NSNumber *day;
 
 /**
  The revision of the document.
  */
-@property (copy, nonatomic) NSString *revision;
+@property (nonatomic, copy, nullable) NSString *revision;
 
 /**
  The pages of the document.
  */
-@property (copy, nonatomic) NSString *pages;
+@property (nonatomic, copy, nullable) NSString *pages;
 
 /**
  The volume of the document.
  */
-@property (copy, nonatomic) NSString *volume;
+@property (nonatomic, copy, nullable) NSString *volume;
 
 /**
  The issue of the document.
  */
-@property (copy, nonatomic) NSString *issue;
+@property (nonatomic, copy, nullable) NSString *issue;
 
 /**
  The websites of the document.
  */
-@property (copy, nonatomic) NSArray <NSURL *> *websitesURLs;
+@property (nonatomic, copy, nullable) NSArray <NSURL *> *websitesURLs;
 
 /**
  The publisher of the document.
  */
-@property (copy, nonatomic) NSString *publisher;
+@property (nonatomic, copy, nullable) NSString *publisher;
 
 /**
  The city of the document.
  */
-@property (copy, nonatomic) NSString *city;
+@property (nonatomic, copy, nullable) NSString *city;
 
 /**
  The edition of the document.
  */
-@property (copy, nonatomic) NSString *edition;
+@property (nonatomic, copy, nullable) NSString *edition;
 
 /**
  The institution of the document.
  */
-@property (copy, nonatomic) NSString *institution;
+@property (nonatomic, copy, nullable) NSString *institution;
 
 /**
  The series of the document.
  */
-@property (copy, nonatomic) NSString *series;
+@property (nonatomic, copy, nullable) NSString *series;
 
 /**
  The chapter of the document.
  */
-@property (copy, nonatomic) NSString *chapter;
+@property (nonatomic, copy, nullable) NSString *chapter;
 
 /**
  The editors of the document.
  */
-@property (copy, nonatomic) NSArray <MDLPerson *> *editors;
+@property (nonatomic, strong, nullable) NSArray <MDLPerson *> *editors;
 
 /**
  The tags of the document.
  */
-@property (copy, nonatomic) NSArray <NSString *> *tags;
+@property (nonatomic, copy, nullable) NSArray <NSString *> *tags;
 
 /**
  The read status of the document
  */
-@property (copy, nonatomic) NSNumber *read;
+@property (nonatomic, copy, nullable) NSNumber *read;
 
 /**
  The star status of the document
  */
-@property (copy, nonatomic) NSNumber *starred;
+@property (nonatomic, copy, nullable) NSNumber *starred;
 
 /**
  The authored status of the document
  */
-@property (copy, nonatomic) NSNumber *authored;
+@property (nonatomic, copy, nullable) NSNumber *authored;
 
 /**
  The confirmed status of the document
  */
-@property (copy, nonatomic) NSNumber *confirmed;
+@property (nonatomic, copy, nullable) NSNumber *confirmed;
 
 /**
  The hidden status of the document
  */
-@property (copy, nonatomic) NSNumber *hidden;
+@property (nonatomic, copy, nullable) NSNumber *hidden;
 
 /**
  Whetever it has file(s) attached.
  */
-@property (copy, nonatomic) NSNumber *fileAttached;
+@property (nonatomic, copy, nullable) NSNumber *fileAttached;
 
 /**
  The citation key of the document.
  */
-@property (copy, nonatomic) NSString *citationKey;
+@property (nonatomic, copy, nullable) NSString *citationKey;
 
 /**
  The source type of the document.
  */
-@property (copy, nonatomic) NSString *sourceType;
+@property (nonatomic, copy, nullable) NSString *sourceType;
 
 /**
  The language of the document.
  */
-@property (copy, nonatomic) NSString *language;
+@property (nonatomic, copy, nullable) NSString *language;
 
 /**
  The short title of the document.
  */
-@property (copy, nonatomic) NSString *shortTitle;
+@property (nonatomic, copy, nullable) NSString *shortTitle;
 
 /**
  The reprint edition of the document.
  */
-@property (copy, nonatomic) NSString *reprintEdition;
+@property (nonatomic, copy, nullable) NSString *reprintEdition;
 
 /**
  The genre of the document.
  */
-@property (copy, nonatomic) NSString *genre;
+@property (nonatomic, copy, nullable) NSString *genre;
 
 /**
  The country of the document.
  */
-@property (copy, nonatomic) NSString *country;
+@property (nonatomic, copy, nullable) NSString *country;
 
 /**
  The translators of the document.
  */
-@property (copy, nonatomic) NSArray <MDLPerson *> *translators;
+@property (nonatomic, strong, nullable) NSArray <MDLPerson *> *translators;
 
 /**
  The series editor of the document.
  */
-@property (copy, nonatomic) NSString *seriesEditor;
+@property (nonatomic, copy, nullable) NSString *seriesEditor;
 
 /**
  The code of the document.
  */
-@property (copy, nonatomic) NSString *code;
+@property (nonatomic, copy, nullable) NSString *code;
 
 /**
  The medium of the document.
  */
-@property (copy, nonatomic) NSString *medium;
+@property (nonatomic, copy, nullable) NSString *medium;
 
 /**
  The user context of the document.
  */
-@property (copy, nonatomic) NSString *userContext;
+@property (nonatomic, copy, nullable) NSString *userContext;
 
 /**
  The department of the document.
  */
-@property (copy, nonatomic) NSString *department;
+@property (nonatomic, copy, nullable) NSString *department;
 
 /**
  The patent owner of the document.
  */
-@property (copy, nonatomic) NSString *patentOwner;
+@property (nonatomic, copy, nullable) NSString *patentOwner;
 
 /**
  The patent application number of the document.
  */
-@property (copy, nonatomic) NSString *patentApplicationNumber;
+@property (nonatomic, copy, nullable) NSString *patentApplicationNumber;
 
 /**
  The patent legal status of the document.
  */
-@property (copy, nonatomic) NSString *patentLegalStatus;
+@property (nonatomic, copy, nullable) NSString *patentLegalStatus;
 
 
 /**
  For catalog documents only.
  The Mendeley URL of the document.
  */
-@property (strong, nonatomic) NSURL *mendeleyURL;
+@property (nonatomic, strong, nullable) NSURL *mendeleyURL;
 
 
 /**
@@ -321,13 +321,13 @@ extern NSString * const MDLDocumentViewPatent;
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-+ (void)searchWithClient:(MDLMendeleyAPIClient *)client
-                   terms:(NSString *)terms
-                    view:(NSString *)view
-                  atPage:(NSString *)pagePath
++ (void)searchWithClient:(nonnull MDLMendeleyAPIClient *)client
+                   terms:(nonnull NSString *)terms
+                    view:(nullable NSString *)view
+                  atPage:(nullable NSString *)pagePath
            numberOfItems:(NSUInteger)numberOfItems
-                 success:(void (^)(MDLResponseInfo *info, NSArray *documents))success
-                 failure:(void (^)(NSError *))failure;
+                 success:(nullable void (^)(MDLResponseInfo * __nonnull info, NSArray * __nonnull documents))success
+                 failure:(nullable void (^)(NSError * __nullable))failure;
 
 /**
  Sends an API search request with specific terms using the shared client.
@@ -344,15 +344,15 @@ extern NSString * const MDLDocumentViewPatent;
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-+ (void)searchWithClient:(MDLMendeleyAPIClient *)client
-                 authors:(NSString *)authors
-                   title:(NSString *)title
-                    year:(NSNumber *)year
-                    view:(NSString *)view
-                  atPage:(NSString *)pagePath
++ (void)searchWithClient:(nonnull MDLMendeleyAPIClient *)client
+                 authors:(nullable NSString *)authors
+                   title:(nullable NSString *)title
+                    year:(nullable NSNumber *)year
+                    view:(nullable NSString *)view
+                  atPage:(nullable NSString *)pagePath
            numberOfItems:(NSUInteger)numberOfItems
-                 success:(void (^)(MDLResponseInfo *info, NSArray *documents))success
-                 failure:(void (^)(NSError *))failure;
+                 success:(nullable void (^)(MDLResponseInfo * __nonnull info, NSArray * __nonnull documents))success
+                 failure:(nullable void (^)(NSError * __nullable))failure;
 
 
 /**
@@ -363,10 +363,10 @@ extern NSString * const MDLDocumentViewPatent;
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data.
  This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)fetchWithClient:(MDLMendeleyAPIClient *)client
-                   view:(NSString *)view
-                success:(void (^)(MDLDocument *))success
-                failure:(void (^)(NSError *))failure;
+- (void)fetchWithClient:(nonnull MDLMendeleyAPIClient *)client
+                   view:(nullable NSString *)view
+                success:(nullable void (^)(MDLDocument * __nonnull))success
+                failure:(nullable void (^)(NSError * __nullable))failure;
 
 
 /**
@@ -380,12 +380,12 @@ extern NSString * const MDLDocumentViewPatent;
  
  @return A new HTTP request operation
  */
-- (AFHTTPRequestOperation *)uploadFileWithClient:(MDLMendeleyAPIClient *)client
-                                           atURL:(NSURL *)fileURL
-                                     contentType:(NSString *)contentType
-                                        fileName:(NSString *)fileName
-                                         success:(void (^)(MDLFile *newFile))success
-                                         failure:(void (^)(NSError *))failure;
+- (AFHTTPRequestOperation *)uploadFileWithClient:(nonnull MDLMendeleyAPIClient *)client
+                                           atURL:(nonnull NSURL *)fileURL
+                                     contentType:(nonnull NSString *)contentType
+                                        fileName:(nonnull NSString *)fileName
+                                         success:(nullable void (^)(MDLFile * __nonnull newFile))success
+                                         failure:(nullable void (^)(NSError * __nullable))failure;
 
 /**
  Sends an update document API request using the shared client.
@@ -397,9 +397,9 @@ extern NSString * const MDLDocumentViewPatent;
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
 - (void)markAsRead:(BOOL)read
-        withClient:(MDLMendeleyAPIClient *)client
-           success:(void (^)(MDLDocument *))success
-           failure:(void (^)(NSError *))failure;
+        withClient:(nonnull MDLMendeleyAPIClient *)client
+           success:(nullable void (^)(MDLDocument * __nonnull))success
+           failure:(nullable void (^)(NSError * __nullable))failure;
 
 /**
  Sends an update document API request using the shared client.
@@ -411,9 +411,9 @@ extern NSString * const MDLDocumentViewPatent;
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
 - (void)markAsStarred:(BOOL)starred
-           withClient:(MDLMendeleyAPIClient *)client
-              success:(void (^)(MDLDocument *))success
-              failure:(void (^)(NSError *))failure;
+           withClient:(nonnull MDLMendeleyAPIClient *)client
+              success:(nullable void (^)(MDLDocument * __nonnull))success
+              failure:(nullable void (^)(NSError * __nullable))failure;
 
 /**
  Sends an update document API request using the shared client.
@@ -423,8 +423,8 @@ extern NSString * const MDLDocumentViewPatent;
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)moveToTrashWithClient:(MDLMendeleyAPIClient *)client
-                      success:(void (^)(MDLDocument *))success
-                      failure:(void (^)(NSError *))failure;
+- (void)moveToTrashWithClient:(nonnull MDLMendeleyAPIClient *)client
+                      success:(nullable void (^)(MDLDocument * __nonnull))success
+                      failure:(nullable void (^)(NSError * __nullable))failure;
 
 @end

@@ -34,11 +34,11 @@
 @implementation MDLMendeleyAPIObject
 
 + (NSString *)objectType {
-    return nil;
+    return @"";
 }
 
 + (NSString *)path {
-    return nil;
+    return @"";
 }
 
 - (NSString *)objectPath {

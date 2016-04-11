@@ -37,27 +37,27 @@
  The name of the file. This is currently a generated name from the metadata of the document that the file is attached to. 
  However, we will support original file names from the upload soon.
  */
-@property (nonatomic, copy) NSString *fileName;
+@property (nonatomic, copy, nullable) NSString *fileName;
 
 /**
  The MIME type of the file. This is used to work out the extension of the file.
  */
-@property (nonatomic, copy) NSString *MIMEType;
+@property (nonatomic, copy, nullable) NSString *MIMEType;
 
 /**
  SHA1 hash of the file. This can be used to check the integrity of the file.
  */
-@property (nonatomic, copy) NSString *fileHash;
+@property (nonatomic, copy, nullable) NSString *fileHash;
 
 /**
  The size of the file, in bytes.
  */
-@property (nonatomic, copy) NSNumber *sizeInBytes;
+@property (nonatomic, copy, nullable) NSNumber *sizeInBytes;
 
 /**
  The id of the document the file is attached to.
  */
-@property (nonatomic, copy) NSString *documentIdentifier;
+@property (nonatomic, copy, nullable) NSString *documentIdentifier;
 
 
 /**
@@ -75,10 +75,10 @@
  
  @return A new HTTP request operation
  */
-- (AFHTTPRequestOperation *)downloadWithClient:(MDLMendeleyAPIClient *)client
-                                  toFileAtPath:(NSString *)path
-                                      progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress
-                                       success:(void (^)())success
-                                       failure:(void (^)(NSError *))failure;
+- (nullable AFHTTPRequestOperation *)downloadWithClient:(nonnull MDLMendeleyAPIClient *)client
+                                           toFileAtPath:(nonnull NSString *)path
+                                               progress:(nullable void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress
+                                                success:(nullable void (^)())success
+                                                failure:(nullable void (^)(NSError * __nullable))failure;
 
 @end

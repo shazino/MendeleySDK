@@ -36,20 +36,21 @@
 /**
  The folder name.
  */
-@property (copy, nonatomic) NSString *name;
+@property (nonatomic, copy, nullable) NSString *name;
 
 /**
  The folder parent identifier.
  */
-@property (copy, nonatomic) NSString *parentIdentifier;
+@property (nonatomic, copy, nullable) NSString *parentIdentifier;
 
-@property (nonatomic, copy) NSString *creationDateString;
+@property (nonatomic, copy, nullable) NSString *creationDateString;
 
-@property (nonatomic, copy) NSString *modificationDateString;
+@property (nonatomic, copy, nullable) NSString *modificationDateString;
+
 
 /**
  Creates a `MDLFolder`.
- 
+
  @param client The API client performing the request.
  @param name The name of the folder.
  @param parent The parent folder. If parent = `nil`, the folder is created at the root level.
@@ -60,11 +61,11 @@
  
  @return  The newly-initialized folder, with folder identifier = `nil`.
  */
-+ (instancetype)createFolderWithClient:(MDLMendeleyAPIClient *)client
-                                  name:(NSString *)name
-                                parent:(MDLFolder *)parent
-                               success:(void (^)(MDLMendeleyAPIObject *))success
-                               failure:(void (^)(NSError *))failure;
++ (nonnull instancetype)createFolderWithClient:(nonnull MDLMendeleyAPIClient *)client
+                                          name:(nonnull NSString *)name
+                                        parent:(nullable MDLFolder *)parent
+                                       success:(nullable void (^)(MDLMendeleyAPIObject * __nonnull))success
+                                       failure:(nullable void (^)(NSError * __nullable))failure;
 
 /**
  Fetches the documents in the receiver folder.
@@ -77,11 +78,11 @@
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)fetchDocumentsWithClient:(MDLMendeleyAPIClient *)client
-                          atPage:(NSString *)pagePath
+- (void)fetchDocumentsWithClient:(nonnull MDLMendeleyAPIClient *)client
+                          atPage:(nullable NSString *)pagePath
                    numberOfItems:(NSUInteger)numberOfItems
-                         success:(void (^)(MDLResponseInfo *info, NSArray *documents))success
-                         failure:(void (^)(NSError *))failure;
+                         success:(nullable void (^)(MDLResponseInfo * __nonnull info, NSArray * __nonnull documents))success
+                         failure:(nullable void (^)(NSError * __nullable))failure;
 
 /**
  Adds a document to the receiver folder.
@@ -93,10 +94,10 @@
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)addDocument:(MDLDocument *)document
-         withClient:(MDLMendeleyAPIClient *)client
-            success:(void (^)())success
-            failure:(void (^)(NSError *))failure;
+- (void)addDocument:(nonnull MDLDocument *)document
+         withClient:(nonnull MDLMendeleyAPIClient *)client
+            success:(nullable void (^)())success
+            failure:(nullable void (^)(NSError * __nullable))failure;
 
 /**
  Sends a delete document from folder API request using the shared client.
@@ -108,9 +109,9 @@
  @param failure A block object to be executed when the request operation finishes unsuccessfully, or that finishes successfully, but encountered an error while parsing the resonse data. 
   This block has no return value and takes one argument: the `NSError` object describing the network or parsing error that occurred.
  */
-- (void)removeDocument:(MDLDocument *)document
-            withClient:(MDLMendeleyAPIClient *)client
-               success:(void (^)())success
-               failure:(void (^)(NSError *))failure;
+- (void)removeDocument:(nonnull MDLDocument *)document
+            withClient:(nonnull MDLMendeleyAPIClient *)client
+               success:(nullable void (^)())success
+               failure:(nullable void (^)(NSError * __nullable))failure;
 
 @end

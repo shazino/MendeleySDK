@@ -32,7 +32,7 @@
 /**
  The discipline name.
  */
-@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy, nullable) NSString *name;
 
 
 /**
@@ -42,6 +42,6 @@
 
  @return  The newly-initialized discipline.
  */
-+ (instancetype)disciplineWithName:(NSString *)name;
++ (nonnull instancetype)disciplineWithName:(nonnull NSString *)name;
 
 @end

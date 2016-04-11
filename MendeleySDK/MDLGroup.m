@@ -60,11 +60,11 @@
     return group;
 }
 
-+ (void)fetchGroupsForCurrentUserWithClient:(MDLMendeleyAPIClient *)client
-                                     atPage:(NSString *)pagePath
++ (void)fetchGroupsForCurrentUserWithClient:(nonnull MDLMendeleyAPIClient *)client
+                                     atPage:(nullable NSString *)pagePath
                               numberOfItems:(NSUInteger)numberOfItems
-                                    success:(void (^)(MDLResponseInfo *info, NSArray *))success
-                                    failure:(void (^)(NSError *))failure {
+                                    success:(nullable void (^)(MDLResponseInfo * __nonnull, NSArray * __nonnull))success
+                                    failure:(nullable void (^)(NSError * __nullable))failure {
     [client getPath:@"/groups"
          objectType:MDLMendeleyObjectTypeGroup
              atPage:pagePath
@@ -111,9 +111,9 @@
     self.role             = attributes[@"role"];
 }
 
-- (void)fetchDetailsWithClient:(MDLMendeleyAPIClient *)client
-                       success:(void (^)(MDLGroup *))success
-                       failure:(void (^)(NSError *))failure {
+- (void)fetchDetailsWithClient:(nonnull MDLMendeleyAPIClient *)client
+                       success:(nullable void (^)(MDLGroup * __nonnull))success
+                       failure:(nullable void (^)(NSError * __nullable))failure {
     [client getPath:[@"/groups" stringByAppendingPathComponent:self.identifier]
          objectType:MDLMendeleyObjectTypeGroup
              atPage:nil
@@ -139,11 +139,11 @@
     return users;
 }
 
-- (void)fetchPeopleWithClient:(MDLMendeleyAPIClient *)client
-                       atPage:(NSString *)pagePath
+- (void)fetchPeopleWithClient:(nonnull MDLMendeleyAPIClient *)client
+                       atPage:(nullable NSString *)pagePath
                 numberOfItems:(NSUInteger)numberOfItems
-                      success:(void (^)(MDLResponseInfo *info, MDLGroup *))success
-                      failure:(void (^)(NSError *))failure {
+                      success:(nullable void (^)(MDLResponseInfo * __nonnull, MDLGroup * __nonnull))success
+                      failure:(nullable void (^)(NSError * __nullable))failure {
     NSString *path = [[@"/groups"
                        stringByAppendingPathComponent:self.identifier]
                       stringByAppendingPathComponent:@"members"];

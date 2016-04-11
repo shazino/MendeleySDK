@@ -99,13 +99,13 @@
 
 #pragma mark - 
 
-+ (void)fetchAnnotationsWithClient:(MDLMendeleyAPIClient *)client
-                       forDocument:(MDLDocument *)document
-                          forGroup:(MDLGroup *)group
-                            atPage:(NSString *)pagePath
++ (void)fetchAnnotationsWithClient:(nonnull MDLMendeleyAPIClient *)client
+                       forDocument:(nonnull MDLDocument *)document
+                          forGroup:(nullable MDLGroup *)group
+                            atPage:(nullable NSString *)pagePath
                      numberOfItems:(NSUInteger)numberOfItems
-                           success:(void (^)(MDLResponseInfo *info, NSArray *annotations))success
-                           failure:(void (^)(NSError *))failure {
+                           success:(nullable void (^)(MDLResponseInfo * __nonnull info, NSArray * __nonnull annotations))success
+                           failure:(nullable void (^)(NSError * __nullable))failure {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     if (document.identifier) {
         parameters[@"document_id"] = document.identifier;

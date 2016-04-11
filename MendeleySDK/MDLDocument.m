@@ -198,14 +198,14 @@ NSString * const MDLDocumentViewPatent = @"patent";
     [self setIfNotNilValue:self.pages    forKey:@"pages" inDictionary:attributes];
     [self setIfNotNilValue:self.volume   forKey:@"volume" inDictionary:attributes];
     [self setIfNotNilValue:self.issue    forKey:@"issue" inDictionary:attributes];
-//    [self setIfNotNilValue:self.websitesURLs forKey:@"" inDictionary:attributes];
+    // [self setIfNotNilValue:self.websitesURLs forKey:@"" inDictionary:attributes];
     [self setIfNotNilValue:self.publisher   forKey:@"publisher" inDictionary:attributes];
     [self setIfNotNilValue:self.city        forKey:@"city" inDictionary:attributes];
     [self setIfNotNilValue:self.edition     forKey:@"edition" inDictionary:attributes];
     [self setIfNotNilValue:self.institution forKey:@"institution" inDictionary:attributes];
     [self setIfNotNilValue:self.series      forKey:@"series" inDictionary:attributes];
     [self setIfNotNilValue:self.chapter     forKey:@"chapter" inDictionary:attributes];
-//    [self setIfNotNilValue:self.editors forKey:@"" inDictionary:attributes];
+    // [self setIfNotNilValue:self.editors forKey:@"" inDictionary:attributes];
     [self setIfNotNilValue:self.tags           forKey:@"tags" inDictionary:attributes];
     [self setIfNotNilValue:self.read           forKey:@"read" inDictionary:attributes];
     [self setIfNotNilValue:self.starred        forKey:@"starred" inDictionary:attributes];
@@ -220,7 +220,7 @@ NSString * const MDLDocumentViewPatent = @"patent";
     [self setIfNotNilValue:self.reprintEdition forKey:@"reprint_edition" inDictionary:attributes];
     [self setIfNotNilValue:self.genre          forKey:@"genre" inDictionary:attributes];
     [self setIfNotNilValue:self.country        forKey:@"country" inDictionary:attributes];
-//    [self setIfNotNilValue:self.translators forKey:@"" inDictionary:attributes];
+    // [self setIfNotNilValue:self.translators forKey:@"" inDictionary:attributes];
     [self setIfNotNilValue:self.seriesEditor forKey:@"series_editor" inDictionary:attributes];
     [self setIfNotNilValue:self.code         forKey:@"code" inDictionary:attributes];
     [self setIfNotNilValue:self.medium       forKey:@"medium" inDictionary:attributes];
@@ -239,13 +239,13 @@ NSString * const MDLDocumentViewPatent = @"patent";
     return document;
 }
 
-+ (void)searchWithClient:(MDLMendeleyAPIClient *)client
-                   terms:(NSString *)terms
-                    view:(NSString *)view
-                  atPage:(NSString *)pagePath
++ (void)searchWithClient:(nonnull MDLMendeleyAPIClient *)client
+                   terms:(nonnull NSString *)terms
+                    view:(nullable NSString *)view
+                  atPage:(nullable NSString *)pagePath
            numberOfItems:(NSUInteger)numberOfItems
-                 success:(void (^)(MDLResponseInfo *info, NSArray *documents))success
-                 failure:(void (^)(NSError *))failure {
+                 success:(nullable void (^)(MDLResponseInfo * __nonnull info, NSArray * __nonnull documents))success
+                 failure:(nullable void (^)(NSError * __nullable))failure {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
 
     if (view) {
@@ -277,15 +277,15 @@ NSString * const MDLDocumentViewPatent = @"patent";
      } failure:failure];
 }
 
-+ (void)searchWithClient:(MDLMendeleyAPIClient *)client
-                 authors:(NSString *)authors
-                   title:(NSString *)title
-                    year:(NSNumber *)year
-                    view:(NSString *)view
-                  atPage:(NSString *)pagePath
++ (void)searchWithClient:(nonnull MDLMendeleyAPIClient *)client
+                 authors:(nullable NSString *)authors
+                   title:(nullable NSString *)title
+                    year:(nullable NSNumber *)year
+                    view:(nullable NSString *)view
+                  atPage:(nullable NSString *)pagePath
            numberOfItems:(NSUInteger)numberOfItems
-                 success:(void (^)(MDLResponseInfo *info, NSArray *documents))success
-                 failure:(void (^)(NSError *))failure {
+                 success:(nullable void (^)(MDLResponseInfo * __nonnull info, NSArray * __nonnull documents))success
+                 failure:(nullable void (^)(NSError * __nullable))failure {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
 
     if (authors.length > 0) {
@@ -326,12 +326,12 @@ NSString * const MDLDocumentViewPatent = @"patent";
      } failure:failure];
 }
 
-- (AFHTTPRequestOperation *)uploadFileWithClient:(MDLMendeleyAPIClient *)client
-                                           atURL:(NSURL *)fileURL
-                                     contentType:(NSString *)contentType
-                                        fileName:(NSString *)fileName
-                                         success:(void (^)(MDLFile *newFile))success
-                                         failure:(void (^)(NSError *))failure {
+- (AFHTTPRequestOperation *)uploadFileWithClient:(nonnull MDLMendeleyAPIClient *)client
+                                           atURL:(nonnull NSURL *)fileURL
+                                     contentType:(nonnull NSString *)contentType
+                                        fileName:(nonnull NSString *)fileName
+                                         success:(nullable void (^)(MDLFile * __nonnull newFile))success
+                                         failure:(nullable void (^)(NSError * __nullable))failure {
     if (!self.identifier) {
         failure([NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorCancelled userInfo:nil]);
         return nil;
@@ -353,10 +353,10 @@ NSString * const MDLDocumentViewPatent = @"patent";
             failure:failure];
 }
 
-- (void)fetchWithClient:(MDLMendeleyAPIClient *)client
-                   view:(NSString *)view
-                success:(void (^)(MDLDocument *))success
-                failure:(void (^)(NSError *))failure {
+- (void)fetchWithClient:(nonnull MDLMendeleyAPIClient *)client
+                   view:(nullable NSString *)view
+                success:(nullable void (^)(MDLDocument * __nonnull))success
+                failure:(nullable void (^)(NSError * __nullable))failure {
     NSString *path = [@"/documents" stringByAppendingPathComponent:self.identifier];
     if (self.isCatalogDocument) {
         path = [@"/catalog" stringByAppendingPathComponent:self.identifier];
@@ -382,9 +382,9 @@ NSString * const MDLDocumentViewPatent = @"patent";
 }
 
 - (void)markAsRead:(BOOL)read
-        withClient:(MDLMendeleyAPIClient *)client
-           success:(void (^)(MDLDocument *))success
-           failure:(void (^)(NSError *))failure {
+        withClient:(nonnull MDLMendeleyAPIClient *)client
+           success:(nullable void (^)(MDLDocument * __nonnull))success
+           failure:(nullable void (^)(NSError * __nullable))failure {
     NSString *path = [@"/documents" stringByAppendingPathComponent:self.identifier];
 
     [client patchPath:path
@@ -399,9 +399,9 @@ NSString * const MDLDocumentViewPatent = @"patent";
 }
 
 - (void)markAsStarred:(BOOL)starred
-           withClient:(MDLMendeleyAPIClient *)client
-              success:(void (^)(MDLDocument *))success
-              failure:(void (^)(NSError *))failure {
+           withClient:(nonnull MDLMendeleyAPIClient *)client
+              success:(nullable void (^)(MDLDocument * __nonnull))success
+              failure:(nullable void (^)(NSError * __nullable))failure {
     NSString *path = [@"/documents" stringByAppendingPathComponent:self.identifier];
 
     [client patchPath:path
@@ -415,9 +415,9 @@ NSString * const MDLDocumentViewPatent = @"patent";
              } failure:failure];
 }
 
-- (void)moveToTrashWithClient:(MDLMendeleyAPIClient *)client
-                      success:(void (^)(MDLDocument *))success
-                      failure:(void (^)(NSError *))failure {
+- (void)moveToTrashWithClient:(nonnull MDLMendeleyAPIClient *)client
+                      success:(nullable void (^)(MDLDocument * __nonnull))success
+                      failure:(nullable void (^)(NSError * __nullable))failure {
     NSString *path = [NSString stringWithFormat:@"/documents/%@/trash",
                       self.identifier];
 

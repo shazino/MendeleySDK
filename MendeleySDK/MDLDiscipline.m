@@ -25,7 +25,7 @@
 
 @implementation MDLDiscipline
 
-+ (instancetype)disciplineWithName:(NSString *)name {
++ (nonnull instancetype)disciplineWithName:(nonnull NSString *)name {
     MDLDiscipline *discipline = [self new];
     discipline.name = name;
     return discipline;

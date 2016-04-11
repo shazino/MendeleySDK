@@ -35,38 +35,40 @@
 /**
  The identifier.
  */
-@property (copy, nonatomic) NSString *identifier;
+@property (nonatomic, copy, nullable) NSString *identifier;
 
-+ (NSString *)objectType;
++ (nonnull NSString *)objectType;
 
-+ (NSString *)path;
-- (NSString *)objectPath;
++ (nonnull NSString *)path;
+- (nonnull NSString *)objectPath;
 
-+ (instancetype)objectWithServerResponseObject:(id)responseObject;
-- (void)updateWithServerResponseObject:(id)responseObject;
-- (NSDictionary *)serverRepresentation;
++ (nonnull instancetype)objectWithServerResponseObject:(nonnull id)responseObject;
 
-- (void)createWithClient:(MDLMendeleyAPIClient *)client
-                 success:(void (^)(MDLMendeleyAPIObject *))success
-                 failure:(void (^)(NSError *))failure;
+- (void)updateWithServerResponseObject:(nonnull id)responseObject;
 
-- (void)updateWithClient:(MDLMendeleyAPIClient *)client
-                 success:(void (^)(MDLMendeleyAPIObject *))success
-                 failure:(void (^)(NSError *))failure;
+- (nonnull NSDictionary *)serverRepresentation;
 
-- (void)deleteWithClient:(MDLMendeleyAPIClient *)client
-                 success:(void (^)(void))success
-                 failure:(void (^)(NSError *))failure;
+- (void)createWithClient:(nonnull MDLMendeleyAPIClient *)client
+                 success:(nullable void (^)(MDLMendeleyAPIObject * __nonnull))success
+                 failure:(nullable void (^)(NSError * __nullable))failure;
 
-- (void)fetchWithClient:(MDLMendeleyAPIClient *)client
-                success:(void (^)(MDLMendeleyAPIObject *object))success
-                failure:(void (^)(NSError *))failure;
+- (void)updateWithClient:(nonnull MDLMendeleyAPIClient *)client
+                 success:(nullable void (^)(MDLMendeleyAPIObject * __nonnull))success
+                 failure:(nullable void (^)(NSError * __nullable))failure;
 
-+ (void)fetchWithClient:(MDLMendeleyAPIClient *)client
-                 atPage:(NSString *)pagePath
+- (void)deleteWithClient:(nonnull MDLMendeleyAPIClient *)client
+                 success:(nullable void (^)(void))success
+                 failure:(nullable void (^)(NSError * __nullable))failure;
+
+- (void)fetchWithClient:(nonnull MDLMendeleyAPIClient *)client
+                success:(nullable void (^)(MDLMendeleyAPIObject * __nonnull object))success
+                failure:(nullable void (^)(NSError * __nullable))failure;
+
++ (void)fetchWithClient:(nonnull MDLMendeleyAPIClient *)client
+                 atPage:(nullable NSString *)pagePath
           numberOfItems:(NSUInteger)numberOfItems
-             parameters:(NSDictionary *)parameters
-                success:(void (^)(MDLResponseInfo *info, NSArray *objects))success
-                failure:(void (^)(NSError *))failure;
+             parameters:(nullable NSDictionary *)parameters
+                success:(nullable void (^)(MDLResponseInfo * __nonnull info, NSArray * __nonnull objects))success
+                failure:(nullable void (^)(NSError * __nullable))failure;
 
 @end

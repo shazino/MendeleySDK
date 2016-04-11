@@ -51,11 +51,11 @@
     self.documentIdentifier = responseObject[@"document_id"];
 }
 
-- (AFHTTPRequestOperation *)downloadWithClient:(MDLMendeleyAPIClient *)client
-                                  toFileAtPath:(NSString *)path
-                                      progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress
-                                       success:(void (^)())success
-                                       failure:(void (^)(NSError *))failure {
+- (nullable AFHTTPRequestOperation *)downloadWithClient:(nonnull MDLMendeleyAPIClient *)client
+                                           toFileAtPath:(nonnull NSString *)path
+                                               progress:(nullable void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress
+                                                success:(nullable void (^)())success
+                                                failure:(nullable void (^)(NSError * __nullable))failure {
     return [client getPath:self.objectPath
                 parameters:nil
   outputStreamToFileAtPath:path

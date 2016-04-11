@@ -28,9 +28,9 @@
 
 @implementation MDLResponseInfo
 
-+ (NSString *)substringOfString:(NSString *)string
-                        between:(NSString *)startString
-                            and:(NSString *)endString {
++ (nullable NSString *)substringOfString:(nonnull NSString *)string
+                                 between:(nonnull NSString *)startString
+                                     and:(nonnull NSString *)endString {
     NSRange rangeOfStartMark = [string rangeOfString:startString];
     if (rangeOfStartMark.location == NSNotFound) {
         return nil;
@@ -50,7 +50,7 @@
     return [string substringWithRange:range];
 }
 
-+ (instancetype)infoWithHTTPResponse:(NSHTTPURLResponse *)response {
++ (nonnull instancetype)infoWithHTTPResponse:(nonnull NSHTTPURLResponse *)response {
     MDLResponseInfo *info = [self new];
     NSString *link = [response.allHeaderFields objectForKey:@"Link"];
     NSArray <NSString *> *components = [link componentsSeparatedByString:@","];

@@ -43,14 +43,14 @@
    "b": 0 }
  ```
  */
-@property (nonatomic, copy) NSDictionary *colorRGB;
+@property (nonatomic, copy, nullable) NSDictionary <NSString *, __kindof NSObject *> *colorRGB;
 
-@property (nonatomic, copy) NSString *creationDateString;
+@property (nonatomic, copy, nullable) NSString *creationDateString;
 
 /**
  Text value of the annotation.
  */
-@property (nonatomic, copy) NSString *text;
+@property (nonatomic, copy, nullable) NSString *text;
 
 /**
  Wrapper object contains page and coordinates of the annotation bounding box.
@@ -66,36 +66,36 @@
  ]
  ```
  */
-@property (nonatomic, copy) NSArray <NSDictionary *> *positions;
+@property (nonatomic, copy, nullable) NSArray <NSDictionary *> *positions;
 
 /**
  Public, group or private.
  */
-@property (nonatomic, copy) NSString *privacyLevel;
+@property (nonatomic, copy, nullable) NSString *privacyLevel;
 
 /**
  UUID of the document which the file is attached to.
  */
-@property (nonatomic, copy) NSString *documentIdentifier;
+@property (nonatomic, copy, nullable) NSString *documentIdentifier;
 
 /**
  UUID of the user that created the annotation.
  */
-@property (nonatomic, copy) NSString *profileIdentifier;
+@property (nonatomic, copy, nullable) NSString *profileIdentifier;
 
 /**
  Filehash of which the annotation belongs to.
  */
-@property (nonatomic, copy) NSString *fileHash;
+@property (nonatomic, copy, nullable) NSString *fileHash;
 
-@property (nonatomic, copy) NSString *modificationDateString;
+@property (nonatomic, copy, nullable) NSString *modificationDateString;
 
-+ (void)fetchAnnotationsWithClient:(MDLMendeleyAPIClient *)client
-                       forDocument:(MDLDocument *)document
-                          forGroup:(MDLGroup *)group
-                            atPage:(NSString *)pagePath
++ (void)fetchAnnotationsWithClient:(nonnull MDLMendeleyAPIClient *)client
+                       forDocument:(nonnull MDLDocument *)document
+                          forGroup:(nullable MDLGroup *)group
+                            atPage:(nullable NSString *)pagePath
                      numberOfItems:(NSUInteger)numberOfItems
-                           success:(void (^)(MDLResponseInfo *info, NSArray *annotations))success
-                           failure:(void (^)(NSError *))failure;
+                           success:(nullable void (^)(MDLResponseInfo * __nonnull info, NSArray * __nonnull annotations))success
+                           failure:(nullable void (^)(NSError * __nullable))failure;
 
 @end
