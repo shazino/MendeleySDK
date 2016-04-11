@@ -13,7 +13,7 @@
 
 - (void)testInit
 {
-    XCTAssertNotNil([MDLMendeleyAPIClient sharedClient], @"The Mendeley SDK should be accessible");
+    XCTAssertNotNil([MDLMendeleyAPIClient clientWithClientID:@"" secret:@"" redirectURI:@""], @"The Mendeley SDK should be accessible");
 }
 
 @end
