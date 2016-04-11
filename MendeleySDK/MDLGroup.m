@@ -28,19 +28,6 @@
 #import "MDLFolder.h"
 #import "MDLMendeleyAPIClient.h"
 
-@interface MDLGroup ()
-
-+ (NSString *)stringValueForAccessLevel:(MDLGroupAccessLevel)accessLevel;
-
-+ (instancetype)groupWithIdentifier:(NSString *)identifier;
-+ (instancetype)groupWithGroupAttributes:(NSDictionary *)attributes;
-
-+ (NSArray *)usersWithRole:(NSString *)role
-              fromRawUsers:(NSArray *)rawUsers;
-
-- (void)updateWithGroupAttributes:(NSDictionary *)attributes;
-
-@end
 
 @implementation MDLGroup
 
@@ -140,8 +127,8 @@
             } failure:failure];
 }
 
-+ (NSArray *)usersWithRole:(NSString *)role
-              fromRawUsers:(NSArray *)rawUsers {
++ (NSArray <MDLProfile *> *)usersWithRole:(NSString *)role
+                             fromRawUsers:(NSArray <NSDictionary *> *)rawUsers {
     NSMutableArray *users = [NSMutableArray array];
     for (NSDictionary *rawUser in rawUsers) {
         if ([rawUser[@"role"] isEqualToString:role]) {

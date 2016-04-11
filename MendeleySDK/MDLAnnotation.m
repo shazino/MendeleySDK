@@ -51,7 +51,7 @@
 
     self.text       = responseObject[@"text"];
 
-    NSArray *positions = responseObject[@"positions"];
+    id positions = responseObject[@"positions"];
     if ([positions isKindOfClass:NSArray.class]) {
         self.positions = positions;
     }

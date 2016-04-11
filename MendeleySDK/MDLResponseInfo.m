@@ -53,7 +53,8 @@
 + (instancetype)infoWithHTTPResponse:(NSHTTPURLResponse *)response {
     MDLResponseInfo *info = [self new];
     NSString *link = [response.allHeaderFields objectForKey:@"Link"];
-    NSArray  *components = [link componentsSeparatedByString:@","];
+    NSArray <NSString *> *components = [link componentsSeparatedByString:@","];
+
     for (NSString *component in components) {
         NSString *path = [self substringOfString:component between:[@"<" stringByAppendingString:MDLMendeleyAPIBaseURLString] and:@">"];
         NSString *rel  = [self substringOfString:component between:@"rel=\"" and:@"\""];

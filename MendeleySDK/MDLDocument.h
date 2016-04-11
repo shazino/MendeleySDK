@@ -34,7 +34,7 @@ extern NSString * const MDLDocumentViewClient;
 extern NSString * const MDLDocumentViewTags;
 extern NSString * const MDLDocumentViewPatent;
 
-@class MDLGroup, MDLFile, MDLProfile;
+@class MDLGroup, MDLFile, MDLProfile, MDLPerson;
 @class MDLMendeleyAPIClient, MDLResponseInfo;
 @class AFHTTPRequestOperation;
 
@@ -88,9 +88,9 @@ extern NSString * const MDLDocumentViewPatent;
 @property (strong, nonatomic) NSNumber *year;
 
 /**
- The authors of the document (array of `MDLPerson`).
+ The authors of the document.
  */
-@property (strong, nonatomic) NSArray *authors;
+@property (strong, nonatomic) NSArray <MDLPerson *> *authors;
 
 /**
  The document identifiers.
@@ -100,7 +100,7 @@ extern NSString * const MDLDocumentViewPatent;
 /**
  The keywords of the document.
  */
-@property (strong, nonatomic) NSArray *keywords;
+@property (strong, nonatomic) NSArray <NSString *> *keywords;
 
 
 //***************************
@@ -150,7 +150,7 @@ extern NSString * const MDLDocumentViewPatent;
 /**
  The websites of the document.
  */
-@property (copy, nonatomic) NSArray *websitesURLs;
+@property (copy, nonatomic) NSArray <NSURL *> *websitesURLs;
 
 /**
  The publisher of the document.
@@ -183,14 +183,14 @@ extern NSString * const MDLDocumentViewPatent;
 @property (copy, nonatomic) NSString *chapter;
 
 /**
- The editors of the document (array of `MDLPerson`).
+ The editors of the document.
  */
-@property (copy, nonatomic) NSArray *editors;
+@property (copy, nonatomic) NSArray <MDLPerson *> *editors;
 
 /**
  The tags of the document.
  */
-@property (copy, nonatomic) NSArray *tags;
+@property (copy, nonatomic) NSArray <NSString *> *tags;
 
 /**
  The read status of the document
@@ -258,9 +258,9 @@ extern NSString * const MDLDocumentViewPatent;
 @property (copy, nonatomic) NSString *country;
 
 /**
- The translators of the document (array of `MDLPerson`).
+ The translators of the document.
  */
-@property (copy, nonatomic) NSArray *translators;
+@property (copy, nonatomic) NSArray <MDLPerson *> *translators;
 
 /**
  The series editor of the document.

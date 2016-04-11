@@ -92,7 +92,7 @@ NSString * const MDLDocumentViewPatent = @"patent";
         self.identifiers = identifiers;
     }
     
-    NSArray *keywords = responseObject[@"keywords"];
+    id keywords = responseObject[@"keywords"];
     if ([keywords isKindOfClass:NSArray.class]) {
         self.keywords = keywords;
     }
@@ -105,7 +105,7 @@ NSString * const MDLDocumentViewPatent = @"patent";
     self.volume   = responseObject[@"volume"];
     self.issue    = responseObject[@"issue"];
 
-    NSArray *attributesWebsites = responseObject[@"websites"];
+    id attributesWebsites = responseObject[@"websites"];
     if ([attributesWebsites isKindOfClass:NSArray.class]) {
         NSMutableArray *URLs = [NSMutableArray array];
         for (NSString *attributeURL in attributesWebsites) {

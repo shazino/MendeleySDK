@@ -32,7 +32,7 @@ typedef NS_ENUM(NSUInteger, MDLGroupAccessLevel) {
 };
 
 
-@class MDLMendeleyAPIClient, MDLResponseInfo, MDLCategory, MDLProfile;
+@class MDLMendeleyAPIClient, MDLResponseInfo, MDLCategory, MDLProfile, MDLDocument;
 
 /**
  `MDLGroup` represents a group, as described by Mendeley.
@@ -73,32 +73,32 @@ typedef NS_ENUM(NSUInteger, MDLGroupAccessLevel) {
 /**
  The group disciplines.
  */
-@property (copy, nonatomic) NSArray *disciplines;
+@property (copy, nonatomic) NSArray <NSString *> *disciplines;
 
 /**
  The group tags.
  */
-@property (copy, nonatomic) NSArray *tags;
+@property (copy, nonatomic) NSArray <NSString *> *tags;
 
 /**
  The group documents.
  */
-@property (strong, nonatomic) NSArray *documents;
+@property (strong, nonatomic) NSArray <MDLDocument *> *documents;
 
 /**
  The group admins.
  */
-@property (strong, nonatomic) NSArray *admins;
+@property (strong, nonatomic) NSArray <MDLProfile *> *admins;
 
 /**
  The group members.
  */
-@property (strong, nonatomic) NSArray *members;
+@property (strong, nonatomic) NSArray <MDLProfile *> *members;
 
 /**
  The group followers.
  */
-@property (strong, nonatomic) NSArray *followers;
+@property (strong, nonatomic) NSArray <MDLProfile *> *followers;
 
 /**
  Role of the authenticated user in the group.

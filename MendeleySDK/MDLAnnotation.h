@@ -66,7 +66,7 @@
  ]
  ```
  */
-@property (nonatomic, copy) NSArray *positions;
+@property (nonatomic, copy) NSArray <NSDictionary *> *positions;
 
 /**
  Public, group or private.

@@ -51,7 +51,7 @@
 + (instancetype)personWithFirstName:(NSString *)firstName
                            lastName:(NSString *)lastName;
 
-+ (NSArray *)personsFromServerResponseObject:(id)responseObject;
++ (NSArray <MDLPerson *> *)personsFromServerResponseObject:(id)responseObject;
 
 - (NSDictionary *)requestObject;
 

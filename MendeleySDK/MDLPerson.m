@@ -37,7 +37,7 @@
     return author;
 }
 
-+ (NSArray *)personsFromServerResponseObject:(id)responseObject {
++ (NSArray <MDLPerson *> *)personsFromServerResponseObject:(id)responseObject {
     if (![responseObject isKindOfClass:NSArray.class]) {
         return nil;
     }
