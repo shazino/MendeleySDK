@@ -2,9 +2,7 @@
 **Objective-C client for the Mendeley API.**
 [![Build Status](https://travis-ci.org/shazino/MendeleySDK.png?branch=master)](https://travis-ci.org/shazino/MendeleySDK)
 
-MendeleySDK is a [Mendeley API](http://dev.mendeley.com) client for iOS and OS X,
- built on top of [AFNetworking](http://www.github.com/AFNetworking/AFNetworking)
- and [AFOAuth2Client](http://www.github.com/AFNetworking/AFOAuth2Client).
+MendeleySDK is a [Mendeley API](http://dev.mendeley.com) client for iOS and OS X, built on top of [AFNetworking](http://www.github.com/AFNetworking/AFNetworking) and [AFOAuth2Client](http://www.github.com/AFNetworking/AFOAuth2Client).
 
 ![Demo app screenshot paper](https://github.com/shazino/MendeleySDK/wiki/images/demo-app-screenshot-paper.png) 
 
@@ -85,7 +83,7 @@ MDLDocument *document;
 
 ## Requirements
 
-MendeleySDK requires Xcode 4.4 with either the
+MendeleySDK requires Xcode 7.0 with either the
  [iOS 5.0](http://developer.apple.com/library/ios/#releasenotes/General/WhatsNewIniPhoneOS/Articles/iOS5.html)
  or [Mac OS 10.6](http://developer.apple.com/library/mac/#releasenotes/MacOSX/WhatsNewInOSX/Articles/MacOSX10_6.html#//apple_ref/doc/uid/TP40008898-SW7)
  ([64-bit with modern Cocoa runtime](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtVersionsPlatforms.html)) SDK,

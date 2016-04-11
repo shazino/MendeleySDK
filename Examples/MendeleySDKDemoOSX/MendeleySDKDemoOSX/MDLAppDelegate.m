@@ -3,7 +3,7 @@
 //  MendeleySDKDemoOSX
 //
 //  Created by Damien Mathieu on 29/07/2013.
-//  Copyright (c) 2013-2014 shazino. All rights reserved.
+//  Copyright (c) 2013-2016 shazino. All rights reserved.
 //
 
 #import "MDLAppDelegate.h"
