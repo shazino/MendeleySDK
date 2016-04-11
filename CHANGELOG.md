@@ -1,5 +1,15 @@
 # MendeleySDK Changelog
 
+## v2.1.2
+
+_Released April 11, 2016_
+
+- Add nullability annotations
+- Add collections generics
+
+
+## v2.1.1
+
 ## v2.1
 
 _Released November 6, 2015_
