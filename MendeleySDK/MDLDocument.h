@@ -25,14 +25,14 @@
 
 #import "MDLMendeleyAPIObject.h"
 
-extern NSString * const MDLDocumentTypeGeneric;
-extern NSString * const MDLDocumentTypeJournal;
+extern NSString * __nonnull const MDLDocumentTypeGeneric;
+extern NSString * __nonnull const MDLDocumentTypeJournal;
 
-extern NSString * const MDLDocumentViewAll;
-extern NSString * const MDLDocumentViewBIB;
-extern NSString * const MDLDocumentViewClient;
-extern NSString * const MDLDocumentViewTags;
-extern NSString * const MDLDocumentViewPatent;
+extern NSString * __nonnull const MDLDocumentViewAll;
+extern NSString * __nonnull const MDLDocumentViewBIB;
+extern NSString * __nonnull const MDLDocumentViewClient;
+extern NSString * __nonnull const MDLDocumentViewTags;
+extern NSString * __nonnull const MDLDocumentViewPatent;
 
 @class MDLGroup, MDLFile, MDLProfile, MDLPerson;
 @class MDLMendeleyAPIClient, MDLResponseInfo;
@@ -380,12 +380,12 @@ extern NSString * const MDLDocumentViewPatent;
  
  @return A new HTTP request operation
  */
-- (AFHTTPRequestOperation *)uploadFileWithClient:(nonnull MDLMendeleyAPIClient *)client
-                                           atURL:(nonnull NSURL *)fileURL
-                                     contentType:(nonnull NSString *)contentType
-                                        fileName:(nonnull NSString *)fileName
-                                         success:(nullable void (^)(MDLFile * __nonnull newFile))success
-                                         failure:(nullable void (^)(NSError * __nullable))failure;
+- (nullable AFHTTPRequestOperation *)uploadFileWithClient:(nonnull MDLMendeleyAPIClient *)client
+                                                    atURL:(nonnull NSURL *)fileURL
+                                              contentType:(nonnull NSString *)contentType
+                                                 fileName:(nonnull NSString *)fileName
+                                                  success:(nullable void (^)(MDLFile * __nonnull newFile))success
+                                                  failure:(nullable void (^)(NSError * __nullable))failure;
 
 /**
  Sends an update document API request using the shared client.

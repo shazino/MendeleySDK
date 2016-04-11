@@ -178,7 +178,7 @@ NSString * const  MDLMendeleyObjectTypeProfiles          = @"application/vnd.men
 #pragma mark - Operations
 
 - (nullable AFHTTPRequestOperation *)getPath:(nonnull NSString *)path
-                                  objectType:(nonnull NSString *)objectType
+                                  objectType:(nullable NSString *)objectType
                                       atPage:(nullable NSString *)pagePath
                                numberOfItems:(NSUInteger)numberOfItems
                                   parameters:(nullable NSDictionary *)parameters
@@ -246,7 +246,7 @@ NSString * const  MDLMendeleyObjectTypeProfiles          = @"application/vnd.men
 }
 
 - (nullable AFHTTPRequestOperation *)postPath:(nonnull NSString *)path
-                                   objectType:(nonnull NSString *)objectType
+                                   objectType:(nullable NSString *)objectType
                                    parameters:(nullable NSDictionary *)parameters
                                       success:(nullable void (^)(AFHTTPRequestOperation * __nonnull, id __nonnull))success
                                       failure:(nullable void (^)(NSError * __nullable))failure {
@@ -274,7 +274,7 @@ NSString * const  MDLMendeleyObjectTypeProfiles          = @"application/vnd.men
 }
 
 - (nullable AFHTTPRequestOperation *)patchPath:(nonnull NSString *)path
-                                    objectType:(nonnull NSString *)objectType
+                                    objectType:(nullable NSString *)objectType
                                     parameters:(nullable NSDictionary *)parameters
                                        success:(nullable void (^)(AFHTTPRequestOperation * __nonnull, id __nonnull))success
                                        failure:(nullable void (^)(NSError * __nullable))failure {
@@ -302,7 +302,7 @@ NSString * const  MDLMendeleyObjectTypeProfiles          = @"application/vnd.men
 }
 
 - (nullable AFHTTPRequestOperation *)deletePath:(nonnull NSString *)path
-                                        success:(nullable void (^)(AFHTTPRequestOperation * __nonnnull, id __nonnull))success
+                                        success:(nullable void (^)(AFHTTPRequestOperation * __nonnnull, id __nonnull responseObject))success
                                         failure:(nullable void (^)(NSError * __nullable))failure {
     NSURLRequest *request = [self requestWithMethod:@"DELETE" path:path parameters:nil];
 	AFHTTPRequestOperation *operation;

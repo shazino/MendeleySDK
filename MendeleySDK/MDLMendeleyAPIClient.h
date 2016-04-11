@@ -23,18 +23,18 @@
 
 #import "AFOAuth2Client.h"
 
-extern NSString * const MDLMendeleyAPIBaseURLString;
+extern NSString * __nonnull const MDLMendeleyAPIBaseURLString;
 
-extern NSString * const MDLMendeleyObjectTypeAnnotation;
-extern NSString * const MDLMendeleyObjectTypeDocument;
-extern NSString * const MDLMendeleyObjectTypeMetadataLookup;
-extern NSString * const MDLMendeleyObjectTypeFile;
-extern NSString * const MDLMendeleyObjectTypeFolder;
-extern NSString * const MDLMendeleyObjectTypeFolderDocumentIDs;
-extern NSString * const MDLMendeleyObjectTypeGroup;
-extern NSString * const MDLMendeleyObjectTypeUserRole;
-extern NSString * const MDLMendeleyObjectTypeLookup;
-extern NSString * const MDLMendeleyObjectTypeProfiles;
+extern NSString * __nonnull const MDLMendeleyObjectTypeAnnotation;
+extern NSString * __nonnull const MDLMendeleyObjectTypeDocument;
+extern NSString * __nonnull const MDLMendeleyObjectTypeMetadataLookup;
+extern NSString * __nonnull const MDLMendeleyObjectTypeFile;
+extern NSString * __nonnull const MDLMendeleyObjectTypeFolder;
+extern NSString * __nonnull const MDLMendeleyObjectTypeFolderDocumentIDs;
+extern NSString * __nonnull const MDLMendeleyObjectTypeGroup;
+extern NSString * __nonnull const MDLMendeleyObjectTypeUserRole;
+extern NSString * __nonnull const MDLMendeleyObjectTypeLookup;
+extern NSString * __nonnull const MDLMendeleyObjectTypeProfiles;
 
 @class AFHTTPRequestOperation;
 @class MDLResponseInfo;
@@ -105,7 +105,7 @@ extern NSString * const MDLMendeleyObjectTypeProfiles;
  @return A new HTTP request operation
  */
 - (nullable AFHTTPRequestOperation *)getPath:(nonnull NSString *)path
-                                  objectType:(nonnull NSString *)objectType
+                                  objectType:(nullable NSString *)objectType
                                       atPage:(nullable NSString *)pagePath
                                numberOfItems:(NSUInteger)numberOfItems
                                   parameters:(nullable NSDictionary *)parameters
@@ -150,7 +150,7 @@ extern NSString * const MDLMendeleyObjectTypeProfiles;
  @return A new HTTP request operation
  */
 - (nullable AFHTTPRequestOperation *)postPath:(nonnull NSString *)path
-                                   objectType:(nonnull NSString *)objectType
+                                   objectType:(nullable NSString *)objectType
                                    parameters:(nullable NSDictionary *)parameters
                                       success:(nullable void (^)(AFHTTPRequestOperation * __nonnull, id __nonnull))success
                                       failure:(nullable void (^)(NSError * __nullable))failure;
@@ -175,7 +175,7 @@ extern NSString * const MDLMendeleyObjectTypeProfiles;
                                       failure:(nullable void (^)(NSError * __nullable))failure;
 
 - (nullable AFHTTPRequestOperation *)patchPath:(nonnull NSString *)path
-                                    objectType:(nonnull NSString *)objectType
+                                    objectType:(nullable NSString *)objectType
                                     parameters:(nullable NSDictionary *)parameters
                                        success:(nullable void (^)(AFHTTPRequestOperation * __nonnull, id __nonnull))success
                                        failure:(nullable void (^)(NSError * __nullable))failure;
@@ -193,7 +193,7 @@ extern NSString * const MDLMendeleyObjectTypeProfiles;
  @return A new HTTP request operation
  */
 - (nullable AFHTTPRequestOperation *)deletePath:(nonnull NSString *)path
-                                        success:(nullable void (^)(AFHTTPRequestOperation * __nonnnull, id __nonnull))success
+                                        success:(nullable void (^)(AFHTTPRequestOperation * __nonnnull, id __nonnull responseObject))success
                                         failure:(nullable void (^)(NSError * __nullable))failure;
 
 @end

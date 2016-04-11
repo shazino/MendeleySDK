@@ -326,12 +326,12 @@ NSString * const MDLDocumentViewPatent = @"patent";
      } failure:failure];
 }
 
-- (AFHTTPRequestOperation *)uploadFileWithClient:(nonnull MDLMendeleyAPIClient *)client
-                                           atURL:(nonnull NSURL *)fileURL
-                                     contentType:(nonnull NSString *)contentType
-                                        fileName:(nonnull NSString *)fileName
-                                         success:(nullable void (^)(MDLFile * __nonnull newFile))success
-                                         failure:(nullable void (^)(NSError * __nullable))failure {
+- (nullable AFHTTPRequestOperation *)uploadFileWithClient:(nonnull MDLMendeleyAPIClient *)client
+                                                    atURL:(nonnull NSURL *)fileURL
+                                              contentType:(nonnull NSString *)contentType
+                                                 fileName:(nonnull NSString *)fileName
+                                                  success:(nullable void (^)(MDLFile * __nonnull newFile))success
+                                                  failure:(nullable void (^)(NSError * __nullable))failure {
     if (!self.identifier) {
         failure([NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorCancelled userInfo:nil]);
         return nil;
