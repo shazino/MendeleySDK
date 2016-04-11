@@ -53,7 +53,7 @@
          createFolderWithClient:self.APIClient
          name:self.nameTextField.text
          parent:self.parentFolder
-         success:^(MDLObject *folder) {
+         success:^(MDLMendeleyAPIObject *folder) {
              [[[UIAlertView alloc]
                initWithTitle:NSLocalizedString(@"Folder Created", nil)
                message:nil

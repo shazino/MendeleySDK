@@ -82,7 +82,7 @@
 
         [document
          createWithClient:self.APIClient
-         success:^(MDLObject *newDocument) {
+         success:^(MDLMendeleyAPIObject *newDocument) {
              self.activityStatusLabel.text = [NSString stringWithFormat:@"Document created\nTitle: %@\nType: %@\nId: %@", document.title, document.type, document.identifier];
              [document
               uploadFileWithClient:self.APIClient

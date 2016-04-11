@@ -66,7 +66,7 @@
     if (self.user) {
         [self.user
          fetchWithClient:self.APIClient
-         success:^(MDLObject *profile) {
+         success:^(MDLMendeleyAPIObject *profile) {
              self.user = (MDLProfile *)profile;
          }
          failure:^(NSError *error) {
@@ -76,7 +76,7 @@
     else {
         [MDLProfile
          fetchMyProfileWithClient:self.APIClient
-         success:^(MDLObject *profile) {
+         success:^(MDLMendeleyAPIObject *profile) {
             self.user = (MDLProfile *)profile;
          }
          failure:^(NSError *error) {

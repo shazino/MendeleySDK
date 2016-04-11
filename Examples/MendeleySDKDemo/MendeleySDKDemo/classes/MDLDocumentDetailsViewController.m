@@ -57,7 +57,7 @@
 
     [self.document
      fetchWithClient:self.APIClient
-     success:^(MDLObject *document) {
+     success:^(MDLMendeleyAPIObject *document) {
          [self updateOutletsWithDocument:(MDLDocument *)document];
      }
      failure:^(NSError *error) {

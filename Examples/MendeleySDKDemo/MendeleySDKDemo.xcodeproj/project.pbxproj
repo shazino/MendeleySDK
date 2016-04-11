@@ -336,7 +336,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = MDL;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = shazino;
 			};
 			buildConfigurationList = 14C1E2BF16246F27005D914C /* Build configuration list for PBXProject "MendeleySDKDemo" */;
@@ -551,6 +551,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -602,6 +603,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MendeleySDKDemo/MendeleySDKDemo-Prefix.pch";
 				INFOPLIST_FILE = "MendeleySDKDemo/MendeleySDKDemo-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shazino.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = MendeleySDKDemo;
 				WRAPPER_EXTENSION = app;
 			};
@@ -617,6 +619,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MendeleySDKDemo/MendeleySDKDemo-Prefix.pch";
 				INFOPLIST_FILE = "MendeleySDKDemo/MendeleySDKDemo-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shazino.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = MendeleySDKDemo;
 				WRAPPER_EXTENSION = app;
 			};
@@ -641,6 +644,7 @@
 				INFOPLIST_FILE = "MendeleySDKDemoTests/MendeleySDKDemoTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shazino.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
@@ -664,6 +668,7 @@
 				GCC_PREFIX_HEADER = "MendeleySDKDemoTests/MendeleySDKDemoTests-Prefix.pch";
 				INFOPLIST_FILE = "MendeleySDKDemoTests/MendeleySDKDemoTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shazino.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
