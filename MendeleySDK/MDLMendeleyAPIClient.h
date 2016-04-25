@@ -193,7 +193,7 @@ extern NSString * __nonnull const MDLMendeleyObjectTypeProfiles;
  @return A new HTTP request operation
  */
 - (nullable AFHTTPRequestOperation *)deletePath:(nonnull NSString *)path
-                                        success:(nullable void (^)(AFHTTPRequestOperation * __nonnnull, id __nonnull responseObject))success
+                                        success:(nullable void (^)(AFHTTPRequestOperation * __nonnnull operation, id __nonnull responseObject))success
                                         failure:(nullable void (^)(NSError * __nullable))failure;
 
 @end
