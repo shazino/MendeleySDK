@@ -1,12 +1,12 @@
 Pod::Spec.new do |s|
   s.name             = 'MendeleySDK'
-  s.version          = '2.1.3'
+  s.version          = '2.1.4'
   s.summary          = 'Objective-C client for the Mendeley API.'
   s.homepage         = 'https://github.com/shazino/MendeleySDK'
   s.license          = 'MIT'
   s.author           = { 'shazino' => 'contact@shazino.com' }
   s.social_media_url = 'https://twitter.com/shazino'
-  s.source           = { :git => "https://github.com/shazino/MendeleySDK.git", :tag => '2.1.3' }
+  s.source           = { :git => "https://github.com/shazino/MendeleySDK.git", :tag => '2.1.4' }
 
   s.source_files = 'MendeleySDK'
   s.requires_arc = true

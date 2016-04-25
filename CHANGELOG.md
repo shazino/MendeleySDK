@@ -1,10 +1,20 @@
 # MendeleySDK Changelog
 
+## v2.1.4
+
+_Released April 25, 2016_
+
+### MDLMendeleyAPIClient
+
+- Fix typo in `deletePath:success:failure:` declaration
+
+
 ## v2.1.3
 
 _Released April 25, 2016_
 
 ### MDLFolder
+
 - _added_ `groupIdentifier`
 
 
