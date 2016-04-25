@@ -51,6 +51,7 @@
     self.identifier       = responseObject[@"id"];
     self.name             = responseObject[@"name"];
     self.parentIdentifier = responseObject[@"parent_id"];
+    self.groupIdentifier  = responseObject[@"group_id"];
 
     self.creationDateString = responseObject[@"created"];
     self.modificationDateString = responseObject[@"last_modified"];
@@ -65,6 +66,10 @@
 
     if (self.parentIdentifier) {
         representation[@"parent_id"] = self.parentIdentifier;
+    }
+
+    if (self.groupIdentifier) {
+        representation[@"group_id"] = self.groupIdentifier;
     }
 
     return representation;

@@ -1,5 +1,11 @@
 # MendeleySDK Changelog
 
+## v2.1.3
+
+### MDLFolder
+- _added_ `groupIdentifier`
+
+
 ## v2.1.2
 
 _Released April 11, 2016_

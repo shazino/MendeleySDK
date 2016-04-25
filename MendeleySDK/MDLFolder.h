@@ -43,6 +43,11 @@
  */
 @property (nonatomic, copy, nullable) NSString *parentIdentifier;
 
+/**
+ The identifier of the owning group
+ */
+@property (nonatomic, copy, nullable) NSString *groupIdentifier;
+
 @property (nonatomic, copy, nullable) NSString *creationDateString;
 
 @property (nonatomic, copy, nullable) NSString *modificationDateString;
