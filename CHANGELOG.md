@@ -2,6 +2,8 @@
 
 ## v2.1.3
 
+_Released April 25, 2016_
+
 ### MDLFolder
 - _added_ `groupIdentifier`
 
