@@ -4,6 +4,7 @@
 ![Platform](https://img.shields.io/cocoapods/p/MendeleySDK.svg)
 [![Build Status](https://travis-ci.org/shazino/MendeleySDK.png?branch=master)](https://travis-ci.org/shazino/MendeleySDK)
 [![CocoaPods compatible](https://img.shields.io/cocoapods/v/MendeleySDK.svg)](https://cocoapods.org/pods/MendeleySDK)
+[![CocoaPods documentation](https://img.shields.io/cocoapods/metrics/doc-percent/MendeleySDK.svg)](http://cocoadocs.org/docsets/MendeleySDK)
 [![MIT license](http://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/shazino/MendeleySDK/raw/master/LICENSE)
 
 MendeleySDK is a [Mendeley API](http://dev.mendeley.com) client for iOS and OS X, built on top of [AFNetworking](http://www.github.com/AFNetworking/AFNetworking) and [AFOAuth2Client](http://www.github.com/AFNetworking/AFOAuth2Client).
